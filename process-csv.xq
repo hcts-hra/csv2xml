@@ -2,8 +2,6 @@ xquery version "3.0";
 import module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions" at "modules/xml-functions.xqm";
 import module namespace functx="http://www.functx.com";
 
-declare variable $local:app-root := "/db/apps/csv2vra";
-
 let $mapping-name := "default"
 let $data := session:get-attribute("data")
 
@@ -14,7 +12,7 @@ let $mapping-name :=
         $mapping-name
 
 (: load the CSV-mapping:)
-let $csv-map-uri :=  $local:app-root || "/mappings/" || $mapping-name || "/csv-map.xml"
+let $csv-map-uri :=  "mappings/" || $mapping-name || "/csv-map.xml"
 let $mapping-definition := doc($csv-map-uri)
 
 (: get the template-filenames:)
@@ -25,7 +23,7 @@ let $template-filenames := doc($csv-map-uri)/xml/templates/template/string()
 let $templates-strings := 
     for $template-filename in $template-filenames
         (: load the XML templates :)
-        let $xml-uri := $local:app-root || "/mappings/" || $mapping-name || "/" || $template-filename
+        let $xml-uri := "mappings/" || $mapping-name || "/" || $template-filename
         let $xml := doc($xml-uri)
         let $xml-string := serialize($xml)
         return $xml-string
@@ -40,7 +38,7 @@ let $xml-nodes := (
     )
 
 (: get the parent xml wrapper :)
-let $parent-xml := doc($local:app-root || "/mappings/" || $mapping-name || "/" || $parent-template-filename)
+let $parent-xml := doc("mappings/" || $mapping-name || "/" || $parent-template-filename)
 let $parent-string := serialize($parent-xml)
 
 let $output-xml := parse-xml(replace($parent-string, "\$PROCESSED_TEMPLATE\$", string-join($xml-nodes)))

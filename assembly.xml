@@ -6,10 +6,10 @@
 	<license>GNU-LGPL</license>
 	<copyright>true</copyright>
 	<type>${package-type}</type>
-	<target>tamboti-${project.artifactId}</target>
+	<target>${project.artifactId}</target>
 	<status>stable</status>
 	<finish>post-install.xq</finish>
-	<tag>tamboti-${project.artifactId}</tag>
+	<tag>${project.artifactId}</tag>
 	<tag>${package-type}</tag>
 	<tag>exist</tag>
 	<category id="application">${project.artifactId}</category>
