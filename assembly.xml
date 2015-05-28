@@ -1,0 +1,30 @@
+<package xmlns="http://expath.org/ns/pkg" name="${package-name}" abbrev="${project.artifactId}" version="${project.version}"
+	spec="1.0">
+	<title>${package-title}</title>
+	<author>Matthias Guth</author>
+	<website>${project.url}</website>
+	<license>GNU-LGPL</license>
+	<copyright>true</copyright>
+	<type>${package-type}</type>
+	<target>tamboti-${project.artifactId}</target>
+	<status>stable</status>
+	<finish>post-install.xq</finish>
+	<tag>tamboti-${project.artifactId}</tag>
+	<tag>${package-type}</tag>
+	<tag>exist</tag>
+	<category id="application">${project.artifactId}</category>
+	<fileSets>
+		<fileSet>
+			<directory>${basedir}</directory>
+			<outputDirectory>/</outputDirectory>
+			<excludes>
+				<exclude>assembly.xml</exclude>
+				<exclude>pom.xml</exclude>
+				<exclude>target/</exclude>
+				<exclude>.buildpath</exclude>
+				<exclude>.project</exclude>
+				<exclude>.settings/</exclude>
+			</excludes>
+		</fileSet>
+	</fileSets>
+</package>

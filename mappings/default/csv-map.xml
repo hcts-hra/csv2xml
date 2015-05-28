@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <templates>
+        <parent>parent-template.xml</parent>
+        <template>vra-work-template.xml</template>
+        <template>vra-image-template.xml</template>
+    </templates>
+    <mapping key="WORK_ID">concat("w_", util:uuid())</mapping>
+    <mapping key="IMAGE_ID">concat("i_", util:uuid())</mapping>
+    <mapping key="IMAGE_Filename">$line/column[@char-index="A"]/string()</mapping>
+    <mapping key="WORK_Agent1Name">$line/column[@char-index="B"]/string()</mapping>
+    <mapping key="WORK_Agent1NameRefid">$line/column[@char-index="C"]/string()</mapping>
+    <mapping key="WORK_TitlePref">$line/column[@char-index="D"]/string()</mapping>
+</xml>

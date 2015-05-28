@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>tamboti</groupId>
+	<artifactId>xml2csv</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+
+	<prerequisites>
+		<maven>${mavenVersion}</maven>
+	</prerequisites>
+
+	<properties>
+		<mavenVersion>3.1.1</mavenVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<package-name>http://hra.uni-heidelberg.de/ns/csv2vra</package-name>
+		<package-title>xml2csv</package-title>
+		<package-type>application</package-type>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>ro.kuberam.maven.plugins</groupId>
+				<artifactId>kuberam-expath-plugin</artifactId>
+				<version>0.4.1</version>
+				<executions>
+					<execution>
+						<id>create-build</id>
+						<phase>package</phase>
+						<goals>
+							<goal>make-xar</goal>
+						</goals>
+						<configuration>
+							<descriptor>assembly.xml</descriptor>
+							<finalName>${project.build.finalName}</finalName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
