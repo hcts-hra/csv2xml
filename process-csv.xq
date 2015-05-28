@@ -31,11 +31,8 @@ let $templates-strings :=
 let $line := $data/line[position() = 2]
 
 (: process each line and output the string with replaced variables :)
-let $xml-nodes := (
-    for $string in $templates-strings
-        return
-           xml-functions:replace-template-variables($string, $mapping-definition, $line)
-    )
+let $xml-nodes-string := string-join($templates-strings)
+let $xml-nodes := xml-functions:replace-template-variables($xml-nodes-string, $mapping-definition, $line)
 
 (: get the parent xml wrapper :)
 let $parent-xml := doc("mappings/" || $mapping-name || "/" || $parent-template-filename)
