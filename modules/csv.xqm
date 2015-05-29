@@ -37,7 +37,6 @@ declare
 (:    %templates:wrap:)
 function csv:read-csv($csv-string as xs:string) {
     let $lines := tokenize($csv-string, "\n")
-    let $head := tokenize($lines[1], ',')
 (:    let $body := remove($lines, 1):)
     let $body := $lines
     return 
@@ -62,6 +61,7 @@ function csv:read-csv($csv-string as xs:string) {
 };
 
 declare function csv:add-char-index($csv-data as node()*) {
+    let $head := $csv-data//line[position() = 1]
     let $output :=
         <csv>
             {
@@ -73,7 +73,7 @@ declare function csv:add-char-index($csv-data as node()*) {
                             for $column in $line/column
                             let $column-num-index := data($column/@num-index)
                                 return
-                                    <column num-index="{$column-num-index}" char-index="{csv:num-to-char(xs:integer($column-num-index))}">
+                                    <column num-index="{$column-num-index}" char-index="{csv:num-to-char(xs:integer($column-num-index))}" heading-index="{$head//column[position() = $column-num-index]/string()}">
                                         {
                                             data($column)
                                         }
