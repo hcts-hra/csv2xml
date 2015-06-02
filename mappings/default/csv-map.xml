@@ -197,7 +197,7 @@
     <mapping key="IMAGE_DateDisplay">$line/column[@heading-index="IMAGE_DateDisplay"]/string()</mapping>
     <mapping key="IMAGE_DescriptionDisplay">$line/column[@heading-index="IMAGE_DescriptionDisplay"]/string()</mapping>
     <mapping key="IMAGE_InscriptionDisplay">$line/column[@heading-index="IMAGE_InscriptionDisplay"]/string()</mapping>
-    <mapping key="IMGAE_LocationDisplay">$line/column[@heading-index="IMGAE_LocationDisplay"]/string()</mapping>
+    <mapping key="IMAGE_LocationDisplay">$line/column[@heading-index="IMGAE_LocationDisplay"]/string()</mapping>
     <mapping key="IMAGE_MaterialDisplay">$line/column[@heading-index="IMAGE_MaterialDisplay"]/string()</mapping>
     <mapping key="IMAGE_MeasurementsDisplay">$line/column[@heading-index="IMAGE_MeasurementsDisplay"]/string()</mapping>
     <mapping key="IMAGE_RelationDisplay">$line/column[@heading-index="IMAGE_RelationDisplay"]/string()</mapping>
