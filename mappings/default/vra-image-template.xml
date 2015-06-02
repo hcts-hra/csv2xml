@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <image refid="$IMAGE_AccessionID$" href="$IMAGE_Filename$">
-    <agentSet>
-        <display>$IMAGE_AgentDisplay$</display>
-        <agent>
-            <name type="$IMAGE_Agent1NameType$" vocab="$IMAGE_Agent1NameVocab$" refid="$IMAGE_Agent1NameRefid$">$IMAGE_Agent1Name$</name>
-            <role>$IMAGE_Agent1Role$</role>
-        </agent>
-    </agentSet>
-    <culturalContextSet>
-        <display>$IMAGE_CulturalContextDisplay$</display>
-        <culturalContext>$IMAGE_CulturalContextDisplay$</culturalContext>
-    </culturalContextSet>
-    <dateSet>
-        <display>$IMAGE_DateDisplay$</display>
-        <date/>
-    </dateSet>
-    <descriptionSet>
-        <display>$IMAGE_Description$</display>
-        <description>$IMAGE_Description$</description>
-    </descriptionSet>
-    <inscriptionSet>
-        <display>IMAGE_InscriptionDisplay</display>
-        <inscription>
-            <text>IMAGE_InscriptionDisplay</text>
-        </inscription>
-    </inscriptionSet>
-    <locationSet>
-        <display>$IMGAE_LocationDisplay$</display>
-        <location type="repository">
-            <name>$LOCAL-REPO-NAME$</name> <!-- required user input, before transformation or additional column; name @type may vary too -->
-            <refid type="accession">$IMAGE_AccessionID$</refid>
-        </location>
-    </locationSet>
-    <materialSet>
-        <display>$IMAGE_MaterialDisplay$</display>
-        <material/>
-    </materialSet>
-    <measurementsSet>
-        <display>$IMAGE_MeasurementsDisplay$</display>
-        <measurements/>
-    </measurementsSet>
-    <relationSet>
-        <display>$IMAGE_RelationDisplay$</display>
-			<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-        <relation type="imageOf" source="$SourceOfImageRecord$" relids="$WORK_ID$"/>
-			<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-    </relationSet>
-    <rightsSet>
-        <display>$IMAGE_RightsDisplay$</display>
-        <notes>$IMAGE_RigthsNotes$</notes>
-        <rights type="$IMAGE_RigthsType$">
-            <rightsHolder>$IMAGE_RigthsHolder$</rightsHolder>
-            <text>$IMAGE_RigthsText$</text>
-        </rights>
-    </rightsSet>
-    <sourceSet>
-        <display>$IMAGE_SourceDisplay$</display>
-        <source>
-            <name type="vendor">$IMAGE_VendorName$</name> <!-- source block with VendorID is fixed to type=vendor-->
-            <refid type="vendor">$IMAGE_VendorID$</refid>
-        </source>
-    </sourceSet>
-    <stateEditionSet>
-        <display>$IMAGE_StateEditionDisplay$</display>
-        <stateEdition/>
-    </stateEditionSet>
-    <stylePeriodSet>
-        <display>$IMAGE_StylePeriodDisplay$</display>
-        <stylePeriod/>
-    </stylePeriodSet>
-    <subjectSet>
-        <display>$IMAGE_SubjectDisplay$</display>
-        <subject>
-            <term type="$WORK_SubjectType1$" vocab="$WORK_SubjectVocab1$" refid="$WORK_SubjectRefid1$">$WORK_Subject1$</term>
-            <term type="$WORK_SubjectType2$" vocab="$WORK_SubjectVocab2$" refid="$WORK_SubjectRefid2$">$WORK_Subject2$</term>
-            <term type="$WORK_SubjectType3$" vocab="$WORK_SubjectVocab3$" refid="$WORK_SubjectRefid3$">$WORK_Subject3$</term>
-        </subject>
-    </subjectSet>
-    <techniqueSet>
-        <display>$IMAGE_TechniqueDisplay$</display>
-        <technique vocab="AAT" refid="300237903">digital imaging</technique>
-    </techniqueSet>
-    <textrefSet>
-        <display>$IMAGE_TextrefDisplay$</display>
-        <textref/>
-    </textrefSet>
-    <titleSet>
-        <display>$IMAGE_TitleDisplay$</display>
-        <title type="$IMAGE_TitleType$">$IMAGE_Title$</title>
-    </titleSet>
-    <worktypeSet>
-        <display>$IMAGE_WorktypeDisplay$</display>
-        <worktype vocab="AAT" refid="300215302">digital images</worktype>
-    </worktypeSet>
+	<agentSet>
+		<display>$IMAGE_AgentDisplay$</display>
+		<agent>
+			<name type="$IMAGE_Agent1NameType$" vocab="$IMAGE_Agent1NameVocab$" refid="$IMAGE_Agent1NameRefid$">$IMAGE_Agent1Name$</name>
+			<role>$IMAGE_Agent1Role$</role>
+		</agent>
+	</agentSet>
+	<culturalContextSet>
+		<display>$IMAGE_CulturalContextDisplay$</display>
+		<culturalContext>$IMAGE_CulturalContextDisplay$</culturalContext>
+	</culturalContextSet>
+	<dateSet>
+		<display>$IMAGE_DateDisplay$</display>
+		<date/>
+	</dateSet>
+	<descriptionSet>
+		<display>$IMAGE_Description$</display>
+		<description>$IMAGE_Description$</description>
+	</descriptionSet>
+	<inscriptionSet>
+		<display>IMAGE_InscriptionDisplay</display>
+		<inscription>
+			<text>IMAGE_InscriptionDisplay</text>
+		</inscription>
+	</inscriptionSet>
+	<locationSet>
+		<display>$IMAGE_LocationDisplay$</display>
+		<location type="repository">
+			<name>$LOCAL-REPO-NAME$</name>
+			<refid type="accession">$IMAGE_AccessionID$</refid>
+		</location>
+	</locationSet>
+	<materialSet>
+		<display>$IMAGE_MaterialDisplay$</display>
+		<material/>
+	</materialSet>
+	<measurementsSet>
+		<display>$IMAGE_MeasurementsDisplay$</display>
+		<measurements/>
+	</measurementsSet>
+	<relationSet>
+		<display>$IMAGE_RelationDisplay$</display>
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+		<relation type="imageOf" source="$SourceOfImageRecord$" relids="$WORK_ID$"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+	</relationSet>
+	<rightsSet>
+		<display>$IMAGE_RightsDisplay$</display>
+		<notes>$IMAGE_RigthsNotes$</notes>
+		<rights type="$IMAGE_RigthsType$">
+			<rightsHolder>$IMAGE_RigthsHolder$</rightsHolder>
+			<text>$IMAGE_RigthsText$</text>
+		</rights>
+	</rightsSet>
+	<sourceSet>
+		<display>$IMAGE_SourceDisplay$</display>
+		<source>
+			<name type="vendor">$IMAGE_VendorName$</name>
+			<refid type="vendor">$IMAGE_VendorID$</refid>
+		</source>
+	</sourceSet>
+	<stateEditionSet>
+		<display>$IMAGE_StateEditionDisplay$</display>
+		<stateEdition/>
+	</stateEditionSet>
+	<stylePeriodSet>
+		<display>$IMAGE_StylePeriodDisplay$</display>
+		<stylePeriod/>
+	</stylePeriodSet>
+	<subjectSet>
+		<display>$IMAGE_SubjectDisplay$</display>
+		<subject>
+			<term type="$WORK_SubjectType1$" vocab="$WORK_SubjectVocab1$" refid="$WORK_SubjectRefid1$">$WORK_Subject1$</term>
+			<term type="$WORK_SubjectType2$" vocab="$WORK_SubjectVocab2$" refid="$WORK_SubjectRefid2$">$WORK_Subject2$</term>
+			<term type="$WORK_SubjectType3$" vocab="$WORK_SubjectVocab3$" refid="$WORK_SubjectRefid3$">$WORK_Subject3$</term>
+		</subject>
+	</subjectSet>
+	<techniqueSet>
+		<display>$IMAGE_TechniqueDisplay$</display>
+		<technique vocab="AAT" refid="300237903">digital imaging</technique>
+	</techniqueSet>
+	<textrefSet>
+		<display>$IMAGE_TextrefDisplay$</display>
+		<textref/>
+	</textrefSet>
+	<titleSet>
+		<display>$IMAGE_TitleDisplay$</display>
+		<title type="$IMAGE_TitleType$">$IMAGE_Title$</title>
+	</titleSet>
+	<worktypeSet>
+		<display>$IMAGE_WorktypeDisplay$</display>
+		<worktype vocab="AAT" refid="300215302">digital images</worktype>
+	</worktypeSet>
 </image>
