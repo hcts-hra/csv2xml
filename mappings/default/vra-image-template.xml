@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<image id="$IMAGE_ID$" href="$IMAGE_Filename$">
+<image refid="$IMAGE_AccessionID$" href="$IMAGE_Filename$">
     <agentSet>
+        <display>$IMAGE_AgentDisplay$</display>
         <agent>
             <name type="$IMAGE_Agent1NameType$" vocab="$IMAGE_Agent1NameVocab$" refid="$IMAGE_Agent1NameRefid$">$IMAGE_Agent1Name$</name>
             <role>$IMAGE_Agent1Role$</role>
         </agent>
     </agentSet>
     <culturalContextSet>
-        <display/>
-        <culturalContext/>
+        <display>$IMAGE_CulturalContextDisplay$</display>
+        <culturalContext>$IMAGE_CulturalContextDisplay$</culturalContext>
     </culturalContextSet>
     <dateSet>
         <display>$IMAGE_DateDisplay$</display>
         <date/>
     </dateSet>
     <descriptionSet>
-        <display/>
+        <display>$IMAGE_Description$</display>
         <description>$IMAGE_Description$</description>
     </descriptionSet>
     <inscriptionSet>
-        <display/>
+        <display>IMAGE_InscriptionDisplay</display>
         <inscription>
-            <text/>
+            <text>IMAGE_InscriptionDisplay</text>
         </inscription>
     </inscriptionSet>
     <locationSet>
-        <display/>
+        <display>$IMGAE_LocationDisplay$</display>
         <location type="repository">
             <name>$LOCAL-REPO-NAME$</name> <!-- required user input, before transformation or additional column; name @type may vary too -->
             <refid type="accession">$IMAGE_AccessionID$</refid>
         </location>
     </locationSet>
     <materialSet>
-        <display/>
+        <display>$IMAGE_MaterialDisplay$</display>
         <material/>
     </materialSet>
     <measurementsSet>
-        <display/>
+        <display>$IMAGE_MeasurementsDisplay$</display>
         <measurements/>
     </measurementsSet>
     <relationSet>
-        <display/>
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        <display>$IMAGE_RelationDisplay$</display>
+			<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         <relation type="imageOf" source="$SourceOfImageRecord$" relids="$WORK_ID$"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+			<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
     </relationSet>
     <rightsSet>
         <display>$IMAGE_RightsDisplay$</display>
@@ -54,18 +55,18 @@
         </rights>
     </rightsSet>
     <sourceSet>
-        <display/>
+        <display>$IMAGE_SourceDisplay$</display>
         <source>
             <name type="vendor">$IMAGE_VendorName$</name> <!-- source block with VendorID is fixed to type=vendor-->
             <refid type="vendor">$IMAGE_VendorID$</refid>
         </source>
     </sourceSet>
     <stateEditionSet>
-        <display/>
+        <display>$IMAGE_StateEditionDisplay$</display>
         <stateEdition/>
     </stateEditionSet>
     <stylePeriodSet>
-        <display/>
+        <display>$IMAGE_StylePeriodDisplay$</display>
         <stylePeriod/>
     </stylePeriodSet>
     <subjectSet>
@@ -77,19 +78,19 @@
         </subject>
     </subjectSet>
     <techniqueSet>
-        <display/>
-        <technique/>
+        <display>$IMAGE_TechniqueDisplay$</display>
+        <technique vocab="AAT" refid="300237903">digital imaging</technique>
     </techniqueSet>
     <textrefSet>
-        <display/>
+        <display>$IMAGE_TextrefDisplay$</display>
         <textref/>
     </textrefSet>
     <titleSet>
-        <display/>
+        <display>$IMAGE_TitleDisplay$</display>
         <title type="$IMAGE_TitleType$">$IMAGE_Title$</title>
     </titleSet>
     <worktypeSet>
-        <display/>
-        <worktype/>
+        <display>$IMAGE_WorktypeDisplay$</display>
+        <worktype vocab="AAT" refid="300215302">digital images</worktype>
     </worktypeSet>
 </image>

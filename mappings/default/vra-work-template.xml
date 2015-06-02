@@ -20,8 +20,8 @@
     </agentSet>
     <culturalContextSet>
         <display>$WORK_CulturalContextDisplay$</display>
-        <culturalContext>$WORK_CulturalContext1$</culturalContext>
-        <culturalContext>$WORK_CulturalContext2$</culturalContext>
+        <culturalContext vocab="$WORK_CulturalContext1Vocab$" refid="$WORK_CulturalContext1Refid$">$WORK_CulturalContext1$</culturalContext>
+        <culturalContext vocab="$WORK_CulturalContext2Vocab$" refid="$WORK_CulturalContext2Refid$">$WORK_CulturalContext2$</culturalContext>
     </culturalContextSet>
     <dateSet>
         <display>$WORK_DateDisplay$</display>
@@ -35,27 +35,27 @@
         </date>
     </dateSet>
     <descriptionSet>
-        <display/>
+        <display>$WORK_Description$</display>
         <description source="$WORK_DescriptionSource$">$WORK_Description$</description>
     </descriptionSet>
     <inscriptionSet>
         <display>$WORK_InscriptionDisplay$</display>
         <inscription>
-            <text/>
+            <text>$WORK_InscriptionDisplay$</text>
         </inscription>
     </inscriptionSet>
     <locationSet>
         <display>$WORK_LocationDisplay$</display>
         <notes>$WORK_LocationNotes$</notes>
         <location type="$WORK_Location1Type$">
-            <name type="$WORK_Location1InstNameType$" vocab="$WORK_Location1InstNameVocab$" refid="$WORK_Location1InstNameRefID$">$WORK_Location1InstName$</name>
-            <refid type="accession">$WORK_Location1InstObjRefID$</refid>
-            <name type="geographic" vocab="$WORK_Location1GeolocNameVocab$" refid="$WORK_Location1GeolocNameRefid$">$WORK_Location1GeolocName$</name>
+            <name type="$WORK_Location1NameType$" vocab="$WORK_Location1NameVocab$" refid="$WORK_Location1NameRefID$">$WORK_Location1Name$</name>
+            <refid type="$WORK_Location1ObjType$">$WORK_Location1ObjRefID$</refid>
+            <name type="geographic" vocab="$WORK_Location1GeoVocab$" refid="$WORK_Location1GeoRefid$">$WORK_Location1Geo$</name>
         </location>
         <location type="$WORK_Location2Type$">
-            <name type="$WORK_Location2InstNameType$" vocab="$WORK_Location2InstNameVocab$" refid="$WORK_Location2InstNameRefID$">$WORK_Location2InstName$</name>
-            <refid type="accession">$WORK_Location2InstObjRefID$</refid>
-            <name type="geographic" vocab="$WORK_Location2GeolocNameVocab$" refid="$WORK_Location2GeolocNameRefid$">$WORK_Location2GeolocName$</name>
+            <name type="$WORK_Location2NameType$" vocab="$WORK_Location2NameVocab$" refid="$WORK_Location2NameRefID$">$WORK_Location2Name$</name>
+            <refid type="$WORK_Location1ObjType$">$WORK_Location2ObjRefID$</refid>
+            <name type="geographic" vocab="$WORK_Location2GeoVocab$" refid="$WORK_Location2GeoRefid$">$WORK_Location2Geo$</name>
         </location>
     </locationSet>
     <materialSet>
@@ -78,22 +78,24 @@
     </measurementsSet>
     <relationSet>
         <display>$WORK_RelationDisplay$</display>
-        <relation type="$WORK_RelationType1$">$WORK_RelatedWork1$</relation> <!-- requires related work's relids and source -->
-        <relation type="$WORK_RelationType2$">$WORK_RelatedWork2$</relation> <!-- requires related work's relids and source -->
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-        <relation type="imageIs" relids="$IMAGE_ID$" source="$SourceOfImageRecord$" pref="true">$RelationName$</relation>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        <relation type="$WORK_RelationType1$">$WORK_RelatedWork1$</relation>
+        <relation type="$WORK_RelationType2$">$WORK_RelatedWork2$</relation> 
+			<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        <relation type="imageIs" relids="$IDofImageRecord$" source="$SourceOfImageRecord$" pref="true">$RelationName$</relation>
+			<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
     </relationSet>
     <rightsSet>
         <display>$WORK_RightsDisplay$</display>
-        <rights/>
+        <rights>
+            <text>$WORK_RightsDisplay$</text>
+        </rights>
     </rightsSet>
     <sourceSet>
-        <display/>
+        <display>$WORK_SourceDisplay$</display>
         <source/>
     </sourceSet>
     <stateEditionSet>
-        <display/>
+        <display>$WORK_StateEditionDisplay$</display>
         <stateEdition/>
     </stateEditionSet>
     <stylePeriodSet>
@@ -124,13 +126,13 @@
         <technique vocab="$WORK_TechniqueVocab4$" refid="$WORK_TechniqueRefid4$">$WORK_Technique4$</technique>
     </techniqueSet>
     <textrefSet>
-        <display/>
+        <display>$WORK_TextrefDisplay$</display>
         <textref/>
     </textrefSet>
     <titleSet>
-        <display/>
-        <title pref="true">$WORK_TitlePref$</title>
-        <title pref="false">$WORK_TitleAlt$</title>
+        <display>$WORK_TitleDisplay$</display>
+        <title pref="true" type="$WORK_TitlePrefType$">$WORK_TitlePref$</title>
+        <title pref="false" type="$WORK_TitleAltType$">$WORK_TitleAlt$</title>
     </titleSet>
     <worktypeSet>
         <display>$WORK_WorktypeDisplay$</display>
