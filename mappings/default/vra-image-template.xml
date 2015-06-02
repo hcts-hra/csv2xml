@@ -26,9 +26,9 @@
         </inscription>
     </inscriptionSet>
     <locationSet>
-        <display>$IMAGE_LocationDisplay$</display>
+        <display>$IMGAE_LocationDisplay$</display>
         <location type="repository">
-            <name>$LOCAL-REPO-NAME$</name>
+            <name>$LOCAL-REPO-NAME$</name> <!-- required user input, before transformation or additional column; name @type may vary too -->
             <refid type="accession">$IMAGE_AccessionID$</refid>
         </location>
     </locationSet>
@@ -57,7 +57,7 @@
     <sourceSet>
         <display>$IMAGE_SourceDisplay$</display>
         <source>
-            <name type="vendor">$IMAGE_VendorName$</name> 
+            <name type="vendor">$IMAGE_VendorName$</name> <!-- source block with VendorID is fixed to type=vendor-->
             <refid type="vendor">$IMAGE_VendorID$</refid>
         </source>
     </sourceSet>
