@@ -4,6 +4,7 @@ import module namespace functx="http://www.functx.com";
 
 let $mapping-name := "default"
 let $data := session:get-attribute("data")
+let $debug :=  request:get-parameter("debug", false())
 
 let $mapping-name := 
     if ($mapping-name = "") then 
@@ -28,29 +29,24 @@ let $templates-strings :=
         let $xml-string := serialize($xml)
         return $xml-string
 
-let $line := $data/line[position() = 2]
 
-(: process each line and output the string with replaced variables :)
-let $xml-nodes-string := string-join($templates-strings)
-let $xml-nodes := xml-functions:replace-template-variables($xml-nodes-string, $mapping-definition, $line)
+(:(: process each csv line   :):)
+let $lines := $data/line[position() < 10]
+let $processed-template :=
+    for $line in $lines
+        (: process each line and output the string with replaced variables :)
+        let $xml-nodes-string := string-join($templates-strings)
+        let $xml-nodes := xml-functions:replace-template-variables($xml-nodes-string, $mapping-definition, $line)
+        return string-join($xml-nodes)
+
 
 (: get the parent xml wrapper :)
 let $parent-xml := doc("mappings/" || $mapping-name || "/" || $parent-template-filename)
 let $parent-string := serialize($parent-xml)
-
-let $output-xml := parse-xml(replace($parent-string, "\$PROCESSED_TEMPLATE\$", string-join($xml-nodes)))
+let $output-string := replace($parent-string, "\$PROCESSED_TEMPLATE\$", string-join($processed-template))
+let $output-xml := parse-xml($output-string)
 return
-    $output-xml
-
-
-(:(: process each csv line   :):)
-(:for $line in $data/line[position() = 1]:)
-(:    (: process each column   :):)
-(:    for $column in $line/column:)
-(:        (: get the variable   :):)
-(:        let $query := $mapping-definition/xml/:)
-(::)
-(:        return:)
-(:            $column:)
-
-(: process :)
+    if($debug) then
+        $lines
+    else
+        $output-xml
