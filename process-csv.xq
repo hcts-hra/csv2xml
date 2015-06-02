@@ -37,7 +37,8 @@ let $processed-template :=
         (: process each line and output the string with replaced variables :)
         let $xml-nodes-string := string-join($templates-strings)
         let $xml-nodes := xml-functions:replace-template-variables($xml-nodes-string, $mapping-definition, $line)
-        return string-join($xml-nodes)
+        return 
+            string-join($xml-nodes)
 
 
 (: get the parent xml wrapper :)

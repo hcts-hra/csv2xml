@@ -4,26 +4,36 @@ module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-func
 import module namespace functx="http://www.functx.com";
 
 declare function xml-functions:replace-template-variables($template-string as xs:string, $mapping-definition as node(), $line as node()) as xs:string {
-    let $changeFrom :=
-        for $mapping in $mapping-definition//mapping/@key/string()
-        return
-            "\$" || $mapping || "\$"
+    let $replace-map := map:new(
+            for $mapping in $mapping-definition//mapping
+                let $key := $mapping/@key/string()
+                let $queryString := $mapping/string()
+        
+                let $changeFrom := "\$" || $key || "\$"
+                let $changeTo := util:eval($queryString)
+                return
+                    map:entry($changeFrom, $changeTo)
+    )
+
+    let $from-seq := map:keys($replace-map)
+    let $to-seq :=
+        for $from in $from-seq
+            let $to-value := 
+                if ($replace-map($from)) then
+                    xs:string($replace-map($from))
+                else
+                    xs:string("")
+            return
+                $to-value
     
-    let $changeTo :=
-        for $mapping in $mapping-definition//mapping/string()
-            let $queryString := $mapping
-            return 
-                util:eval($queryString)
-    
-    let $changeFrom := ($changeFrom)
-    let $changeTo := ($changeTo)
-    
+
     let $return :=
-        functx:replace-multi($template-string, $changeFrom, $changeTo)
+        functx:replace-multi($template-string, $from-seq, $to-seq)
+
     (: remove unreplaced vars :)
     let $return :=
         replace($return, "\$.*?\$", "")
-    
+            
     return 
         $return
 
