@@ -10,18 +10,20 @@ declare namespace xhtml="http://www.w3.org/1999/xhtml";
 let $file-name := request:get-uploaded-file-name('file')
 let $file-data := request:get-uploaded-file-data('file')
 
-(:let $filetype := data(contentextraction:get-metadata($file-data)//xhtml:meta[@name="Content-Type"]/@content):)
-let $filetype := substring-before(data(contentextraction:get-metadata($file-data)//xhtml:meta[@name="Content-Type"]/@content), ";")
+let $fileinfo := contentextraction:get-metadata($file-data)
+let $filetype := substring-before(data($fileinfo//xhtml:meta[@name="Content-Type"]/@content), ";")
+let $file-encoding := $fileinfo//xhtml:meta[@name="Content-Encoding"]/@content/string()
+let $filetype := "text/plain"
 
 (: check format :)
 return
     switch ($filetype)
         case "text/plain" return
-            let $csv-string := util:binary-to-string($file-data, "UTF-8")
+            let $csv-string := util:binary-to-string($file-data, $file-encoding)
             let $csv-parsed := csv:read-csv($csv-string)
             let $useless := session:set-attribute("data", csv:add-char-index($csv-parsed))
             return
-(:                session:get-attribute("data"):)
+(:                $csv-string:)
                 response:redirect-to(xs:anyURI("process-csv.xq"))
         default return
             <div>Fileformat not supported!</div>
