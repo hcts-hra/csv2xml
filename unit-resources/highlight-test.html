@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+    <head>
+        <title>CSV2XML</title>
+        <meta data-template="config:app-meta"/>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-ui.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <link rel="stylesheet" type="text/css" href="$shared/resources/scripts/jquery/css/smoothness/jquery.ui.all.css"/>
+        <link rel="stylesheet" type="text/css" href="../resources/tools/google-prettify/prettify.css"/>
+        <script src="../resources/tools/google-prettify/prettify.js"/>
+        <script type="text/javascript" src="../resources/scripts/main.js"/>
+    </head>
+    <body>
+        <xmp class="prettyprint linenums" style="">
+            <vra xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra-strict.xsd">
+	<!-- changelog 
+	mapping templates: 2015-02-19 ma; 2015-02-23 ma; 2015-02-25 ma; 2015-02-26 ma; 2015-02-27 ma; 2015-05-19 ma; 2015-05-20 ma; 2015-05-21 ma; 2015-05-22 ma; 2015-05-29 ma; 2015-06-01 ma; 2015-06-05 ma
+	csv-map: 2015-06-02 ma; 2015-06-05 ma
+	-->
+                <work refid="w_004cb638-5aef-4cb5-9e05-819150597b0a">
+                    <agentSet>
+                        <display>WORK_AgentDisplay</display>
+                        <agent>
+                            <name type="WORK_Agent1NameType" vocab="WORK_Agent1NameVocab" refid="WORK_Agent1NameRefid">WORK_Agent1Name</name>
+                            <role>WORK_Agent1Role</role>
+                            <attribution>WORK_Agent1Attribution</attribution>
+                        </agent>
+                        <agent>
+                            <name type="WORK_Agent2NameType" vocab="WORK_Agent2NameVocab" refid="WORK_Agent2NameRefid">WORK_Agent2Name</name>
+                            <role>WORK_Agent2Role</role>
+                            <attribution>WORK_Agent2Attribution</attribution>
+                        </agent>
+                        <agent>
+                            <name type="WORK_Agent3NameType" vocab="WORK_Agent3NameVocab" refid="WORK_Agent3NameRefid">WORK_Agent3Name</name>
+                            <role>WORK_Agent3Role</role>
+                            <attribution>WORK_Agent3Attribution</attribution>
+                        </agent>
+                    </agentSet>
+                    <culturalContextSet>
+                        <display>WORK_CulturalContextDisplay</display>
+                        <culturalContext vocab="WORK_CulturalContext1Vocab" refid="WORK_CulturalContext1Refid">WORK_CulturalContext1</culturalContext>
+                        <culturalContext vocab="WORK_CulturalContext2Vocab" refid="WORK_CulturalContext2Refid">WORK_CulturalContext2</culturalContext>
+                    </culturalContextSet>
+                </work>
+            </vra>
+        </xmp>
+    </body>
+</html>

@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vra xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra-strict.xsd">
+	<!-- changelog 
+	mapping templates: 2015-02-19 ma; 2015-02-23 ma; 2015-02-25 ma; 2015-02-26 ma; 2015-02-27 ma; 2015-05-19 ma; 2015-05-20 ma; 2015-05-21 ma; 2015-05-22 ma; 2015-05-29 ma; 2015-06-01 ma; 2015-06-05 ma
+	csv-map: 2015-06-02 ma; 2015-06-05 ma
+	-->
+    <work refid="w_72fa8d54-b9bb-4c39-9eba-77a4a896541c">
+        <agentSet>
+            <display>WORK_AgentDisplay</display>
+            <agent>
+                <name type="WORK_Agent1NameType" vocab="WORK_Agent1NameVocab" refid="WORK_Agent1NameRefid">WORK_Agent1Name</name>
+                <role>WORK_Agent1Role</role>
+                <attribution>WORK_Agent1Attribution</attribution>
+            </agent>
+            <agent>
+                <name type="WORK_Agent2NameType" vocab="WORK_Agent2NameVocab" refid="WORK_Agent2NameRefid">WORK_Agent2Name</name>
+                <role>WORK_Agent2Role</role>
+                <attribution>WORK_Agent2Attribution</attribution>
+            </agent>
+            <agent>
+                <name type="WORK_Agent3NameType" vocab="WORK_Agent3NameVocab" refid="WORK_Agent3NameRefid">WORK_Agent3Name</name>
+                <role>WORK_Agent3Role</role>
+                <attribution>WORK_Agent3Attribution</attribution>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>WORK_CulturalContextDisplay</display>
+            <culturalContext vocab="WORK_CulturalContext1Vocab" refid="WORK_CulturalContext1Refid">WORK_CulturalContext1</culturalContext>
+            <culturalContext vocab="WORK_CulturalContext2Vocab" refid="WORK_CulturalContext2Refid">WORK_CulturalContext2</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>WORK_DateDisplay</display>
+            <date type="WORK_Date1Type">
+                <earliestDate>WORK_EarliestDate1</earliestDate>
+                <latestDate>WORK_LatestDate1</latestDate>
+            </date>
+            <date type="WORK_Date2Type">
+                <earliestDate>WORK_EarliestDate2</earliestDate>
+                <latestDate>WORK_LatestDate2</latestDate>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description source="WORK_DescriptionSource"/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>WORK_InscriptionDisplay</display>
+            <inscription>
+                <text>WORK_InscriptionDisplay</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display>WORK_LocationDisplay</display>
+            <notes>WORK_LocationNotes</notes>
+            <location type="WORK_Location1Type">
+                <name type="WORK_Location1NameType" vocab="WORK_Location1NameVocab" refid="WORK_Location1NameRefID">WORK_Location1Name</name>
+                <refid type="WORK_Location1ObjType">WORK_Location1ObjRefID</refid>
+                <name type="geographic" vocab="WORK_Location1GeoVocab" refid="WORK_Location1GeoRefid">WORK_Location1Geo</name>
+            </location>
+            <location type="WORK_Location2Type">
+                <name type="WORK_Location2NameType" vocab="WORK_Location2NameVocab" refid="WORK_Location2NameRefID">WORK_Location2Name</name>
+                <refid type="WORK_Location1ObjType">WORK_Location2ObjRefID</refid>
+                <name type="geographic" vocab="WORK_Location2GeoVocab" refid="WORK_Location2GeoRefid">WORK_Location2Geo</name>
+            </location>
+        </locationSet>
+        <materialSet>
+            <display>WORK_MaterialDisplay</display>
+            <material vocab="WORK_MaterialVocab1" refid="WORK_MaterialRefid1">WORK_Material1</material>
+            <material vocab="WORK_MaterialVocab2" refid="WORK_MaterialRefid2">WORK_Material2</material>
+            <material vocab="WORK_MaterialVocab3" refid="WORK_MaterialRefid3">WORK_Material3</material>
+            <material vocab="WORK_MaterialVocab4" refid="WORK_MaterialRefid4">WORK_Material4</material>
+        </materialSet>
+        <measurementsSet>
+            <display>WORK_MeasurementsDisplay</display>
+            <measurements type="WORK_Measurements1Type1" unit="WORK_Measurements1Unit" extent="WORK_Measurements1Extent">WORK_Measurements1Value1</measurements>
+            <measurements type="WORK_Measurements1Type2" unit="WORK_Measurements1Unit" extent="WORK_Measurements1Extent">WORK_Measurements1Value2</measurements>
+            <measurements type="WORK_Measurements1Type3" unit="WORK_Measurements1Unit" extent="WORK_Measurements1Extent">WORK_Measurements1Value3</measurements>
+            <measurements type="WORK_Measurements1Type4" unit="WORK_Measurements1Unit" extent="WORK_Measurements1Extent">WORK_Measurements1Value4</measurements>
+            <measurements type="WORK_Measurements2Type1" unit="WORK_Measurements2Unit" extent="WORK_Measurements2Extent">WORK_Measurements2Value1</measurements>
+            <measurements type="WORK_Measurements2Type2" unit="WORK_Measurements2Unit" extent="WORK_Measurements2Extent">WORK_Measurements2Value2</measurements>
+            <measurements type="WORK_Measurements2Type3" unit="WORK_Measurements2Unit" extent="WORK_Measurements2Extent">WORK_Measurements2Value3</measurements>
+            <measurements type="WORK_Measurements2Type4" unit="WORK_Measurements2Unit" extent="WORK_Measurements2Extent">WORK_Measurements2Value4</measurements>
+        </measurementsSet>
+        <relationSet>
+            <display>WORK_RelationDisplay</display>
+            <relation type="WORK_RelationType1">WORK_RelatedWork1</relation>
+            <relation type="WORK_RelationType2">WORK_RelatedWork2</relation> 
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display>WORK_RightsDisplay</display>
+            <rights>
+                <text>WORK_RightsDisplay</text>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>WORK_SourceDisplay</display>
+            <source/>
+        </sourceSet>
+        <stateEditionSet>
+            <display>WORK_StateEditionDisplay</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>WORK_StylePeriodDisplay</display>
+            <stylePeriod vocab="WORK_StylePeriodVocab1" refid="WORK_StylePeriodRefid1">WORK_StylePeriod1</stylePeriod>
+            <stylePeriod vocab="WORK_StylePeriodVocab2" refid="WORK_StylePeriodRefid2">WORK_StylePeriod2</stylePeriod>
+            <stylePeriod vocab="WORK_StylePeriodVocab3" refid="WORK_StylePeriodRefid3">WORK_StylePeriod3</stylePeriod>
+            <stylePeriod vocab="WORK_StylePeriodVocab4" refid="WORK_StylePeriodRefid4">WORK_StylePeriod4</stylePeriod>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>WORK_SubjectDisplay</display>
+            <subject>
+                <term type="WORK_SubjectType1" vocab="WORK_SubjectVocab1" refid="WORK_SubjectRefid1">WORK_Subject1</term>
+                <term type="WORK_SubjectType2" vocab="WORK_SubjectVocab2" refid="WORK_SubjectRefid2">WORK_Subject2</term>
+                <term type="WORK_SubjectType3" vocab="WORK_SubjectVocab3" refid="WORK_SubjectRefid3">WORK_Subject3</term>
+                <term type="WORK_SubjectType4" vocab="WORK_SubjectVocab4" refid="WORK_SubjectRefid4">WORK_Subject4</term>
+                <term type="WORK_SubjectType5" vocab="WORK_SubjectVocab5" refid="WORK_SubjectRefid5">WORK_Subject5</term>
+                <term type="WORK_SubjectType6" vocab="WORK_SubjectVocab6" refid="WORK_SubjectRefid6">WORK_Subject6</term>
+                <term type="WORK_SubjectType7" vocab="WORK_SubjectVocab7" refid="WORK_SubjectRefid7">WORK_Subject7</term>
+                <term type="WORK_SubjectType8" vocab="WORK_SubjectVocab8" refid="WORK_SubjectRefid8">WORK_Subject8</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>WORK_TechniqueDisplay</display>
+            <technique vocab="WORK_TechniqueVocab1" refid="WORK_TechniqueRefid1">WORK_Technique1</technique>
+            <technique vocab="WORK_TechniqueVocab2" refid="WORK_TechniqueRefid2">WORK_Technique2</technique>
+            <technique vocab="WORK_TechniqueVocab3" refid="WORK_TechniqueRefid3">WORK_Technique3</technique>
+            <technique vocab="WORK_TechniqueVocab4" refid="WORK_TechniqueRefid4">WORK_Technique4</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>WORK_TextrefDisplay</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>WORK_TitleDisplay</display>
+            <title pref="true" type="WORK_TitlePrefType">WORK_TitlePref</title>
+            <title pref="false" type="WORK_TitleAltType">WORK_TitleAlt</title>
+        </titleSet>
+        <worktypeSet>
+            <display>WORK_WorktypeDisplay</display>
+            <worktype vocab="WORK_WorktypeVocab1" refid="WORK_WorktypeRefid1">WORK_Worktype1</worktype>
+            <worktype vocab="WORK_WorktypeVocab2" refid="WORK_WorktypeRefid2">WORK_Worktype2</worktype>
+            <worktype vocab="WORK_WorktypeVocab3" refid="WORK_WorktypeRefid3">WORK_Worktype3</worktype>
+        </worktypeSet>
+    </work>
+    <image refid="IMAGE_AccessionID" href="IMAGE_Filename">
+        <agentSet>
+            <display>IMAGE_AgentDisplay</display>
+            <agent>
+                <name type="IMAGE_Agent1NameType" vocab="IMAGE_Agent1NameVocab" refid="IMAGE_Agent1NameRefid">IMAGE_Agent1Name</name>
+                <role>IMAGE_Agent1Role</role>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>IMAGE_CulturalContextDisplay</display>
+            <culturalContext>IMAGE_CulturalContextDisplay</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>IMAGE_DateDisplay</display>
+            <date/>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>IMAGE_InscriptionDisplay</display>
+            <inscription>
+                <text>IMAGE_InscriptionDisplay</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display/>
+            <location type="repository">
+                <name/>
+                <refid type="accession">IMAGE_AccessionID</refid>
+            </location>
+        </locationSet>
+        <measurementsSet>
+            <display>IMAGE_MeasurementsDisplay</display>
+            <measurements/>
+        </measurementsSet>
+        <relationSet>
+            <display>IMAGE_RelationDisplay</display>
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_72fa8d54-b9bb-4c39-9eba-77a4a896541c"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display>IMAGE_RightsDisplay</display>
+            <notes/>
+            <rights type="">
+                <rightsHolder/>
+                <text/>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>IMAGE_SourceDisplay</display>
+            <source>
+                <name type="vendor">IMAGE_VendorName</name>
+                <refid type="vendor">IMAGE_VendorID</refid>
+            </source>
+            <source>
+                <name/>
+                <refid type=""/>
+            </source>
+        </sourceSet>
+        <stateEditionSet>
+            <display>IMAGE_StateEditionDisplay</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>IMAGE_StylePeriodDisplay</display>
+            <stylePeriod/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>IMAGE_SubjectDisplay</display>
+            <subject>
+                <term type="WORK_SubjectType1" vocab="WORK_SubjectVocab1" refid="WORK_SubjectRefid1">WORK_Subject1</term>
+                <term type="WORK_SubjectType2" vocab="WORK_SubjectVocab2" refid="WORK_SubjectRefid2">WORK_Subject2</term>
+                <term type="WORK_SubjectType3" vocab="WORK_SubjectVocab3" refid="WORK_SubjectRefid3">WORK_Subject3</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>IMAGE_TechniqueDisplay</display>
+            <technique vocab="AAT" refid="300237903">digital imaging</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>IMAGE_TextrefDisplay</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>IMAGE_TitleDisplay</display>
+            <title type="IMAGE_TitleType">IMAGE_Title</title>
+        </titleSet>
+        <worktypeSet>
+            <display>IMAGE_WorktypeDisplay</display>
+            <worktype vocab="AAT" refid="300215302">digital images</worktype>
+        </worktypeSet>
+    </image>
+    <work refid="w_a3d6bc55-72dd-422e-9688-e95c5d0a1893">
+        <agentSet>
+            <display>school of Michelangelo Buonarroti (painter); formerly attributed to Paul, Priya (collector); circle of Bruegel family (attributed name)</display>
+            <agent>
+                <name type="personal" vocab="viaf" refid="24585191">Michelangelo Buonarroti</name>
+                <role>painter</role>
+                <attribution>school of</attribution>
+            </agent>
+            <agent>
+                <name type="personal" vocab="viaf" refid="277848046">Paul, Priya</name>
+                <role>collector</role>
+                <attribution>formerly attributed to</attribution>
+            </agent>
+            <agent>
+                <name type="family" vocab="viaf" refid="159353488">Bruegel family</name>
+                <role>attributed name</role>
+                <attribution>circle of</attribution>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>Italian; Alsatian</display>
+            <culturalContext vocab="aat" refid="300111198">Italian</culturalContext>
+            <culturalContext vocab="aat" refid="300387718">Alsatian</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>commission 1387-06-25 - 1395-04; creation 1234-06-18 - 1987-05-21</display>
+            <date type="commission">
+                <earliestDate>1387-06-25</earliestDate>
+                <latestDate>1395-04</latestDate>
+            </date>
+            <date type="creation">
+                <earliestDate>1234-06-18</earliestDate>
+                <latestDate>1987-05-21</latestDate>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description source="Hardin, Jennifer,"/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>Incised on the foot, ANDOKIDES EPOESEN (Andokides made this)</display>
+            <inscription>
+                <text>Incised on the foot, ANDOKIDES EPOESEN (Andokides made this)</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display>corporate: Musée du Louvre (Paris)  INV 779 (accession); corporate: Musée du Louvre (Louvre)  INV 779 (accession)</display>
+            <notes>Some note on the location of the work.</notes>
+            <location type="repository">
+                <name type="corporate" vocab="viaf" refid="130895627">Musée du Louvre</name>
+                <refid type="accession">INV 779</refid>
+                <name type="geographic" vocab="tgn" refid="7008038">Paris</name>
+            </location>
+            <location type="repository">
+                <name type="corporate" vocab="viaf" refid="130895627">Musée du Louvre</name>
+                <refid type="accession">INV 779</refid>
+                <name type="geographic" vocab="tgn" refid="7625108">Louvre</name>
+            </location>
+        </locationSet>
+        <materialSet>
+            <display>beech (wood); abrasive paper; administrative records; beech (wood)</display>
+            <material vocab="aat" refid="300011948">beech (wood)</material>
+            <material vocab="aat" refid="300014696">abrasive paper</material>
+            <material vocab="aat" refid="300027425">administrative records</material>
+            <material vocab="aat" refid="300011948">beech (wood)</material>
+        </materialSet>
+        <measurementsSet>
+            <display> 12 x 35 x 666 x 6,34 cm  (base);  1643 x 456 x 123123 x 5 mm (statue)</display>
+            <measurements type="width" unit="cm" extent="base">12</measurements>
+            <measurements type="height" unit="cm" extent="base">35</measurements>
+            <measurements type="length" unit="cm" extent="base">666</measurements>
+            <measurements type="depth" unit="cm" extent="base">6,34</measurements>
+            <measurements type="height" unit="mm" extent="statue">1643</measurements>
+            <measurements type="length" unit="mm" extent="statue">456</measurements>
+            <measurements type="width" unit="mm" extent="statue">123123</measurements>
+            <measurements type="other" unit="mm" extent="statue">5</measurements>
+        </measurementsSet>
+        <relationSet>
+            <display>largerContextFor first related work; pendantOf another related work</display>
+            <relation type="largerContextFor">first related work</relation>
+            <relation type="pendantOf">another related work</relation> 
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display>my_w_rightsDisplay</display>
+            <rights>
+                <text>my_w_rightsDisplay</text>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>my_w_sourceDisplay</display>
+            <source/>
+        </sourceSet>
+        <stateEditionSet>
+            <display>my_w_stateEditionDisplay</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>High Renaissance; Fluxus; High Renaissance; Fluxus</display>
+            <stylePeriod vocab="aat" refid="300021142">High Renaissance</stylePeriod>
+            <stylePeriod vocab="aat" refid="300022168">Fluxus</stylePeriod>
+            <stylePeriod vocab="aat" refid="300021142">High Renaissance</stylePeriod>
+            <stylePeriod vocab="aat" refid="300022168">Fluxus</stylePeriod>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>Achilles is killed by Paris in the temple of Apollo; iconoclasm; expulsion of Adam and Eve from paradise (Genesis 3:22-24); hobbyhorses; Achilles is killed by Paris in the temple of Apollo; iconoclasm; expulsion of Adam and Eve from paradise (Genesis 3:22-24); hobbyhorses</display>
+            <subject>
+                <term type="iconographicTopic" vocab="ICONCLASS" refid="94G531">Achilles is killed by Paris in the temple of Apollo</term>
+                <term type="conceptTopic" vocab="aat" refid="300055792">iconoclasm</term>
+                <term type="icongraphicTopic" vocab="ICONCLASS" refid="71A6">expulsion of Adam and Eve from paradise (Genesis 3:22-24)</term>
+                <term type="descriptiveTopic" vocab="aat" refid="descriptiveTopic">hobbyhorses</term>
+                <term type="iconographicTopic" vocab="ICONCLASS" refid="94G531">Achilles is killed by Paris in the temple of Apollo</term>
+                <term type="conceptTopic" vocab="aat" refid="300055792">iconoclasm</term>
+                <term type="icongraphicTopic" vocab="ICONCLASS" refid="71A6">expulsion of Adam and Eve from paradise (Genesis 3:22-24)</term>
+                <term type="descriptiveTopic" vocab="aat" refid="descriptiveTopic">hobbyhorses</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>frottage; drawing (image making); frottage; drawing (image making)</display>
+            <technique vocab="aat" refid="300053430">frottage</technique>
+            <technique vocab="aat" refid="300054196">drawing (image making)</technique>
+            <technique vocab="aat" refid="300053430">frottage</technique>
+            <technique vocab="aat" refid="300054196">drawing (image making)</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>my_w_textRefDisplay</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>my_w_prefTitle</display>
+            <title pref="true" type="descriptive">my_w_prefTitle</title>
+            <title pref="false" type="translated">altTitle</title>
+        </titleSet>
+        <worktypeSet>
+            <display>basilica; fonds; posters</display>
+            <worktype vocab="aat" refid="300215302">basilica</worktype>
+            <worktype vocab="aat" refid="300189759">fonds</worktype>
+            <worktype vocab="aat" refid="300027221">posters</worktype>
+        </worktypeSet>
+    </work>
+    <image refid="654_imgAccessNo" href="my_filename.jpg">
+        <agentSet>
+            <display>Man Ray (photographer)</display>
+            <agent>
+                <name type="personal" vocab="viaf" refid="7396101">Man Ray</name>
+                <role>photographer</role>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>my_image_cultContextDisplay</display>
+            <culturalContext>my_image_cultContextDisplay</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>my_image_dateDisplay</display>
+            <date/>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>IMAGE_InscriptionDisplay</display>
+            <inscription>
+                <text>IMAGE_InscriptionDisplay</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display/>
+            <location type="repository">
+                <name/>
+                <refid type="accession">654_imgAccessNo</refid>
+            </location>
+        </locationSet>
+        <measurementsSet>
+            <display>my_image_measurementsDisplay</display>
+            <measurements/>
+        </measurementsSet>
+        <relationSet>
+            <display>my_image_relationDisplay</display>
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_a3d6bc55-72dd-422e-9688-e95c5d0a1893"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display/>
+            <notes/>
+            <rights type="">
+                <rightsHolder/>
+                <text/>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>my_image_sourceDisplay</display>
+            <source>
+                <name type="vendor">my_vendor</name>
+                <refid type="vendor">789_imgVenNo</refid>
+            </source>
+            <source>
+                <name/>
+                <refid type=""/>
+            </source>
+        </sourceSet>
+        <stateEditionSet>
+            <display>my_image_stateEditonDisplay</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>my_image_stylePeriodDisplay</display>
+            <stylePeriod/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>iconoclasm; expulsion of Adam and Eve from paradise (Genesis 3:22-24); hobbyhorses</display>
+            <subject>
+                <term type="iconographicTopic" vocab="ICONCLASS" refid="94G531">Achilles is killed by Paris in the temple of Apollo</term>
+                <term type="conceptTopic" vocab="aat" refid="300055792">iconoclasm</term>
+                <term type="icongraphicTopic" vocab="ICONCLASS" refid="71A6">expulsion of Adam and Eve from paradise (Genesis 3:22-24)</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>my_image_techniqueDisplay</display>
+            <technique vocab="AAT" refid="300237903">digital imaging</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>my_image_textrefDisplay</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>mirror on back wall</display>
+            <title type="generalView">mirror on back wall</title>
+        </titleSet>
+        <worktypeSet>
+            <display>my_image_worktypeDisplay</display>
+            <worktype vocab="AAT" refid="300215302">digital images</worktype>
+        </worktypeSet>
+    </image>
+    <work refid="w_26a0c506-61c0-4bce-a7f6-54e5d642566f">
+        <agentSet>
+            <display>follower of Marx, Karl (painter); possibly by Carus, Carl Gustav (former owner); style of Cézanne, Paul (painter)</display>
+            <agent>
+                <name type="personal" vocab="viaf" refid="49228757">Marx, Karl</name>
+                <role>painter</role>
+                <attribution>follower of</attribution>
+            </agent>
+            <agent>
+                <name type="personal" vocab="viaf" refid="76085">Carus, Carl Gustav</name>
+                <role>former owner</role>
+                <attribution>possibly by</attribution>
+            </agent>
+            <agent>
+                <name type="personal" vocab="viaf" refid="39374836">Cézanne, Paul</name>
+                <role>painter</role>
+                <attribution>style of</attribution>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>French; Bohemian</display>
+            <culturalContext vocab="aat" refid="300111188">French</culturalContext>
+            <culturalContext vocab="aat" refid="300266148">Bohemian</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>creation 2015-05-01 - 2015-05-31; alteration 2015-06</display>
+            <date type="creation">
+                <earliestDate>2015-05-01</earliestDate>
+                <latestDate>2015-05-31</latestDate>
+            </date>
+            <date type="alteration">
+                <earliestDate>2015-06</earliestDate>
+                <latestDate/>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description source="Hardin, Jennifer,"/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>Inscribed, on side of table at left,</display>
+            <inscription>
+                <text>Inscribed, on side of table at left,</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display>corporate: British Museum (London)  Abc blhgggt 178999 (accession); corporate: Musée du Louvre (Louvre)  INV 779 (accession)</display>
+            <notes>Gift of an unknown donor.</notes>
+            <location type="repository">
+                <name type="corporate" vocab="viaf" refid="134857252">British Museum</name>
+                <refid type="accession">Abc blhgggt 178999</refid>
+                <name type="geographic" vocab="tgn" refid="7011781">London</name>
+            </location>
+            <location type="repository">
+                <name type="corporate" vocab="viaf" refid="130895627">Musée du Louvre</name>
+                <refid type="accession">INV 779</refid>
+                <name type="geographic" vocab="tgn" refid="7625108">Louvre</name>
+            </location>
+        </locationSet>
+        <materialSet>
+            <display>beech (wood); bark cloth; gampi; beech (wood)</display>
+            <material vocab="aat" refid="300011948">beech (wood)</material>
+            <material vocab="aat" refid="300048116">bark cloth</material>
+            <material vocab="aat" refid="300375507">gampi</material>
+            <material vocab="aat" refid="300011948">beech (wood)</material>
+        </materialSet>
+        <measurementsSet>
+            <display> 108 m2  (site);  1426 ft2 (area of each unit)</display>
+            <measurements type="area" unit="m2" extent="site">108</measurements>
+            <measurements type="" unit="m2" extent="site"/>
+            <measurements type="" unit="m2" extent="site"/>
+            <measurements type="" unit="m2" extent="site"/>
+            <measurements type="area" unit="ft2" extent="area of each unit">1426</measurements>
+            <measurements type="" unit="ft2" extent="area of each unit"/>
+            <measurements type="" unit="ft2" extent="area of each unit"/>
+            <measurements type="" unit="ft2" extent="area of each unit"/>
+        </measurementsSet>
+        <relationSet>
+            <display>counterProofIs first related work; contextIs another related work</display>
+            <relation type="counterProofIs">first related work</relation>
+            <relation type="contextIs">another related work</relation> 
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display>my_w_rightsDisplay</display>
+            <rights>
+                <text>my_w_rightsDisplay</text>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>my_w_sourceDisplay</display>
+            <source/>
+        </sourceSet>
+        <stateEditionSet>
+            <display>my_w_stateEditionDisplay</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>Chenghua; Qianlong; High Renaissance; Fluxus</display>
+            <stylePeriod vocab="aat" refid="300018455">Chenghua</stylePeriod>
+            <stylePeriod vocab="aat" refid="300018486">Qianlong</stylePeriod>
+            <stylePeriod vocab="aat" refid="300021142">High Renaissance</stylePeriod>
+            <stylePeriod vocab="aat" refid="300022168">Fluxus</stylePeriod>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>Achilles is killed by Paris in the temple of Apollo; iconoclasm; expulsion of Adam and Eve from paradise (Genesis 3:22-24); hobbyhorses; Achilles is killed by Paris in the temple of Apollo; iconoclasm; expulsion of Adam and Eve from paradise (Genesis 3:22-24); hobbyhorses</display>
+            <subject>
+                <term type="iconographicTopic" vocab="ICONCLASS" refid="94G531">Achilles is killed by Paris in the temple of Apollo</term>
+                <term type="conceptTopic" vocab="aat" refid="300055792">iconoclasm</term>
+                <term type="icongraphicTopic" vocab="ICONCLASS" refid="71A6">expulsion of Adam and Eve from paradise (Genesis 3:22-24)</term>
+                <term type="descriptiveTopic" vocab="aat" refid="descriptiveTopic">hobbyhorses</term>
+                <term type="iconographicTopic" vocab="ICONCLASS" refid="94G531">Achilles is killed by Paris in the temple of Apollo</term>
+                <term type="conceptTopic" vocab="aat" refid="300055792">iconoclasm</term>
+                <term type="icongraphicTopic" vocab="ICONCLASS" refid="71A6">expulsion of Adam and Eve from paradise (Genesis 3:22-24)</term>
+                <term type="descriptiveTopic" vocab="aat" refid="descriptiveTopic">hobbyhorses</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>frottage; drawing (image making); frottage; drawing (image making)</display>
+            <technique vocab="aat" refid="300053430">frottage</technique>
+            <technique vocab="aat" refid="300054196">drawing (image making)</technique>
+            <technique vocab="aat" refid="300053430">frottage</technique>
+            <technique vocab="aat" refid="300054196">drawing (image making)</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>my_w_textRefDisplay</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>some_w_prefTitle</display>
+            <title pref="true" type="descriptive">some_w_prefTitle</title>
+            <title pref="false" type="translated">some_altTitle</title>
+        </titleSet>
+        <worktypeSet>
+            <display>basilica; fonds; posters</display>
+            <worktype vocab="aat" refid="300215302">basilica</worktype>
+            <worktype vocab="aat" refid="300189759">fonds</worktype>
+            <worktype vocab="aat" refid="300027221">posters</worktype>
+        </worktypeSet>
+    </work>
+    <image refid="some_imgAccessNo" href="some_filename.jpg">
+        <agentSet>
+            <display>Man Ray (photographer)</display>
+            <agent>
+                <name type="personal" vocab="viaf" refid="7396101">Man Ray</name>
+                <role>photographer</role>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>my_image_cultContextDisplay</display>
+            <culturalContext>my_image_cultContextDisplay</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>my_image_dateDisplay</display>
+            <date/>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>IMAGE_InscriptionDisplay</display>
+            <inscription>
+                <text>IMAGE_InscriptionDisplay</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display/>
+            <location type="repository">
+                <name/>
+                <refid type="accession">some_imgAccessNo</refid>
+            </location>
+        </locationSet>
+        <measurementsSet>
+            <display>my_image_measurementsDisplay</display>
+            <measurements/>
+        </measurementsSet>
+        <relationSet>
+            <display>my_image_relationDisplay</display>
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_26a0c506-61c0-4bce-a7f6-54e5d642566f"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display/>
+            <notes/>
+            <rights type="">
+                <rightsHolder/>
+                <text/>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>my_image_sourceDisplay</display>
+            <source>
+                <name type="vendor">some_vendor</name>
+                <refid type="vendor">some_imgVenNo</refid>
+            </source>
+            <source>
+                <name/>
+                <refid type=""/>
+            </source>
+        </sourceSet>
+        <stateEditionSet>
+            <display>my_image_stateEditonDisplay</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>my_image_stylePeriodDisplay</display>
+            <stylePeriod/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>iconoclasm; expulsion of Adam and Eve from paradise (Genesis 3:22-24); hobbyhorses</display>
+            <subject>
+                <term type="iconographicTopic" vocab="ICONCLASS" refid="94G531">Achilles is killed by Paris in the temple of Apollo</term>
+                <term type="conceptTopic" vocab="aat" refid="300055792">iconoclasm</term>
+                <term type="icongraphicTopic" vocab="ICONCLASS" refid="71A6">expulsion of Adam and Eve from paradise (Genesis 3:22-24)</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>my_image_techniqueDisplay</display>
+            <technique vocab="AAT" refid="300237903">digital imaging</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>my_image_textrefDisplay</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>mirror on back wall</display>
+            <title type="generalView">mirror on back wall</title>
+        </titleSet>
+        <worktypeSet>
+            <display/>
+            <worktype vocab="AAT" refid="300215302">digital images</worktype>
+        </worktypeSet>
+    </image>
+    <work refid="w_84948a91-da9b-42a6-8d7b-2ac6813731ac">
+        <agentSet>
+            <display>10017 10013 (10016); 10023 10019 (10022); 10029 10025 (10028)</display>
+            <agent>
+                <name type="10012" vocab="10014" refid="10015">10013</name>
+                <role>10016</role>
+                <attribution>10017</attribution>
+            </agent>
+            <agent>
+                <name type="10018" vocab="10020" refid="10021">10019</name>
+                <role>10022</role>
+                <attribution>10023</attribution>
+            </agent>
+            <agent>
+                <name type="10024" vocab="10026" refid="10027">10025</name>
+                <role>10028</role>
+                <attribution>10029</attribution>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>10030</display>
+            <culturalContext vocab="10032" refid="10033">10031</culturalContext>
+            <culturalContext vocab="10035" refid="10036">10034</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>my_dateDisplay</display>
+            <date type="10038">
+                <earliestDate>10039</earliestDate>
+                <latestDate>10040</latestDate>
+            </date>
+            <date type="10041">
+                <earliestDate>10042</earliestDate>
+                <latestDate>10043</latestDate>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description source="10045"/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>10046</display>
+            <inscription>
+                <text>10046</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display>10047</display>
+            <notes>10048</notes>
+            <location type="10049">
+                <name type="10051" vocab="10052" refid="10053">10050</name>
+                <refid type="10054">10055</refid>
+                <name type="geographic" vocab="10057" refid="10058">10056</name>
+            </location>
+            <location type="10059">
+                <name type="10061" vocab="10062" refid="10063">10060</name>
+                <refid type="10054">10065</refid>
+                <name type="geographic" vocab="10067" refid="10068">10066</name>
+            </location>
+        </locationSet>
+        <materialSet>
+            <display>10070; 10073; 10076; 10079</display>
+            <material vocab="10071" refid="10072">10070</material>
+            <material vocab="10074" refid="10075">10073</material>
+            <material vocab="10077" refid="10078">10076</material>
+            <material vocab="10080" refid="10081">10079</material>
+        </materialSet>
+        <measurementsSet>
+            <display>10082</display>
+            <measurements type="10086" unit="10084" extent="10083">10085</measurements>
+            <measurements type="10088" unit="10084" extent="10083">10087</measurements>
+            <measurements type="10090" unit="10084" extent="10083">10089</measurements>
+            <measurements type="10092" unit="10084" extent="10083">10091</measurements>
+            <measurements type="10096" unit="10094" extent="10093">10095</measurements>
+            <measurements type="10098" unit="10094" extent="10093">10097</measurements>
+            <measurements type="10100" unit="10094" extent="10093">10099</measurements>
+            <measurements type="10102" unit="10094" extent="10093">10101</measurements>
+        </measurementsSet>
+        <relationSet>
+            <display>10103</display>
+            <relation type="10105">10104</relation>
+            <relation type="10107">10106</relation> 
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display>10108</display>
+            <rights>
+                <text>10108</text>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>10109</display>
+            <source/>
+        </sourceSet>
+        <stateEditionSet>
+            <display>10110</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>10111</display>
+            <stylePeriod vocab="10113" refid="10114">10112</stylePeriod>
+            <stylePeriod vocab="10116" refid="10117">10115</stylePeriod>
+            <stylePeriod vocab="10119" refid="10120">10118</stylePeriod>
+            <stylePeriod vocab="10122" refid="10123">10121</stylePeriod>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>10124</display>
+            <subject>
+                <term type="10126" vocab="10127" refid="10128">10125</term>
+                <term type="10130" vocab="10131" refid="10132">10129</term>
+                <term type="10134" vocab="10135" refid="10136">10133</term>
+                <term type="10138" vocab="10139" refid="10140">10137</term>
+                <term type="10142" vocab="10143" refid="10144">10141</term>
+                <term type="10146" vocab="10147" refid="10148">10145</term>
+                <term type="10150" vocab="10151" refid="10152">10149</term>
+                <term type="10154" vocab="10155" refid="10156">10153</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>10157</display>
+            <technique vocab="10159" refid="10160">10158</technique>
+            <technique vocab="10162" refid="10163">10161</technique>
+            <technique vocab="10165" refid="10166">10164</technique>
+            <technique vocab="10168" refid="10169">10167</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>10170</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>10006</display>
+            <title pref="true" type="10008">10007</title>
+            <title pref="false" type="10010">10009</title>
+        </titleSet>
+        <worktypeSet>
+            <display>10171</display>
+            <worktype vocab="10173" refid="10174">10172</worktype>
+            <worktype vocab="10176" refid="10177">10175</worktype>
+            <worktype vocab="10179" refid="10180">10178</worktype>
+        </worktypeSet>
+    </work>
+    <image refid="10002" href="10001">
+        <agentSet>
+            <display>10181</display>
+            <agent>
+                <name type="10182" vocab="10184" refid="10185">10183</name>
+                <role>10186</role>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display>10187</display>
+            <culturalContext>10187</culturalContext>
+        </culturalContextSet>
+        <dateSet>
+            <display>10188</display>
+            <date/>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>IMAGE_InscriptionDisplay</display>
+            <inscription>
+                <text>IMAGE_InscriptionDisplay</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display/>
+            <location type="repository">
+                <name/>
+                <refid type="accession">10002</refid>
+            </location>
+        </locationSet>
+        <measurementsSet>
+            <display>10193</display>
+            <measurements/>
+        </measurementsSet>
+        <relationSet>
+            <display>10194</display>
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_84948a91-da9b-42a6-8d7b-2ac6813731ac"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display>10195</display>
+            <notes/>
+            <rights type="">
+                <rightsHolder/>
+                <text/>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display>10200</display>
+            <source>
+                <name type="vendor">10004</name>
+                <refid type="vendor">10003</refid>
+            </source>
+            <source>
+                <name/>
+                <refid type=""/>
+            </source>
+        </sourceSet>
+        <stateEditionSet>
+            <display>10202</display>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display>10203</display>
+            <stylePeriod/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display>10204</display>
+            <subject>
+                <term type="10126" vocab="10127" refid="10128">10125</term>
+                <term type="10130" vocab="10131" refid="10132">10129</term>
+                <term type="10134" vocab="10135" refid="10136">10133</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display>10217</display>
+            <technique vocab="AAT" refid="300237903">digital imaging</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display>10218</display>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display>10219</display>
+            <title type="10221">10220</title>
+        </titleSet>
+        <worktypeSet>
+            <display>10222</display>
+            <worktype vocab="AAT" refid="300215302">digital images</worktype>
+        </worktypeSet>
+    </image>
+    <work refid="w_ea7d54ea-cd31-4497-b182-271e46e4b87c">
+        <agentSet>
+            <display/>
+            <agent>
+                <name type="" vocab="" refid=""/>
+                <role/>
+                <attribution/>
+            </agent>
+            <agent>
+                <name type="" vocab="" refid=""/>
+                <role/>
+                <attribution/>
+            </agent>
+            <agent>
+                <name type="" vocab="" refid=""/>
+                <role/>
+                <attribution/>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display/>
+            <culturalContext vocab="" refid=""/>
+            <culturalContext vocab="" refid=""/>
+        </culturalContextSet>
+        <dateSet>
+            <display>; </display>
+            <date type="">
+                <earliestDate/>
+                <latestDate/>
+            </date>
+            <date type="">
+                <earliestDate/>
+                <latestDate/>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description source=""/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display/>
+            <inscription>
+                <text/>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display>; </display>
+            <notes/>
+            <location type="">
+                <name type="" vocab="" refid=""/>
+                <refid type=""/>
+                <name type="geographic" vocab="" refid=""/>
+            </location>
+            <location type="">
+                <name type="" vocab="" refid=""/>
+                <refid type=""/>
+                <name type="geographic" vocab="" refid=""/>
+            </location>
+        </locationSet>
+        <materialSet>
+            <display/>
+            <material vocab="" refid=""/>
+            <material vocab="" refid=""/>
+            <material vocab="" refid=""/>
+            <material vocab="" refid=""/>
+        </materialSet>
+        <measurementsSet>
+            <display> ();  ()</display>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+        </measurementsSet>
+        <relationSet>
+            <display>; </display>
+            <relation type=""/>
+            <relation type=""/> 
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display/>
+            <rights>
+                <text/>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display/>
+            <source/>
+        </sourceSet>
+        <stateEditionSet>
+            <display/>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display/>
+            <stylePeriod vocab="" refid=""/>
+            <stylePeriod vocab="" refid=""/>
+            <stylePeriod vocab="" refid=""/>
+            <stylePeriod vocab="" refid=""/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display/>
+            <subject>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display/>
+            <technique vocab="" refid=""/>
+            <technique vocab="" refid=""/>
+            <technique vocab="" refid=""/>
+            <technique vocab="" refid=""/>
+        </techniqueSet>
+        <textrefSet>
+            <display/>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display/>
+            <title pref="true" type=""/>
+            <title pref="false" type=""/>
+        </titleSet>
+        <worktypeSet>
+            <display/>
+            <worktype vocab="" refid=""/>
+            <worktype vocab="" refid=""/>
+            <worktype vocab="" refid=""/>
+        </worktypeSet>
+    </work>
+    <image refid="" href="">
+        <agentSet>
+            <display/>
+            <agent>
+                <name type="" vocab="" refid=""/>
+                <role/>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display/>
+            <culturalContext/>
+        </culturalContextSet>
+        <dateSet>
+            <display/>
+            <date/>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display>IMAGE_InscriptionDisplay</display>
+            <inscription>
+                <text>IMAGE_InscriptionDisplay</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display/>
+            <location type="repository">
+                <name/>
+                <refid type="accession"/>
+            </location>
+        </locationSet>
+        <measurementsSet>
+            <display/>
+            <measurements/>
+        </measurementsSet>
+        <relationSet>
+            <display/>
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_ea7d54ea-cd31-4497-b182-271e46e4b87c"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display/>
+            <notes/>
+            <rights type="">
+                <rightsHolder/>
+                <text/>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display/>
+            <source>
+                <name type="vendor"/>
+                <refid type="vendor"/>
+            </source>
+            <source>
+                <name/>
+                <refid type=""/>
+            </source>
+        </sourceSet>
+        <stateEditionSet>
+            <display/>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display/>
+            <stylePeriod/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display/>
+            <subject>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display/>
+            <technique vocab="AAT" refid="300237903">digital imaging</technique>
+        </techniqueSet>
+        <textrefSet>
+            <display/>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display/>
+            <title type=""/>
+        </titleSet>
+        <worktypeSet>
+            <display/>
+            <worktype vocab="AAT" refid="300215302">digital images</worktype>
+        </worktypeSet>
+    </image>
+</vra>

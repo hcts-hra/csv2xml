@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <meta xmlns="http://exist-db.org/xquery/repo">
-    <description>CSV2VRA converter</description>
+    <description>csv2xml</description>
     <author>Matthias Guth</author>
-    <author>Matthias Guth</author>
-    <website/>
+    <website>${project.url}</website>
     <status>alpha</status>
     <license>GNU-LGPL</license>
     <copyright>true</copyright>
     <type>application</type>
-    <target>csv2vra</target>
-    <prepare>pre-install.xql</prepare>
-    <finish/>
-    <permissions user="admin" password="" group="biblio.users" mode="rwxrwxrwx"/>
+    <target>csv2xml</target>
+    <prepare/>
+    <finish>post-install.xq</finish>
+    <permissions xmlns:repo="http://exist-db.org/xquery/repo" password="" user="admin" group="dba" mode="rw-rw-r--"/>
 </meta>

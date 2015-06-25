@@ -1,1 +1,84 @@
 /* Application styles could go here */
+html{
+    height:100%;
+}
+body{
+    left:5px;
+    right:5px;
+    height:95%;
+}
+
+#menu{
+    background-color: #DEDEDE;
+    border:1px solid black;
+}
+
+#result{
+    border:1px solid black; 
+    overflow:auto;
+    max-height:100%;
+}
+
+#catalogs-selector{
+    height: 100px;
+    background-color:white;
+    border: 1px solid black;
+    overflow-y: scroll;
+    overflow-x: auto;
+    cursor:pointer;
+}
+
+#catalogs-selector > div{
+    white-space: nowrap;
+}
+
+#catalogs-selector > .selected{
+    background-color: #C9C9C9;
+}
+
+#addSchema{
+    display:none;
+}
+
+#newSchema{
+    width: 600px;
+}
+
+.centered{
+    width: 100%;
+    text-align:center;
+}
+
+.middle{
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+.toggleelement{
+    border-top:1px solid black;
+    border-bottom:1px solid black;;
+}
+
+button{
+    background-image: none;
+    padding-left:20px;
+    padding-right:20px;
+    margin: 5px 10px 5px 10px;
+    cursor:pointer;
+}
+
+.valid{
+    background-color: green;
+}
+
+.invalid{
+    background-color: red;
+}
+
+
+.progressing{
+    /*background-color:#00aa00;*/
+    background-image: url('../images/ajax-loader-trans.gif');
+    background-repeat: no-repeat;
+    background-position: left center ;
+}

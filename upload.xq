@@ -19,11 +19,32 @@ let $filetype := "text/plain"
 return
     switch ($filetype)
         case "text/plain" return
-            let $csv-string := util:binary-to-string($file-data, $file-encoding)
-            let $csv-parsed := csv:read-csv($csv-string)
-            let $useless := session:set-attribute("data", csv:add-char-index($csv-parsed))
-            return
-(:                $csv-string:)
-                response:redirect-to(xs:anyURI("process-csv.xq"))
+            try {
+                let $csv-string := util:binary-to-string($file-data, $file-encoding)
+                let $csv-parsed := csv:read-csv($csv-string)
+                let $csv-data := csv:add-char-index($csv-parsed)
+                let $useless := session:set-attribute("data", $csv-data)
+                let $header := response:set-header("Status", "200")
+                let $parameters :=     
+                    <output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
+                        <output:method value="json"/>
+                        <output:media-type value="text/javascript"/>
+                        <output:prefix-attributes value="yes"/>
+                    </output:serialization-parameters>
+    (:            let $useless := util:log("DEBUG", $self-id-url || " " || $remote-id-url):)
+                let $header := response:set-header("Content-Type", "application/json")
+                let $result :=
+                    <info>
+                        <lines>{count($csv-data/line)}</lines>
+                    </info>
+                return
+                    serialize($result, $parameters)
+            } catch * {
+                let $header := response:set-header("Status", "400")
+                return
+                    "uploading or parsing csv failed"
+            }
         default return
-            <div>Fileformat not supported!</div>
+            let $header := response:set-header("Status", "400")
+            return
+                <div>Fileformat not supported!</div>

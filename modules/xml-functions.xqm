@@ -3,6 +3,28 @@ xquery version "3.0";
 module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions";
 import module namespace functx="http://www.functx.com";
 
+declare variable $xml-functions:mapping-definitions := doc("../mappings/mappings.xml");
+
+declare function xml-functions:validate($xml-to-validate as node(), $catalogs as xs:anyURI*) {
+(:    validation:clear-grammar-cache(),:)
+    validation:jaxp-parse($xml-to-validate, true(), $catalogs)
+};
+
+declare function xml-functions:get-catalogs($mapping) {
+    let $catalogs := doc("../mappings/" || $mapping || "/validation-catalogs.xml")//uri
+    return 
+        <root>
+            {
+                for $cat in $catalogs
+                return
+                    <catalogs>
+                        <uri>{$cat/string()}</uri>
+                        <active>{$cat/@active/string()}</active>
+                    </catalogs>
+            }
+        </root>
+};
+
 declare function xml-functions:replace-template-variables($template-string as xs:string, $mapping-definition as node(), $line as node()) as xs:string {
     let $replace-map := map:new(
             for $mapping in $mapping-definition//mapping

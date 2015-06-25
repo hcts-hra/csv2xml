@@ -13,6 +13,7 @@ import module namespace templates="http://exist-db.org/xquery/templates" ;
  :)
 import module namespace config="http://hra.uni-heidelberg.de/ns/csv2vra/config" at "config.xqm";
 import module namespace app="http://hra.uni-heidelberg.de/ns/csv2vra/templates" at "app.xql";
+import module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions" at "xml-functions.xqm";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vra xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm">
+    <work id="w_55af2afc-2405-526b-94e9-069f639fe89e" source="EXC Priya Paul Collection" refid="c_b9827ec8-6b66-5d98-9f5e-ca12b58044c4">
+        <agentSet>
+            <agent>
+                <name vocab="local" type="personal" refid="uuid-2d9170ef-2e41-537c-8a78-28b7be563ae7">Paul, Priya</name>
+                <role vocab="marcrelator" type="code">col</role>
+            </agent>
+        </agentSet>
+        <dateSet>
+            <date type="creation">
+                <earliestDate>
+                    <date>28.03.1918</date>
+                </earliestDate>
+                <latestDate>
+                    <date>28.03.1918</date>
+                </latestDate>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <description lang="eng" script="Latn">
+                <text>On this postcard a dining room with several tables in a row can be seen. The room is ornamented with pillars and British period furniture and decor can be seen.</text>
+                <author>
+                    <name vocab="local" type="personal" refid="uuid-d4f4f076-3fb9-5544-95bf-29ba8cb16992">Schoenhofer, Gerhard</name>
+                    <role vocab="marcrelator" type="code">mdc</role>
+                </author>
+            </description>
+        </descriptionSet>
+        <inscriptionSet>
+            <inscription>
+                <text type="text" lang="eng">Dining hall.
+    Hotel Mount Everest.
+    Darjeeling.</text>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <location source="EXC" type="repository">
+                <name type="corporate" vocab="local" refid="uuid-1544a228-b79f-5cd9-a2ac-ff357ef3da5b">Delhi / The Priya Paul Collection of Popular Art</name>
+            </location>
+            <location source="EXC" type="repository">
+                <name type="geographic" vocab="local">Delhi / The Priya Paul Collection of Popular Art</name>
+            </location>
+        </locationSet>
+        <materialSet>
+            <material vocab="LOCAL" refid="15f999c3-5f12-570c-a3c7-15678f571734" type="medium">cardboard</material>
+        </materialSet>
+        <measurementsSet>
+            <notes>H 10 cm, W 15 cm, landscape</notes>
+            <measurements type="height" unit="cm">10</measurements>
+            <measurements type="width" unit="cm">15</measurements>
+        </measurementsSet>
+        <relationSet>
+            <relation type="imageIs" source="EXC Priya Paul Collection" pref="true" relids="i_23f09b63-2453-5d82-bc32-c55bfa928c3f">front</relation>
+        </relationSet>
+        <rightsSet>
+            <rights type="copyrighted">
+                <text>Copyrighted. Copyright with the original artists and publishers.</text>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <source>
+                <name>http://www.tasveergharindia.net/cmsdesk/essay/102/index.htm</name>
+                <refid type="URI">$UUID$</refid>
+                <refid type="citation">$pages$</refid>
+            </source>
+        </sourceSet>
+        <stylePeriodSet>
+            <stylePeriod>Colonial India</stylePeriod>
+            <stylePeriod vocab="LOCAL" refid="uuid-e2f6e5ba-1a71-5490-84d7-b965d7970d5a">Anglo-Mughal</stylePeriod>
+        </stylePeriodSet>
+        <subjectSet>
+            <subject dataDate="2015-02-16-13-04-41" pref="false" refid="uuid-b765a077-bc5c-5102-b0c0-6e16f52e71e8">
+                <term>hair oil</term>
+            </subject>
+            <subject pref="false">
+                <term>boiler rooms</term>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <technique vocab="LOCAL" refid="e48c5bff-0049-5508-9a54-5381254e21b2">lithographs</technique>
+        </techniqueSet>
+        <titleSet>
+            <title type="descriptive" pref="true" lang="eng" script="Latn">Dining Hall, Hotel Mount Everest, Darjeeling</title>
+        </titleSet>
+        <worktypeSet>
+            <worktype vocab="local" source="EXC" refid="2aa27e64-0748-5eed-bd91-099fc1edf47f">postcards</worktype>
+        </worktypeSet>
+        <ext:heidicon>
+            <ext:item type="f_description" status="0" display="Full_Description">
+                <ext:value>text-en:
+    Dining hall.
+    Hotel Mount Everest.
+    Darjeeling.</ext:value>
+                <ext:value>description-en:
+    On this postcard a dining room with several tables in a row can be seen. The room is ornamented with pillars and British period furniture and decor can be seen. (gs)</ext:value>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:item type="f_description" status="0" display="Full_Commentary">
+                <ext:value>explanatory comments/crosstagging:
+    The only image of a hotel interior that exists in the Priya Paul collection is of a semi-private place—the dining room of the Everest Hotel, with its well ordered arrangement of solid furniture providing a reminder of the sort of sanctioned social encounters guests were likely to have if they stayed at the Mount Everest Hotel. (Shashwati Talukdar)(gs)</ext:value>
+                <ext:value>related literature:
+    Kenny, Judith 1995. "Climate, Race, and Imperial Authority: The Symbolic Landscape of the British Hill Station in India." In Annals of the Association of American Geographers 85, no. 4 (1995): 694-714. (gs)</ext:value>
+                <ext:value>related literature:
+    Mathur S. 2007. "India by Design: Colonial History and Cultural Display". Berkeley, Los Angeles, London: University of California Press; pp. 230. (gs)</ext:value>
+                <ext:value>related literature:
+    Mitchell, W. J. T. 2002 "Imperial Landscape." In Landscape and Power, W. J. T Mitchell, 5-34. Chicago and London: The University of Chicago Press. (gs)</ext:value>
+                <ext:value>related literature:
+    Pinney, Christpher 1995. “Moral Topophilia: The Significations of Landscape in Indian Oleographs" in The Anthropology of Landscape, ed. Erie Hirsch and Michael O'Hanlon. Oxford: Oxford University Press.</ext:value>
+                <ext:value>related literature:
+    Talukdar, Shashwati 2010. "Picturing Mountains As Hills. Hill Station Postcards and the Tales They Tell" http://www.tasveergharindia.net/cmsdesk/essay/102/index.html, last accessed 2011-01-07. (gs)</ext:value>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:item type="t_rl" status="0" display="comment:related_literature">
+                <ext:value type="text">Kenny, Judith 1995. "Climate, Race, and Imperial Authority: The Symbolic Landscape of the British Hill Station in India." In Annals of the Association of American Geographers 85, no. 4 (1995): 694-714.</ext:value>
+                <ext:item type="agent">
+                    <ext:value type="role">Editor</ext:value>
+                    <ext:value type="name">Schoenhofer, Gerhard</ext:value>
+                    <ext:value type="agent-type">personal</ext:value>
+                    <ext:value type="refid">uuid-d4f4f076-3fb9-5544-95bf-29ba8cb16992</ext:value>
+                </ext:item>
+            </ext:item>
+            <ext:item type="t_rl" status="0" display="comment:related_literature">
+                <ext:value type="text">Pinney, Christpher 1995. “Moral Topophilia: The Significations of Landscape in Indian Oleographs" in The Anthropology of Landscape, ed. Erie Hirsch and Michael O'Hanlon. Oxford: Oxford University Press.</ext:value>
+                <ext:item type="agent">
+                    <ext:value type="role">Editor</ext:value>
+                    <ext:value type="name">PPColl_ed</ext:value>
+                    <ext:value type="agent-type">corporate</ext:value>
+                </ext:item>
+            </ext:item>
+            <ext:item type="t_rl" status="0" display="comment:related_literature">
+                <ext:value type="text">Mitchell, W. J. T. 2002 "Imperial Landscape." In Landscape and Power, W. J. T Mitchell, 5-34. Chicago and London: The University of Chicago Press.</ext:value>
+                <ext:item type="agent">
+                    <ext:value type="role">Editor</ext:value>
+                    <ext:value type="name">Schoenhofer, Gerhard</ext:value>
+                    <ext:value type="agent-type">personal</ext:value>
+                    <ext:value type="refid">uuid-d4f4f076-3fb9-5544-95bf-29ba8cb16992</ext:value>
+                </ext:item>
+            </ext:item>
+            <ext:item type="t_rl" status="0" display="comment:related_literature">
+                <ext:value type="text">Talukdar, Shashwati 2010. "Picturing Mountains As Hills. Hill Station Postcards and the Tales They Tell" http://www.tasveergharindia.net/cmsdesk/essay/102/index.html, last accessed 2011-01-07.</ext:value>
+                <ext:item type="agent">
+                    <ext:value type="role">Editor</ext:value>
+                    <ext:value type="name">Schoenhofer, Gerhard</ext:value>
+                    <ext:value type="agent-type">personal</ext:value>
+                    <ext:value type="refid">uuid-d4f4f076-3fb9-5544-95bf-29ba8cb16992</ext:value>
+                </ext:item>
+            </ext:item>
+            <ext:item type="t_rl" status="0" display="comment:related_literature">
+                <ext:value type="text">Mathur S. 2007. "India by Design: Colonial History and Cultural Display". Berkeley, Los Angeles, London: University of California Press; pp. 230.</ext:value>
+                <ext:item type="agent">
+                    <ext:value type="role">Editor</ext:value>
+                    <ext:value type="name">Schoenhofer, Gerhard</ext:value>
+                    <ext:value type="agent-type">personal</ext:value>
+                    <ext:value type="refid">uuid-d4f4f076-3fb9-5544-95bf-29ba8cb16992</ext:value>
+                </ext:item>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:item type="t_ecs" status="0" display="comment:explanatory_comments_crosstagging">
+                <ext:value type="text">The only image of a hotel interior that exists in the Priya Paul collection is of a semi-private place—the dining room of the Everest Hotel, with its well ordered arrangement of solid furniture providing a reminder of the sort of sanctioned social encounters guests were likely to have if they stayed at the Mount Everest Hotel.</ext:value>
+                <ext:item type="agent">
+                    <ext:value type="role">Author</ext:value>
+                    <ext:value type="name">Shashwati Talukdar</ext:value>
+                    <ext:value type="agent-type">personal</ext:value>
+                    <ext:value type="refid">$UUID$</ext:value>
+                </ext:item>
+                <ext:item type="agent">
+                    <ext:value type="role">Editor</ext:value>
+                    <ext:value type="name">Schoenhofer, Gerhard</ext:value>
+                    <ext:value type="agent-type">personal</ext:value>
+                    <ext:value type="refid">uuid-d4f4f076-3fb9-5544-95bf-29ba8cb16992</ext:value>
+                </ext:item>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:item type="f_zusammenhang" status="0" display="zusammenhang">
+                <ext:value>good</ext:value>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:item type="f_bildverknuepfung" status="0" display="bildverknuepfung">
+                <ext:value>http://heidicon.ub.uni-heidelberg.de/id/108180</ext:value>
+                <ext:value>i_ca70398d-fb22-5cc4-8fe9-69133fda8a54</ext:value>
+                <ext:value>back</ext:value>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:item type="f_url1" status="0" display="URL1">
+                <ext:value type="url1">http://www.tasveergharindia.net/cmsdesk/essay/102/index.htm</ext:value>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:item type="f_id_heidicon" status="0" display="Heidicon image_id">
+                <ext:value>http://heidicon.ub.uni-heidelberg.de/id/109770</ext:value>
+                <ext:value>109770</ext:value>
+            </ext:item>
+        </ext:heidicon>
+    </work>
+    <image id="i_23f09b63-2453-5d82-bc32-c55bfa928c3f" source="EXC Priya Paul Collection" refid="c_b9827ec8-6b66-5d98-9f5e-ca12b58044c4" href="ppcol-service://t_metadata.f_preview.109770-106843-original.tif">
+        <agentSet>
+            <agent>
+                <name vocab="local" refid="uuid-edeaf4e7-ee99-5733-a841-fdb06decebb5" pref="false" type="corporate">Cluster of Excellence "Asia and Europe in a Global Context", Heidelberg University.</name>
+                <role vocab="marcrelator" type="code">mdc</role>
+            </agent>
+            <agent>
+                <name vocab="local" refid="uuid-edf9fbf7-a154-5fc8-835e-9aff2e5d2d69" pref="true" type="corporate">Tasveer Ghar</name>
+                <role vocab="AAT" refid="300202383">digitizing</role>
+            </agent>
+        </agentSet>
+        <dateSet>
+            <date type="creation">
+                <earliestDate>
+                    <date>2008-11-15T23:16:16+01:00</date>
+                </earliestDate>
+                <latestDate>
+                    <date>
+                        2008-11-15T23:16:16+01:00
+                    </date>
+                </latestDate>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <description>
+                <text>This image was digitized and its metadata first edited in a collaborative project between Tasveer Ghar: A Digital Network of South Asian Popular Visual Culture and the Cluster of Excellence \"Asia and Europe in a Global Context\", Heidelberg University.
+                </text>
+            </description>
+        </descriptionSet>
+        <locationSet>
+            <location type="repository">
+                <name vocab="local" refid="uuid-a86fcf82-1200-58c6-91d6-2d537f5b58e2" type="corporate">Heidelberg Research Architecture, Visual Resources</name>
+                <name type="geographic" vocab="TGN" refid="7005177" extent="inhabited place">Heidelberg</name>
+            </location>
+            <location type="formerRepository">
+                <name vocab="local" refid="uuid-6e9b4017-9136-51bd-83b2-fc6d8681e034" href="http://heidicon.ub.uni-heidelberg.de/id/109770" type="corporate">HeidICON Image Database</name>
+                <refid>109770</refid>
+            </location>
+        </locationSet>
+        <measurementsSet>
+            <measurements type="resolution" unit="ppi">300x300</measurements>
+            <measurements type="width" unit="px">1638</measurements>
+            <measurements type="height" unit="px">1032</measurements>
+            <measurements type="fileSize" unit="kb">5090734</measurements>
+            <measurements type="bitDepth" unit="bit">24</measurements>
+        </measurementsSet>
+        <relationSet>
+            <relation type="imageOf" relids="w_55af2afc-2405-526b-94e9-069f639fe89e" refid="109770" source="EXC Priya Paul Collection">front</relation>
+        </relationSet>
+        <rightsSet>
+            <notes>The Priya Paul Collection. Reproduced with kind permission of the collector.</notes>
+            <rights type="copyrighted" href="http://priyapaulcollection.uni-hd.de">
+                <rightsHolder/>
+                <text>Copyrighted. Copyright with the original artists and publishers.</text>
+            </rights>
+        </rightsSet>
+        <techniqueSet>
+            <technique vocab="local" refid="uuid-fc6b0d7d-c757-5bc2-aa52-b2c59bbd52f1">digital imaging</technique>
+        </techniqueSet>
+        <titleSet>
+            <title lang="eng" script="Latn" type="generalView">Dining Hall, Hotel Mount Everest, Darjeeling</title>
+        </titleSet>
+        <worktypeSet>
+            <worktype vocab="AAT" refid="300215302">digital images</worktype>
+        </worktypeSet>
+        <ext:heidicon>
+            <ext:item type="f_id_heidicon" status="0" display="Heidicon image_id">
+                <ext:value>http://heidicon.ub.uni-heidelberg.de/id/109770</ext:value>
+                <ext:value>109770</ext:value>
+            </ext:item>
+        </ext:heidicon>
+        <ext:heidicon>
+            <ext:administrative type="heidicon2vra" date="2014-03-06T15:17:05"/>
+        </ext:heidicon>
+    </image>
+</vra>

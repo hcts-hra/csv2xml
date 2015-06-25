@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vra xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra-strict.xsd">
+    <work refid="w_dc444d34-fc42-4f13-a6ed-fd075f91076a">
+        <agentSet>
+            <display/>
+            <agent>
+                <name type="personal" refid="25739791">Francis Newton Souza</name>
+                <role/>
+                <attribution/>
+            </agent>
+            <agent>
+                <name type="" vocab="" refid=""/>
+                <role/>
+                <attribution/>
+            </agent>
+            <agent>
+                <name type="" vocab="" refid=""/>
+                <role/>
+                <attribution/>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display/>
+            <culturalContext/>
+            <culturalContext/>
+        </culturalContextSet>
+        <dateSet>
+            <display/>
+            <date type="">
+                <earliestDate/>
+                <latestDate/>
+            </date>
+            <date type="">
+                <earliestDate/>
+                <latestDate/>
+            </date>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description source=""/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display/>
+            <inscription>
+                <text/>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display/>
+            <notes/>
+            <location type="">
+                <name type="" vocab="" refid=""/>
+                <refid type="accession"/>
+                <name type="geographic" vocab="" refid=""/>
+            </location>
+            <location type="">
+                <name type="" vocab="" refid=""/>
+                <refid type="accession"/>
+                <name type="geographic" vocab="" refid=""/>
+            </location>
+        </locationSet>
+        <materialSet>
+            <display/>
+            <material vocab="" refid=""/>
+            <material vocab="" refid=""/>
+            <material vocab="" refid=""/>
+            <material vocab="" refid=""/>
+        </materialSet>
+        <measurementsSet>
+            <display/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+            <measurements type="" unit="" extent=""/>
+        </measurementsSet>
+        <relationSet>
+            <display/>
+            <relation type=""/> <!-- requires related work's relids and source -->
+            <relation type=""/> <!-- requires related work's relids and source -->
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="i_6bed4b0e-f30f-45a4-bcb1-1d813a1d7527" source="" pref="true"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display/>
+            <rights/>
+        </rightsSet>
+        <sourceSet>
+            <display/>
+            <source/>
+        </sourceSet>
+        <stateEditionSet>
+            <display/>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display/>
+            <stylePeriod vocab="" refid=""/>
+            <stylePeriod vocab="" refid=""/>
+            <stylePeriod vocab="" refid=""/>
+            <stylePeriod vocab="" refid=""/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display/>
+            <subject>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display/>
+            <technique vocab="" refid=""/>
+            <technique vocab="" refid=""/>
+            <technique vocab="" refid=""/>
+            <technique vocab="" refid=""/>
+        </techniqueSet>
+        <textrefSet>
+            <display/>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display/>
+            <title pref="true">Two Saints, in a Landscape</title>
+            <title pref="false"/>
+        </titleSet>
+        <worktypeSet>
+            <display/>
+            <worktype vocab="" refid=""/>
+            <worktype vocab="" refid=""/>
+            <worktype vocab="" refid=""/>
+        </worktypeSet>
+    </work>
+    <image id="i_2e9ab324-a58a-4efa-9403-0f57ead633c5" href="The_Other_Story_01.jpg">
+        <agentSet>
+            <agent>
+                <name type="" vocab="" refid=""/>
+                <role/>
+            </agent>
+        </agentSet>
+        <culturalContextSet>
+            <display/>
+            <culturalContext/>
+        </culturalContextSet>
+        <dateSet>
+            <display/>
+            <date/>
+        </dateSet>
+        <descriptionSet>
+            <display/>
+            <description/>
+        </descriptionSet>
+        <inscriptionSet>
+            <display/>
+            <inscription>
+                <text/>
+            </inscription>
+        </inscriptionSet>
+        <locationSet>
+            <display/>
+            <location type="repository">
+                <name/> <!-- required user input, before transformation or additional column; name @type may vary too -->
+                <refid type="accession"/>
+            </location>
+        </locationSet>
+        <materialSet>
+            <display/>
+            <material/>
+        </materialSet>
+        <measurementsSet>
+            <display/>
+            <measurements/>
+        </measurementsSet>
+        <relationSet>
+            <display/>
+		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_6d8245da-02a5-42f7-ae34-fd5ed4041cfb"/>
+		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+        </relationSet>
+        <rightsSet>
+            <display/>
+            <notes/>
+            <rights type="">
+                <rightsHolder/>
+                <text/>
+            </rights>
+        </rightsSet>
+        <sourceSet>
+            <display/>
+            <source>
+                <name type="vendor"/> <!-- source block with VendorID is fixed to type=vendor-->
+                <refid type="vendor"/>
+            </source>
+        </sourceSet>
+        <stateEditionSet>
+            <display/>
+            <stateEdition/>
+        </stateEditionSet>
+        <stylePeriodSet>
+            <display/>
+            <stylePeriod/>
+        </stylePeriodSet>
+        <subjectSet>
+            <display/>
+            <subject>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+                <term type="" vocab="" refid=""/>
+            </subject>
+        </subjectSet>
+        <techniqueSet>
+            <display/>
+            <technique/>
+        </techniqueSet>
+        <textrefSet>
+            <display/>
+            <textref/>
+        </textrefSet>
+        <titleSet>
+            <display/>
+            <title type=""/>
+        </titleSet>
+        <worktypeSet>
+            <display/>
+            <worktype/>
+        </worktypeSet>
+    </image>
+</vra>
