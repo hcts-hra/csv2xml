@@ -1,4 +1,18 @@
-<xml><templates><parent>parent-template.xml</parent><template>vra-work-template.xml</template><template>vra-image-template.xml</template></templates><mapping key="WORK_ID">concat("w_", util:uuid())</mapping><mapping key="IMAGE_ID">concat("i_", util:uuid())</mapping><mapping key="IMAGE_Filename">$line/column[@heading-index="IMAGE_Filename"]/string()</mapping><mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping><mapping key="IMAGE_VendorID">$line/column[@heading-index="IMAGE_VendorID"]/string()</mapping><mapping key="IMAGE_VendorName">$line/column[@heading-index="IMAGE_VendorName"]/string()</mapping><mapping key="WORK_IDno">$line/column[@heading-index="WORK_IDno"]/string()</mapping><mapping key="WORK_AgentDisplay">
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <templates>
+        <parent>parent-template.xml</parent>
+        <template>vra-work-template.xml</template>
+        <template>vra-image-template.xml</template>
+    </templates>
+    <mapping key="WORK_ID">concat("w_", util:uuid())</mapping>
+    <mapping key="IMAGE_ID">concat("i_", util:uuid())</mapping>
+    <mapping key="IMAGE_Filename">$line/column[@heading-index="IMAGE_Filename"]/string()</mapping>
+    <mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping>
+    <mapping key="IMAGE_VendorID">$line/column[@heading-index="IMAGE_VendorID"]/string()</mapping>
+    <mapping key="IMAGE_VendorName">$line/column[@heading-index="IMAGE_VendorName"]/string()</mapping>
+    <mapping key="WORK_IDno">$line/column[@heading-index="WORK_IDno"]/string()</mapping>
+    <mapping key="WORK_AgentDisplay">
 xquery version "3.0";
 let $agentDisplay := $line/column[@heading-index="WORK_AgentDisplay"]/string()
 return 
@@ -32,12 +46,38 @@ return
       ) else ()
 
     return string-join(($agent1, $agent2, $agent3), '; ')
-  )    </mapping><mapping key="WORK_Agent1NameType">$line/column[@heading-index="WORK_Agent1NameType"]/string()</mapping><mapping key="WORK_Agent1Name">$line/column[@heading-index="WORK_Agent1Name"]/string()</mapping><mapping key="WORK_Agent1NameVocab">$line/column[@heading-index="WORK_Agent1NameVocab"]/string()</mapping><mapping key="WORK_Agent1NameRefid">$line/column[@heading-index="WORK_Agent1NameRefid"]/string()</mapping><mapping key="WORK_Agent1Role">$line/column[@heading-index="WORK_Agent1Role"]/string()</mapping><mapping key="WORK_Agent1Attribution">$line/column[@heading-index="WORK_Agent1Attribution"]/string()</mapping><mapping key="WORK_Agent2NameType">$line/column[@heading-index="WORK_Agent2NameType"]/string()</mapping><mapping key="WORK_Agent2Name">$line/column[@heading-index="WORK_Agent2Name"]/string()</mapping><mapping key="WORK_Agent2NameVocab">$line/column[@heading-index="WORK_Agent2NameVocab"]/string()</mapping><mapping key="WORK_Agent2NameRefid">$line/column[@heading-index="WORK_Agent2NameRefid"]/string()</mapping><mapping key="WORK_Agent2Role">$line/column[@heading-index="WORK_Agent2Role"]/string()</mapping><mapping key="WORK_Agent2Attribution">$line/column[@heading-index="WORK_Agent2Attribution"]/string()</mapping><mapping key="WORK_Agent3NameType">$line/column[@heading-index="WORK_Agent3NameType"]/string()</mapping><mapping key="WORK_Agent3Name">$line/column[@heading-index="WORK_Agent3Name"]/string()</mapping><mapping key="WORK_Agent3NameVocab">$line/column[@heading-index="WORK_Agent3NameVocab"]/string()</mapping><mapping key="WORK_Agent3NameRefid">$line/column[@heading-index="WORK_Agent3NameRefid"]/string()</mapping><mapping key="WORK_Agent3Role">$line/column[@heading-index="WORK_Agent3Role"]/string()</mapping><mapping key="WORK_Agent3Attribution">$line/column[@heading-index="WORK_Agent3Attribution"]/string()</mapping><mapping key="WORK_CulturalContextDisplay">
+  )    </mapping>
+    <mapping key="WORK_Agent1NameType">$line/column[@heading-index="WORK_Agent1NameType"]/string()</mapping>
+    <mapping key="WORK_Agent1Name">$line/column[@heading-index="WORK_Agent1Name"]/string()</mapping>
+    <mapping key="WORK_Agent1NameVocab">$line/column[@heading-index="WORK_Agent1NameVocab"]/string()</mapping>
+    <mapping key="WORK_Agent1NameRefid">$line/column[@heading-index="WORK_Agent1NameRefid"]/string()</mapping>
+    <mapping key="WORK_Agent1Role">$line/column[@heading-index="WORK_Agent1Role"]/string()</mapping>
+    <mapping key="WORK_Agent1Attribution">$line/column[@heading-index="WORK_Agent1Attribution"]/string()</mapping>
+    <mapping key="WORK_Agent2NameType">$line/column[@heading-index="WORK_Agent2NameType"]/string()</mapping>
+    <mapping key="WORK_Agent2Name">$line/column[@heading-index="WORK_Agent2Name"]/string()</mapping>
+    <mapping key="WORK_Agent2NameVocab">$line/column[@heading-index="WORK_Agent2NameVocab"]/string()</mapping>
+    <mapping key="WORK_Agent2NameRefid">$line/column[@heading-index="WORK_Agent2NameRefid"]/string()</mapping>
+    <mapping key="WORK_Agent2Role">$line/column[@heading-index="WORK_Agent2Role"]/string()</mapping>
+    <mapping key="WORK_Agent2Attribution">$line/column[@heading-index="WORK_Agent2Attribution"]/string()</mapping>
+    <mapping key="WORK_Agent3NameType">$line/column[@heading-index="WORK_Agent3NameType"]/string()</mapping>
+    <mapping key="WORK_Agent3Name">$line/column[@heading-index="WORK_Agent3Name"]/string()</mapping>
+    <mapping key="WORK_Agent3NameVocab">$line/column[@heading-index="WORK_Agent3NameVocab"]/string()</mapping>
+    <mapping key="WORK_Agent3NameRefid">$line/column[@heading-index="WORK_Agent3NameRefid"]/string()</mapping>
+    <mapping key="WORK_Agent3Role">$line/column[@heading-index="WORK_Agent3Role"]/string()</mapping>
+    <mapping key="WORK_Agent3Attribution">$line/column[@heading-index="WORK_Agent3Attribution"]/string()</mapping>
+    <mapping key="WORK_CulturalContextDisplay">
     if (not($line/column[@heading-index="WORK_CulturalContextDisplay"]/string())) then 
         string-join(($line/column[@heading-index="WORK_CulturalContext1"]/string(), $line/column[@heading-index="WORK_CulturalContext2"]/string()), '; ')
     else
         $line/column[@heading-index="WORK_CulturalContextDisplay"]/string()
-    </mapping><mapping key="WORK_CulturalContext1">$line/column[@heading-index="WORK_CulturalContext1"]/string()</mapping><mapping key="WORK_CulturalContext1Vocab">$line/column[@heading-index="WORK_CulturalContext1Vocab"]/string()</mapping><mapping key="WORK_CulturalContext1Refid">$line/column[@heading-index="WORK_CulturalContext1Refid"]/string()</mapping><mapping key="WORK_CulturalContext2">$line/column[@heading-index="WORK_CulturalContext2"]/string()</mapping><mapping key="WORK_CulturalContext2Vocab">$line/column[@heading-index="WORK_CulturalContext2Vocab"]/string()</mapping><mapping key="WORK_CulturalContext2Refid">$line/column[@heading-index="WORK_CulturalContext2Refid"]/string()</mapping><mapping key="WORK_DateDisplay">
+    </mapping>
+    <mapping key="WORK_CulturalContext1">$line/column[@heading-index="WORK_CulturalContext1"]/string()</mapping>
+    <mapping key="WORK_CulturalContext1Vocab">$line/column[@heading-index="WORK_CulturalContext1Vocab"]/string()</mapping>
+    <mapping key="WORK_CulturalContext1Refid">$line/column[@heading-index="WORK_CulturalContext1Refid"]/string()</mapping>
+    <mapping key="WORK_CulturalContext2">$line/column[@heading-index="WORK_CulturalContext2"]/string()</mapping>
+    <mapping key="WORK_CulturalContext2Vocab">$line/column[@heading-index="WORK_CulturalContext2Vocab"]/string()</mapping>
+    <mapping key="WORK_CulturalContext2Refid">$line/column[@heading-index="WORK_CulturalContext2Refid"]/string()</mapping>
+    <mapping key="WORK_DateDisplay">
 xquery version "3.0";
 let $dateDisplay := $line/column[@heading-index="WORK_DateDisplay"]/string()
 return 
@@ -65,7 +105,17 @@ return
       
     return string-join(($date1, $date2), '; ')
   )        
-    </mapping><mapping key="WORK_Date1Type">$line/column[@heading-index="WORK_Date1Type"]/string()</mapping><mapping key="WORK_EarliestDate1">$line/column[@heading-index="WORK_EarliestDate1"]/string()</mapping><mapping key="WORK_LatestDate1">$line/column[@heading-index="WORK_LatestDate1"]/string()</mapping><mapping key="WORK_Date2Type">$line/column[@heading-index="WORK_Date2Type"]/string()</mapping><mapping key="WORK_EarliestDate2">$line/column[@heading-index="WORK_EarliestDate2"]/string()</mapping><mapping key="WORK_LatestDate2">$line/column[@heading-index="WORK_LatestDate2"]/string()</mapping><mapping key="WORK_DescriptionDisplay">$line/column[@heading-index="WORK_DescriptionDisplay"]/string()</mapping><mapping key="WORK_DescriptionSource">$line/column[@heading-index="WORK_DescriptionSource"]/string()</mapping><mapping key="WORK_InscriptionDisplay">$line/column[@heading-index="WORK_InscriptionDisplay"]/string()</mapping><mapping key="WORK_LocationDisplay">
+    </mapping>
+    <mapping key="WORK_Date1Type">$line/column[@heading-index="WORK_Date1Type"]/string()</mapping>
+    <mapping key="WORK_EarliestDate1">$line/column[@heading-index="WORK_EarliestDate1"]/string()</mapping>
+    <mapping key="WORK_LatestDate1">$line/column[@heading-index="WORK_LatestDate1"]/string()</mapping>
+    <mapping key="WORK_Date2Type">$line/column[@heading-index="WORK_Date2Type"]/string()</mapping>
+    <mapping key="WORK_EarliestDate2">$line/column[@heading-index="WORK_EarliestDate2"]/string()</mapping>
+    <mapping key="WORK_LatestDate2">$line/column[@heading-index="WORK_LatestDate2"]/string()</mapping>
+    <mapping key="WORK_DescriptionDisplay">$line/column[@heading-index="WORK_DescriptionDisplay"]/string()</mapping>
+    <mapping key="WORK_DescriptionSource">$line/column[@heading-index="WORK_DescriptionSource"]/string()</mapping>
+    <mapping key="WORK_InscriptionDisplay">$line/column[@heading-index="WORK_InscriptionDisplay"]/string()</mapping>
+    <mapping key="WORK_LocationDisplay">
         xquery version "3.0";
 let $locationDisplay := $line/column[@heading-index="WORK_LocationDisplay"]/string()
 return 
@@ -97,7 +147,29 @@ return
       
     return string-join(($location1, $location2), '; ')
   )
-    </mapping><mapping key="WORK_LocationNotes">$line/column[@heading-index="WORK_LocationNotes"]/string()</mapping><mapping key="WORK_Location1Type">$line/column[@heading-index="WORK_Location1Type"]/string()</mapping><mapping key="WORK_Location1Name">$line/column[@heading-index="WORK_Location1Name"]/string()</mapping><mapping key="WORK_Location1NameType">$line/column[@heading-index="WORK_Location1NameType"]/string()</mapping><mapping key="WORK_Location1NameVocab">$line/column[@heading-index="WORK_Location1NameVocab"]/string()</mapping><mapping key="WORK_Location1NameRefID">$line/column[@heading-index="WORK_Location1NameRefID"]/string()</mapping><mapping key="WORK_Location1ObjType">$line/column[@heading-index="WORK_Location1ObjType"]/string()</mapping><mapping key="WORK_Location1ObjRefID">$line/column[@heading-index="WORK_Location1ObjRefID"]/string()</mapping><mapping key="WORK_Location1Geo">$line/column[@heading-index="WORK_Location1Geo"]/string()</mapping><mapping key="WORK_Location1GeoVocab">$line/column[@heading-index="WORK_Location1GeoVocab"]/string()</mapping><mapping key="WORK_Location1GeoRefid">$line/column[@heading-index="WORK_Location1GeoRefid"]/string()</mapping><mapping key="WORK_Location2Type">$line/column[@heading-index="WORK_Location2Type"]/string()</mapping><mapping key="WORK_Location2Name">$line/column[@heading-index="WORK_Location2Name"]/string()</mapping><mapping key="WORK_Location2NameType">$line/column[@heading-index="WORK_Location2NameType"]/string()</mapping><mapping key="WORK_Location2NameVocab">$line/column[@heading-index="WORK_Location2NameVocab"]/string()</mapping><mapping key="WORK_Location2NameRefID">$line/column[@heading-index="WORK_Location2NameRefID"]/string()</mapping><mapping key="WORK_Location2ObjType">$line/column[@heading-index="WORK_Location2ObjType"]/string()</mapping><mapping key="WORK_Location2ObjRefID">$line/column[@heading-index="WORK_Location2ObjRefID"]/string()</mapping><mapping key="WORK_Location2Geo">$line/column[@heading-index="WORK_Location2Geo"]/string()</mapping><mapping key="WORK_Location2GeoVocab">$line/column[@heading-index="WORK_Location2GeoVocab"]/string()</mapping><mapping key="WORK_Location2GeoRefid">$line/column[@heading-index="WORK_Location2GeoRefid"]/string()</mapping><mapping key="WORK_MaterialDisplay">
+    </mapping>
+    <mapping key="WORK_LocationNotes">$line/column[@heading-index="WORK_LocationNotes"]/string()</mapping>
+    <mapping key="WORK_Location1Type">$line/column[@heading-index="WORK_Location1Type"]/string()</mapping>
+    <mapping key="WORK_Location1Name">$line/column[@heading-index="WORK_Location1Name"]/string()</mapping>
+    <mapping key="WORK_Location1NameType">$line/column[@heading-index="WORK_Location1NameType"]/string()</mapping>
+    <mapping key="WORK_Location1NameVocab">$line/column[@heading-index="WORK_Location1NameVocab"]/string()</mapping>
+    <mapping key="WORK_Location1NameRefID">$line/column[@heading-index="WORK_Location1NameRefID"]/string()</mapping>
+    <mapping key="WORK_Location1ObjType">$line/column[@heading-index="WORK_Location1ObjType"]/string()</mapping>
+    <mapping key="WORK_Location1ObjRefID">$line/column[@heading-index="WORK_Location1ObjRefID"]/string()</mapping>
+    <mapping key="WORK_Location1Geo">$line/column[@heading-index="WORK_Location1Geo"]/string()</mapping>
+    <mapping key="WORK_Location1GeoVocab">$line/column[@heading-index="WORK_Location1GeoVocab"]/string()</mapping>
+    <mapping key="WORK_Location1GeoRefid">$line/column[@heading-index="WORK_Location1GeoRefid"]/string()</mapping>
+    <mapping key="WORK_Location2Type">$line/column[@heading-index="WORK_Location2Type"]/string()</mapping>
+    <mapping key="WORK_Location2Name">$line/column[@heading-index="WORK_Location2Name"]/string()</mapping>
+    <mapping key="WORK_Location2NameType">$line/column[@heading-index="WORK_Location2NameType"]/string()</mapping>
+    <mapping key="WORK_Location2NameVocab">$line/column[@heading-index="WORK_Location2NameVocab"]/string()</mapping>
+    <mapping key="WORK_Location2NameRefID">$line/column[@heading-index="WORK_Location2NameRefID"]/string()</mapping>
+    <mapping key="WORK_Location2ObjType">$line/column[@heading-index="WORK_Location2ObjType"]/string()</mapping>
+    <mapping key="WORK_Location2ObjRefID">$line/column[@heading-index="WORK_Location2ObjRefID"]/string()</mapping>
+    <mapping key="WORK_Location2Geo">$line/column[@heading-index="WORK_Location2Geo"]/string()</mapping>
+    <mapping key="WORK_Location2GeoVocab">$line/column[@heading-index="WORK_Location2GeoVocab"]/string()</mapping>
+    <mapping key="WORK_Location2GeoRefid">$line/column[@heading-index="WORK_Location2GeoRefid"]/string()</mapping>
+    <mapping key="WORK_MaterialDisplay">
         let $materialDisplay := $line/column[@heading-index="WORK_MaterialDisplay"]/string()
 let $material1 := $line/column[@heading-index="WORK_Material1"]/string()
 let $material2 := $line/column[@heading-index="WORK_Material2"]/string()
@@ -111,7 +183,20 @@ return
   ) else (
     string-join(($material1, $material2, $material3, $material4), '; ')
   )
-    </mapping><mapping key="WORK_Material1">$line/column[@heading-index="WORK_Material1"]/string()</mapping><mapping key="WORK_MaterialVocab1">$line/column[@heading-index="WORK_MaterialVocab1"]/string()</mapping><mapping key="WORK_MaterialRefid1">$line/column[@heading-index="WORK_MaterialRefid1"]/string()</mapping><mapping key="WORK_Material2">$line/column[@heading-index="WORK_Material2"]/string()</mapping><mapping key="WORK_MaterialVocab2">$line/column[@heading-index="WORK_MaterialVocab2"]/string()</mapping><mapping key="WORK_MaterialRefid2">$line/column[@heading-index="WORK_MaterialRefid2"]/string()</mapping><mapping key="WORK_Material3">$line/column[@heading-index="WORK_Material3"]/string()</mapping><mapping key="WORK_MaterialVocab3">$line/column[@heading-index="WORK_MaterialVocab3"]/string()</mapping><mapping key="WORK_MaterialRefid3">$line/column[@heading-index="WORK_MaterialRefid3"]/string()</mapping><mapping key="WORK_Material4">$line/column[@heading-index="WORK_Material4"]/string()</mapping><mapping key="WORK_MaterialVocab4">$line/column[@heading-index="WORK_MaterialVocab4"]/string()</mapping><mapping key="WORK_MaterialRefid4">$line/column[@heading-index="WORK_MaterialRefid4"]/string()</mapping><mapping key="WORK_MeasurementsDisplay">
+    </mapping>
+    <mapping key="WORK_Material1">$line/column[@heading-index="WORK_Material1"]/string()</mapping>
+    <mapping key="WORK_MaterialVocab1">$line/column[@heading-index="WORK_MaterialVocab1"]/string()</mapping>
+    <mapping key="WORK_MaterialRefid1">$line/column[@heading-index="WORK_MaterialRefid1"]/string()</mapping>
+    <mapping key="WORK_Material2">$line/column[@heading-index="WORK_Material2"]/string()</mapping>
+    <mapping key="WORK_MaterialVocab2">$line/column[@heading-index="WORK_MaterialVocab2"]/string()</mapping>
+    <mapping key="WORK_MaterialRefid2">$line/column[@heading-index="WORK_MaterialRefid2"]/string()</mapping>
+    <mapping key="WORK_Material3">$line/column[@heading-index="WORK_Material3"]/string()</mapping>
+    <mapping key="WORK_MaterialVocab3">$line/column[@heading-index="WORK_MaterialVocab3"]/string()</mapping>
+    <mapping key="WORK_MaterialRefid3">$line/column[@heading-index="WORK_MaterialRefid3"]/string()</mapping>
+    <mapping key="WORK_Material4">$line/column[@heading-index="WORK_Material4"]/string()</mapping>
+    <mapping key="WORK_MaterialVocab4">$line/column[@heading-index="WORK_MaterialVocab4"]/string()</mapping>
+    <mapping key="WORK_MaterialRefid4">$line/column[@heading-index="WORK_MaterialRefid4"]/string()</mapping>
+    <mapping key="WORK_MeasurementsDisplay">
     xquery version "3.0";
     let $measurementsDisplay := $line/column[@heading-index="WORK_MeasurementsDisplay"]/string()
 
@@ -145,7 +230,28 @@ return
 
     return string-join(($measurements1, $measurements2), '; ')
   )
-    </mapping><mapping key="WORK_Measurements1Extent">$line/column[@heading-index="WORK_Measurements1Extent"]/string()</mapping><mapping key="WORK_Measurements1Unit">$line/column[@heading-index="WORK_Measurements1Unit"]/string()</mapping><mapping key="WORK_Measurements1Value1">$line/column[@heading-index="WORK_Measurements1Value1"]/string()</mapping><mapping key="WORK_Measurements1Type1">$line/column[@heading-index="WORK_Measurements1Type1"]/string()</mapping><mapping key="WORK_Measurements1Value2">$line/column[@heading-index="WORK_Measurements1Value2"]/string()</mapping><mapping key="WORK_Measurements1Type2">$line/column[@heading-index="WORK_Measurements1Type2"]/string()</mapping><mapping key="WORK_Measurements1Value3">$line/column[@heading-index="WORK_Measurements1Value3"]/string()</mapping><mapping key="WORK_Measurements1Type3">$line/column[@heading-index="WORK_Measurements1Type3"]/string()</mapping><mapping key="WORK_Measurements1Value4">$line/column[@heading-index="WORK_Measurements1Value4"]/string()</mapping><mapping key="WORK_Measurements1Type4">$line/column[@heading-index="WORK_Measurements1Type4"]/string()</mapping><mapping key="WORK_Measurements2Extent">$line/column[@heading-index="WORK_Measurements2Extent"]/string()</mapping><mapping key="WORK_Measurements2Unit">$line/column[@heading-index="WORK_Measurements2Unit"]/string()</mapping><mapping key="WORK_Measurements2Value1">$line/column[@heading-index="WORK_Measurements2Value1"]/string()</mapping><mapping key="WORK_Measurements2Type1">$line/column[@heading-index="WORK_Measurements2Type1"]/string()</mapping><mapping key="WORK_Measurements2Value2">$line/column[@heading-index="WORK_Measurements2Value2"]/string()</mapping><mapping key="WORK_Measurements2Type2">$line/column[@heading-index="WORK_Measurements2Type2"]/string()</mapping><mapping key="WORK_Measurements2Value3">$line/column[@heading-index="WORK_Measurements2Value3"]/string()</mapping><mapping key="WORK_Measurements2Type3">$line/column[@heading-index="WORK_Measurements2Type3"]/string()</mapping><mapping key="WORK_Measurements2Value4">$line/column[@heading-index="WORK_Measurements2Value4"]/string()</mapping><mapping key="WORK_Measurements2Type4">$line/column[@heading-index="WORK_Measurements2Type4"]/string()</mapping><mapping key="WORK_RelationDisplay">
+    </mapping>
+    <mapping key="WORK_Measurements1Extent">$line/column[@heading-index="WORK_Measurements1Extent"]/string()</mapping>
+    <mapping key="WORK_Measurements1Unit">$line/column[@heading-index="WORK_Measurements1Unit"]/string()</mapping>
+    <mapping key="WORK_Measurements1Value1">$line/column[@heading-index="WORK_Measurements1Value1"]/string()</mapping>
+    <mapping key="WORK_Measurements1Type1">$line/column[@heading-index="WORK_Measurements1Type1"]/string()</mapping>
+    <mapping key="WORK_Measurements1Value2">$line/column[@heading-index="WORK_Measurements1Value2"]/string()</mapping>
+    <mapping key="WORK_Measurements1Type2">$line/column[@heading-index="WORK_Measurements1Type2"]/string()</mapping>
+    <mapping key="WORK_Measurements1Value3">$line/column[@heading-index="WORK_Measurements1Value3"]/string()</mapping>
+    <mapping key="WORK_Measurements1Type3">$line/column[@heading-index="WORK_Measurements1Type3"]/string()</mapping>
+    <mapping key="WORK_Measurements1Value4">$line/column[@heading-index="WORK_Measurements1Value4"]/string()</mapping>
+    <mapping key="WORK_Measurements1Type4">$line/column[@heading-index="WORK_Measurements1Type4"]/string()</mapping>
+    <mapping key="WORK_Measurements2Extent">$line/column[@heading-index="WORK_Measurements2Extent"]/string()</mapping>
+    <mapping key="WORK_Measurements2Unit">$line/column[@heading-index="WORK_Measurements2Unit"]/string()</mapping>
+    <mapping key="WORK_Measurements2Value1">$line/column[@heading-index="WORK_Measurements2Value1"]/string()</mapping>
+    <mapping key="WORK_Measurements2Type1">$line/column[@heading-index="WORK_Measurements2Type1"]/string()</mapping>
+    <mapping key="WORK_Measurements2Value2">$line/column[@heading-index="WORK_Measurements2Value2"]/string()</mapping>
+    <mapping key="WORK_Measurements2Type2">$line/column[@heading-index="WORK_Measurements2Type2"]/string()</mapping>
+    <mapping key="WORK_Measurements2Value3">$line/column[@heading-index="WORK_Measurements2Value3"]/string()</mapping>
+    <mapping key="WORK_Measurements2Type3">$line/column[@heading-index="WORK_Measurements2Type3"]/string()</mapping>
+    <mapping key="WORK_Measurements2Value4">$line/column[@heading-index="WORK_Measurements2Value4"]/string()</mapping>
+    <mapping key="WORK_Measurements2Type4">$line/column[@heading-index="WORK_Measurements2Type4"]/string()</mapping>
+    <mapping key="WORK_RelationDisplay">
         xquery version "3.0";
 
 let $relationDisplay := $line/column[@heading-index="WORK_RelationDisplay"]/string()
@@ -172,7 +278,15 @@ return
 
     return string-join(($relation1, $relation2), '; ')
 )
-    </mapping><mapping key="WORK_RelatedWork1">$line/column[@heading-index="WORK_RelatedWork1"]/string()</mapping><mapping key="WORK_RelationType1">$line/column[@heading-index="WORK_RelationType1"]/string()</mapping><mapping key="WORK_RelatedWork2">$line/column[@heading-index="WORK_RelatedWork2"]/string()</mapping><mapping key="WORK_RelationType2">$line/column[@heading-index="WORK_RelationType2"]/string()</mapping><mapping key="WORK_RightsDisplay">$line/column[@heading-index="WORK_RightsDisplay"]/string()</mapping><mapping key="WORK_SourceDisplay">$line/column[@heading-index="WORK_SourceDisplay"]/string()</mapping><mapping key="WORK_StateEditionDisplay">$line/column[@heading-index="WORK_StateEditionDisplay"]/string()</mapping><mapping key="WORK_StylePeriodDisplay">
+    </mapping>
+    <mapping key="WORK_RelatedWork1">$line/column[@heading-index="WORK_RelatedWork1"]/string()</mapping>
+    <mapping key="WORK_RelationType1">$line/column[@heading-index="WORK_RelationType1"]/string()</mapping>
+    <mapping key="WORK_RelatedWork2">$line/column[@heading-index="WORK_RelatedWork2"]/string()</mapping>
+    <mapping key="WORK_RelationType2">$line/column[@heading-index="WORK_RelationType2"]/string()</mapping>
+    <mapping key="WORK_RightsDisplay">$line/column[@heading-index="WORK_RightsDisplay"]/string()</mapping>
+    <mapping key="WORK_SourceDisplay">$line/column[@heading-index="WORK_SourceDisplay"]/string()</mapping>
+    <mapping key="WORK_StateEditionDisplay">$line/column[@heading-index="WORK_StateEditionDisplay"]/string()</mapping>
+    <mapping key="WORK_StylePeriodDisplay">
         let $stylePeriodDisplay := $line/column[@heading-index="WORK_StylePeriodDisplay"]/string()
 let $stylePeriod1 := $line/column[@heading-index="WORK_StylePeriod1"]/string()
 let $stylePeriod2 := $line/column[@heading-index="WORK_StylePeriod2"]/string()
@@ -186,7 +300,20 @@ return
   ) else (
     string-join(($stylePeriod1, $stylePeriod2, $stylePeriod3, $stylePeriod4), '; ')
   )
-    </mapping><mapping key="WORK_StylePeriod1">$line/column[@heading-index="WORK_StylePeriod1"]/string()</mapping><mapping key="WORK_StylePeriodVocab1">$line/column[@heading-index="WORK_StylePeriodVocab1"]/string()</mapping><mapping key="WORK_StylePeriodRefid1">$line/column[@heading-index="WORK_StylePeriodRefid1"]/string()</mapping><mapping key="WORK_StylePeriod2">$line/column[@heading-index="WORK_StylePeriod2"]/string()</mapping><mapping key="WORK_StylePeriodVocab2">$line/column[@heading-index="WORK_StylePeriodVocab2"]/string()</mapping><mapping key="WORK_StylePeriodRefid2">$line/column[@heading-index="WORK_StylePeriodRefid2"]/string()</mapping><mapping key="WORK_StylePeriod3">$line/column[@heading-index="WORK_StylePeriod3"]/string()</mapping><mapping key="WORK_StylePeriodVocab3">$line/column[@heading-index="WORK_StylePeriodVocab3"]/string()</mapping><mapping key="WORK_StylePeriodRefid3">$line/column[@heading-index="WORK_StylePeriodRefid3"]/string()</mapping><mapping key="WORK_StylePeriod4">$line/column[@heading-index="WORK_StylePeriod4"]/string()</mapping><mapping key="WORK_StylePeriodVocab4">$line/column[@heading-index="WORK_StylePeriodVocab4"]/string()</mapping><mapping key="WORK_StylePeriodRefid4">$line/column[@heading-index="WORK_StylePeriodRefid4"]/string()</mapping><mapping key="WORK_SubjectDisplay">
+    </mapping>
+    <mapping key="WORK_StylePeriod1">$line/column[@heading-index="WORK_StylePeriod1"]/string()</mapping>
+    <mapping key="WORK_StylePeriodVocab1">$line/column[@heading-index="WORK_StylePeriodVocab1"]/string()</mapping>
+    <mapping key="WORK_StylePeriodRefid1">$line/column[@heading-index="WORK_StylePeriodRefid1"]/string()</mapping>
+    <mapping key="WORK_StylePeriod2">$line/column[@heading-index="WORK_StylePeriod2"]/string()</mapping>
+    <mapping key="WORK_StylePeriodVocab2">$line/column[@heading-index="WORK_StylePeriodVocab2"]/string()</mapping>
+    <mapping key="WORK_StylePeriodRefid2">$line/column[@heading-index="WORK_StylePeriodRefid2"]/string()</mapping>
+    <mapping key="WORK_StylePeriod3">$line/column[@heading-index="WORK_StylePeriod3"]/string()</mapping>
+    <mapping key="WORK_StylePeriodVocab3">$line/column[@heading-index="WORK_StylePeriodVocab3"]/string()</mapping>
+    <mapping key="WORK_StylePeriodRefid3">$line/column[@heading-index="WORK_StylePeriodRefid3"]/string()</mapping>
+    <mapping key="WORK_StylePeriod4">$line/column[@heading-index="WORK_StylePeriod4"]/string()</mapping>
+    <mapping key="WORK_StylePeriodVocab4">$line/column[@heading-index="WORK_StylePeriodVocab4"]/string()</mapping>
+    <mapping key="WORK_StylePeriodRefid4">$line/column[@heading-index="WORK_StylePeriodRefid4"]/string()</mapping>
+    <mapping key="WORK_SubjectDisplay">
         let $subjectDisplay := $line/column[@heading-index="WORK_SubjectDisplay"]/string()
 let $subject1 := $line/column[@heading-index="WORK_Subject1"]/string()
 let $subject2 := $line/column[@heading-index="WORK_Subject2"]/string()
@@ -204,7 +331,40 @@ return
   ) else (
     string-join(($subject1, $subject2, $subject3, $subject4, $subject5, $subject6, $subject7, $subject8), '; ')
   )
-    </mapping><mapping key="WORK_Subject1">$line/column[@heading-index="WORK_Subject1"]/string()</mapping><mapping key="WORK_SubjectType1">$line/column[@heading-index="WORK_SubjectType1"]/string()</mapping><mapping key="WORK_SubjectVocab1">$line/column[@heading-index="WORK_SubjectVocab1"]/string()</mapping><mapping key="WORK_SubjectRefid1">$line/column[@heading-index="WORK_SubjectRefid1"]/string()</mapping><mapping key="WORK_Subject2">$line/column[@heading-index="WORK_Subject2"]/string()</mapping><mapping key="WORK_SubjectType2">$line/column[@heading-index="WORK_SubjectType2"]/string()</mapping><mapping key="WORK_SubjectVocab2">$line/column[@heading-index="WORK_SubjectVocab2"]/string()</mapping><mapping key="WORK_SubjectRefid2">$line/column[@heading-index="WORK_SubjectRefid2"]/string()</mapping><mapping key="WORK_Subject3">$line/column[@heading-index="WORK_Subject3"]/string()</mapping><mapping key="WORK_SubjectType3">$line/column[@heading-index="WORK_SubjectType3"]/string()</mapping><mapping key="WORK_SubjectVocab3">$line/column[@heading-index="WORK_SubjectVocab3"]/string()</mapping><mapping key="WORK_SubjectRefid3">$line/column[@heading-index="WORK_SubjectRefid3"]/string()</mapping><mapping key="WORK_Subject4">$line/column[@heading-index="WORK_Subject4"]/string()</mapping><mapping key="WORK_SubjectType4">$line/column[@heading-index="WORK_SubjectType4"]/string()</mapping><mapping key="WORK_SubjectVocab4">$line/column[@heading-index="WORK_SubjectVocab4"]/string()</mapping><mapping key="WORK_SubjectRefid4">$line/column[@heading-index="WORK_SubjectRefid4"]/string()</mapping><mapping key="WORK_Subject5">$line/column[@heading-index="WORK_Subject5"]/string()</mapping><mapping key="WORK_SubjectType5">$line/column[@heading-index="WORK_SubjectType5"]/string()</mapping><mapping key="WORK_SubjectVocab5">$line/column[@heading-index="WORK_SubjectVocab5"]/string()</mapping><mapping key="WORK_SubjectRefid5">$line/column[@heading-index="WORK_SubjectRefid5"]/string()</mapping><mapping key="WORK_Subject6">$line/column[@heading-index="WORK_Subject6"]/string()</mapping><mapping key="WORK_SubjectType6">$line/column[@heading-index="WORK_SubjectType6"]/string()</mapping><mapping key="WORK_SubjectVocab6">$line/column[@heading-index="WORK_SubjectVocab6"]/string()</mapping><mapping key="WORK_SubjectRefid6">$line/column[@heading-index="WORK_SubjectRefid6"]/string()</mapping><mapping key="WORK_Subject7">$line/column[@heading-index="WORK_Subject7"]/string()</mapping><mapping key="WORK_SubjectType7">$line/column[@heading-index="WORK_SubjectType7"]/string()</mapping><mapping key="WORK_SubjectVocab7">$line/column[@heading-index="WORK_SubjectVocab7"]/string()</mapping><mapping key="WORK_SubjectRefid7">$line/column[@heading-index="WORK_SubjectRefid7"]/string()</mapping><mapping key="WORK_Subject8">$line/column[@heading-index="WORK_Subject8"]/string()</mapping><mapping key="WORK_SubjectType8">$line/column[@heading-index="WORK_SubjectType8"]/string()</mapping><mapping key="WORK_SubjectVocab8">$line/column[@heading-index="WORK_SubjectVocab8"]/string()</mapping><mapping key="WORK_SubjectRefid8">$line/column[@heading-index="WORK_SubjectRefid8"]/string()</mapping><mapping key="WORK_TechniqueDisplay">
+    </mapping>
+    <mapping key="WORK_Subject1">$line/column[@heading-index="WORK_Subject1"]/string()</mapping>
+    <mapping key="WORK_SubjectType1">$line/column[@heading-index="WORK_SubjectType1"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab1">$line/column[@heading-index="WORK_SubjectVocab1"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid1">$line/column[@heading-index="WORK_SubjectRefid1"]/string()</mapping>
+    <mapping key="WORK_Subject2">$line/column[@heading-index="WORK_Subject2"]/string()</mapping>
+    <mapping key="WORK_SubjectType2">$line/column[@heading-index="WORK_SubjectType2"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab2">$line/column[@heading-index="WORK_SubjectVocab2"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid2">$line/column[@heading-index="WORK_SubjectRefid2"]/string()</mapping>
+    <mapping key="WORK_Subject3">$line/column[@heading-index="WORK_Subject3"]/string()</mapping>
+    <mapping key="WORK_SubjectType3">$line/column[@heading-index="WORK_SubjectType3"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab3">$line/column[@heading-index="WORK_SubjectVocab3"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid3">$line/column[@heading-index="WORK_SubjectRefid3"]/string()</mapping>
+    <mapping key="WORK_Subject4">$line/column[@heading-index="WORK_Subject4"]/string()</mapping>
+    <mapping key="WORK_SubjectType4">$line/column[@heading-index="WORK_SubjectType4"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab4">$line/column[@heading-index="WORK_SubjectVocab4"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid4">$line/column[@heading-index="WORK_SubjectRefid4"]/string()</mapping>
+    <mapping key="WORK_Subject5">$line/column[@heading-index="WORK_Subject5"]/string()</mapping>
+    <mapping key="WORK_SubjectType5">$line/column[@heading-index="WORK_SubjectType5"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab5">$line/column[@heading-index="WORK_SubjectVocab5"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid5">$line/column[@heading-index="WORK_SubjectRefid5"]/string()</mapping>
+    <mapping key="WORK_Subject6">$line/column[@heading-index="WORK_Subject6"]/string()</mapping>
+    <mapping key="WORK_SubjectType6">$line/column[@heading-index="WORK_SubjectType6"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab6">$line/column[@heading-index="WORK_SubjectVocab6"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid6">$line/column[@heading-index="WORK_SubjectRefid6"]/string()</mapping>
+    <mapping key="WORK_Subject7">$line/column[@heading-index="WORK_Subject7"]/string()</mapping>
+    <mapping key="WORK_SubjectType7">$line/column[@heading-index="WORK_SubjectType7"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab7">$line/column[@heading-index="WORK_SubjectVocab7"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid7">$line/column[@heading-index="WORK_SubjectRefid7"]/string()</mapping>
+    <mapping key="WORK_Subject8">$line/column[@heading-index="WORK_Subject8"]/string()</mapping>
+    <mapping key="WORK_SubjectType8">$line/column[@heading-index="WORK_SubjectType8"]/string()</mapping>
+    <mapping key="WORK_SubjectVocab8">$line/column[@heading-index="WORK_SubjectVocab8"]/string()</mapping>
+    <mapping key="WORK_SubjectRefid8">$line/column[@heading-index="WORK_SubjectRefid8"]/string()</mapping>
+    <mapping key="WORK_TechniqueDisplay">
         let $techniqueDisplay := $line/column[@heading-index="WORK_TechniqueDisplay"]/string()
 let $technique1 := $line/column[@heading-index="WORK_Technique1"]/string()
 let $technique2 := $line/column[@heading-index="WORK_Technique2"]/string()
@@ -218,7 +378,21 @@ return
   ) else (
     string-join(($technique1, $technique2, $technique3, $technique4), '; ')
   )
-    </mapping><mapping key="WORK_Technique1">$line/column[@heading-index="WORK_Technique1"]/string()</mapping><mapping key="WORK_TechniqueVocab1">$line/column[@heading-index="WORK_TechniqueVocab1"]/string()</mapping><mapping key="WORK_TechniqueRefid1">$line/column[@heading-index="WORK_TechniqueRefid1"]/string()</mapping><mapping key="WORK_Technique2">$line/column[@heading-index="WORK_Technique2"]/string()</mapping><mapping key="WORK_TechniqueVocab2">$line/column[@heading-index="WORK_TechniqueVocab2"]/string()</mapping><mapping key="WORK_TechniqueRefid2">$line/column[@heading-index="WORK_TechniqueRefid2"]/string()</mapping><mapping key="WORK_Technique3">$line/column[@heading-index="WORK_Technique3"]/string()</mapping><mapping key="WORK_TechniqueVocab3">$line/column[@heading-index="WORK_TechniqueVocab3"]/string()</mapping><mapping key="WORK_TechniqueRefid3">$line/column[@heading-index="WORK_TechniqueRefid3"]/string()</mapping><mapping key="WORK_Technique4">$line/column[@heading-index="WORK_Technique4"]/string()</mapping><mapping key="WORK_TechniqueVocab4">$line/column[@heading-index="WORK_TechniqueVocab4"]/string()</mapping><mapping key="WORK_TechniqueRefid4">$line/column[@heading-index="WORK_TechniqueRefid4"]/string()</mapping><mapping key="WORK_TextrefDisplay">$line/column[@heading-index="WORK_TextrefDisplay"]/string()</mapping><mapping key="WORK_TitleDisplay">
+    </mapping>
+    <mapping key="WORK_Technique1">$line/column[@heading-index="WORK_Technique1"]/string()</mapping>
+    <mapping key="WORK_TechniqueVocab1">$line/column[@heading-index="WORK_TechniqueVocab1"]/string()</mapping>
+    <mapping key="WORK_TechniqueRefid1">$line/column[@heading-index="WORK_TechniqueRefid1"]/string()</mapping>
+    <mapping key="WORK_Technique2">$line/column[@heading-index="WORK_Technique2"]/string()</mapping>
+    <mapping key="WORK_TechniqueVocab2">$line/column[@heading-index="WORK_TechniqueVocab2"]/string()</mapping>
+    <mapping key="WORK_TechniqueRefid2">$line/column[@heading-index="WORK_TechniqueRefid2"]/string()</mapping>
+    <mapping key="WORK_Technique3">$line/column[@heading-index="WORK_Technique3"]/string()</mapping>
+    <mapping key="WORK_TechniqueVocab3">$line/column[@heading-index="WORK_TechniqueVocab3"]/string()</mapping>
+    <mapping key="WORK_TechniqueRefid3">$line/column[@heading-index="WORK_TechniqueRefid3"]/string()</mapping>
+    <mapping key="WORK_Technique4">$line/column[@heading-index="WORK_Technique4"]/string()</mapping>
+    <mapping key="WORK_TechniqueVocab4">$line/column[@heading-index="WORK_TechniqueVocab4"]/string()</mapping>
+    <mapping key="WORK_TechniqueRefid4">$line/column[@heading-index="WORK_TechniqueRefid4"]/string()</mapping>
+    <mapping key="WORK_TextrefDisplay">$line/column[@heading-index="WORK_TextrefDisplay"]/string()</mapping>
+    <mapping key="WORK_TitleDisplay">
         let $titleDisplay := $line/column[@heading-index="WORK_TitleDisplay"]/string()
 let $prefTitle1 := $line/column[@heading-index="WORK_TitlePref"]/string()
 
@@ -229,7 +403,12 @@ return
   ) else (
     $prefTitle1
   )
-    </mapping><mapping key="WORK_TitlePref">$line/column[@heading-index="WORK_TitlePref"]/string()</mapping><mapping key="WORK_TitlePrefType">$line/column[@heading-index="WORK_TitlePrefType"]/string()</mapping><mapping key="WORK_TitleAlt">$line/column[@heading-index="WORK_TitleAlt"]/string()</mapping><mapping key="WORK_TitleAltType">$line/column[@heading-index="WORK_TitleAltType"]/string()</mapping><mapping key="WORK_WorktypeDisplay">
+    </mapping>
+    <mapping key="WORK_TitlePref">$line/column[@heading-index="WORK_TitlePref"]/string()</mapping>
+    <mapping key="WORK_TitlePrefType">$line/column[@heading-index="WORK_TitlePrefType"]/string()</mapping>
+    <mapping key="WORK_TitleAlt">$line/column[@heading-index="WORK_TitleAlt"]/string()</mapping>
+    <mapping key="WORK_TitleAltType">$line/column[@heading-index="WORK_TitleAltType"]/string()</mapping>
+    <mapping key="WORK_WorktypeDisplay">
         let $worktypeDisplay := $line/column[@heading-index="WORK_WorktypeDisplay"]/string()
 let $worktype1 := $line/column[@heading-index="WORK_Worktype1"]/string()
 let $worktype2 := $line/column[@heading-index="WORK_Worktype2"]/string()
@@ -242,7 +421,17 @@ return
   ) else (
     string-join(($worktype1, $worktype2, $worktype3), '; ')
   )
-    </mapping><mapping key="WORK_Worktype1">$line/column[@heading-index="WORK_Worktype1"]/string()</mapping><mapping key="WORK_WorktypeVocab1">$line/column[@heading-index="WORK_WorktypeVocab1"]/string()</mapping><mapping key="WORK_WorktypeRefid1">$line/column[@heading-index="WORK_WorktypeRefid1"]/string()</mapping><mapping key="WORK_Worktype2">$line/column[@heading-index="WORK_Worktype2"]/string()</mapping><mapping key="WORK_WorktypeVocab2">$line/column[@heading-index="WORK_WorktypeVocab2"]/string()</mapping><mapping key="WORK_WorktypeRefid2">$line/column[@heading-index="WORK_WorktypeRefid2"]/string()</mapping><mapping key="WORK_Worktype3">$line/column[@heading-index="WORK_Worktype3"]/string()</mapping><mapping key="WORK_WorktypeVocab3">$line/column[@heading-index="WORK_WorktypeVocab3"]/string()</mapping><mapping key="WORK_WorktypeRefid3">$line/column[@heading-index="WORK_WorktypeRefid3"]/string()</mapping><mapping key="IMAGE_AgentDisplay">
+    </mapping>
+    <mapping key="WORK_Worktype1">$line/column[@heading-index="WORK_Worktype1"]/string()</mapping>
+    <mapping key="WORK_WorktypeVocab1">$line/column[@heading-index="WORK_WorktypeVocab1"]/string()</mapping>
+    <mapping key="WORK_WorktypeRefid1">$line/column[@heading-index="WORK_WorktypeRefid1"]/string()</mapping>
+    <mapping key="WORK_Worktype2">$line/column[@heading-index="WORK_Worktype2"]/string()</mapping>
+    <mapping key="WORK_WorktypeVocab2">$line/column[@heading-index="WORK_WorktypeVocab2"]/string()</mapping>
+    <mapping key="WORK_WorktypeRefid2">$line/column[@heading-index="WORK_WorktypeRefid2"]/string()</mapping>
+    <mapping key="WORK_Worktype3">$line/column[@heading-index="WORK_Worktype3"]/string()</mapping>
+    <mapping key="WORK_WorktypeVocab3">$line/column[@heading-index="WORK_WorktypeVocab3"]/string()</mapping>
+    <mapping key="WORK_WorktypeRefid3">$line/column[@heading-index="WORK_WorktypeRefid3"]/string()</mapping>
+    <mapping key="IMAGE_AgentDisplay">
     xquery version "3.0";
 
 let $agentDisplay := $line/column[@heading-index="IMAGE_AgentDisplay"]/string()
@@ -260,7 +449,30 @@ return
       
     return $agent1
   )
-    </mapping><mapping key="IMAGE_Agent1NameType">$line/column[@heading-index="IMAGE_Agent1NameType"]/string()</mapping><mapping key="IMAGE_Agent1Name">$line/column[@heading-index="IMAGE_Agent1Name"]/string()</mapping><mapping key="IMAGE_Agent1NameVocab">$line/column[@heading-index="IMAGE_Agent1NameVocab"]/string()</mapping><mapping key="IMAGE_Agent1NameRefid">$line/column[@heading-index="IMAGE_Agent1NameRefid"]/string()</mapping><mapping key="IMAGE_Agent1Role">$line/column[@heading-index="IMAGE_Agent1Role"]/string()</mapping><mapping key="IMAGE_CulturalContextDisplay">$line/column[@heading-index="IMAGE_CulturalContextDisplay"]/string()</mapping><mapping key="IMAGE_DateDisplay">$line/column[@heading-index="IMAGE_DateDisplay"]/string()</mapping><mapping key="IMAGE_DescriptionDisplay">$line/column[@heading-index="IMAGE_DescriptionDisplay"]/string()</mapping><mapping key="IMAGE_InscriptionDisplay">$line/column[@heading-index="IMAGE_InscriptionDisplay"]/string()</mapping><mapping key="IMAGE_LocationDisplay">$line/column[@heading-index="IMAGE_LocationDisplay"]/string()</mapping><mapping key="IMAGE_MeasurementsDisplay">$line/column[@heading-index="IMAGE_MeasurementsDisplay"]/string()</mapping><mapping key="IMAGE_RelationDisplay">$line/column[@heading-index="IMAGE_RelationDisplay"]/string()</mapping><mapping key="IMAGE_RightsDisplay">$line/column[@heading-index="IMAGE_RightsDisplay"]/string()</mapping><mapping key="IMAGE_RightsNotes">$line/column[@heading-index="IMAGE_RightsNotes"]/string()</mapping><mapping key="IMAGE_RightsType">$line/column[@heading-index="IMAGE_RightsType"]/string()</mapping><mapping key="IMAGE_RightsHolder">$line/column[@heading-index="IMAGE_RightsHolder"]/string()</mapping><mapping key="IMAGE_RightsText">$line/column[@heading-index="IMAGE_RightsText"]/string()</mapping><mapping key="IMAGE_SourceDisplay">$line/column[@heading-index="IMAGE_SourceDisplay"]/string()</mapping><mapping key="IMAGE_SourceValue">$line/column[@heading-index="IMAGE_SourceValue"]/string()</mapping><mapping key="IMAGE_SourceType">$line/column[@heading-index="IMAGE_SourceType"]/string()</mapping><mapping key="IMAGE_StateEditionDisplay">$line/column[@heading-index="IMAGE_StateEditionDisplay"]/string()</mapping><mapping key="IMAGE_StylePeriodDisplay">$line/column[@heading-index="IMAGE_StylePeriodDisplay"]/string()</mapping><mapping key="IMAGE_SubjectDisplay">
+    </mapping>
+    <mapping key="IMAGE_Agent1NameType">$line/column[@heading-index="IMAGE_Agent1NameType"]/string()</mapping>
+    <mapping key="IMAGE_Agent1Name">$line/column[@heading-index="IMAGE_Agent1Name"]/string()</mapping>
+    <mapping key="IMAGE_Agent1NameVocab">$line/column[@heading-index="IMAGE_Agent1NameVocab"]/string()</mapping>
+    <mapping key="IMAGE_Agent1NameRefid">$line/column[@heading-index="IMAGE_Agent1NameRefid"]/string()</mapping>
+    <mapping key="IMAGE_Agent1Role">$line/column[@heading-index="IMAGE_Agent1Role"]/string()</mapping>
+    <mapping key="IMAGE_CulturalContextDisplay">$line/column[@heading-index="IMAGE_CulturalContextDisplay"]/string()</mapping>
+    <mapping key="IMAGE_DateDisplay">$line/column[@heading-index="IMAGE_DateDisplay"]/string()</mapping>
+    <mapping key="IMAGE_DescriptionDisplay">$line/column[@heading-index="IMAGE_DescriptionDisplay"]/string()</mapping>
+    <mapping key="IMAGE_InscriptionDisplay">$line/column[@heading-index="IMAGE_InscriptionDisplay"]/string()</mapping>
+    <mapping key="IMAGE_LocationDisplay">$line/column[@heading-index="IMAGE_LocationDisplay"]/string()</mapping>
+    <mapping key="IMAGE_MeasurementsDisplay">$line/column[@heading-index="IMAGE_MeasurementsDisplay"]/string()</mapping>
+    <mapping key="IMAGE_RelationDisplay">$line/column[@heading-index="IMAGE_RelationDisplay"]/string()</mapping>
+    <mapping key="IMAGE_RightsDisplay">$line/column[@heading-index="IMAGE_RightsDisplay"]/string()</mapping>
+    <mapping key="IMAGE_RightsNotes">$line/column[@heading-index="IMAGE_RightsNotes"]/string()</mapping>
+    <mapping key="IMAGE_RightsType">$line/column[@heading-index="IMAGE_RightsType"]/string()</mapping>
+    <mapping key="IMAGE_RightsHolder">$line/column[@heading-index="IMAGE_RightsHolder"]/string()</mapping>
+    <mapping key="IMAGE_RightsText">$line/column[@heading-index="IMAGE_RightsText"]/string()</mapping>
+    <mapping key="IMAGE_SourceDisplay">$line/column[@heading-index="IMAGE_SourceDisplay"]/string()</mapping>
+    <mapping key="IMAGE_SourceValue">$line/column[@heading-index="IMAGE_SourceValue"]/string()</mapping>
+    <mapping key="IMAGE_SourceType">$line/column[@heading-index="IMAGE_SourceType"]/string()</mapping>
+    <mapping key="IMAGE_StateEditionDisplay">$line/column[@heading-index="IMAGE_StateEditionDisplay"]/string()</mapping>
+    <mapping key="IMAGE_StylePeriodDisplay">$line/column[@heading-index="IMAGE_StylePeriodDisplay"]/string()</mapping>
+    <mapping key="IMAGE_SubjectDisplay">
         let $subjectDisplay := $line/column[@heading-index="IMAGE_SubjectDisplay"]/string()
 let $subject1 := $line/column[@heading-index="IMAGE_Subject1"]/string()
 let $subject2 := $line/column[@heading-index="IMAGE_Subject2"]/string()
@@ -273,7 +485,22 @@ return
   ) else (
     string-join(($subject1, $subject2, $subject3), '; ')
   )
-    </mapping><mapping key="IMAGE_Subject1">$line/column[@heading-index="IMAGE_Subject1"]/string()</mapping><mapping key="IMAGE_SubjectRefid1">$line/column[@heading-index="IMAGE_SubjectRefid1"]/string()</mapping><mapping key="IMAGE_SubjectVocab1">$line/column[@heading-index="IMAGE_SubjectVocab1"]/string()</mapping><mapping key="IMAGE_SubjectType1">$line/column[@heading-index="IMAGE_SubjectType1"]/string()</mapping><mapping key="IMAGE_Subject2">$line/column[@heading-index="IMAGE_Subject2"]/string()</mapping><mapping key="IMAGE_SubjectRefid2">$line/column[@heading-index="IMAGE_SubjectRefid2"]/string()</mapping><mapping key="IMAGE_SubjectVocab2">$line/column[@heading-index="IMAGE_SubjectVocab2"]/string()</mapping><mapping key="IMAGE_SubjectType2">$line/column[@heading-index="IMAGE_SubjectType2"]/string()</mapping><mapping key="IMAGE_Subject3">$line/column[@heading-index="IMAGE_Subject3"]/string()</mapping><mapping key="IMAGE_SubjectRefid3">$line/column[@heading-index="IMAGE_SubjectRefid3"]/string()</mapping><mapping key="IMAGE_SubjectVocab3">$line/column[@heading-index="IMAGE_SubjectVocab3"]/string()</mapping><mapping key="IMAGE_SubjectType3">$line/column[@heading-index="IMAGE_SubjectType3"]/string()</mapping><mapping key="IMAGE_TechniqueDisplay">$line/column[@heading-index="IMAGE_TechniqueDisplay"]/string()</mapping><mapping key="IMAGE_TextrefDisplay">$line/column[@heading-index="IMAGE_TextrefDisplay"]/string()</mapping><mapping key="IMAGE_TitleDisplay">
+    </mapping>
+    <mapping key="IMAGE_Subject1">$line/column[@heading-index="IMAGE_Subject1"]/string()</mapping>
+    <mapping key="IMAGE_SubjectRefid1">$line/column[@heading-index="IMAGE_SubjectRefid1"]/string()</mapping>
+    <mapping key="IMAGE_SubjectVocab1">$line/column[@heading-index="IMAGE_SubjectVocab1"]/string()</mapping>
+    <mapping key="IMAGE_SubjectType1">$line/column[@heading-index="IMAGE_SubjectType1"]/string()</mapping>
+    <mapping key="IMAGE_Subject2">$line/column[@heading-index="IMAGE_Subject2"]/string()</mapping>
+    <mapping key="IMAGE_SubjectRefid2">$line/column[@heading-index="IMAGE_SubjectRefid2"]/string()</mapping>
+    <mapping key="IMAGE_SubjectVocab2">$line/column[@heading-index="IMAGE_SubjectVocab2"]/string()</mapping>
+    <mapping key="IMAGE_SubjectType2">$line/column[@heading-index="IMAGE_SubjectType2"]/string()</mapping>
+    <mapping key="IMAGE_Subject3">$line/column[@heading-index="IMAGE_Subject3"]/string()</mapping>
+    <mapping key="IMAGE_SubjectRefid3">$line/column[@heading-index="IMAGE_SubjectRefid3"]/string()</mapping>
+    <mapping key="IMAGE_SubjectVocab3">$line/column[@heading-index="IMAGE_SubjectVocab3"]/string()</mapping>
+    <mapping key="IMAGE_SubjectType3">$line/column[@heading-index="IMAGE_SubjectType3"]/string()</mapping>
+    <mapping key="IMAGE_TechniqueDisplay">$line/column[@heading-index="IMAGE_TechniqueDisplay"]/string()</mapping>
+    <mapping key="IMAGE_TextrefDisplay">$line/column[@heading-index="IMAGE_TextrefDisplay"]/string()</mapping>
+    <mapping key="IMAGE_TitleDisplay">
         let $titleDisplay := $line/column[@heading-index="IMAGE_TitleDisplay"]/string()
 let $prefTitle1 := $line/column[@heading-index="IMAGE_Title"]/string()
 
@@ -284,4 +511,8 @@ return
   ) else (
     $prefTitle1
   )
-    </mapping><mapping key="IMAGE_Title">$line/column[@heading-index="IMAGE_Title"]/string()</mapping><mapping key="IMAGE_TitleType">$line/column[@heading-index="IMAGE_TitleType"]/string()</mapping><mapping key="IMAGE_WorktypeDisplay">$line/column[@heading-index="IMAGE_WorktypeDisplay"]/string()</mapping></xml>
+    </mapping>
+    <mapping key="IMAGE_Title">$line/column[@heading-index="IMAGE_Title"]/string()</mapping>
+    <mapping key="IMAGE_TitleType">$line/column[@heading-index="IMAGE_TitleType"]/string()</mapping>
+    <mapping key="IMAGE_WorktypeDisplay">$line/column[@heading-index="IMAGE_WorktypeDisplay"]/string()</mapping>
+</xml>
