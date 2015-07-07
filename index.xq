@@ -52,8 +52,15 @@ return
                         <select id="mapping-selector">
                         {
                             for $mapping in $xml-functions:mapping-definitions//mapping[@active="true"]
-                            return 
-                                <option value="{$mapping/collection/string()}">{$mapping/name/string()}</option>
+                                let $is-selected := $mapping/@selected/string()
+                                let $html-selected := 
+                                    if ($is-selected = "true") then
+                                        "selected"
+                                    else
+                                        ()
+(:                                let $log := util:log("INFO", "sel: " || $html-selected):)
+                                return 
+                                    <option value="{$mapping/collection/string()}" selected="{$html-selected}">{$mapping/name/string()}</option>
                         }
                         </select>
                     </div>
