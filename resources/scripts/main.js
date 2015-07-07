@@ -34,7 +34,7 @@ $( document ).ready(function() {
                 contentType: false,
                 processData: false
             });
-            return false;        
+            return false;
     });
     
     $('#reset').bind("click", function(event){
@@ -62,6 +62,11 @@ $( document ).ready(function() {
             $(this).val(null);
         }
     });
+    // Bind event: if mapping selection changed
+    $("#mapping-selector").bind("change", function(event) {
+       updateMapping($(this).find("option:selected").val()) ;
+    });
+    
 });
 
 function reset() {
@@ -78,6 +83,7 @@ function reset() {
             $('form#csv-upload').trigger("reset");
             dropMessage("Session resetted.", true);
             toggleAfterProcessButtons(false);
+            loadDefinedCatalogs();
             var data = [];
             data.lines = 0;
             updateInformations(data);
@@ -90,12 +96,22 @@ function reset() {
     .fail(function( jqXHR, textStatus ) {
             alert( "Request failed: " + textStatus );
         });
-    
 }
+
+function updateMapping(mapping) {
+    toggleAfterProcessButtons(false);
+    loadDefinedCatalogs();
+    $("#content").empty();
+    $("#newSchema").val(null);
+    $("#process-from").val(1);
+    $('#validate').removeClass("invalid").removeClass("valid");
+    // alert(mapping);
+}
+
 function loadDefinedCatalogs() {
     var catalogSelector = $("#catalogs-selector");
     var mapping = $("select#mapping-selector option:selected").val();
-    console.debug(catalogSelector);
+    // console.debug(catalogSelector);
     $.ajax({
         url: "process-csv.xq",
         method: "POST",

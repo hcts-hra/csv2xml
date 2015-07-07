@@ -3,6 +3,8 @@ xquery version "3.0";
 module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions";
 import module namespace functx="http://www.functx.com";
 
+declare namespace json="http://www.json.org";
+
 declare variable $xml-functions:mapping-definitions := doc("../mappings/mappings.xml");
 
 declare function xml-functions:validate($xml-to-validate as node(), $catalogs as xs:anyURI*) {
@@ -12,12 +14,13 @@ declare function xml-functions:validate($xml-to-validate as node(), $catalogs as
 
 declare function xml-functions:get-catalogs($mapping) {
     let $catalogs := doc("../mappings/" || $mapping || "/validation-catalogs.xml")//uri
+(:    let $log := util:log("INFO", $catalogs):)
     return 
         <root>
             {
                 for $cat in $catalogs
                 return
-                    <catalogs>
+                    <catalogs json:array="true">
                         <uri>{$cat/string()}</uri>
                         <active>{$cat/@active/string()}</active>
                     </catalogs>

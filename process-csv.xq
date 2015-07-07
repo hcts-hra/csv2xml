@@ -28,7 +28,6 @@ return
         (: save selected catalogs in Session:)
         case "saveSelectedCatalogs" return
             let $catalogs := request:get-parameter("selectedCatalogs", "")
-            let $log := util:log("INFO", $catalogs)
 (:            let $session := session:set-attribute("selectedCatalogs", $catalogs):)
             return
                 true()
@@ -115,6 +114,7 @@ return
             let $parent-string := serialize($parent-xml)
             let $output-string := replace($parent-string, "\$PROCESSED_TEMPLATE\$", string-join($processed-template))
             let $output-xml := parse-xml($output-string)
+            let $output-xml := xml-functions:remove-empty-attributes($output-xml/*)
             let $session-store := session:set-attribute("xml", $output-xml)
             return
                 let $header := response:set-header("Status", "200")
