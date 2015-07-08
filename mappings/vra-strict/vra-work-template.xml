@@ -4,18 +4,18 @@
         <display>$WORK_AgentDisplay$</display>
         <agent>
             <name type="$WORK_Agent1NameType$" vocab="$WORK_Agent1NameVocab$" refid="$WORK_Agent1NameRefid$">$WORK_Agent1Name$</name>
-            <role vocab="$WORK_Agent1RoleVocab$" refid="$WORK_Agent1RoleRefid$">$WORK_Agent1Role$</role>
-            <attribution vocab="$WORK_Agent1RoleVocab$" refid="$WORK_Agent1RoleRefid$">$WORK_Agent1Attribution$</attribution>
+            <role>$WORK_Agent1Role$</role>
+            <attribution>$WORK_Agent1Attribution$</attribution>
         </agent>
         <agent>
             <name type="$WORK_Agent2NameType$" vocab="$WORK_Agent2NameVocab$" refid="$WORK_Agent2NameRefid$">$WORK_Agent2Name$</name>
-            <role vocab="$WORK_Agent2RoleVocab$" refid="$WORK_Agent2RoleRefid$">$WORK_Agent2Role$</role>
-            <attribution vocab="$WORK_Agent2RoleVocab$" refid="$WORK_Agent2RoleRefid$">$WORK_Agent2Attribution$</attribution>
+            <role>$WORK_Agent2Role$</role>
+            <attribution>$WORK_Agent2Attribution$</attribution>
         </agent>
         <agent>
             <name type="$WORK_Agent3NameType$" vocab="$WORK_Agent3NameVocab$" refid="$WORK_Agent3NameRefid$">$WORK_Agent3Name$</name>
-            <role vocab="$WORK_Agent3RoleVocab$" refid="$WORK_Agent3RoleRefid$">$WORK_Agent3Role$</role>
-            <attribution vocab="$WORK_Agent3RoleVocab$" refid="$WORK_Agent3RoleRefid$">$WORK_Agent3Attribution$</attribution>
+            <role>$WORK_Agent3Role$</role>
+            <attribution>$WORK_Agent3Attribution$</attribution>
         </agent>
     </agentSet>
     <culturalContextSet>
@@ -26,20 +26,12 @@
     <dateSet>
         <display>$WORK_DateDisplay$</display>
         <date type="$WORK_Date1Type$">
-            <earliestDate>
-                <date>$WORK_EarliestDate1$</date>
-            </earliestDate>
-            <latestDate>
-                <date>$WORK_LatestDate1$</date>
-            </latestDate>
+            <earliestDate>$WORK_EarliestDate1$</earliestDate>
+            <latestDate>$WORK_LatestDate1$</latestDate>
         </date>
         <date type="$WORK_Date2Type$">
-            <earliestDate>
-                <date>$WORK_EarliestDate2$</date>
-            </earliestDate>
-            <latestDate>
-                <date>$WORK_LatestDate2$</date>
-            </latestDate>
+            <earliestDate>$WORK_EarliestDate2$</earliestDate>
+            <latestDate>$WORK_LatestDate2$</latestDate>
         </date>
     </dateSet>
     <descriptionSet>
@@ -59,19 +51,11 @@
             <name type="$WORK_Location1NameType$" vocab="$WORK_Location1NameVocab$" refid="$WORK_Location1NameRefID$">$WORK_Location1Name$</name>
             <refid type="$WORK_Location1ObjType$">$WORK_Location1ObjRefID$</refid>
             <name type="geographic" vocab="$WORK_Location1GeoVocab$" refid="$WORK_Location1GeoRefid$">$WORK_Location1Geo$</name>
-            <point epsg="$WORK_Location1GeoPointEPSG$">
-                <lat>$WORK_Location1GeoPointLat$</lat>
-                <long>$WORK_Location1GeoPointLong$</long>
-            </point>
         </location>
         <location type="$WORK_Location2Type$">
             <name type="$WORK_Location2NameType$" vocab="$WORK_Location2NameVocab$" refid="$WORK_Location2NameRefID$">$WORK_Location2Name$</name>
             <refid type="$WORK_Location1ObjType$">$WORK_Location2ObjRefID$</refid>
             <name type="geographic" vocab="$WORK_Location2GeoVocab$" refid="$WORK_Location2GeoRefid$">$WORK_Location2Geo$</name>
-            <point epsg="$WORK_Location2GeoPointEPSG$">
-                <lat>$WORK_Location2GeoPointLat$</lat>
-                <long>$WORK_Location2GeoPointLong$</long>
-            </point>
         </location>
     </locationSet>
     <materialSet>
@@ -123,26 +107,12 @@
         <display>$WORK_SubjectDisplay$</display>
         <subject>
             <term type="$WORK_SubjectType1$" vocab="$WORK_SubjectVocab1$" refid="$WORK_SubjectRefid1$">$WORK_Subject1$</term>
-        </subject>
-        <subject>
             <term type="$WORK_SubjectType2$" vocab="$WORK_SubjectVocab2$" refid="$WORK_SubjectRefid2$">$WORK_Subject2$</term>
-        </subject>
-        <subject>
             <term type="$WORK_SubjectType3$" vocab="$WORK_SubjectVocab3$" refid="$WORK_SubjectRefid3$">$WORK_Subject3$</term>
-        </subject>
-        <subject>
             <term type="$WORK_SubjectType4$" vocab="$WORK_SubjectVocab4$" refid="$WORK_SubjectRefid4$">$WORK_Subject4$</term>
-        </subject>
-        <subject>
             <term type="$WORK_SubjectType5$" vocab="$WORK_SubjectVocab5$" refid="$WORK_SubjectRefid5$">$WORK_Subject5$</term>
-        </subject>
-        <subject>
             <term type="$WORK_SubjectType6$" vocab="$WORK_SubjectVocab6$" refid="$WORK_SubjectRefid6$">$WORK_Subject6$</term>
-        </subject>
-        <subject>
             <term type="$WORK_SubjectType7$" vocab="$WORK_SubjectVocab7$" refid="$WORK_SubjectRefid7$">$WORK_Subject7$</term>
-        </subject>
-        <subject>
             <term type="$WORK_SubjectType8$" vocab="$WORK_SubjectVocab8$" refid="$WORK_SubjectRefid8$">$WORK_Subject8$</term>
         </subject>
     </subjectSet>
