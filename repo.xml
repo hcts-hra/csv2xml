@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<meta xmlns="http://exist-db.org/xquery/repo">
+<meta xmlns="http://exist-db.org/xquery/repo" xmlns:repo="http://exist-db.org/xquery/repo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <description>csv2xml</description>
-    <author>Matthias Guth</author>
+    <author id="">Matthias Guth</author>
     <website>${project.url}</website>
-    <status>alpha</status>
+    <status>stable</status>
     <license>GNU-LGPL</license>
     <copyright>true</copyright>
     <type>application</type>
     <target>csv2xml</target>
-    <prepare/>
     <finish>post-install.xq</finish>
-    <permissions xmlns:repo="http://exist-db.org/xquery/repo" password="" user="admin" group="dba" mode="rw-rw-r--"/>
 </meta>

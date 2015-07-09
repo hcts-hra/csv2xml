@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mappings>
-    <mapping active="true" selected="false">
+    <mapping active="true" selected="true">
         <collection>default</collection>
         <name>VRA strict Cluster</name>
         <descripton>Mapping to VRA Core 4 - restricted version with extension by Heidelberg, cf. https://docs.google.com/document/d/11dFFCefjYSFX5LAQq9XK0NGQfuwUYIBIzYdZonGgfrs/edit</descripton>
@@ -9,10 +9,5 @@
         <collection>vra-strict</collection>
         <name>VRA strict</name>
         <descripton>Mapping to VRA Core 4 - restricted version, cf. http://www.loc.gov/standards/vracore/</descripton>
-    </mapping>
-    <mapping active="true" selected="true">
-        <collection>neu-test</collection>
-        <name>VRA Cluster</name>
-        <descripton/>
     </mapping>
 </mappings>
