@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <validation-catalogs>
     <run>
-        <uri active="true" critical="true">http://www.loc.gov/standards/vracore/vra.xsd</uri>
+        <uri active="true" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vra-strictCluster.xsd</uri>
     </run>
     <run>
-        <uri active="false" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vraCluster.xsd</uri>
+        <uri active="false" critical="true">http://tamboti.uni-hd.de/some.xsd</uri>
+        <uri active="false" critical="true">http://www.loc.gov/standards/vracore/vra.xsd</uri>
+        <uri active="false" critical="true">http://www.loc.gov/standards/vracore/vra-strict.xsd</uri>
         <uri active="false" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/extension.xsd</uri>
     </run>
 </validation-catalogs>
