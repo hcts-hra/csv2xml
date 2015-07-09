@@ -42,6 +42,12 @@ return
             let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize($catalogs, $local:json-serialize-parameters)
+
+        case "getXSLs" return
+            let $xsls := xml-functions:get-xsls($mapping-name)
+            let $header := response:set-header("Content-Type", "application/json")
+            return
+                serialize($xsls, $local:json-serialize-parameters)
             
             
         case "getInfo" return
@@ -81,6 +87,7 @@ return
             let $data := session:get-attribute("data")
             let $start := xs:integer(request:get-parameter("start", 1))
             let $end := xs:integer(request:get-parameter("end", count($data/line)))
+            let $xsls := request:get-parameter("xsls[]", "")
             
             (: load the CSV-mapping:)
             let $csv-map-uri :=  "mappings/" || $mapping-name || "/csv-map.xml"
@@ -115,6 +122,13 @@ return
             let $output-string := replace($parent-string, "\$PROCESSED_TEMPLATE\$", string-join($processed-template))
             let $output-xml := parse-xml($output-string)
             let $output-xml := xml-functions:remove-empty-attributes($output-xml/*)
+
+            let $output-xml :=
+                if(not(count($xsls) = 1 and $xsls[1] = '')) then
+                    xml-functions:apply-xsls($mapping-name, $output-xml, $xsls)
+                else
+                    $output-xml
+            
             let $session-store := session:set-attribute("xml", $output-xml)
             return
                 let $header := response:set-header("Status", "200")

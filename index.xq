@@ -65,19 +65,23 @@ return
                         </select>
                     </div>
                     <div>
+                        <div>
+                            <span>
+                                process lines <input type="text" id="process-from" value="1" size="3em"/> to <input class="lines-amount" type="text" id="process-to" value="{count($data/line)}" size="3em"/>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        Apply XSL:
+                        <div id="xsl-selector"></div>
+                    </div>
+                    <div>
                         Validate against:
                         <div id="catalogs-selector">
                         </div>
                     </div>
                     <div id="addSchema">
                         add Schema (.xsd .dtd): <input type="text" id="newSchema"></input>
-                    </div>
-                    <div>
-                        <div>
-                            <span>
-                                process lines <input type="text" id="process-from" value="1" size="3em"/> to <input class="lines-amount" type="text" id="process-to" value="{count($data/line)}" size="3em"/>
-                            </span>
-                        </div>
                     </div>
                 </div>
                 <div>

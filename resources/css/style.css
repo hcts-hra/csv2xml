@@ -19,7 +19,7 @@ body{
     max-height:100%;
 }
 
-#catalogs-selector{
+#catalogs-selector, #xsl-selector{
     height: 100px;
     background-color:white;
     border: 1px solid black;
@@ -33,6 +33,14 @@ body{
 }
 
 #catalogs-selector > .selected{
+    background-color: #C9C9C9;
+}
+
+#xsl-selector > div{
+    white-space: nowrap;
+}
+
+#xsl-selector > .selected{
     background-color: #C9C9C9;
 }
 

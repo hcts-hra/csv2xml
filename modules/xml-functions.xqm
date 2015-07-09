@@ -28,6 +28,32 @@ declare function xml-functions:get-catalogs($mapping) {
         </root>
 };
 
+declare function xml-functions:get-xsls($mapping) {
+    let $xsls := doc("../mappings/" || $mapping || "/xsl-transformations.xml")//uri
+(:    let $log := util:log("INFO", $catalogs):)
+    return 
+        <root>
+            {
+                for $xsl in $xsls
+                return
+                    <xsl json:array="true">
+                        <uri>{$xsl/string()}</uri>
+                        <active>{$xsl/@active/string()}</active>
+                        <selected>{$xsl/@selected/string()}</selected>
+                    </xsl>
+            }
+        </root>
+};
+
+declare function xml-functions:apply-xsls($mapping as xs:string, $xml as node(), $xsls as xs:string*) as node(){
+    let $xml := 
+        for $xsl in $xsls
+            let $xsl-doc := doc("../mappings/" || $mapping || "/xsl/" || $xsl)
+            return transform:transform($xml, $xsl-doc, ())
+(:        let $log := util:log("INFO", $xsl-uri):)
+    return $xml
+};
+
 declare function xml-functions:replace-template-variables($template-string as xs:string, $mapping-definition as node(), $line as node()) as xs:string {
     let $replace-map := map:new(
             for $mapping in $mapping-definition//mapping
@@ -45,7 +71,10 @@ declare function xml-functions:replace-template-variables($template-string as xs
         for $from in $from-seq
             let $to-value := 
                 if ($replace-map($from)) then
-                    xs:string($replace-map($from))
+                    (: replace ampersand :)
+                    let $ampersand := '&#38;'
+                    return 
+                        fn:replace(xs:string($replace-map($from)), $ampersand, "&amp;amp;")
                 else
                     xs:string("")
             return

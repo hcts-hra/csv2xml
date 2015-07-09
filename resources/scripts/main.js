@@ -62,6 +62,13 @@ $( document ).ready(function() {
             $(this).val(null);
         }
     });
+
+    loadDefinedXSLs();
+    $("#xsl-selector").bind("click", function(e){
+        var clicked = $(e.target);
+        clicked.toggleClass("selected");
+        // console.debug($(e.target));
+    });
     // Bind event: if mapping selection changed
     $("#mapping-selector").bind("change", function(event) {
        updateMapping($(this).find("option:selected").val()) ;
@@ -84,6 +91,7 @@ function reset() {
             dropMessage("Session resetted.", true);
             toggleAfterProcessButtons(false);
             loadDefinedCatalogs();
+            loadDefinedXSLs();
             var data = [];
             data.lines = 0;
             updateInformations(data);
@@ -101,6 +109,7 @@ function reset() {
 function updateMapping(mapping) {
     toggleAfterProcessButtons(false);
     loadDefinedCatalogs();
+    loadDefinedXSLs();
     $("#content").empty();
     $("#newSchema").val(null);
     $("#process-from").val(1);
@@ -128,14 +137,44 @@ function loadDefinedCatalogs() {
     });
 }
 
+function loadDefinedXSLs() {
+    var xslSelector = $("#xsl-selector");
+    var mapping = $("select#mapping-selector option:selected").val();
+    // console.debug(catalogSelector);
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "getXSLs",
+            mapping: mapping
+        }
+    })
+    .success(function( msg ) {
+        xslSelector.empty();
+        if(msg !== null){
+            $.each(msg.xsl, function(index, xsl){
+                // console.debug(x);
+                if(xsl.active=="true")  addXSL(xsl.uri, xsl.selected);
+            });
+        }
+    });
+}
+
+
 function addCatalog(uri, active){
     var catalogSelector = $("#catalogs-selector");
     var newDiv = $("<div>");
     if (active == "true") newDiv.addClass("selected");
     newDiv.html(uri);
-    // add event listener: if selection changes, update session
-    // newDiv.bind("")
     catalogSelector.append(newDiv);
+}
+
+function addXSL(uri, selected){
+    var xslSelector = $("#xsl-selector");
+    var newDiv = $("<div>");
+    if (selected == "true") newDiv.addClass("selected");
+    newDiv.html(uri);
+    xslSelector.append(newDiv);
 }
 
 function toggleAfterProcessButtons(toggle) {
@@ -171,7 +210,11 @@ function buttonSetProgressing(button, progressing){
 
 function generate(button, result, mapping, start, end) {
     buttonSetProgressing(button, true);
-    // console.debug("mapping: " + mapping);
+    var selectedXsls = $("#xsl-selector .selected");
+    var xsls = [];
+    $.each(selectedXsls, function(idx, val) {
+        xsls.push($(val).html());
+    });
     // console.debug("start: " + start);
     // console.debug("end: " + end);
     // console.debug("debug: " + debug);
@@ -185,7 +228,8 @@ function generate(button, result, mapping, start, end) {
             debug: debug,
             mapping: mapping,
             start: start,
-            end: end
+            end: end,
+            xsls: xsls
         }
     });
     request.success(function( xml ) {
