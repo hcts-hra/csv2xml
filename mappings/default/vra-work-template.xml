@@ -44,7 +44,9 @@
     </dateSet>
     <descriptionSet>
         <display>$WORK_Description$</display>
-        <description source="$WORK_DescriptionSource$">$WORK_Description$</description>
+        <description source="$WORK_DescriptionSource$">
+            <text>$WORK_Description$</text>
+        </description>
     </descriptionSet>
     <inscriptionSet>
         <display>$WORK_InscriptionDisplay$</display>

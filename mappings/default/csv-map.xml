@@ -52,18 +52,24 @@ return
     <mapping key="WORK_Agent1NameVocab">$line/column[@heading-index="WORK_Agent1NameVocab"]/string()</mapping>
     <mapping key="WORK_Agent1NameRefid">$line/column[@heading-index="WORK_Agent1NameRefid"]/string()</mapping>
     <mapping key="WORK_Agent1Role">$line/column[@heading-index="WORK_Agent1Role"]/string()</mapping>
+    <mapping key="WORK_Agent1RoleVocab">$line/column[@heading-index="WORK_Agent1RoleVocab"]/string()</mapping>
+    <mapping key="WORK_Agent1RoleRefid">$line/column[@heading-index="WORK_Agent1RoleRefid"]/string()</mapping>
     <mapping key="WORK_Agent1Attribution">$line/column[@heading-index="WORK_Agent1Attribution"]/string()</mapping>
     <mapping key="WORK_Agent2NameType">$line/column[@heading-index="WORK_Agent2NameType"]/string()</mapping>
     <mapping key="WORK_Agent2Name">$line/column[@heading-index="WORK_Agent2Name"]/string()</mapping>
     <mapping key="WORK_Agent2NameVocab">$line/column[@heading-index="WORK_Agent2NameVocab"]/string()</mapping>
     <mapping key="WORK_Agent2NameRefid">$line/column[@heading-index="WORK_Agent2NameRefid"]/string()</mapping>
     <mapping key="WORK_Agent2Role">$line/column[@heading-index="WORK_Agent2Role"]/string()</mapping>
+    <mapping key="WORK_Agent2RoleVocab">$line/column[@heading-index="WORK_Agent2RoleVocab"]/string()</mapping>
+    <mapping key="WORK_Agent2RoleRefid">$line/column[@heading-index="WORK_Agent2RoleRefid"]/string()</mapping>
     <mapping key="WORK_Agent2Attribution">$line/column[@heading-index="WORK_Agent2Attribution"]/string()</mapping>
     <mapping key="WORK_Agent3NameType">$line/column[@heading-index="WORK_Agent3NameType"]/string()</mapping>
     <mapping key="WORK_Agent3Name">$line/column[@heading-index="WORK_Agent3Name"]/string()</mapping>
     <mapping key="WORK_Agent3NameVocab">$line/column[@heading-index="WORK_Agent3NameVocab"]/string()</mapping>
     <mapping key="WORK_Agent3NameRefid">$line/column[@heading-index="WORK_Agent3NameRefid"]/string()</mapping>
     <mapping key="WORK_Agent3Role">$line/column[@heading-index="WORK_Agent3Role"]/string()</mapping>
+    <mapping key="WORK_Agent3RoleVocab">$line/column[@heading-index="WORK_Agent3RoleVocab"]/string()</mapping>
+    <mapping key="WORK_Agent3RoleRefid">$line/column[@heading-index="WORK_Agent3RoleRefid"]/string()</mapping>
     <mapping key="WORK_Agent3Attribution">$line/column[@heading-index="WORK_Agent3Attribution"]/string()</mapping>
     <mapping key="WORK_CulturalContextDisplay">
     if (not($line/column[@heading-index="WORK_CulturalContextDisplay"]/string())) then 
@@ -159,6 +165,9 @@ return
     <mapping key="WORK_Location1Geo">$line/column[@heading-index="WORK_Location1Geo"]/string()</mapping>
     <mapping key="WORK_Location1GeoVocab">$line/column[@heading-index="WORK_Location1GeoVocab"]/string()</mapping>
     <mapping key="WORK_Location1GeoRefid">$line/column[@heading-index="WORK_Location1GeoRefid"]/string()</mapping>
+    <mapping key="WORK_Location1GeoPointEPSG">$line/column[@heading-index="WORK_Location1GeoPointEPSG"]/string()</mapping>
+    <mapping key="WORK_Location1GeoPointLat">$line/column[@heading-index="WORK_Location1GeoPointLat"]/string()</mapping>
+    <mapping key="WORK_Location1GeoPointLong">$line/column[@heading-index="WORK_Location1GeoPointLong"]/string()</mapping>
     <mapping key="WORK_Location2Type">$line/column[@heading-index="WORK_Location2Type"]/string()</mapping>
     <mapping key="WORK_Location2Name">$line/column[@heading-index="WORK_Location2Name"]/string()</mapping>
     <mapping key="WORK_Location2NameType">$line/column[@heading-index="WORK_Location2NameType"]/string()</mapping>
@@ -169,6 +178,9 @@ return
     <mapping key="WORK_Location2Geo">$line/column[@heading-index="WORK_Location2Geo"]/string()</mapping>
     <mapping key="WORK_Location2GeoVocab">$line/column[@heading-index="WORK_Location2GeoVocab"]/string()</mapping>
     <mapping key="WORK_Location2GeoRefid">$line/column[@heading-index="WORK_Location2GeoRefid"]/string()</mapping>
+    <mapping key="WORK_Location2GeoPointEPSG">$line/column[@heading-index="WORK_Location2GeoPointEPSG"]/string()</mapping>
+    <mapping key="WORK_Location2GeoPointLat">$line/column[@heading-index="WORK_Location2GeoPointLat"]/string()</mapping>
+    <mapping key="WORK_Location2GeoPointLong">$line/column[@heading-index="WORK_Location2GeoPointLong"]/string()</mapping>
     <mapping key="WORK_MaterialDisplay">
         let $materialDisplay := $line/column[@heading-index="WORK_MaterialDisplay"]/string()
 let $material1 := $line/column[@heading-index="WORK_Material1"]/string()
@@ -454,12 +466,28 @@ return
     <mapping key="IMAGE_Agent1Name">$line/column[@heading-index="IMAGE_Agent1Name"]/string()</mapping>
     <mapping key="IMAGE_Agent1NameVocab">$line/column[@heading-index="IMAGE_Agent1NameVocab"]/string()</mapping>
     <mapping key="IMAGE_Agent1NameRefid">$line/column[@heading-index="IMAGE_Agent1NameRefid"]/string()</mapping>
+    <mapping key="IMAGE_Agent1RoleVocab">$line/column[@heading-index="IMAGE_Agent1RoleVocab"]/string()</mapping>
+    <mapping key="IMAGE_Agent1RoleRefid">$line/column[@heading-index="IMAGE_Agent1RoleRefid"]/string()</mapping>
     <mapping key="IMAGE_Agent1Role">$line/column[@heading-index="IMAGE_Agent1Role"]/string()</mapping>
     <mapping key="IMAGE_CulturalContextDisplay">$line/column[@heading-index="IMAGE_CulturalContextDisplay"]/string()</mapping>
     <mapping key="IMAGE_DateDisplay">$line/column[@heading-index="IMAGE_DateDisplay"]/string()</mapping>
     <mapping key="IMAGE_DescriptionDisplay">$line/column[@heading-index="IMAGE_DescriptionDisplay"]/string()</mapping>
     <mapping key="IMAGE_InscriptionDisplay">$line/column[@heading-index="IMAGE_InscriptionDisplay"]/string()</mapping>
     <mapping key="IMAGE_LocationDisplay">$line/column[@heading-index="IMAGE_LocationDisplay"]/string()</mapping>
+    <mapping key="IMAGE_LocationNotes">$line/column[@heading-index="IMAGE_LocationNotes"]/string()</mapping>
+    <mapping key="IMAGE_LocationType">$line/column[@heading-index="IMAGE_LocationType"]/string()</mapping>
+    <mapping key="IMAGE_LocationName">$line/column[@heading-index="IMAGE_LocationName"]/string()</mapping>
+    <mapping key="IMAGE_LocationNameType">$line/column[@heading-index="IMAGE_LocationNameType"]/string()</mapping>
+    <mapping key="IMAGE_LocationNameVocab">$line/column[@heading-index="IMAGE_LocationNameVocab"]/string()</mapping>
+    <mapping key="IMAGE_LocationNameRefID">$line/column[@heading-index="IMAGE_LocationNameRefID"]/string()</mapping>
+    <mapping key="IMAGE_LocationObjType">$line/column[@heading-index="IMAGE_LocationObjType"]/string()</mapping>
+    <mapping key="IMAGE_LocationObjRefID">$line/column[@heading-index="IMAGE_LocationObjRefID"]/string()</mapping>
+    <mapping key="IMAGE_LocationGeo">$line/column[@heading-index="IMAGE_LocationGeo"]/string()</mapping>
+    <mapping key="IMAGE_LocationGeoVocab">$line/column[@heading-index="IMAGE_LocationGeoVocab"]/string()</mapping>
+    <mapping key="IMAGE_LocationGeoRefid">$line/column[@heading-index="IMAGE_LocationGeoRefid"]/string()</mapping>
+    <mapping key="IMAGE_LocationGeoPointEPSG">$line/column[@heading-index="IMAGE_LocationGeoPointEPSG"]/string()</mapping>
+    <mapping key="IMAGE_LocationGeoPointLat">$line/column[@heading-index="IMAGE_LocationGeoPointLat"]/string()</mapping>
+    <mapping key="IMAGE_LocationGeoPointLong">$line/column[@heading-index="IMAGE_LocationGeoPointLong"]/string()</mapping>
     <mapping key="IMAGE_MeasurementsDisplay">$line/column[@heading-index="IMAGE_MeasurementsDisplay"]/string()</mapping>
     <mapping key="IMAGE_RelationDisplay">$line/column[@heading-index="IMAGE_RelationDisplay"]/string()</mapping>
     <mapping key="IMAGE_RightsDisplay">$line/column[@heading-index="IMAGE_RightsDisplay"]/string()</mapping>

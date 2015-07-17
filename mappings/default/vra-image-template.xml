@@ -17,7 +17,9 @@
     </dateSet>
     <descriptionSet>
         <display>$IMAGE_Description$</display>
-        <description>$IMAGE_Description$</description>
+        <description>
+            <text>$IMAGE_Description$</text>
+        </description>
     </descriptionSet>
     <inscriptionSet>
         <display>IMAGE_InscriptionDisplay</display>
