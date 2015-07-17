@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tamboti</groupId>
 	<artifactId>csv2xml</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.3</version>
 	<packaging>pom</packaging>
 
 	<prerequisites>
@@ -22,9 +22,14 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+				<artifactId>replacer</artifactId>
+				<version>1.5.3</version>
+			</plugin>
+			<plugin>
 				<groupId>ro.kuberam.maven.plugins</groupId>
 				<artifactId>kuberam-expath-plugin</artifactId>
-				<version>0.4.1</version>
+				<version>0.4.2</version>
 				<executions>
 					<execution>
 						<id>create-build</id>
@@ -35,6 +40,12 @@
 						<configuration>
 							<descriptor>assembly.xml</descriptor>
 							<finalName>${project.build.finalName}</finalName>
+<!-- 							<replacements> -->
+<!-- 								<replacement> -->
+<!-- 									<token>config:actual-app-id := "tamboti"</token> -->
+<!-- 									<value>config:actual-app-id := "${project.artifactId}-${user.name}"</value> -->
+<!-- 								</replacement> -->
+<!-- 							</replacements>							 -->
 						</configuration>
 					</execution>
 				</executions>

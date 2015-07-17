@@ -7,11 +7,6 @@ declare namespace json="http://www.json.org";
 
 declare variable $xml-functions:mapping-definitions := doc("../mappings/mappings.xml");
 
-declare function xml-functions:validate($xml-to-validate as node(), $catalogs as xs:anyURI*) {
-(:    validation:clear-grammar-cache(),:)
-    validation:jaxp-parse($xml-to-validate, true(), $catalogs)
-};
-
 declare function xml-functions:get-catalogs($mapping) {
     let $catalogs := doc("../mappings/" || $mapping || "/validation-catalogs.xml")//uri
 (:    let $log := util:log("INFO", $catalogs):)
@@ -28,13 +23,30 @@ declare function xml-functions:get-catalogs($mapping) {
         </root>
 };
 
-declare function xml-functions:get-xsls($mapping) {
-    let $xsls := doc("../mappings/" || $mapping || "/xsl-transformations.xml")//uri
-(:    let $log := util:log("INFO", $catalogs):)
+declare function xml-functions:get-transformations($mapping) {
+    let $transformations := doc("../mappings/" || $mapping || "/xsl-transformations.xml")//transform
+    return
+        <root>
+            {
+                for $t in $transformations
+                return
+                    <transform json:array="true">
+                        <name>{$t/@name/string()}</name>
+                        <label>{$t/@label/string()}</label>
+                        <active>{$t/@active/string()}</active>
+                        <selected>{$t/@selected/string()}</selected>
+                    </transform>
+            }
+        </root>    
+};
+
+declare function xml-functions:get-xsls($mapping, $transform-name) {
+    let $transformations := doc("../mappings/" || $mapping || "/xsl-transformations.xml")
+    let $log := util:log("INFO", $transformations//transform)
     return 
         <root>
             {
-                for $xsl in $xsls
+                for $xsl in $transformations//transform[@name=$transform-name]/uri
                 return
                     <xsl json:array="true">
                         <uri>{$xsl/string()}</uri>
@@ -48,7 +60,7 @@ declare function xml-functions:get-xsls($mapping) {
 declare function xml-functions:apply-xsls($mapping as xs:string, $xml as node(), $xsls as xs:string*) as node(){
     let $xml := 
         for $xsl in $xsls
-            let $xsl-doc := doc("../mappings/" || $mapping || "/xsl/" || $xsl)
+            let $xsl-doc := doc("../mappings/" || $mapping || "/" || $xsl)
             return transform:transform($xml, $xsl-doc, ())
 (:        let $log := util:log("INFO", $xsl-uri):)
     return $xml

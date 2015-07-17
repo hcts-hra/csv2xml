@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.vraweb.org/vracore4.htm" xml:lang="en" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+    <xs:redefine schemaLocation="http://www.loc.gov/standards/vracore/vra.xsd">
+        <xs:attributeGroup name="vraAttributes">
+            <xs:attribute name="dataDate" type="dateValueType"/>
+            <xs:attribute name="extent" type="xsd:string"/>
+            <xs:attribute name="href" type="xsd:anyURI"/>
+            <xs:attribute ref="xml:lang"/>
+            <xs:attribute name="pref" type="xsd:boolean"/>
+            <xs:attribute name="refid" type="xsd:string"/>
+            <xs:attribute name="rules" type="xsd:string"/>
+            <xs:attribute name="source" type="xsd:string"/>
+            <xs:attribute name="vocab">
+                <xs:simpleType>
+                    <xs:restriction base="xsd:string">
+                        <xs:pattern value="((a|A)(a|A)(t|T)) |            ((t|T)(g|G)(n|N)) |            ((u|U)(l|L)(a|A)(n|N)) |            ((c|C)(o|O)(n|N)(a|A)) |            ((l|L)(c|C)(n|N)(a|A)(f|F)) |            ((l|L)(c|C)(s|S)(h|H)) |            ((l|L)(c|C)(g|G)(f|F)(t|T)) |            ((t|T)(g|G)(m|M)) |            ((v|V)(i|I)(a|A)(f|F)) |            ((i|I)(c|C)(o|O)(n|N)(c|C)(l|L)(a|A)(s|S)(s|S))"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:attributeGroup>
+    </xs:redefine>
+</xs:schema>

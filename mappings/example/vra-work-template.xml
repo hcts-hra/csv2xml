@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<work id="$WORK_ID$">
+    <agentSet>
+        <display>$WORK_AgentDisplay$</display>
+        <agent>
+            <name type="$WORK_Agent1NameType$" vocab="$WORK_Agent1NameVocab$" refid="$WORK_Agent1NameRefid$">$WORK_Agent1Name$</name>
+            <role vocab="$WORK_Agent1RoleVocab$" refid="$WORK_Agent1RoleRefid$">$WORK_Agent1Role$</role>
+            <attribution vocab="$WORK_Agent1RoleVocab$" refid="$WORK_Agent1RoleRefid$">$WORK_Agent1Attribution$</attribution>
+        </agent>
+        <agent>
+            <name type="$WORK_Agent2NameType$" vocab="$WORK_Agent2NameVocab$" refid="$WORK_Agent2NameRefid$">$WORK_Agent2Name$</name>
+            <role vocab="$WORK_Agent2RoleVocab$" refid="$WORK_Agent2RoleRefid$">$WORK_Agent2Role$</role>
+            <attribution vocab="$WORK_Agent2RoleVocab$" refid="$WORK_Agent2RoleRefid$">$WORK_Agent2Attribution$</attribution>
+        </agent>
+        <agent>
+            <name type="$WORK_Agent3NameType$" vocab="$WORK_Agent3NameVocab$" refid="$WORK_Agent3NameRefid$">$WORK_Agent3Name$</name>
+            <role vocab="$WORK_Agent3RoleVocab$" refid="$WORK_Agent3RoleRefid$">$WORK_Agent3Role$</role>
+            <attribution vocab="$WORK_Agent3RoleVocab$" refid="$WORK_Agent3RoleRefid$">$WORK_Agent3Attribution$</attribution>
+        </agent>
+    </agentSet>
+    <culturalContextSet>
+        <display>$WORK_CulturalContextDisplay$</display>
+        <culturalContext vocab="$WORK_CulturalContext1Vocab$" refid="$WORK_CulturalContext1Refid$">$WORK_CulturalContext1$</culturalContext>
+        <culturalContext vocab="$WORK_CulturalContext2Vocab$" refid="$WORK_CulturalContext2Refid$">$WORK_CulturalContext2$</culturalContext>
+    </culturalContextSet>
+    <dateSet>
+        <display>$WORK_DateDisplay$</display>
+        <date type="$WORK_Date1Type$">
+            <earliestDate>
+                <date>$WORK_EarliestDate1$</date>
+            </earliestDate>
+            <latestDate>
+                <date>$WORK_LatestDate1$</date>
+            </latestDate>
+        </date>
+        <date type="$WORK_Date2Type$">
+            <earliestDate>
+                <date>$WORK_EarliestDate2$</date>
+            </earliestDate>
+            <latestDate>
+                <date>$WORK_LatestDate2$</date>
+            </latestDate>
+        </date>
+    </dateSet>
+    <descriptionSet>
+        <display>$WORK_Description$</display>
+        <description source="$WORK_DescriptionSource$">$WORK_Description$</description>
+    </descriptionSet>
+    <inscriptionSet>
+        <display>$WORK_InscriptionDisplay$</display>
+        <inscription>
+            <text>$WORK_InscriptionDisplay$</text>
+        </inscription>
+    </inscriptionSet>
+    <locationSet>
+        <display>$WORK_LocationDisplay$</display>
+        <notes>$WORK_LocationNotes$</notes>
+        <location type="$WORK_Location1Type$">
+            <name type="$WORK_Location1NameType$" vocab="$WORK_Location1NameVocab$" refid="$WORK_Location1NameRefID$">$WORK_Location1Name$</name>
+            <refid type="$WORK_Location1ObjType$">$WORK_Location1ObjRefID$</refid>
+            <name type="geographic" vocab="$WORK_Location1GeoVocab$" refid="$WORK_Location1GeoRefid$">$WORK_Location1Geo$</name>
+            <point epsg="$WORK_Location1GeoPointEPSG$">
+                <lat>$WORK_Location1GeoPointLat$</lat>
+                <long>$WORK_Location1GeoPointLong$</long>
+            </point>
+        </location>
+        <location type="$WORK_Location2Type$">
+            <name type="$WORK_Location2NameType$" vocab="$WORK_Location2NameVocab$" refid="$WORK_Location2NameRefID$">$WORK_Location2Name$</name>
+            <refid type="$WORK_Location1ObjType$">$WORK_Location2ObjRefID$</refid>
+            <name type="geographic" vocab="$WORK_Location2GeoVocab$" refid="$WORK_Location2GeoRefid$">$WORK_Location2Geo$</name>
+            <point epsg="$WORK_Location2GeoPointEPSG$">
+                <lat>$WORK_Location2GeoPointLat$</lat>
+                <long>$WORK_Location2GeoPointLong$</long>
+            </point>
+        </location>
+    </locationSet>
+    <materialSet>
+        <display>$WORK_MaterialDisplay$</display>
+        <material vocab="$WORK_MaterialVocab1$" refid="$WORK_MaterialRefid1$">$WORK_Material1$</material>
+        <material vocab="$WORK_MaterialVocab2$" refid="$WORK_MaterialRefid2$">$WORK_Material2$</material>
+        <material vocab="$WORK_MaterialVocab3$" refid="$WORK_MaterialRefid3$">$WORK_Material3$</material>
+        <material vocab="$WORK_MaterialVocab4$" refid="$WORK_MaterialRefid4$">$WORK_Material4$</material>
+    </materialSet>
+    <measurementsSet>
+        <display>$WORK_MeasurementsDisplay$</display>
+        <measurements type="$WORK_Measurements1Type1$" unit="$WORK_Measurements1Unit$" extent="$WORK_Measurements1Extent$">$WORK_Measurements1Value1$</measurements>
+        <measurements type="$WORK_Measurements1Type2$" unit="$WORK_Measurements1Unit$" extent="$WORK_Measurements1Extent$">$WORK_Measurements1Value2$</measurements>
+        <measurements type="$WORK_Measurements1Type3$" unit="$WORK_Measurements1Unit$" extent="$WORK_Measurements1Extent$">$WORK_Measurements1Value3$</measurements>
+        <measurements type="$WORK_Measurements1Type4$" unit="$WORK_Measurements1Unit$" extent="$WORK_Measurements1Extent$">$WORK_Measurements1Value4$</measurements>
+        <measurements type="$WORK_Measurements2Type1$" unit="$WORK_Measurements2Unit$" extent="$WORK_Measurements2Extent$">$WORK_Measurements2Value1$</measurements>
+        <measurements type="$WORK_Measurements2Type2$" unit="$WORK_Measurements2Unit$" extent="$WORK_Measurements2Extent$">$WORK_Measurements2Value2$</measurements>
+        <measurements type="$WORK_Measurements2Type3$" unit="$WORK_Measurements2Unit$" extent="$WORK_Measurements2Extent$">$WORK_Measurements2Value3$</measurements>
+        <measurements type="$WORK_Measurements2Type4$" unit="$WORK_Measurements2Unit$" extent="$WORK_Measurements2Extent$">$WORK_Measurements2Value4$</measurements>
+    </measurementsSet>
+    <relationSet>
+        <display>$WORK_RelationDisplay$</display>
+        <relation type="$WORK_RelationType1$">$WORK_RelatedWork1$</relation>
+        <relation type="$WORK_RelationType2$">$WORK_RelatedWork2$</relation>
+        <relation type="imageIs" relids="$IMAGE_ID$" source="$SourceOfImageRecord$" pref="true">$RelationName$</relation>
+    </relationSet>
+    <rightsSet>
+        <display>$WORK_RightsDisplay$</display>
+        <rights>
+            <text>$WORK_RightsDisplay$</text>
+        </rights>
+    </rightsSet>
+    <sourceSet>
+        <display>$WORK_SourceDisplay$</display>
+        <source/>
+    </sourceSet>
+    <stateEditionSet>
+        <display>$WORK_StateEditionDisplay$</display>
+        <stateEdition/>
+    </stateEditionSet>
+    <stylePeriodSet>
+        <display>$WORK_StylePeriodDisplay$</display>
+        <stylePeriod vocab="$WORK_StylePeriodVocab1$" refid="$WORK_StylePeriodRefid1$">$WORK_StylePeriod1$</stylePeriod>
+        <stylePeriod vocab="$WORK_StylePeriodVocab2$" refid="$WORK_StylePeriodRefid2$">$WORK_StylePeriod2$</stylePeriod>
+        <stylePeriod vocab="$WORK_StylePeriodVocab3$" refid="$WORK_StylePeriodRefid3$">$WORK_StylePeriod3$</stylePeriod>
+        <stylePeriod vocab="$WORK_StylePeriodVocab4$" refid="$WORK_StylePeriodRefid4$">$WORK_StylePeriod4$</stylePeriod>
+    </stylePeriodSet>
+    <subjectSet>
+        <display>$WORK_SubjectDisplay$</display>
+        <subject>
+            <term type="$WORK_SubjectType1$" vocab="$WORK_SubjectVocab1$" refid="$WORK_SubjectRefid1$">$WORK_Subject1$</term>
+        </subject>
+        <subject>
+            <term type="$WORK_SubjectType2$" vocab="$WORK_SubjectVocab2$" refid="$WORK_SubjectRefid2$">$WORK_Subject2$</term>
+        </subject>
+        <subject>
+            <term type="$WORK_SubjectType3$" vocab="$WORK_SubjectVocab3$" refid="$WORK_SubjectRefid3$">$WORK_Subject3$</term>
+        </subject>
+        <subject>
+            <term type="$WORK_SubjectType4$" vocab="$WORK_SubjectVocab4$" refid="$WORK_SubjectRefid4$">$WORK_Subject4$</term>
+        </subject>
+        <subject>
+            <term type="$WORK_SubjectType5$" vocab="$WORK_SubjectVocab5$" refid="$WORK_SubjectRefid5$">$WORK_Subject5$</term>
+        </subject>
+        <subject>
+            <term type="$WORK_SubjectType6$" vocab="$WORK_SubjectVocab6$" refid="$WORK_SubjectRefid6$">$WORK_Subject6$</term>
+        </subject>
+        <subject>
+            <term type="$WORK_SubjectType7$" vocab="$WORK_SubjectVocab7$" refid="$WORK_SubjectRefid7$">$WORK_Subject7$</term>
+        </subject>
+        <subject>
+            <term type="$WORK_SubjectType8$" vocab="$WORK_SubjectVocab8$" refid="$WORK_SubjectRefid8$">$WORK_Subject8$</term>
+        </subject>
+    </subjectSet>
+    <techniqueSet>
+        <display>$WORK_TechniqueDisplay$</display>
+        <technique vocab="$WORK_TechniqueVocab1$" refid="$WORK_TechniqueRefid1$">$WORK_Technique1$</technique>
+        <technique vocab="$WORK_TechniqueVocab2$" refid="$WORK_TechniqueRefid2$">$WORK_Technique2$</technique>
+        <technique vocab="$WORK_TechniqueVocab3$" refid="$WORK_TechniqueRefid3$">$WORK_Technique3$</technique>
+        <technique vocab="$WORK_TechniqueVocab4$" refid="$WORK_TechniqueRefid4$">$WORK_Technique4$</technique>
+    </techniqueSet>
+    <textrefSet>
+        <display>$WORK_TextrefDisplay$</display>
+        <textref/>
+    </textrefSet>
+    <titleSet>
+        <display>$WORK_TitleDisplay$</display>
+        <title pref="true" type="$WORK_TitlePrefType$">$WORK_TitlePref$</title>
+        <title pref="false" type="$WORK_TitleAltType$">$WORK_TitleAlt$</title>
+    </titleSet>
+    <worktypeSet>
+        <display>$WORK_WorktypeDisplay$</display>
+        <worktype vocab="$WORK_WorktypeVocab1$" refid="$WORK_WorktypeRefid1$">$WORK_Worktype1$</worktype>
+        <worktype vocab="$WORK_WorktypeVocab2$" refid="$WORK_WorktypeRefid2$">$WORK_Worktype2$</worktype>
+        <worktype vocab="$WORK_WorktypeVocab3$" refid="$WORK_WorktypeRefid3$">$WORK_Worktype3$</worktype>
+    </worktypeSet>
+</work>

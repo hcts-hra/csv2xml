@@ -6,6 +6,8 @@ declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "html5";
 declare option output:media-type "text/html";
 
+declare variable $local:git-version := "$ver";
+
 let $cors-header := response:set-header("Access-Control-Allow-Origin", "*")
 let $data := session:get-attribute("data")
 return
@@ -26,6 +28,7 @@ return
             <script type="text/javascript" src="resources/scripts/main.js"/>
         </head>
         <body>
+            <div id="git-version">git-version: <span>{$local:git-version}</span></div>
             <div>
                 <button id="reset" type="button">Reset</button>
             </div>
@@ -48,7 +51,7 @@ return
                         </div>
                     </div>
                     <div>
-                        <span>Select mapping:</span>
+                        <span>mapping:</span>
                         <select id="mapping-selector">
                         {
                             for $mapping in $xml-functions:mapping-definitions//mapping[@active="true"]
@@ -65,6 +68,11 @@ return
                         </select>
                     </div>
                     <div>
+                        <span>transform:</span>
+                        <select id="transformations-selector">
+                        </select>
+                    </div>
+                    <div>
                         <div>
                             <span>
                                 process lines <input type="text" id="process-from" value="1" size="3em"/> to <input class="lines-amount" type="text" id="process-to" value="{count($data/line)}" size="3em"/>
@@ -72,8 +80,11 @@ return
                         </div>
                     </div>
                     <div>
-                        Apply XSL:
+                        Applied XSLs:
                         <div id="xsl-selector"></div>
+                    </div>
+                    <div>
+                        <button id="generate" type="button" onclick="generate($(this), $('#content'), $('#mapping-selector option:selected').val(), $('#process-from').val(), $('#process-to').val());" disabled="disabled">generate XML</button>
                     </div>
                     <div>
                         Validate against:
@@ -86,7 +97,6 @@ return
                 </div>
                 <div>
                     <div id="actionButtons">
-                        <button id="generate" type="button" onclick="generate($(this), $('#content'), $('#mapping-selector option:selected').val(), $('#process-from').val(), $('#process-to').val());" disabled="disabled">generate XML</button>
                         <button id="validate" type="button" disabled="disabled">validate</button>
                         <button id="download" type="button" disabled="disabled">download</button>
                     </div>

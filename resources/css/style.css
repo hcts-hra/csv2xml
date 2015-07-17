@@ -8,6 +8,10 @@ body{
     height:95%;
 }
 
+#git-version{
+    float: right;
+}
+
 #menu{
     background-color: #DEDEDE;
     border:1px solid black;
@@ -45,7 +49,7 @@ body{
 }
 
 #addSchema{
-    display:none;
+    /*display:none;*/
 }
 
 #newSchema{

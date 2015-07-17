@@ -2,8 +2,8 @@ xquery version "3.0";
 
 import module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions" at "modules/xml-functions.xqm";
 import module namespace csv="http://hra.uni-heidelberg.de/ns/hra-csv2vra/csv" at "modules/csv.xqm";
-
 import module namespace functx="http://www.functx.com";
+import module namespace console="http://exist-db.org/xquery/console";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
 
@@ -43,8 +43,15 @@ return
             return
                 serialize($catalogs, $local:json-serialize-parameters)
 
+        case "getTransformations" return
+            let $trans := xml-functions:get-transformations($mapping-name)
+            let $header := response:set-header("Content-Type", "application/json")
+            return
+                serialize($trans, $local:json-serialize-parameters)
+
         case "getXSLs" return
-            let $xsls := xml-functions:get-xsls($mapping-name)
+            let $transformation := request:get-parameter("transformation", "")
+            let $xsls := xml-functions:get-xsls($mapping-name, $transformation)
             let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize($xsls, $local:json-serialize-parameters)
@@ -139,23 +146,39 @@ return
                         $output-xml
                     
         case "validate" return
-            let $clear := validation:clear-grammar-cache()
             (: get the catalogs for validations :)
-            let $catalogs := 
+            let $reports := 
                 for $cat in request:get-parameter("catalogs[]", "")
-                return 
-                    let $pre-parse := validation:pre-parse-grammar(xs:anyURI($cat))
-                    return
-                        util:log("DEBUG", $pre-parse)
+                    let $clear := validation:clear-grammar-cache()
+                    let $catalog-uri := xs:anyURI($cat)
+                    let $pre-parse := validation:pre-parse-grammar($catalog-uri)
+    (:                let $parsed-grammars := session:set-attribute("validation-grammars", validation:pre-parse-grammar($catalogs)):)
+                    let $report :=
+                        <report-result>
+                            <xsd>{$cat}</xsd>
+                            {validation:jaxp-report(session:get-attribute("xml"), true())}
+                        </report-result>
+                    return 
+                        $report
+            let $session-store := session:set-attribute("validation-reports", $reports)
+            let $test := console:log($reports//status/string())
+            let $valid := 
+                if ("invalid" = $reports//status/string()) then
+                    "invalid"
+                else
+                    "valid"
+            let $result :=
+                <root>
+                    <result>
+                        {$valid}
+                    </result>
+                    <reports>
+                        {count($reports)}
+                    </reports>
+                </root>
+            let $header := response:set-header("Content-Type", "application/json")
             return
-                let $result := validation:jaxp-report(session:get-attribute("xml"), true())
-                let $session-store := session:set-attribute("validation-report", $result)
-                let $result := <root>
-                                    <result>{$result/status/string()}</result>
-                                </root>
-                let $header := response:set-header("Content-Type", "application/json")
-                return
-                    serialize($result, $local:json-serialize-parameters)
+                serialize($result, $local:json-serialize-parameters)
         default return
             ""
 

@@ -5,7 +5,10 @@ declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "html5";
 declare option output:media-type "text/html";
 
-let $result := session:get-attribute("validation-report")
+let $reportNr := xs:integer(request:get-parameter("reportNr", "1"))
+let $reports := session:get-attribute("validation-reports")
+let $parsed-grammars := session:get-attribute("validation-grammars") 
+let $cached-grammars := validation:show-grammar-cache()
 return 
     <html>
         <head>
@@ -28,11 +31,16 @@ return
                     prettyPrint();
                 }});
             </script>
+            <style type="text/css">
+                .hidden{{
+                    display:none;
+                }}
+            </style>
         </head>
         <body>
-           <div id="content" style="font-size:10px;">
+            <div id="content" style="font-size:10px;">
                 <xmp class="prettyprint linenums">
-                    {$result}
+                    {$reports[$reportNr]}
                 </xmp>
             </div>
         </body>

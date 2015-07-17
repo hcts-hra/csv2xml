@@ -21,7 +21,7 @@ $( document ).ready(function() {
             success: function (e) {
                 dropMessage('Upload completed');
                 updateInformations(e);
-                $('#actionButtons').find("button#generate").attr("disabled", false);
+                $('#generate').attr("disabled", false);
             },
             error: function (e) {
                 alert('error ' + e.message);
@@ -63,7 +63,7 @@ $( document ).ready(function() {
         }
     });
 
-    loadDefinedXSLs();
+    loadDefinedTransformations();
     $("#xsl-selector").bind("click", function(e){
         var clicked = $(e.target);
         clicked.toggleClass("selected");
@@ -73,7 +73,11 @@ $( document ).ready(function() {
     $("#mapping-selector").bind("change", function(event) {
        updateMapping($(this).find("option:selected").val()) ;
     });
-    
+    //Bind event: if transformations selection changed
+    $("#transformations-selector").bind("change", function(event) {
+       loadDefinedXSLs();
+    });
+
 });
 
 function reset() {
@@ -91,7 +95,7 @@ function reset() {
             dropMessage("Session resetted.", true);
             toggleAfterProcessButtons(false);
             loadDefinedCatalogs();
-            loadDefinedXSLs();
+            loadDefinedTransformations();
             var data = [];
             data.lines = 0;
             updateInformations(data);
@@ -109,7 +113,7 @@ function reset() {
 function updateMapping(mapping) {
     toggleAfterProcessButtons(false);
     loadDefinedCatalogs();
-    loadDefinedXSLs();
+    loadDefinedTransformations();
     $("#content").empty();
     $("#newSchema").val(null);
     $("#process-from").val(1);
@@ -137,16 +141,47 @@ function loadDefinedCatalogs() {
     });
 }
 
-function loadDefinedXSLs() {
-    var xslSelector = $("#xsl-selector");
+function loadDefinedTransformations() {
+    var transSelector = $("#transformations-selector");
     var mapping = $("select#mapping-selector option:selected").val();
     // console.debug(catalogSelector);
     $.ajax({
         url: "process-csv.xq",
         method: "POST",
         data: { 
-            action: "getXSLs",
+            action: "getTransformations",
             mapping: mapping
+        }
+    })
+    .success(function( msg ) {
+        transSelector.empty();
+        if(msg !== null){
+            $.each(msg.transform, function(index, trans){
+            //     // console.debug(x);
+                if (trans.active == "true"){
+                    var selected = (trans.selected == 'true' ? ' selected="selected"' : '');
+                    var option = "<option" + selected + " value=\"" + trans.name + "\">" + trans.label + "</option>";
+                    transSelector.append(option);
+                }
+            });
+        }
+        loadDefinedXSLs();
+    });
+}
+
+
+function loadDefinedXSLs() {
+    var xslSelector = $("#xsl-selector");
+    var mapping = $("select#mapping-selector option:selected").val();
+    var transformation = $("select#transformations-selector option:selected").val();
+    // console.debug(catalogSelector);
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "getXSLs",
+            mapping: mapping,
+            transformation: transformation
         }
     })
     .success(function( msg ) {
@@ -154,7 +189,7 @@ function loadDefinedXSLs() {
         if(msg !== null){
             $.each(msg.xsl, function(index, xsl){
                 // console.debug(x);
-                if(xsl.active=="true")  addXSL(xsl.uri, xsl.selected);
+                if(xsl.active=="true") addXSL(xsl.uri, xsl.selected);
             });
         }
     });
@@ -264,12 +299,16 @@ function validate(button) {
         }
     })
         .success(function( msg ) {
-            window.open('validation-result.xq', '_blank');
+            for (var i=1; i <= msg.reports; i++){
+                window.open('validation-result.xq?reportNr=' + i , '_blank');
+            }
+            // window.open('validation-result.xq', '_blank');
             if(msg.result == "invalid")
                 $(button).addClass("invalid").removeClass("valid");
             else
                 $(button).addClass("valid").removeClass("invalid");
-            console.debug(result);
+            console.debug(msg.result);
+            console.debug(msg);
     })
         .error(function( result ) {
             alert( "Request failed: " + result.responseText );
