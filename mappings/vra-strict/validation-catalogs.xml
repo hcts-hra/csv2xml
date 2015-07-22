@@ -7,6 +7,6 @@
         <uri active="false" critical="true">http://www.loc.gov/standards/vracore/vra.xsd</uri>
         <uri active="false" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vra-strictCluster.xsd</uri>
         <uri active="false" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vraCluster.xsd</uri>
-        <uri active="false" critical="true">http://kjc-ws111.kjc.uni-heidelberg.de:8080/exist/apps/csv2xml/mappings/default/xsd/vocab.xsd</uri>
+        <uri active="false" critical="true">http://kjc-ws111.kjc.uni-heidelberg.de:8080/exist/apps/csv2xml/mappings/vra-strict/xsd/vocab.xsd</uri>
     </run>
 </validation-catalogs>

@@ -3,7 +3,6 @@ xquery version "3.0";
 import module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions" at "modules/xml-functions.xqm";
 import module namespace csv="http://hra.uni-heidelberg.de/ns/hra-csv2vra/csv" at "modules/csv.xqm";
 import module namespace functx="http://www.functx.com";
-import module namespace console="http://exist-db.org/xquery/console";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
 
@@ -161,7 +160,6 @@ return
                     return 
                         $report
             let $session-store := session:set-attribute("validation-reports", $reports)
-            let $test := console:log($reports//status/string())
             let $valid := 
                 if ("invalid" = $reports//status/string()) then
                     "invalid"
