@@ -2,6 +2,8 @@ xquery version "3.0";
 
 module namespace csv="http://hra.uni-heidelberg.de/ns/hra-csv2vra/csv";
 import module namespace functx="http://www.functx.com";
+declare variable $csv:debug :=  session:get-attribute("debug");
+
 
 declare function csv:split-line($str)
 {
@@ -9,7 +11,7 @@ declare function csv:split-line($str)
         let $rest := fn:substring($str, 2)
         return 
         (
-            fn:substring-before($rest, '"'),
+            substring-before($rest, '",'),
             csv:split-line(fn:substring-after($rest, '",'))
         )
     else if (fn:matches($str, ",")) then 
@@ -36,28 +38,37 @@ declare function csv:num-to-char($num as xs:int) {
 declare
 (:    %templates:wrap:)
 function csv:read-csv($csv-string as xs:string) {
+
     let $lines := tokenize($csv-string, "\n")
 (:    let $body := remove($lines, 1):)
     let $body := $lines
-    return 
-      <result>
+    let $result := 
+        <result>
             {
                 for $line at $lpos in $body
-                    let $columns := csv:split-line($line)
-                    return
-                        <line num-index="{$lpos}">
-                            {
-                                for $column at $pos in $columns
-                                return
-                                    <column num-index="{$pos}">
-                                        {
-                                            functx:trim($column)
-                                        }
-                                    </column>
-                            }
-                        </line>
+                let $line := replace($line, '""', '|||||')
+
+                return
+                    if (string-length(functx:trim($line)) > 0) then
+                        let $columns := csv:split-line($line)
+                        return
+                            <line num-index="{$lpos}">
+                                {
+                                    for $column at $pos in $columns
+                                    return
+                                        <column num-index="{$pos}">
+                                            {
+                                                replace(serialize(functx:trim($column)), '\|\|\|\|\|', '&amp;quot;')
+                                            }
+                                        </column>
+                                }
+                            </line>
+                    else
+                        ()
             }
         </result>
+    return
+        $result
 };
 
 declare function csv:add-char-index($csv-data as node()*) {
