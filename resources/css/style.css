@@ -17,7 +17,7 @@ body{
     border:1px solid black;
 }
 
-#result{
+#result-container{
     border:1px solid black; 
     overflow:auto;
     max-height:100%;
@@ -29,10 +29,10 @@ body{
     border: 1px solid black;
     overflow-y: scroll;
     overflow-x: auto;
-    cursor:pointer;
 }
 
 #catalogs-selector > div{
+    cursor:pointer;
     white-space: nowrap;
 }
 
@@ -41,6 +41,7 @@ body{
 }
 
 #xsl-selector > div{
+    cursor:pointer;
     white-space: nowrap;
 }
 

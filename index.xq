@@ -10,6 +10,9 @@ declare variable $local:git-version := "$ver";
 
 let $cors-header := response:set-header("Access-Control-Allow-Origin", "*")
 let $data := session:get-attribute("data")
+let $debug := request:get-parameter("debug", ())
+let $set-session := session:set-attribute("debug", ())
+
 return
     <html>
         <head>
@@ -28,12 +31,23 @@ return
             <script type="text/javascript" src="resources/scripts/main.js"/>
         </head>
         <body>
-            <div id="git-version">git-version: <span>{$local:git-version}</span></div>
+            <div id="git-version" style="display:none">git-version: <span>{$local:git-version}</span></div>
             <div>
                 <button id="reset" type="button">Reset</button>
             </div>
+            {
+                if(not(empty($debug))) then
+                    <div>
+                        <button class="openDebugWindow" onclick="window.open('debug-output.xq');">open Debug</button>
+                    </div>
+                else
+                    ()
+            }
             <div id="messages"></div>
             <div id="menu">
+                <div style="float:right">
+                    <input type="checkbox" id="advancedMode" />advanced Mode
+                </div>
                 <div>
                     <div id="upload-mask">
                         <form id="csv-upload" enctype="multipart/form-data" method="post" action="upload.xq">
@@ -79,25 +93,27 @@ return
                             </span>
                         </div>
                     </div>
-                    <div>
-                        Applied XSLs:
+                    <div class="advanced">
+                        Apply XSLs (you will have to generate the XML again):
                         <div id="xsl-selector"></div>
                     </div>
                     <div>
-                        <button id="generate" type="button" onclick="generate($(this), $('#content'), $('#mapping-selector option:selected').val(), $('#process-from').val(), $('#process-to').val());" disabled="disabled">generate XML</button>
+                        <button id="generate" class="advanced" type="button" onclick="generate($(this));" disabled="disabled">generate XML</button>
                     </div>
-                    <div>
-                        Validate against:
-                        <div id="catalogs-selector">
+                    <div class="advanced">
+                        <div>
+                            Validate against:
+                            <div id="catalogs-selector"></div>
+                        </div>
+                        <div id="addSchema">
+                            add Schema (.xsd .dtd): <input type="text" id="newSchema"></input>
                         </div>
                     </div>
-                    <div id="addSchema">
-                        add Schema (.xsd .dtd): <input type="text" id="newSchema"></input>
-                    </div>
                 </div>
-                <div>
+                <div >
                     <div id="actionButtons">
-                        <button id="validate" type="button" disabled="disabled">validate</button>
+                        <button id="doAll" type="button" disabled="disabled" class="simple">generate XML</button>
+                        <button id="validate" type="button" disabled="disabled" class="advanced">validate</button>
                         <button id="download" type="button" disabled="disabled">download</button>
                     </div>
                 </div>
@@ -105,7 +121,7 @@ return
             <div class="centered toggleelement" style="cursor:pointer" onclick="$('#menu').slideToggle(300)">
                 <span>&#8613;&#8615;</span>
             </div>
-            <div id="result">
+            <div id="result-container">
                 <h3>Result:</h3>
                 <div id="content" style="font-size:10px;">
                 </div>

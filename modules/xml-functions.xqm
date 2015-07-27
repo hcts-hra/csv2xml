@@ -7,9 +7,8 @@ declare namespace json="http://www.json.org";
 
 declare variable $xml-functions:mapping-definitions := doc("../mappings/mappings.xml");
 
-declare function xml-functions:get-catalogs($mapping) {
-    let $catalogs := doc("../mappings/" || $mapping || "/validation-catalogs.xml")//uri
-(:    let $log := util:log("INFO", $catalogs):)
+declare function xml-functions:get-catalogs($mapping, $transformation) {
+    let $catalogs := doc("../mappings/" || $mapping || "/_mapping-settings.xml")//transformations/transform[@name=$transformation]/validation-catalogs/uri
     return 
         <root>
             {
@@ -24,7 +23,7 @@ declare function xml-functions:get-catalogs($mapping) {
 };
 
 declare function xml-functions:get-transformations($mapping) {
-    let $transformations := doc("../mappings/" || $mapping || "/xsl-transformations.xml")//transform
+    let $transformations := doc("../mappings/" || $mapping || "/_mapping-settings.xml")//transformations/transform
     return
         <root>
             {
@@ -41,12 +40,12 @@ declare function xml-functions:get-transformations($mapping) {
 };
 
 declare function xml-functions:get-xsls($mapping, $transform-name) {
-    let $transformations := doc("../mappings/" || $mapping || "/xsl-transformations.xml")
-    let $log := util:log("INFO", $transformations//transform)
+    let $transformations := doc("../mappings/" || $mapping || "/_mapping-settings.xml")//transformations/transform[@name=$transform-name]
+(:    let $log := util:log("INFO", doc("../mappings/" || $mapping || "/_mapping-settings.xml")//transformations):)
     return 
         <root>
             {
-                for $xsl in $transformations//transform[@name=$transform-name]/uri
+                for $xsl in $transformations/xsl/uri
                 return
                     <xsl json:array="true">
                         <uri>{$xsl/string()}</uri>
@@ -67,7 +66,8 @@ declare function xml-functions:apply-xsls($mapping as xs:string, $xml as node(),
 };
 
 declare function xml-functions:replace-template-variables($template-string as xs:string, $mapping-definition as node(), $line as node()) as xs:string {
-    let $replace-map := map:new(
+    let $replace-map := 
+        map:new(
             for $mapping in $mapping-definition//mapping
                 let $key := $mapping/@key/string()
                 let $queryString := $mapping/string()
@@ -76,23 +76,19 @@ declare function xml-functions:replace-template-variables($template-string as xs
                 let $changeTo := util:eval($queryString)
                 return
                     map:entry($changeFrom, $changeTo)
-    )
+        )
 
     let $from-seq := map:keys($replace-map)
     let $to-seq :=
         for $from in $from-seq
             let $to-value := 
                 if ($replace-map($from)) then
-                    (: replace ampersand :)
-                    let $ampersand := '&#38;'
-                    return 
-                        fn:replace(xs:string($replace-map($from)), $ampersand, "&amp;amp;")
+                    xs:string($replace-map($from))
                 else
                     xs:string("")
             return
                 $to-value
     
-
     let $return :=
         functx:replace-multi($template-string, $from-seq, $to-seq)
 

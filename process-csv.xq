@@ -14,8 +14,9 @@ declare variable $local:json-serialize-parameters :=
 
 
 let $action := request:get-parameter("action", "generate")
-let $debug :=  request:get-parameter("debug", false())
+let $debug :=  session:get-attribute("debug")
 let $mapping-name := request:get-parameter("mapping", "default")
+let $settings-uri :=  "mappings/" || $mapping-name || "/_mapping-settings.xml"
 
 return
     switch ($action)
@@ -37,7 +38,8 @@ return
                 serialize($catalogs, $local:json-serialize-parameters) 
 
         case "getCatalogs" return
-            let $catalogs := xml-functions:get-catalogs($mapping-name)
+            let $trans := request:get-parameter("trans", "")
+            let $catalogs := xml-functions:get-catalogs($mapping-name, $trans)
             let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize($catalogs, $local:json-serialize-parameters)
@@ -99,14 +101,15 @@ return
             let $csv-map-uri :=  "mappings/" || $mapping-name || "/csv-map.xml"
             let $mapping-definition := doc($csv-map-uri)
             (: get the template-filenames:)
-            let $parent-template-filename := doc($csv-map-uri)/xml/templates/parent/string()
-            let $template-filenames := doc($csv-map-uri)/xml/templates/template/string()
+            let $settings := doc($settings-uri)
+            let $parent-template-filename := $settings/settings/templates/parent/string()
+            let $template-filenames := $settings/settings/templates/template/string()
         
             (: serialize each template :)
             let $templates-strings := 
                 for $template-filename in $template-filenames
                     (: load the XML templates :)
-                    let $xml-uri := "mappings/" || $mapping-name || "/" || $template-filename
+                    let $xml-uri := "mappings/" || $mapping-name || "/templates/" || $template-filename
                     let $xml := doc($xml-uri)
                     let $xml-string := serialize($xml)
                     return $xml-string
@@ -123,7 +126,7 @@ return
             
             
             (: get the parent xml wrapper :)
-            let $parent-xml := doc("mappings/" || $mapping-name || "/" || $parent-template-filename)
+            let $parent-xml := doc("mappings/" || $mapping-name || "/templates/" || $parent-template-filename)
             let $parent-string := serialize($parent-xml)
             let $output-string := replace($parent-string, "\$PROCESSED_TEMPLATE\$", string-join($processed-template))
             let $output-xml := parse-xml($output-string)
@@ -136,13 +139,16 @@ return
                     $output-xml
             
             let $session-store := session:set-attribute("xml", $output-xml)
+            let $session-store-data :=  
+                if (not(empty($debug))) then
+                    session:set-attribute("lines", $data)
+                else
+                    ()
+
             return
                 let $header := response:set-header("Status", "200")
                 return
-                    if($debug = "true") then
-                        $lines
-                    else
-                        $output-xml
+                   $output-xml
                     
         case "validate" return
             (: get the catalogs for validations :)
@@ -150,6 +156,7 @@ return
                 for $cat in request:get-parameter("catalogs[]", "")
                     let $clear := validation:clear-grammar-cache()
                     let $catalog-uri := xs:anyURI($cat)
+(:                    let $log := util:log("INFO", "Pre-Parsing: " || $catalog-uri):)
                     let $pre-parse := validation:pre-parse-grammar($catalog-uri)
     (:                let $parsed-grammars := session:set-attribute("validation-grammars", validation:pre-parse-grammar($catalogs)):)
                     let $report :=
