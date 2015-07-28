@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <templates>
+        <parent>parent-template.xml</parent>
+        <template>vra-work-template.xml</template>
+        <template>vra-image-template.xml</template>
+    </templates>
+    <transformations>
+        <transform label="Unmodified VRA Core 4 XML" name="plainVRA" active="true" selected="true" type="xsl">
+            <xsl/>
+            <validation-catalogs>
+                <uri active="true" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vra-strictCluster.xsd</uri>
+                <uri active="false" critical="true">http://localhost:8080/exist/apps/csv2xml/mappings/default/xsd/vocab.xsd</uri>
+            </validation-catalogs>
+        </transform>
+        <transform label="Transform into RDF" name="rdf" active="true" selected="false" type="xsl">
+            <xsl>
+                <uri active="true" selected="true">xsl/VRA2RDF.xsl</uri>
+            </xsl>
+            <validation-catalogs/>
+        </transform>
+    </transformations>
+</settings>
