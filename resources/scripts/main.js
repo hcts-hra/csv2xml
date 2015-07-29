@@ -1,5 +1,5 @@
 var debug = false;
-var advanced = true;
+var advanced = false;
 var messageFadeOutTime = 3000;
 
 $( document ).ready(function() {

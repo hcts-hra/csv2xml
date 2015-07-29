@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- csv-map vra-strict -->
 <xml>
     <mapping key="WORK_ID">concat("w_", util:uuid())</mapping>
     <mapping key="IMAGE_ID">concat("i_", util:uuid())</mapping>
@@ -183,19 +184,18 @@ return
     <mapping key="WORK_Location2GeoVocab">$line/column[@heading-index="WORK_Location2GeoVocab"]/string()</mapping>
     <mapping key="WORK_Location2GeoRefid">$line/column[@heading-index="WORK_Location2GeoRefid"]/string()</mapping>
     <mapping key="WORK_MaterialDisplay">
-        let $materialDisplay := $line/column[@heading-index="WORK_MaterialDisplay"]/string()
-let $material1 := $line/column[@heading-index="WORK_Material1"]/string()
-let $material2 := $line/column[@heading-index="WORK_Material2"]/string()
-let $material3 := $line/column[@heading-index="WORK_Material3"]/string()
-let $material4 := $line/column[@heading-index="WORK_Material4"]/string()
-
-return 
-  if($materialDisplay)
-  then (
-    $materialDisplay
-  ) else (
+    let $materialDisplay := $line/column[@heading-index="WORK_MaterialDisplay"]/string()
+    
+    return 
+      if($materialDisplay) then 
+        $materialDisplay
+      else 
+        let $material1 := if($line/column[@heading-index="WORK_Material1"] != "") then ($line/column[@heading-index="WORK_Material1"]/string() ) else ()
+        let $material2 := if($line/column[@heading-index="WORK_Material2"] != "") then ($line/column[@heading-index="WORK_Material2"]/string() ) else ()
+        let $material3 := if($line/column[@heading-index="WORK_Material3"] != "") then ($line/column[@heading-index="WORK_Material3"]/string() ) else ()
+        let $material4 := if($line/column[@heading-index="WORK_Material4"] != "") then ($line/column[@heading-index="WORK_Material4"]/string() ) else ()
+        return
     string-join(($material1, $material2, $material3, $material4), '; ')
-  )
     </mapping>
     <mapping key="WORK_Material1">$line/column[@heading-index="WORK_Material1"]/string()</mapping>
     <mapping key="WORK_MaterialVocab1">$line/column[@heading-index="WORK_MaterialVocab1"]/string()</mapping>
@@ -266,7 +266,6 @@ return
     <mapping key="WORK_Measurements2Type4">$line/column[@heading-index="WORK_Measurements2Type4"]/string()</mapping>
     <mapping key="WORK_RelationDisplay">
         xquery version "3.0";
-
 let $relationDisplay := $line/column[@heading-index="WORK_RelationDisplay"]/string()
 
 return 
@@ -275,19 +274,22 @@ return
     $relationDisplay
   ) else (
     let $relation1 :=
-      if($line/column[@heading-index="WORK_RelatedWork1"])
+      if($line/column[@heading-index="WORK_RelatedWork1"] != "")
       then (
-	        let $rel1Type := if($line/column[@heading-index="WORK_RelationType1"]  != "") then ($line/column[@heading-index="WORK_RelationType1"]/string() || " ") else ()
-	    return $rel1Type || $line/column[@heading-index="WORK_RelatedWork1"]/string()
+	        let $relWork1 := if($line/column[@heading-index="WORK_RelatedWork1"]  != "") then ($line/column[@heading-index="WORK_RelatedWork1"]/string()) else ()
+	        let $rel1Type := if($line/column[@heading-index="WORK_RelationType1"]  != "") then ($line/column[@heading-index="WORK_RelationType1"]/string()) else ()
+	    return 
+	        string-join(($rel1Type, $relWork1), ' ')
       ) else ()
 
     let $relation2 :=
       if($line/column[@heading-index="WORK_RelatedWork2"])
       then (
-	        let $rel2Type := if($line/column[@heading-index="WORK_RelationType2"]  != "") then ($line/column[@heading-index="WORK_RelationType2"]/string() || " ") else ()
-	    return $rel2Type || $line/column[@heading-index="WORK_RelatedWork2"]/string()
-      ) else ()
-
+	        let $relWork2 := if($line/column[@heading-index="WORK_RelatedWork2"]  != "") then ($line/column[@heading-index="WORK_RelatedWork2"]/string()) else ()
+	        let $rel2Type := if($line/column[@heading-index="WORK_RelationType2"]  != "") then ($line/column[@heading-index="WORK_RelationType2"]/string()) else ()
+	    return 
+	        string-join(($rel2Type, $relWork2), ' ')
+	  ) else ()
 
     return string-join(($relation1, $relation2), '; ')
 )
@@ -300,11 +302,12 @@ return
     <mapping key="WORK_SourceDisplay">$line/column[@heading-index="WORK_SourceDisplay"]/string()</mapping>
     <mapping key="WORK_StateEditionDisplay">$line/column[@heading-index="WORK_StateEditionDisplay"]/string()</mapping>
     <mapping key="WORK_StylePeriodDisplay">
-        let $stylePeriodDisplay := $line/column[@heading-index="WORK_StylePeriodDisplay"]/string()
-let $stylePeriod1 := $line/column[@heading-index="WORK_StylePeriod1"]/string()
-let $stylePeriod2 := $line/column[@heading-index="WORK_StylePeriod2"]/string()
-let $stylePeriod3 := $line/column[@heading-index="WORK_StylePeriod3"]/string()
-let $stylePeriod4 := $line/column[@heading-index="WORK_StylePeriod4"]/string()
+let $stylePeriodDisplay := if($line/column[@heading-index="WORK_StylePeriodDisplay"] != "") then ($line/column[@heading-index="WORK_StylePeriodDisplay"]/string()) else ()
+
+let $stylePeriod1 := if($line/column[@heading-index="WORK_StylePeriod1"] != "") then ($line/column[@heading-index="WORK_StylePeriod1"]/string()) else ()
+let $stylePeriod2 := if($line/column[@heading-index="WORK_StylePeriod2"] != "") then ($line/column[@heading-index="WORK_StylePeriod2"]/string()) else ()
+let $stylePeriod3 := if($line/column[@heading-index="WORK_StylePeriod3"] != "") then ($line/column[@heading-index="WORK_StylePeriod3"]/string()) else ()
+let $stylePeriod4 := if($line/column[@heading-index="WORK_StylePeriod4"] != "") then ($line/column[@heading-index="WORK_StylePeriod4"]/string()) else ()
 
 return 
   if($stylePeriodDisplay)
@@ -327,15 +330,16 @@ return
     <mapping key="WORK_StylePeriodVocab4">$line/column[@heading-index="WORK_StylePeriodVocab4"]/string()</mapping>
     <mapping key="WORK_StylePeriodRefid4">$line/column[@heading-index="WORK_StylePeriodRefid4"]/string()</mapping>
     <mapping key="WORK_SubjectDisplay">
-        let $subjectDisplay := $line/column[@heading-index="WORK_SubjectDisplay"]/string()
-let $subject1 := $line/column[@heading-index="WORK_Subject1"]/string()
-let $subject2 := $line/column[@heading-index="WORK_Subject2"]/string()
-let $subject3 := $line/column[@heading-index="WORK_Subject3"]/string()
-let $subject4 := $line/column[@heading-index="WORK_Subject4"]/string()
-let $subject5 := $line/column[@heading-index="WORK_Subject5"]/string()
-let $subject6 := $line/column[@heading-index="WORK_Subject6"]/string()
-let $subject7 := $line/column[@heading-index="WORK_Subject7"]/string()
-let $subject8 := $line/column[@heading-index="WORK_Subject8"]/string()
+let $subjectDisplay := if($line/column[@heading-index="WORK_SubjectDisplay"] != "") then ($line/column[@heading-index="WORK_SubjectDisplay"]/string()) else ()
+
+let $subject1 := if($line/column[@heading-index="WORK_Subject1"] != "") then ($line/column[@heading-index="WORK_Subject1"]/string()) else ()
+let $subject2 := if($line/column[@heading-index="WORK_Subject2"] != "") then ($line/column[@heading-index="WORK_Subject2"]/string()) else ()
+let $subject3 := if($line/column[@heading-index="WORK_Subject3"] != "") then ($line/column[@heading-index="WORK_Subject3"]/string()) else ()
+let $subject4 := if($line/column[@heading-index="WORK_Subject4"] != "") then ($line/column[@heading-index="WORK_Subject4"]/string()) else ()
+let $subject5 := if($line/column[@heading-index="WORK_Subject5"] != "") then ($line/column[@heading-index="WORK_Subject5"]/string()) else ()
+let $subject6 := if($line/column[@heading-index="WORK_Subject6"] != "") then ($line/column[@heading-index="WORK_Subject6"]/string()) else ()
+let $subject7 := if($line/column[@heading-index="WORK_Subject7"] != "") then ($line/column[@heading-index="WORK_Subject7"]/string()) else ()
+let $subject8 := if($line/column[@heading-index="WORK_Subject8"] != "") then ($line/column[@heading-index="WORK_Subject8"]/string()) else ()
 
 return 
   if($subjectDisplay)
@@ -378,11 +382,12 @@ return
     <mapping key="WORK_SubjectVocab8">$line/column[@heading-index="WORK_SubjectVocab8"]/string()</mapping>
     <mapping key="WORK_SubjectRefid8">$line/column[@heading-index="WORK_SubjectRefid8"]/string()</mapping>
     <mapping key="WORK_TechniqueDisplay">
-        let $techniqueDisplay := $line/column[@heading-index="WORK_TechniqueDisplay"]/string()
-let $technique1 := $line/column[@heading-index="WORK_Technique1"]/string()
-let $technique2 := $line/column[@heading-index="WORK_Technique2"]/string()
-let $technique3 := $line/column[@heading-index="WORK_Technique3"]/string()
-let $technique4 := $line/column[@heading-index="WORK_Technique4"]/string()
+let $techniqueDisplay := if($line/column[@heading-index="WORK_TechniqueDisplay"] != "") then ($line/column[@heading-index="WORK_TechniqueDisplay"]/string()) else ()
+
+let $technique1 := if($line/column[@heading-index="WORK_Technique1"] != "") then ($line/column[@heading-index="WORK_Technique1"]/string()) else ()
+let $technique2 := if($line/column[@heading-index="WORK_Technique2"] != "") then ($line/column[@heading-index="WORK_Technique2"]/string()) else ()
+let $technique3 := if($line/column[@heading-index="WORK_Technique3"] != "") then ($line/column[@heading-index="WORK_Technique3"]/string()) else ()
+let $technique4 := if($line/column[@heading-index="WORK_Technique4"] != "") then ($line/column[@heading-index="WORK_Technique4"]/string()) else ()
 
 return 
   if($techniqueDisplay)
@@ -422,10 +427,11 @@ return
     <mapping key="WORK_TitleAlt">$line/column[@heading-index="WORK_TitleAlt"]/string()</mapping>
     <mapping key="WORK_TitleAltType">$line/column[@heading-index="WORK_TitleAltType"]/string()</mapping>
     <mapping key="WORK_WorktypeDisplay">
-        let $worktypeDisplay := $line/column[@heading-index="WORK_WorktypeDisplay"]/string()
-let $worktype1 := $line/column[@heading-index="WORK_Worktype1"]/string()
-let $worktype2 := $line/column[@heading-index="WORK_Worktype2"]/string()
-let $worktype3 := $line/column[@heading-index="WORK_Worktype3"]/string()
+let $worktypeDisplay := if($line/column[@heading-index="WORK_WorktypeDisplay"] != "") then ($line/column[@heading-index="WORK_WorktypeDisplay"]/string()) else ()
+
+let $worktype1 := if($line/column[@heading-index="WORK_Worktype1"] != "") then ($line/column[@heading-index="WORK_Worktype1"]/string()) else ()
+let $worktype2 := if($line/column[@heading-index="WORK_Worktype2"] != "") then ($line/column[@heading-index="WORK_Worktype2"]/string()) else ()
+let $worktype3 := if($line/column[@heading-index="WORK_Worktype3"] != "") then ($line/column[@heading-index="WORK_Worktype3"]/string()) else ()
 
 return 
   if($worktypeDisplay)
@@ -486,10 +492,11 @@ return
     <mapping key="IMAGE_StateEditionDisplay">$line/column[@heading-index="IMAGE_StateEditionDisplay"]/string()</mapping>
     <mapping key="IMAGE_StylePeriodDisplay">$line/column[@heading-index="IMAGE_StylePeriodDisplay"]/string()</mapping>
     <mapping key="IMAGE_SubjectDisplay">
-        let $subjectDisplay := $line/column[@heading-index="IMAGE_SubjectDisplay"]/string()
-let $subject1 := $line/column[@heading-index="IMAGE_Subject1"]/string()
-let $subject2 := $line/column[@heading-index="IMAGE_Subject2"]/string()
-let $subject3 := $line/column[@heading-index="IMAGE_Subject3"]/string()
+let $subjectDisplay := if($line/column[@heading-index="IMAGE_SubjectDisplay"] != "") then ($line/column[@heading-index="IMAGE_SubjectDisplay"]/string()) else ()
+
+let $subject1 := if($line/column[@heading-index="IMAGE_Subject1"] != "") then ($line/column[@heading-index="IMAGE_Subject1"]/string()) else ()
+let $subject2 := if($line/column[@heading-index="IMAGE_Subject2"] != "") then ($line/column[@heading-index="IMAGE_Subject2"]/string()) else ()
+let $subject3 := if($line/column[@heading-index="IMAGE_Subject3"] != "") then ($line/column[@heading-index="IMAGE_Subject3"]/string()) else ()
 
 return 
   if($subjectDisplay)

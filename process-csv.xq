@@ -115,7 +115,7 @@ return
                     return $xml-string
 
             (: process each csv line   :)
-            let $lines := $data/line[position() > ($start - 1) and position() < ($end + 1) ]
+            let $lines := $data/line[position() > ($start - 1) and position() < $end ]
             let $processed-template :=
                 for $line in $lines
                     (: process each line and output the string with replaced variables :)

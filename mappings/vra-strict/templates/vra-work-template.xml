@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- vra-strict WORK-template 2015-07-27ma -->
+<!-- 
+    vra-strict WORK-template 2015-07-29ma -->
 <work id="$WORK_ID$">
     <agentSet>
         <display>$WORK_AgentDisplay$</display>
@@ -36,8 +37,8 @@
         </date>
     </dateSet>
     <descriptionSet>
-        <display>$WORK_Description$</display>
-        <description source="$WORK_DescriptionSource$">$WORK_Description$</description>
+        <display>$WORK_DescriptionDisplay$</display>
+        <description source="$WORK_DescriptionSource$">$WORK_DescriptionDisplay$</description>
     </descriptionSet>
     <inscriptionSet>
         <display>$WORK_InscriptionDisplay$</display>

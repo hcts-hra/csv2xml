@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- vra-strict IMAGE-template 2015-07-27ma -->
+<!-- 
+    vra-strict IMAGE-template 2015-07-29ma -->
 <image id="$IMAGE_ID$" href="$IMAGE_Filename$">
     <agentSet>
         <display>$IMAGE_AgentDisplay$</display>
