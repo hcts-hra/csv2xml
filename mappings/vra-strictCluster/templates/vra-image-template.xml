@@ -46,6 +46,10 @@
             </point>
         </location>
     </locationSet>
+    <materialSet>
+        <display>$IMAGE_MaterialDisplay$</display>
+        <material/>
+    </materialSet>
     <measurementsSet>
         <display>$IMAGE_MeasurementsDisplay$</display>
         <measurements/>

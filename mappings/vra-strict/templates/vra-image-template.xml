@@ -34,6 +34,10 @@
             <refid type="accession">$IMAGE_AccessionID$</refid>
         </location>
     </locationSet>
+    <materialSet>
+        <display>$IMAGE_MaterialDisplay$</display>
+        <material/>
+    </materialSet>
     <measurementsSet>
         <display>$IMAGE_MeasurementsDisplay$</display>
         <measurements/>

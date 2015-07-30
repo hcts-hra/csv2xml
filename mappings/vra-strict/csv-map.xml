@@ -7,6 +7,7 @@
     <mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping>
     <mapping key="IMAGE_VendorID">$line/column[@heading-index="IMAGE_VendorID"]/string()</mapping>
     <mapping key="IMAGE_VendorName">$line/column[@heading-index="IMAGE_VendorName"]/string()</mapping>
+    <mapping key="LOCAL-REPO-NAME">$line/column[@heading-index="LOCAL-REPO-NAME"]/string()</mapping>
     <mapping key="WORK_IDno">$line/column[@heading-index="WORK_IDno"]/string()</mapping>
     <mapping key="WORK_AgentDisplay">
 xquery version "3.0";
@@ -479,6 +480,7 @@ return
     <mapping key="IMAGE_DescriptionDisplay">$line/column[@heading-index="IMAGE_DescriptionDisplay"]/string()</mapping>
     <mapping key="IMAGE_InscriptionDisplay">$line/column[@heading-index="IMAGE_InscriptionDisplay"]/string()</mapping>
     <mapping key="IMAGE_LocationDisplay">$line/column[@heading-index="IMAGE_LocationDisplay"]/string()</mapping>
+    <mapping key="IMAGE_MaterialDisplay">$line/column[@heading-index="IMAGE_MaterialDisplay"]/string()</mapping>
     <mapping key="IMAGE_MeasurementsDisplay">$line/column[@heading-index="IMAGE_MeasurementsDisplay"]/string()</mapping>
     <mapping key="IMAGE_RelationDisplay">$line/column[@heading-index="IMAGE_RelationDisplay"]/string()</mapping>
     <mapping key="IMAGE_RightsDisplay">$line/column[@heading-index="IMAGE_RightsDisplay"]/string()</mapping>
