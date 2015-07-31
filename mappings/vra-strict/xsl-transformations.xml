@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl>
-    <transform label="unmodified VRA Core 4 XML" name="plainVRA" active="true" selected="true" type="xsl"/>
-    <transform label="transform into RDF" name="rdf" active="true" selected="false" type="xsl">
-        <uri active="true" selected="true">xsl/VRA2RDF.xsl</uri>
-    </transform>
-</xsl>

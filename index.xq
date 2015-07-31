@@ -1,12 +1,14 @@
 xquery version "3.0";
 
 import module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions" at "modules/xml-functions.xqm";
+import module namespace config="http://hra.uni-heidelberg.de/ns/csv2vra/config" at "modules/config.xqm";
+
 declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 
 declare option output:method "html5";
 declare option output:media-type "text/html";
 
-declare variable $local:git-version := "$ver";
+declare variable $local:app-version := $config:expath-descriptor/@version/string();
 
 let $cors-header := response:set-header("Access-Control-Allow-Origin", "*")
 let $data := session:get-attribute("data")
@@ -31,7 +33,7 @@ return
             <script type="text/javascript" src="resources/scripts/main.js"/>
         </head>
         <body>
-            <div id="git-version" style="display:none">git-version: <span>{$local:git-version}</span></div>
+            <div id="git-version">App-Version: <span>{$local:app-version}</span></div>
             <div>
                 <button id="reset" type="button">Reset</button>
             </div>

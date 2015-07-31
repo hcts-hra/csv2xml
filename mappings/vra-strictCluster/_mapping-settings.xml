@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
-    <templates>
+    <templates uses-headings="true">
         <parent>parent-template.xml</parent>
         <template>vra-work-template.xml</template>
         <template>vra-image-template.xml</template>

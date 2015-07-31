@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<vra xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra-strict.xsd">
-	$PROCESSED_TEMPLATE$
-</vra>

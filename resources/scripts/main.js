@@ -175,13 +175,32 @@ function reset() {
 }
 
 function updateMapping() {
-    // console.debug("updating mapping");
+    console.debug("updating mapping");
+
     toggleAfterProcessButtons(false);
     loadDefinedTransformations(function(msg){});
     
     $("#result-container").empty();
     $("#newSchema").val(null);
-    $("#process-from").val(1);
+
+    var mapping = $("select#mapping-selector option:selected").val();
+
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "usesHeadings",
+            mapping: mapping,
+        }
+    })
+    .done(function( msg ) {
+        var startingLine = (msg === true)?2:1;
+        $("#process-from").val(startingLine);
+        console.debug("uses Headings: " + msg);
+        return msg;
+    });
+
+
     $('#validate').removeClass("invalid").removeClass("valid");
 }
 
@@ -310,7 +329,7 @@ function toggleAfterProcessButtons(toggle) {
 }
 
 function updateInformations(data) {
-    console.debug(data);
+    // console.debug(data);
     $('.lines-amount').html(data.lines);
     $('#process-to').attr("value", data.lines);
 }

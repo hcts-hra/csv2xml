@@ -5,6 +5,7 @@ import module namespace csv="http://hra.uni-heidelberg.de/ns/hra-csv2vra/csv" at
 import module namespace functx="http://www.functx.com";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
+declare namespace json="http://www.json.org";
 
 declare variable $local:json-serialize-parameters :=
     <output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
@@ -184,6 +185,15 @@ return
             let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize($result, $local:json-serialize-parameters)
+                
+        case "usesHeadings" return
+            let $mapping-definition := doc($settings-uri)
+            let $uses-headings := $mapping-definition//templates/@uses-headings/string()
+            let $log := util:log("INFO", $mapping-definition//templates)
+            let $header := response:set-header("Content-Type", "application/json")
+            return
+                serialize(<root json:literal="true">{$uses-headings}</root>, $local:json-serialize-parameters)
+            
         default return
             ""
 
