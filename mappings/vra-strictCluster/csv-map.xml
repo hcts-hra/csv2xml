@@ -7,23 +7,26 @@ let $workID := $line/column[@heading-index="WORK_ID"]/string()
 return 
   if($workID)
   then (
-    $workID
-  ) else (
-concat("w_", util:uuid())
-    )
-</mapping>
+      let $workID_A :=  if(starts-with($workID, "w_")) then ($workID) else ("w_" || $workID) 
+      return $workID_A
+ ) else (
+    concat("w_", util:uuid())
+)
+    </mapping>
     <mapping key="IMAGE_ID">
         xquery version "3.0";
 let $imageID := $line/column[@heading-index="IMAGE_ID"]/string()
 return 
   if($imageID)
   then (
-    $imageID
-  ) else (
-concat("i_", util:uuid())
+      let $imageID_A :=  if(starts-with($imageID, "w_")) then ($imageID) else ("w_" || $imageID) 
+      return $imageID_A
+ ) else (
+    concat("i_", util:uuid())
 )
 </mapping>
     <mapping key="IMAGE_Filename">$line/column[@heading-index="IMAGE_Filename"]/string()</mapping>
+    <mapping key="IMAGE_Href">$line/column[@heading-index="IMAGE_Href"]/string()</mapping>
     <mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping>
     <mapping key="IMAGE_VendorID">$line/column[@heading-index="IMAGE_VendorID"]/string()</mapping>
     <mapping key="IMAGE_VendorName">$line/column[@heading-index="IMAGE_VendorName"]/string()</mapping>
