@@ -16,8 +16,8 @@
         <date/>
     </dateSet>
     <descriptionSet>
-        <display>$IMAGE_Description$</display>
-        <description>$IMAGE_Description$</description>
+        <display>$IMAGE_DescriptionDisplay$</display>
+        <description>$IMAGE_DescriptionDisplay$</description>
     </descriptionSet>
     <inscriptionSet>
         <display>$IMAGE_InscriptionDisplay$</display>
@@ -46,10 +46,10 @@
     </relationSet>
     <rightsSet>
         <display>$IMAGE_RightsDisplay$</display>
-        <notes>$IMAGE_RigthsNotes$</notes>
-        <rights type="$IMAGE_RigthsType$">
-            <rightsHolder>$IMAGE_RigthsHolder$</rightsHolder>
-            <text>$IMAGE_RigthsText$</text>
+        <notes>$IMAGE_RightsNotes$</notes>
+        <rights type="$IMAGE_RightsType$">
+            <rightsHolder>$IMAGE_RightsHolder$</rightsHolder>
+            <text>$IMAGE_RightsText$</text>
         </rights>
     </rightsSet>
     <sourceSet>
