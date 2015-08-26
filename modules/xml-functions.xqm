@@ -4,8 +4,12 @@ module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-func
 import module namespace functx="http://www.functx.com";
 
 declare namespace json="http://www.json.org";
+declare namespace csv2xml="http://hra.uni-hd.de/csv2xml/template";
 
-declare variable $xml-functions:mapping-definitions := doc("../mappings/mappings.xml");
+declare variable $xml-functions:mappings-path := "..";
+declare variable $xml-functions:mapping-definitions := doc($xml-functions:mappings-path || "/mappings/mappings.xml");
+declare variable $xml-functions:temp-dir := xs:anyURI("/db/tmp/");
+declare variable $xml-functions:ERROR := xs:QName("xml-functions:error");
 
 declare function xml-functions:get-catalogs($mapping, $transformation) {
     let $catalogs := doc("../mappings/" || $mapping || "/_mapping-settings.xml")//transformations/transform[@name=$transformation]/validation-catalogs/uri
@@ -56,16 +60,34 @@ declare function xml-functions:get-xsls($mapping, $transform-name) {
         </root>
 };
 
-declare function xml-functions:apply-xsls($mapping as xs:string, $xml as node(), $xsls as xs:string*) as node(){
-    let $xml := 
-        for $xsl in $xsls
-            let $xsl-doc := doc("../mappings/" || $mapping || "/" || $xsl)
-            return transform:transform($xml, $xsl-doc, ())
-(:        let $log := util:log("INFO", $xsl-uri):)
-    return $xml
+declare function xml-functions:apply-xsls($xsls as xs:string*){
+(:    let $log := util:log("INFO", "xsls: " || $xsls):)
+    let $file-uri := session:get-attribute("file-uri")
+
+    let $transformed-file-uri := functx:substring-before-last($file-uri, ".xml") || "_transformed.xml"
+    let $mapping-name := session:get-attribute("mapping-name")
+    return 
+(:        try {:)
+            let $xml := doc($file-uri)
+            let $xml :=
+                if(count($xsls) > 0) then
+                    for $xsl in $xsls
+                        let $xsl-doc := doc("../mappings/" || $mapping-name || "/" || $xsl)
+                        (: let $log := util:log("INFO", "../mappings/" || $mapping-name || "/" || $xsl):) 
+                            return 
+                                transform:transform($xml, $xsl-doc, ())
+                else
+                    $xml
+            let $stored-xml-uri := xmldb:store($xml-functions:temp-dir, $transformed-file-uri, $xml)
+            return 
+                $stored-xml-uri
+(:        } catch * {:)
+(:            error($xml-functions:ERROR, "XSL-Transforming failed. " || $err:code || " " || $err:description || " " || $err:value):)
+(:        }:)
 };
 
 declare function xml-functions:replace-template-variables($template-string as xs:string, $mapping-definition as node(), $line as node()) as xs:string {
+    let $clear-default-ns := util:declare-namespace("", xs:anyURI(""))
     let $replace-map := 
         map:new(
             for $mapping in $mapping-definition//mapping
@@ -132,3 +154,130 @@ declare function xml-functions:remove-empty-elements($nodes as node()*)  as node
             $node
 };
 
+declare function xml-functions:store-parent($parent as node()*) as xs:string{
+    let $session-saved-uri := session:get-attribute("file-uri")
+(:    let $log := util:log("INFO", session:get-attribute-names()):)
+    let $res-name := 
+        if ($session-saved-uri) then
+            functx:substring-after-last($session-saved-uri, "/")
+        else
+            util:uuid() || ".xml"
+    return 
+        try {
+            (: if there is already a xnml file for this session, overwrite it:)
+            let $store := xmldb:store($xml-functions:temp-dir, $res-name, $parent)
+            return
+                $res-name
+        } catch * {
+            error($xml-functions:ERROR, "creating temp file failed", $xml-functions:temp-dir || "/" || $res-name || ":" || $err:code || " " || $err:description || " " || $err:value)
+        }
+};
+
+declare function xml-functions:store-node($node-as-string as xs:string, $target-node-query){
+    let $mapping-name := session:get-attribute("mapping-name")
+    (: open temp file :)
+    let $generated-doc := doc(session:get-attribute("file-uri"))
+    let $xml := parse-xml($node-as-string)
+    let $xml := xml-functions:remove-empty-attributes($xml/*)
+    
+    
+    let $importNamespaces := xml-functions:importNamespaces()
+    let $target-node := util:eval("$generated-doc//" || $target-node-query)
+    return
+        try {
+            update insert $xml preceding $target-node 
+        } catch * {
+            error($xml-functions:ERROR, "Error inserting the processed template. " || $err:code || " " || $err:description || " " || $err:value)
+        }
+
+(:        util:log("INFO", $generated-doc):)
+};
+
+
+declare function xml-functions:load-templates-in-session() {
+    let $mapping-name := session:get-attribute("mapping-name")
+    let $settings-uri :=  $xml-functions:mappings-path || "/mappings/" || $mapping-name || "/_mapping-settings.xml"
+
+    (: get the template-filenames:)
+    let $settings := doc($settings-uri)
+    let $templates := $settings/settings/templates/template
+
+    (: serialize each template :)
+    let $templates-strings := 
+        map:new(
+            for $template in $templates
+                let $target-node-query := $template/targetNode/string()
+                let $template-filename := $template/filename/string()
+
+                (: load the XML templates :)
+                let $xml-uri := $xml-functions:mappings-path || "/mappings/" || $mapping-name || "/templates/" || $template-filename
+(:                let $log := util:log("INFO", "tfn:" || $xml-uri):)
+                let $xml := doc($xml-uri)
+                let $xml-string := serialize($xml)
+(:                let $log := util:log("INFO", $xml-string):)
+                return 
+                    map:entry($template-filename, 
+                        map{
+                                "string": $xml-string,
+                                "targetNodeQuery": $target-node-query
+                        }
+                    )
+        )
+    let $store-session := session:set-attribute("template-strings", $templates-strings)
+    return
+        $templates-strings
+};
+
+declare function xml-functions:importNamespaces() {
+    let $presetDefinition := session:get-attribute("selectedPresetDefiniton")
+    let $namespace-declarations := $presetDefinition/importNamespaces
+    return
+        for $namespace in $namespace-declarations//ns 
+            let $prefix := $namespace/@prefix/string()
+            let $namespace-uri := xs:anyURI($namespace/string())
+(:            let $log := util:log("INFO", "declaring namespace " || $prefix || ":" || $namespace-uri):)
+            return
+                try {
+                    util:declare-namespace($prefix, $namespace-uri)
+                } catch * {
+                    error($xml-functions:ERROR, "Error declaring namespace " || $prefix || ":" || $namespace-uri || " - " || $err:code || " " || $err:description || " " || $err:value)
+                }
+};
+
+declare function xml-functions:get-mapping-settings() {
+    let $mapping-name := session:get-attribute("mapping-name")
+    return
+        if (not(session:get-attribute("mapping-settings"))) then
+            let $settings-uri :=  $xml-functions:mappings-path || "/mappings/" || $mapping-name || "/_mapping-settings.xml"
+            let $settings := doc($settings-uri)
+            let $session-store := session:set-attribute("mapping-settings", $settings)
+            return 
+                $settings
+        else
+            session:get-attribute("mapping-settings")
+};
+
+declare function xml-functions:count-pagination-items() as xs:integer {
+    let $import-namespaces := xml-functions:importNamespaces()
+    let $presetDefinition := session:get-attribute("selectedPresetDefiniton")
+    let $pagination-query := $presetDefinition/paginationQuery/string()
+    let $log := util:log("INFO", "paginationQuery" || $pagination-query)
+    
+    let $generated-xml := doc(session:get-attribute("transformed-filename"))
+    return
+        util:eval("count(" || $pagination-query || ")")
+
+};
+
+declare function xml-functions:get-pagination-item($page as xs:integer) {
+    let $mapping-name := session:get-attribute("mapping-name")
+    let $presetDefinition := session:get-attribute("selectedPresetDefiniton")
+    let $pagination-query := $presetDefinition/paginationQuery/string()
+    
+    
+    let $generated-xml := doc(session:get-attribute("transformed-filename"))
+    let $importNamespaces := xml-functions:importNamespaces()
+    let $page-item := util:eval($pagination-query || "[" || $page || "]")
+    return
+        $page-item
+};

@@ -680,9 +680,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:hasVersion>
             </xsl:if>
         </rdf:Description>
-    </xsl:template>
-  
-  <!-- Agent template -->
+    </xsl:template><!-- Agent template -->
     <xsl:template match="vc:agent">
         <vra:creator>
             <rdf:Description>
@@ -754,9 +752,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </xsl:if>
             </rdf:Description>
         </vra:creator>
-    </xsl:template>
-   
-   <!-- CreativeWork Culture template -->
+    </xsl:template><!-- CreativeWork Culture template -->
     <xsl:template match="vc:culturalContext">
         <xsl:choose>
             <xsl:when test="@vocab ='ULAN' and @refid">
@@ -808,9 +804,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:culturalContext>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-
-	<!-- Date/Event templates -->
+    </xsl:template><!-- Date/Event templates -->
     <xsl:template match="vc:dateSet">
         <xsl:if test="not(vc:dateSet/vc:dates)">
             <vra:dateCreated>
@@ -999,9 +993,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </rdf:Description>
             </vra:wasViewed>
         </xsl:if>
-    </xsl:template>
-
-<!-- Title template -->
+    </xsl:template><!-- Title template -->
     <xsl:template match="vc:titleSet">
         <xsl:choose>
             <xsl:when test="not(vc:title)">
@@ -1023,16 +1015,12 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
             </xsl:if>
             <xsl:value-of select="."/>
         </vra:name>
-    </xsl:template>
-	
-	<!-- Description template -->
+    </xsl:template><!-- Description template -->
     <xsl:template match="vc:description">
         <vra:description>
             <xsl:value-of select="."/>
         </vra:description>
-    </xsl:template>
-
-<!-- Location templates -->
+    </xsl:template><!-- Location templates -->
     <xsl:template match="vc:location[@type='repository']">
         <xsl:if test="vc:refid/@type='accession'">
             <vra:serialNumber>
@@ -1257,9 +1245,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:name>
             </rdf:Description>
         </vra:containedIn>
-    </xsl:template>
-	
-	<!-- Material template -->
+    </xsl:template><!-- Material template -->
     <xsl:template match="vc:materialSet">
         <xsl:choose>
             <xsl:when test="not(vc:material/node())">
@@ -1377,9 +1363,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:if>
-    </xsl:template>
-	
-	<!-- StylePeriod templates -->
+    </xsl:template><!-- StylePeriod templates -->
     <xsl:template match="vc:stylePeriodSet">
         <xsl:choose>
             <xsl:when test="not(vc:stylePeriod)">
@@ -1502,9 +1486,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:hasStylePeriod>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-	
-	<!-- Subject Templates	  -->
+    </xsl:template><!-- Subject Templates	  -->
     <xsl:template match="vc:subjectSet">
         <xsl:choose>
             <xsl:when test="not(vc:subject/vc:term)">
@@ -1710,9 +1692,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:about>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-	
-	<!-- Technique set templates -->
+    </xsl:template><!-- Technique set templates -->
     <xsl:template match="vc:techniqueSet">
         <xsl:choose>
             <xsl:when test="not(vc:technique/node())">
@@ -1835,9 +1815,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:hasTechnique>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-	
-	<!-- Measurement Templates -->
+    </xsl:template><!-- Measurement Templates -->
     <xsl:template match="vc:measurementsSet">
         <xsl:choose>
             <xsl:when test="not(vc:measurements/node())">
@@ -2298,9 +2276,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 <xsl:value-of select="@unit"/>
             </vra:resolution>
         </xsl:if>
-    </xsl:template>
-	
-	<!-- Rights Templates -->
+    </xsl:template><!-- Rights Templates -->
     <xsl:template match="vc:rightsSet">
         <xsl:choose>
             <xsl:when test="not(vc:rights/node())">
@@ -2332,9 +2308,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:copyrightHolder>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-	
-	<!-- Inscription templates -->
+    </xsl:template><!-- Inscription templates -->
     <xsl:template match="vc:inscriptionSet">
         <xsl:choose>
             <xsl:when test="not(vc:inscription/vc:author/node())">
@@ -2639,9 +2613,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </vra:hasInscription>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-	
-<!-- WorkType template -->
+    </xsl:template><!-- WorkType template -->
     <xsl:template match="vc:worktypeSet" mode="workType">
         <xsl:apply-templates select="vc:worktype" mode="workType"/>
     </xsl:template>
@@ -2694,9 +2666,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
                 </xsl:attribute>
             </rdf:type>
         </xsl:if>
-    </xsl:template>
-	
-<!-- Catch remainder templates -->
+    </xsl:template><!-- Catch remainder templates -->
     <xsl:template match="*">
         <xsl:comment>
             <xsl:text>Skipping over </xsl:text>

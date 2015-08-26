@@ -33,9 +33,11 @@ return
             <script type="text/javascript" src="resources/scripts/main.js"/>
         </head>
         <body>
+            <div id="log-dialog" class="log"></div>
             <div id="git-version">App-Version: <span>{$local:app-version}</span></div>
             <div>
                 <button id="reset" type="button">Reset</button>
+                <button id="toggle-log" type="button">toggle log</button>
             </div>
             {
                 if(not(empty($debug))) then
@@ -67,6 +69,11 @@ return
                         </div>
                     </div>
                     <div>
+                        <span>
+                            process lines <input type="text" id="process-from" value="1" size="3em"/> to <input class="lines-amount" type="text" id="process-to" value="{count($data/line)}" size="3em"/>
+                        </span>
+                    </div>
+                    <div>
                         <span>mapping:</span>
                         <select id="mapping-selector">
                         {
@@ -81,23 +88,20 @@ return
                         </select>
                     </div>
                     <div>
-                        <span>transform:</span>
+                        <button id="generate" class="advanced" type="button" onclick="generate($(this));" disabled="disabled">generate XML</button>
+                    </div>
+                    <div>
+                        <span>transform preset:</span>
                         <select id="transformations-selector">
                         </select>
                     </div>
-                    <div>
-                        <div>
-                            <span>
-                                process lines <input type="text" id="process-from" value="1" size="3em"/> to <input class="lines-amount" type="text" id="process-to" value="{count($data/line)}" size="3em"/>
-                            </span>
-                        </div>
-                    </div>
                     <div class="advanced">
-                        Apply XSLs (you will have to generate the XML again):
+                        Apply XSLs (for transformation):
                         <div id="xsl-selector"></div>
                     </div>
+                    <div style="font-size:8px">(modifying the predefined selection may break pagination)</div>
                     <div>
-                        <button id="generate" class="advanced" type="button" onclick="generate($(this));" disabled="disabled">generate XML</button>
+                        <button id="applyXSL" class="advanced" type="button" disabled="disabled">transform XML</button>
                     </div>
                     <div class="advanced">
                         <div>
@@ -109,8 +113,15 @@ return
                         </div>
                     </div>
                 </div>
-                <div >
+                <!--
+                <div>
+                    <input type="checkbox" id="displayPreview" />display preview after processing
+                </div>
+                -->
+                <div>
                     <div id="actionButtons">
+<!--                        <select id="previewSelector" class="advanced debug"></select> -->
+<!--                        <button type="button" id="generatePreview" disabled="disabled">display preview</button> -->
                         <button id="doAll" type="button" disabled="disabled" class="simple">generate XML</button>
                         <button id="validate" type="button" disabled="disabled" class="advanced">validate</button>
                         <button id="download" type="button" disabled="disabled">download</button>
@@ -120,10 +131,15 @@ return
             <div class="centered toggleelement" style="cursor:pointer" onclick="$('#menu').slideToggle(300)">
                 <span>&#8613;&#8615;</span>
             </div>
-            <div id="result-container">
-                <h3>Result:</h3>
-                <div id="content" style="font-size:10px;">
+            <div>
+                <div>
+                    <button type="button" onclick="window.open('full-preview.xq')">open full preview</button>
                 </div>
+                <div class="result-pagination"></div>
+                <div id="result-container">
+                    <div id="content" style="font-size:10px;">
+                </div>
+            </div>
             </div>
         </body>
     </html>

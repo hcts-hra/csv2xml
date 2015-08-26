@@ -33,6 +33,8 @@ return
                     </output:serialization-parameters>
     (:            let $useless := util:log("DEBUG", $self-id-url || " " || $remote-id-url):)
                 let $header := response:set-header("Content-Type", "application/json")
+(:                let $log := util:log("INFO", $csv-data):)
+
                 let $result :=
                     <info>
                         <lines>{count($csv-data/line)}</lines>

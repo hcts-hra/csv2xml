@@ -23,6 +23,11 @@ body{
     max-height:100%;
 }
 
+.result-pagination{
+    width: 100%;
+    text-align:center;
+}
+
 #catalogs-selector, #xsl-selector{
     height: 100px;
     background-color:white;
@@ -88,10 +93,22 @@ button{
     background-color: red;
 }
 
-
 .progressing{
     /*background-color:#00aa00;*/
     background-image: url('../images/ajax-loader-trans.gif');
     background-repeat: no-repeat;
     background-position: left center ;
 }
+
+.log{
+    font-size: 8px;
+}
+
+.success{
+    color:green;
+}
+
+.error{
+    color:red;
+}
+
