@@ -521,6 +521,7 @@ function applyXSL() {
 function generateLinesXML(lineStack) {
     var generateButton = $('#generate');
     buttonSetProgressing(generateButton, true);
+    buttonSetProgressing($('#doAll'), true);
 
     var df = $.Deferred();
     var mapping = $("select#mapping-selector option:selected").val();
@@ -555,6 +556,7 @@ function generateLinesXML(lineStack) {
             applyXSL();
             $('#applyXSL').removeAttr("disabled");
             buttonSetProgressing(generateButton, false);
+            buttonSetProgressing($('#doAll'), false);
         }
     });
     
@@ -562,11 +564,20 @@ function generateLinesXML(lineStack) {
 }
 
 function postProcessing() {
-    // simple mode, so do all the post-processing
-    if(!$("#advancedMode").attr("checked")){
-        // dropMessage("generating successful. Please be patient, validating now...", "success");
-        validate();
-    }
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "cleanupXML"
+        }
+    })
+    .done(function(result){
+        // simple mode, so do all the post-processing
+        if(!$("#advancedMode").attr("checked")){
+            // dropMessage("generating successful. Please be patient, validating now...", "success");
+            validate();
+        }
+    });
 }
 
 function validate(callback) {
@@ -579,6 +590,7 @@ function validate(callback) {
     if (catalogs.length > 0) {
         dropMessage("<b>validating... please be patient.</b>", "info");
         buttonSetProgressing(button, true);
+        buttonSetProgressing($('#doAll'), true);
         return $.ajax({
                     url: "process-csv.xq",
                     method: "POST",
@@ -611,6 +623,7 @@ function validate(callback) {
                 })
                 .complete(function(argument) {
                     buttonSetProgressing(button, false);
+                    buttonSetProgressing($('#doAll'), false);
                 });
     } else {
         dropMessage("no schema to validation against", "error");

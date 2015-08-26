@@ -274,17 +274,12 @@ return
                         serialize(<root json:literal="true">true</root>, $local:json-serialize-parameters)
                 else
                     ()
-
-
         
+        case "cleanupXML" return
+            let $cleanup := xml-functions:cleanupXML()
+            return
+                serialize(<root json:literal="true">true</root>, $local:json-serialize-parameters)
+
+
         default return
             ""
-
-(:let $mapping-name := :)
-(:    if ($mapping-name = "") then :)
-(:        "default":)
-(:    else:)
-(:        $mapping-name:)
-
-
-
