@@ -79,11 +79,9 @@
         </measurementsSet>
         <relationSet>
             <display/>
-            <relation type=""/> <!-- requires related work's relids and source -->
-            <relation type=""/> <!-- requires related work's relids and source -->
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageIs" relids="i_6bed4b0e-f30f-45a4-bcb1-1d813a1d7527" source="" pref="true"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type=""/><!-- requires related work's relids and source -->
+            <relation type=""/><!-- requires related work's relids and source --><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="i_6bed4b0e-f30f-45a4-bcb1-1d813a1d7527" source="" pref="true"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display/>
@@ -168,7 +166,7 @@
         <locationSet>
             <display/>
             <location type="repository">
-                <name/> <!-- required user input, before transformation or additional column; name @type may vary too -->
+                <name/><!-- required user input, before transformation or additional column; name @type may vary too -->
                 <refid type="accession"/>
             </location>
         </locationSet>
@@ -181,10 +179,8 @@
             <measurements/>
         </measurementsSet>
         <relationSet>
-            <display/>
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageOf" source="" relids="w_6d8245da-02a5-42f7-ae34-fd5ed4041cfb"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <display/><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_6d8245da-02a5-42f7-ae34-fd5ed4041cfb"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display/>
@@ -197,7 +193,7 @@
         <sourceSet>
             <display/>
             <source>
-                <name type="vendor"/> <!-- source block with VendorID is fixed to type=vendor-->
+                <name type="vendor"/><!-- source block with VendorID is fixed to type=vendor-->
                 <refid type="vendor"/>
             </source>
         </sourceSet>

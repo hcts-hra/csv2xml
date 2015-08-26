@@ -1,16 +1,16 @@
 xquery version "3.0";
+
 declare namespace output="http://www.w3.org/2010/xslt-xquery-serialization";
 
 declare option output:method "html5";
 declare option output:media-type "text/html";
 
-let $data := session:get-attribute("data")
-let $parsed-csv := session:get-attribute("parsed-csv")
+let $generated-xml := doc(session:get-attribute("transformed-filename"))
 
 return 
     <html>
         <head>
-            <title>CSV2XML - Debug Output</title>
+            <title>CSV2XML</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <meta data-template="config:app-meta"/>
             <link rel="shortcut icon" href="$shared/resources/images/exist_icon_16x16.ico"/>
@@ -36,14 +36,9 @@ return
             </style>
         </head>
         <body>
-            <div style="font-size:10px;">
-                <xmp class="prettyprint linenums">
-                    {$parsed-csv}
-                </xmp>
-            </div>
             <div id="content" style="font-size:10px;">
                 <xmp class="prettyprint linenums">
-                    {$data}
+                    {$generated-xml}
                 </xmp>
             </div>
         </body>

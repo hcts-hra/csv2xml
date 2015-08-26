@@ -6,24 +6,42 @@ import module namespace functx="http://www.functx.com";
 
 declare namespace xhtml="http://www.w3.org/1999/xhtml";
 declare namespace json="http://www.json.org";
+declare namespace csv2xml="http://hra.uni-hd.de/csv2xml/template";
 
 declare variable $local:json-serialize-parameters :=
+                    
     <output:serialization-parameters xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-        <output:method value="json"/>
-        <output:media-type value="text/javascript"/>
+    <output:method value="json"/>
+    <output:media-type value="text/javascript"/>
     </output:serialization-parameters>;
 
 
 let $action := request:get-parameter("action", "generate")
 let $debug :=  session:get-attribute("debug")
-let $mapping-name := request:get-parameter("mapping", "default")
+let $mapping-name := session:get-attribute("mapping-name")
 let $settings-uri :=  "mappings/" || $mapping-name || "/_mapping-settings.xml"
+
+(: default: send "OK" :)
+let $header := response:set-status-code(200)
 
 return
     switch ($action)
         case "reset" return
-            let $clearSession := session:invalidate()
+            let $log := util:log("INFO", "SESSION: resetting")
+            let $session-attributes-reset :=
+                (
+(:                    session:set-attribute("xml", ""),:)
+                    session:set-attribute("data", ()),
+(:                    session:set-attribute("mapping-name", ""),:)
+                    session:set-attribute("mapping-settings", ()),
+                    session:set-attribute("namespace-definitions", ()),
+                    session:set-attribute("template-strings", ())
+                    
+
+                )
+(:            let $clearSession := session:invalidate():)
             let $header := response:set-header("Content-Type", "application/json")
+            
             return 
                 serialize(<result>true</result>, $local:json-serialize-parameters) 
         (: save selected catalogs in Session:)
@@ -57,8 +75,7 @@ return
             let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize($xsls, $local:json-serialize-parameters)
-            
-            
+        
         case "getInfo" return
             let $data := session:get-attribute("data")
 (:            let $useless := util:log("DEBUG", $self-id-url || " " || $remote-id-url):)
@@ -70,100 +87,41 @@ return
             return
                 serialize($result, $local:json-serialize-parameters)
 
-        case "upload" return
-            let $file-name := request:get-uploaded-file-name('file')
-            let $file-data := request:get-uploaded-file-data('file')
-            
-            let $fileinfo := contentextraction:get-metadata($file-data)
-            let $filetype := substring-before(data($fileinfo//xhtml:meta[@name="Content-Type"]/@content), ";")
-            let $file-encoding := $fileinfo//xhtml:meta[@name="Content-Encoding"]/@content/string()
-            let $filetype := "text/plain"
-
-            (: check format :)
+        case "loadTemplates" return
+            let $templates-strings-map := xml-functions:load-templates-in-session()
+            let $result :=
+                    <root>
+                        {
+                        for $template-filename in map:keys($templates-strings-map)
+                            return
+                                <template json:array="true">
+                                    <key>
+                                        {$template-filename}
+                                    </key>
+                                    <!--
+                                        <loaded json:literal="true">
+                                        </loaded>
+                                    -->
+                                </template>
+                        }
+                    </root>
+            let $header := response:set-header("Content-Type", "application/json")
             return
-                switch ($filetype)
-                    case "text/plain" return
-                        let $csv-string := util:binary-to-string($file-data, $file-encoding)
-                        let $csv-parsed := csv:read-csv($csv-string)
-                        let $useless := session:set-attribute("data", csv:add-char-index($csv-parsed))
-                        return
-            (:                $csv-string:)
-                            response:redirect-to(xs:anyURI("setup-conversion.xq"))
-                    default return
-                        <div>Fileformat not supported!</div>
+                serialize($result, $local:json-serialize-parameters)
 
-        case "generate" return
-            let $data := session:get-attribute("data")
-            let $start := xs:integer(request:get-parameter("start", 1))
-            let $end := xs:integer(request:get-parameter("end", count($data/line)))
-            let $xsls := request:get-parameter("xsls[]", "")
-            
-            (: load the CSV-mapping:)
-            let $csv-map-uri :=  "mappings/" || $mapping-name || "/csv-map.xml"
-            let $mapping-definition := doc($csv-map-uri)
-            (: get the template-filenames:)
-            let $settings := doc($settings-uri)
-            let $parent-template-filename := $settings/settings/templates/parent/string()
-            let $template-filenames := $settings/settings/templates/template/string()
-        
-            (: serialize each template :)
-            let $templates-strings := 
-                for $template-filename in $template-filenames
-                    (: load the XML templates :)
-                    let $xml-uri := "mappings/" || $mapping-name || "/templates/" || $template-filename
-                    let $xml := doc($xml-uri)
-                    let $xml-string := serialize($xml)
-                    return $xml-string
-
-            (: process each csv line   :)
-            let $lines := $data/line[position() > ($start - 1) and position() < $end ]
-            let $processed-template :=
-                for $line in $lines
-                    (: process each line and output the string with replaced variables :)
-                    let $xml-nodes-string := string-join($templates-strings)
-                    let $xml-nodes := xml-functions:replace-template-variables($xml-nodes-string, $mapping-definition, $line)
-                    return 
-                        string-join($xml-nodes)
-            
-            
-            (: get the parent xml wrapper :)
-            let $parent-xml := doc("mappings/" || $mapping-name || "/templates/" || $parent-template-filename)
-            let $parent-string := serialize($parent-xml)
-            let $output-string := replace($parent-string, "\$PROCESSED_TEMPLATE\$", string-join($processed-template))
-            let $output-xml := parse-xml($output-string)
-            let $output-xml := xml-functions:remove-empty-attributes($output-xml/*)
-
-            let $output-xml :=
-                if(not(count($xsls) = 1 and $xsls[1] = '')) then
-                    xml-functions:apply-xsls($mapping-name, $output-xml, $xsls)
-                else
-                    $output-xml
-            
-            let $session-store := session:set-attribute("xml", $output-xml)
-            let $session-store-data :=  
-                if (not(empty($debug))) then
-                    session:set-attribute("lines", $data)
-                else
-                    ()
-
-            return
-                let $header := response:set-header("Status", "200")
-                return
-                   $output-xml
-                    
         case "validate" return
             (: get the catalogs for validations :)
             let $reports := 
                 for $cat in request:get-parameter("catalogs[]", "")
                     let $clear := validation:clear-grammar-cache()
                     let $catalog-uri := xs:anyURI($cat)
-(:                    let $log := util:log("INFO", "Pre-Parsing: " || $catalog-uri):)
                     let $pre-parse := validation:pre-parse-grammar($catalog-uri)
-    (:                let $parsed-grammars := session:set-attribute("validation-grammars", validation:pre-parse-grammar($catalogs)):)
+                    let $file-uri := session:get-attribute("transformed-filename")
+                    let $xml := doc($file-uri)
                     let $report :=
                         <report-result>
                             <xsd>{$cat}</xsd>
-                            {validation:jaxp-report(session:get-attribute("xml"), true())}
+                            {validation:jaxp-report($xml, true())}
                         </report-result>
                     return 
                         $report
@@ -186,17 +144,141 @@ return
             return
                 serialize($result, $local:json-serialize-parameters)
                 
-        case "usesHeadings" return
+        case "updateMapping" return
+            let $mapping-name := request:get-parameter("mapping", "example")
+            let $settings-uri :=  "mappings/" || $mapping-name || "/_mapping-settings.xml"
+
             let $mapping-definition := doc($settings-uri)
             let $uses-headings := $mapping-definition//templates/@uses-headings/string()
-            let $log := util:log("INFO", $mapping-definition//templates)
+            let $session-store := session:set-attribute("mapping-name", $mapping-name)
+(:            let $log := util:log("INFO", "SESSION: mapping set: " || session:get-attribute("mapping-name")):)
+            (: load Templates :)
+            let $loadTemplates := xml-functions:load-templates-in-session()
+
             let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize(<root json:literal="true">{$uses-headings}</root>, $local:json-serialize-parameters)
-            
+        
+        case "getXML" return
+(:            let $max-lines := request:get-parameter("maxLines", ()):)
+            let $xml := session:get-attribute("xml")
+            let $header := response:set-header("Content-Type", "text/xml")
+            return
+                $xml
+        
+        case "storeParent" return
+            try {
+                    let $settings := doc($settings-uri)
+(:                    let $log := util:log("INFO", "settings-uri: " || $settings-uri):)
+                    let $parent-template-filename := $settings/settings/templates/parent/string()
+        
+                    (: get the parent xml wrapper :)
+                    let $parent-xml := doc("mappings/" || $mapping-name || "/templates/" || $parent-template-filename)
+(:                    let $log := util:log("INFO", "parent-xml: " || "mappings/" || $mapping-name || "/templates/" || $parent-template-filename):)
+
+                    let $resource-name := xml-functions:store-parent($parent-xml)
+                    let $session-store-xml-filename := session:set-attribute("file-uri", $xml-functions:temp-dir || "/" || $resource-name)
+                    let $header := response:set-header("Content-Type", "application/json")
+                    return
+                        serialize(<root>{$resource-name}</root>, $local:json-serialize-parameters)
+                } catch * {
+                    let $response := $err:code || " " || $err:description || " " || $err:value
+                    let $header := response:set-status-code(500)
+                    return
+                        $response
+                }
+                
+
+        case "processCSVLine" return
+            let $mapping-name := session:get-attribute("mapping-name")
+            let $csv-line-no := request:get-parameter("line", ())
+            let $data := session:get-attribute("data")
+            let $templates := session:get-attribute("template-strings")
+
+            let $line-data := $data/line[@num-index=$csv-line-no]
+            (: load the defined Mapping:)
+            let $csv-map-uri :=  "mappings/" || $mapping-name || "/csv-map.xml"
+            let $mapping-definition := doc($csv-map-uri)
+
+            return
+                if ($line-data) then
+                    try{
+                        (: process each template :)
+                        let $store-result := 
+                            map:for-each-entry($templates, function($key, $template-map){
+                                let $template-string := $template-map("string")
+                                let $target-node-query := $template-map("targetNodeQuery")
+                                let $node-as-string := xml-functions:replace-template-variables($template-string, $mapping-definition, $line-data)
+                                (: xml node generated now insert it to temp-file :)
+                                let $save := xml-functions:store-node($node-as-string, $target-node-query)
+
+                                return 
+                                    true()
+                            })
+                        let $header := response:set-header("Content-Type", "application/json")
+                        return
+                            serialize($store-result, $local:json-serialize-parameters)
+
+                    } catch * {
+                        let $util := util:log("INFO", "processing line failed")
+                        let $header := response:set-status-code(500)
+                        return 
+                            $err:code || " " || $err:description || " " || $err:value
+
+                    }
+
+                else
+                    ()
+                    
+        case "countPaginationItems" return
+            let $result := xml-functions:count-pagination-items()
+            let $header := response:set-header("Content-Type", "application/json")
+                return
+                    serialize(<result json:literal="true">{$result}</result>, $local:json-serialize-parameters)
+        
+        case "getPaginationItem" return
+            let $itemNo := request:get-parameter("itemNo", 1)
+            let $result := xml-functions:get-pagination-item($itemNo)
+                return
+                    $result
+        case "generateTransformation" return
+            let $xsls := request:get-parameter("xsls[]", ())
+            let $header := response:set-header("Content-Type", "application/json")
+            return
+                try{
+                    let $transformed-filename := xml-functions:apply-xsls($xsls)
+                    let $session-store := session:set-attribute("transformed-filename", $transformed-filename)
+                    let $return :=
+                        <root>
+                            <xmlFilename>{$transformed-filename}</xmlFilename>
+                        </root>
+                    return
+                        serialize($return, $local:json-serialize-parameters)
+                } catch * {
+                    let $header := response:set-status-code(500)
+                    return 
+                        $err:code || " " || $err:description || " " || $err:value
+                }
+
+        case "saveSelectedTransPreset" return
+            let $selectedPresetName := request:get-parameter("selectedPresetName", ())
+(:            let $log := util:log("INFO", $selectedPresetName):)
+            return 
+                if ($selectedPresetName) then
+                    let $mapping-name := session:get-attribute("mapping-name")
+                    let $presetDefinition := doc("mappings/" || $mapping-name || "/_mapping-settings.xml")//transformations/transform[@name=$selectedPresetName]
+(:                    let $log := util:log("INFO", $presetDefinition):)
+
+                    let $storeSession := session:set-attribute("selectedPresetDefiniton", $presetDefinition)
+                    return
+                        serialize(<root json:literal="true">true</root>, $local:json-serialize-parameters)
+                else
+                    ()
+
+
+        
         default return
             ""
-
 
 (:let $mapping-name := :)
 (:    if ($mapping-name = "") then :)

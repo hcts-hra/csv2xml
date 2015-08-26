@@ -1,44 +1,61 @@
 var debug = false;
 var advanced = false;
 var messageFadeOutTime = 3000;
+var preview = true;
+var displayLog = true;
+var interruptProcessing = false;
 
 $( document ).ready(function() {
     // reset();
+    initLogDialog(displayLog);
     toggleAfterProcessButtons(false);
+    $('#applyXSL').attr("disabled", "disabled");
 
     $('form#csv-upload').bind('submit', function(event) {
         event.stopPropagation();
         event.preventDefault();
         files = event.target.files;
-        // Update button text.
         var button = $(this).find('button[type="submit"]');
-        // buttonSetProgressing(button, true);
         var file = $('#inputFiles').get(0).files[0];
         var formData = new FormData();
         formData.append('file', file);
-        
-        // console.debug(formData);
-        $.ajax({
-            url: 'upload.xq',
-            // Form data
-            data: formData,
-            type: 'POST',
-            //Options to tell jQuery not to process data or worry about content-type.
-            cache: false,
-            contentType: false,
-            processData: false,
-            //Ajax events
-            success: function (msg) {
+        //Disable form buttons
+        buttonSetProgressing(button, true);
+        $('#generatePreview').attr("disabled", "disabled");
+        $('#inputFiles').attr("disabled", "true");
+        $('#generate').attr("disabled", "disabled");
+        resetSession(function(msg){
+            // console.debug(formData);
+            $.ajax({
+                url: 'upload.xq',
+                // Form data
+                data: formData,
+                type: 'POST',
+                //Options to tell jQuery not to process data or worry about content-type.
+                cache: false,
+                contentType: false,
+                processData: false
+            })
+                //Ajax events
+            .done(function (msg) {
                 uploadingDone(true, msg);
-            },
-            error: function (msg) {
+                dropMessage('CSV upload successful', "success");
+            })
+            .fail(function (msg) {
                 uploadingDone(false, msg);
                 alert('error ' + msg.message);
-            },
-            done: function (msg) {
-            }
+            })
+            .complete(function (msg) {
+                buttonSetProgressing(button, false);
+                $('#inputFiles').removeAttr("disabled");
+                $('#applyXSL').attr("disabled", "disabled");
+            });
+            return false;
         });
-        return false;
+    });
+
+    $('#toggle-log').bind("click", function(event){
+       ($("#log-dialog").dialog("isOpen") === false) ? $("#log-dialog").dialog("open") : $("#log-dialog").dialog("close");
     });
     
     $('#reset').bind("click", function(event){
@@ -46,7 +63,7 @@ $( document ).ready(function() {
     });
 
     $('#validate').bind("click", function(e){
-        validate($(this));
+        validate();
     });
 
     $('#download').bind("click", function(e){
@@ -70,8 +87,11 @@ $( document ).ready(function() {
     $("#transformations-selector").bind("change", function(event) {
         // console.debug("TRANS CHANGED"); 
         loadDefinedXSLs();
+        // set validation and download "disabled"
+        $("#validate").attr("disabled", "disabled");
+        $("#download").attr("disabled", "disabled");
     });
-    
+
     $("#xsl-selector").bind("change", function (event) {
         // body...
         loadDefinedCatalogs();
@@ -92,7 +112,7 @@ $( document ).ready(function() {
         else
             $('#validate').attr("disabled", false);
         
-        console.debug($('#validate'));
+        // console.debug($('#validate'));
     });
     
     //Bind advanced mode checkbox
@@ -104,22 +124,42 @@ $( document ).ready(function() {
     $("#doAll").bind("click", function(event){
         doEverything($(this));
     });
+    
+    //Bind "applyXSL" button
+    $("#applyXSL").bind("click", function(event) {
+        applyXSL();
+    });
+
+    //Bind "display Preview" button
+    $('#generatePreview').attr("disabled", "disabled");
+    $('#generatePreview').bind("click", function(event) {
+        initPreview();
+    });
 
     updateMapping() ;
 
     enableAdvancedMode(advanced);
-    
+
 });
+
+function initLogDialog(displayOnInit) {
+    $("#log-dialog").dialog({
+        title:  "Log",
+        height: 400,
+        position: { my: "right center", at: "right center", of: window }
+    });
+
+}
 
 
 // Enable/Disable functionality after 
 function uploadingDone(success, msg){
     if (success){
-        dropMessage('Upload successful.');
+        dropMessage('Upload successful.', "success");
         updateInformations(msg);
     }
     else{
-        dropMessage('Upload failed.');
+        dropMessage('Upload failed.', "error");
     }
     
     $('#generate').attr("disabled", !success);
@@ -127,23 +167,24 @@ function uploadingDone(success, msg){
 }
 
 function enableAdvancedMode(enable) {
-    $('#advancedMode').attr("checked", enable);
-    console.debug(enable);
+    // console.debug(enable);
     var t_options = {duration: "slow", easing: "slide"};
     if (enable){
         //Show advanced menu options
         $('.advanced').show(t_options);
         //Hide simple menu options
         $('.simple').hide(t_options);
+        $('#advancedMode').attr("checked", "checked");
     } else {
         //Hide advanced menu options
         $('.advanced').hide(t_options);
         //show simple menu options
         $('.simple').show(t_options);
+        $('#advancedMode').removeAttr("checked");
     }
 }
 
-function reset() {
+function resetSession(callback) {
     $.ajax({
             url: "process-csv.xq",
             method: "POST",
@@ -153,25 +194,38 @@ function reset() {
                 processData: false
             }
         })
-    .done(function( msg ) {
-            $('form#csv-upload').trigger("reset");
-            dropMessage("Session resetted.", true);
-            toggleAfterProcessButtons(false);
-            loadDefinedCatalogs();
-            loadDefinedTransformations();
-            var data = [];
-            data.lines = 0;
-            updateInformations(data);
-            $("#result-container").empty();
-            $('#generate').attr("disabled", "disabled");
-            $("#newSchema").val(null);
-            $("#process-from").val(1);
-            $('#validate').removeClass("invalid").removeClass("valid");
-            $('#doAll').removeClass("invalid").removeClass("valid");
+        .done(function( msg ) {
+            dropMessage("Session resetted.", "success");
+            updateMapping();
+            if(callback) callback(msg);
         })
-    .fail(function( jqXHR, textStatus ) {
-        alert( "Request failed: " + textStatus );
-    });
+        .fail(function( jqXHR, textStatus ) {
+            alert( "Request failed: " + textStatus );
+        });
+}
+
+function reset() {
+    resetSession(function(msg){
+        loadDefinedCatalogs();
+        loadDefinedTransformations();
+        var data = [];
+        data.lines = 0;
+        updateInformations(data);
+        $("#result-container").empty();
+        $("#newSchema").val(null);
+        $("#process-from").val(1);
+        $('#validate').removeClass("invalid").removeClass("valid");
+        $('#doAll').removeClass("invalid").removeClass("valid");
+        $('#inputFiles').removeAttr("disabled");
+        $('#csv-upload').find('button[type="submit"]').removeAttr("disabled");
+        $('#generate').attr("disabled", "disabled");
+        $('#applyXSL').attr("disabled", "disabled");
+        $('#generatePreview').attr("disabled", "disabled");
+        toggleAfterProcessButtons(false);
+        $('#transformSelector').empty();
+        $('#result-pagination').empty();
+        }
+    );
 }
 
 function updateMapping() {
@@ -185,23 +239,23 @@ function updateMapping() {
 
     var mapping = $("select#mapping-selector option:selected").val();
 
-    $.ajax({
-        url: "process-csv.xq",
-        method: "POST",
-        data: { 
-            action: "usesHeadings",
-            mapping: mapping,
-        }
-    })
-    .done(function( msg ) {
-        var startingLine = (msg === true)?2:1;
-        $("#process-from").val(startingLine);
-        console.debug("uses Headings: " + msg);
-        return msg;
-    });
-
-
-    $('#validate').removeClass("invalid").removeClass("valid");
+    return $.ajax({
+            url: "process-csv.xq",
+            method: "POST",
+            data: { 
+                action: "updateMapping",
+                mapping: mapping,
+            }
+        })
+        .done(function( msg ) {
+            var startingLine = (msg === true)?2:1;
+            $("#process-from").val(startingLine);
+            console.debug("updating completed");
+            return msg;
+        })
+        .complete(function(msg){
+            $('#validate').removeClass("invalid").removeClass("valid");
+        });
 }
 
 function loadDefinedCatalogs(callback) {
@@ -323,7 +377,7 @@ function toggleAfterProcessButtons(toggle) {
     } else {
         actionButtonsContainer.find('#validate').attr("disabled", false);
     }
-    actionButtonsContainer.find('button').removeClass("processing");
+    actionButtonsContainer.find('button').removeClass("progressing");
     actionButtonsContainer.find('#download').attr("disabled", !toggle);
     actionButtonsContainer.find('#doAll').attr("disabled", !toggle);
 }
@@ -334,15 +388,13 @@ function updateInformations(data) {
     $('#process-to').attr("value", data.lines);
 }
 
-function dropMessage(message, clear, noFadeOut){
-    console.debug(message);
-    var messagesDiv = $('#messages');
-    if (clear){
-        messagesDiv.empty();
-    }
-    var messageNode = $("<div class=\"success\">" + message + "</div>");
-    if (!noFadeOut) messageNode.delay(messageFadeOutTime).fadeOut(function(){messagesDiv.empty();});
-    messagesDiv.append(messageNode);
+function dropMessage(message, msgclass){
+    var now = new Date(jQuery.now());
+    var logTime = now.toLocaleTimeString();
+    var messagesDiv = $('#log-dialog');
+    var messageNode = $("<div><span>" + logTime + "</span>: <span class=\"" + msgclass + "\">" + message + "</span></div>");
+    
+    messagesDiv.prepend(messageNode);    
 }
 
 function buttonSetProgressing(button, progressing){
@@ -350,118 +402,315 @@ function buttonSetProgressing(button, progressing){
         button.attr('disabled', 'disabled');
         button.addClass("progressing");
     }else{
-        button.attr('disabled', '');
+        button.removeAttr('disabled');
         button.removeClass("progressing");
     }
 }
 
+function loadTemplates(mapping) {
+    var df = $.Deferred();
+    dropMessage("<b>loadingTemplates</b>", "info");
+    var request = $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "loadTemplates",
+            debug: debug,
+            mapping: mapping,
+        }
+    })
+    .success(function( msg ) {
+        $.each(msg.template, function(i, template){
+            dropMessage("template loaded: " + template.key, "success");
+        });
+        df.resolve(msg.status);
+    });
+    return df.promise();
+}
 
 function generate(button, callback) {
-    var resultContainer = $('#result-container');
-    var mapping = $('#mapping-selector option:selected').val();
+    var mapping = $("select#mapping-selector option:selected").val();
     var start = $('#process-from').val();
     var end = $('#process-to').val();
-    buttonSetProgressing(button, true);
+    // load templates
+    $.when(loadTemplates(mapping))
+        .then(function(){
+            var result;
+            var resultContainer = $('#result-container');
+            resultContainer.html("<xmp class=\"prettyprint linenums\"></xmp>");
+            // generate Parent
+            dropMessage("<b>Generating parent document...</b>", "info");
+            var generateParent = $.ajax({
+                url: "process-csv.xq",
+                method: "POST",
+                data: { 
+                    action: "storeParent",
+                    processData: false,
+                    dataType: "json",
+                    debug: debug,
+                    mapping: mapping,
+                    start: start,
+                }
+            })
+            // process Lines
+            .done(function(msg){
+                dropMessage("->" + msg, "success");
+                dropMessage("<b>Start processing " + (end - start + 1) + " lines</b>", "info");
+                var processingStack = [];
+                for (var actualLine = start; actualLine <= end; actualLine++) processingStack.push(actualLine);
+                generateLinesXML(processingStack);        
+            })
+            .fail(function(msg){
+                dropMessage("...error: " + msg.responseText, "error");
+            })
+            .complete(function(msg){
+            });
+        });
+}
+
+function applyXSL() {
     var selectedXsls = $("#xsl-selector .selected");
     var xsls = [];
     $.each(selectedXsls, function(idx, val) {
         xsls.push($(val).html());
     });
-    var result;
-    // console.debug("start: " + start);
-    // console.debug("end: " + end);
-    // console.debug("debug: " + debug);
-    var request = $.ajax({
+
+    var button = $("#applyXSL");
+    var transName = $("select#transformations-selector option:selected").val();
+    // first save selected transformation settings
+    var saveTrans = $.ajax({
+                url: "process-csv.xq",
+                method: "POST",
+                data: {
+                    action: "saveSelectedTransPreset",
+                    selectedPresetName: transName
+                }
+            })
+            .complete(function(msg){
+        });
+    
+    saveTrans.done(function(msg) {
+        dropMessage("<b>applying transformations</b>", "info");
+        $.ajax({
+            url: "process-csv.xq",
+            method: "POST",
+            data: { 
+                action: "generateTransformation",
+                contentType: "text/plain",
+                // dataType: "json",
+                debug: debug,
+                xsls: xsls 
+            }
+        })
+        .done(function(msg) {
+            dropMessage("Transformation successful: " +  msg.xmlFilename, "success");
+            $('#generatePreview').removeAttr('disabled');
+            toggleAfterProcessButtons(true);            
+            initPreview();
+            postProcessing();
+        })
+        .fail(function(msg) {
+            dropMessage("XSL Transformations failed. " + msg.responseText, "error");
+            df.reject();
+        })
+        .complete(function(msg){
+        });
+    });
+}
+
+function generateLinesXML(lineStack) {
+    var generateButton = $('#generate');
+    buttonSetProgressing(generateButton, true);
+
+    var df = $.Deferred();
+    var mapping = $("select#mapping-selector option:selected").val();
+    // Take the first value from stash process it
+    var line = lineStack.shift();
+    $.ajax({
         url: "process-csv.xq",
         method: "POST",
         data: { 
-            action: "generate",
+            action: "processCSVLine",
             contentType: "text/plain",
             dataType: "xml",
             debug: debug,
             mapping: mapping,
-            start: start,
-            end: end,
-            xsls: xsls
+            line: line
+        }
+    })
+    .done(function( xml ) {
+        dropMessage("line " + line + " processed.", "success");
+        df.resolve();
+    })
+    .fail(function(msg ) {
+        dropMessage("XML generation failed (Line No " + line + "): " + msg.responseText, "error");
+        df.reject();
+    })
+    .complete(function(msg){
+        // recursive call with rest of stack
+        if (lineStack.length > 0){
+            generateLinesXML(lineStack);
+        }else{
+            dropMessage("Processing CSV Lines done</b>", "success");
+            applyXSL();
+            $('#applyXSL').removeAttr("disabled");
+            buttonSetProgressing(generateButton, false);
         }
     });
-    request.done(function( xml ) {
-        button.removeClass("progressing");
-        button.attr("disabled", false);
-        resultContainer.html("<xmp class=\"prettyprint linenums\">" +
-                new XMLSerializer().serializeToString(xml) +
-            "</xmp>");
-
-        prettyPrint();
-        toggleAfterProcessButtons(true);
-        if(callback) callback(true, xml);
-    });
-    request.fail(function( jqXHR, textStatus ) {
-        alert( "Request failed: " + textStatus );
-        if(callback) callback(false, msg);
-    });
+    
+    return df.promise();
 }
 
-function validate(button, callback) {
+function postProcessing() {
+    // simple mode, so do all the post-processing
+    if(!$("#advancedMode").attr("checked")){
+        // dropMessage("generating successful. Please be patient, validating now...", "success");
+        validate();
+    }
+}
+
+function validate(callback) {
+    var button = $('#validate');
+    var df = $.Deferred();
     var catalogs = [];
     $.each($("#catalogs-selector > div.selected"), function(index, value){
         catalogs.push($(value).html());
     });
     if (catalogs.length > 0) {
+        dropMessage("<b>validating... please be patient.</b>", "info");
         buttonSetProgressing(button, true);
-        var result = false;
-        var request = 
-            $.ajax({
-                url: "process-csv.xq",
-                method: "POST",
-                data: { 
-                    action: "validate",
-                    catalogs: catalogs
-                }
-            })
-            .fail(function(result){
-                button.removeClass("progressing");
-                button.attr("disabled", false);
-                alert( "Request failed: " + result.responseText );
-            })
-            .done(function(msg){
-                if(msg.result == "invalid") {
-                    for (var i=1; i <= msg.reports; i++){
-                        window.open('validation-result.xq?reportNr=' + i , '_blank');
-                }
+        return $.ajax({
+                    url: "process-csv.xq",
+                    method: "POST",
+                    data: { 
+                        action: "validate",
+                        catalogs: catalogs
+                    }
+                })
+                .fail(function(result){
+                    button.removeClass("progressing");
+                    button.attr("disabled", false);
+                    dropMessage("Error: " + result.responseText, "error");
+                })
+                .done(function(msg){
+                    var resultDisplay = "";
+                    if(msg.result == "invalid") {
+                        for (var i=1; i <= msg.reports; i++){
+                            window.open('validation-result.xq?reportNr=' + i , '_blank');
+                        }
                         $(button).addClass("invalid").removeClass("valid");
-                }else {
-                    $(button).addClass("valid").removeClass("invalid");
-                }
-                button.removeClass("progressing");
-                button.attr("disabled", false);
-                if(callback) callback((msg.result == "invalid")?false:true, msg);
-            });
+                        $("#doAll").addClass("invalid").removeClass("valid");
+                        resultDisplay = '<span class="error">invalid</span>';
+                    }else {
+                        $(button).addClass("valid").removeClass("invalid");
+                        $("#doAll").addClass("valid").removeClass("invalid");
+                        resultDisplay = '<span class="success">valid</span>';
+                    }
+                    if(callback) callback((msg.result == "invalid")?false:true, msg);
+                    dropMessage("validation completed: resulting xml is <b>" + resultDisplay + "</b>", "info");
+                })
+                .complete(function(argument) {
+                    buttonSetProgressing(button, false);
+                });
     } else {
-        dropMessage("no schema to validation against", false, true);
+        dropMessage("no schema to validation against", "error");
+        return df.reject();
     }
 }
 
 function doEverything(button) {
     // buttonSetProgressing(button, true);
-    dropMessage("generating...", true, true);
+    dropMessage("generating...", "info");
     generate(button, function(result, message){
         // if successfully generated, then validate
         if(result){
-            dropMessage("generating successful. Please be patient, validating now...", false, true);
-            validate(button, function(result, msg){
+            dropMessage("generating successful. Please be patient, validating now...", "success");
+            validate(function(result, msg){
                 var downloadButton = '<a href="download.xq" target="_blank">Download</a>';
                 if (result) {
-                    dropMessage('<span class="message ok">Validation passed successfully.</span> <b>' + downloadButton + "</b>", false, true);
+                    dropMessage('<span class="message ok">Validation passed successfully.</span> <b>' + downloadButton + "</b>", "success");
                     window.open("download.xq");
                 } else {
-                    dropMessage("<span class='message warning'>WARNING: Validation failed. Download anyway?</span> <b>" + downloadButton + "</b>", false, true);
+                    dropMessage("<span class='message warning'>WARNING: Validation failed. Download anyway?</span> <b>" + downloadButton + "</b>", "error");
                 }
             });
         } else {
-            dropMessage("generating failed: " + message, false, true);
+            dropMessage("generating failed: " + message, "error");
         }
     });
+}
+
+function initPreview() {
+    dropMessage("displaying Preview", "info");
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "countPaginationItems",
+            contentType: "text/plain",
+            dataType: "json"
+            }
+        })
+        .done(function(pages){
+            updateResultPagination(1, pages, 1);
+        });
+
+}
+
+function displayPreview(itemNo) {
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "getPaginationItem",
+            contentType: "text/plain",
+            dataType: "xml",
+            itemNo: itemNo
+        }
+    })
+    .done(function( xml ) {
+        var resultContainer = $('#result-container');
+        resultContainer.html("<xmp class=\"prettyprint linenums\">" +
+        new XMLSerializer().serializeToString(xml) +
+            "</xmp>");
+        prettyPrint();
+    })
+    .fail(function( jqXHR, textStatus ) {
+    });
+    
+}
+
+// function getPaginationItem(itemNo) {
+//     $.ajax({
+//         url: "process-csv.xq",
+//         method: "POST",
+//         data: { 
+//             action: "getPaginationItem",
+//             contentType: "text/plain",
+//             dataType: "xml",
+//             itemNo: itemNo
+//         }
+//     })
+//     .done(function( xml ) {
+//         var resultContainer = $('#result-container');
+//         resultContainer.html("<xmp class=\"prettyprint linenums\">" +
+//         new XMLSerializer().serializeToString(xml) +
+//             "</xmp>");
+//         prettyPrint();
+//     });
+// }
+
+function updateResultPagination(start, end, active) {
+    var paginationDivs = $('.result-pagination');
+    var navPrevious = $('<button type="button" onclick="updateResultPagination(' + start + ', ' + end + ', ' + (active - 1) + ')";>&lt;-</button>');
+    // var pageDisplay = $('<span><input type="text" style="width:5em;" value="' + active + '" />' + '/' + end + '</span>');
+    var pageDisplay = $('<span>' + active + ' / ' + end + '</span>');
+    var navNext = $('<button type="button" onclick="updateResultPagination(' + start + ', ' + end + ', ' + (active + 1) + ')";>-&gt;</button>');
+    paginationDivs.empty();
+    if (active > start) paginationDivs.append(navPrevious);
+    paginationDivs.append(pageDisplay);
+    if (active < end) paginationDivs.append(navNext);
+    displayPreview(active);
 }
 
 function download() {

@@ -12,5 +12,7 @@ let $header :=
         response:set-header("Content-Disposition", "attachment; filename=converted.xml")
     )   
 
+let $file-uri := session:get-attribute("transformed-filename")
 return
-    session:get-attribute("xml")
+    doc($file-uri)
+    

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mappings>
-    <mapping active="false" selected="false">
+    <mapping active="true" selected="true">
         <collection>example</collection>
         <name>example mapping</name>
         <descripton>example mapping for new features etc</descripton>
     </mapping>
-    <mapping active="true" selected="true">
+    <mapping active="true" selected="false">
         <collection>vra-strict</collection>
         <name>VRA strict</name>
         <descripton>Mapping to VRA Core 4 - restricted version, cf. http://www.loc.gov/standards/vracore/</descripton>

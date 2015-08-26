@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<image id="$IMAGE_ID$" href="$IMAGE_Filename$">
+<image xmlns="http://www.vraweb.org/vracore4.htm" id="$IMAGE_ID$" href="$IMAGE_Filename$">
     <agentSet>
         <display>$IMAGE_AgentDisplay$</display>
         <agent>
@@ -29,7 +29,7 @@
         <display>$IMAGE_LocationDisplay$</display>
         <notes>$IMAGE_LocationNotes$</notes>
         <location type="repository">
-            <name>$LOCAL-REPO-NAME$</name> <!-- ##CHECK!## required user input, before transformation or additional column; name @type may vary -->
+            <name>$LOCAL-REPO-NAME$</name><!-- ##CHECK!## required user input, before transformation or additional column; name @type may vary -->
             <refid type="accession">$IMAGE_AccessionID$</refid>
         </location>
         <location type="$IMAGE_LocationType$">

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vra xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra-strict.xsd">
-	<!-- changelog 
+<vra xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.vraweb.org/vracore4.htm http://www.loc.gov/standards/vracore/vra-strict.xsd"><!-- changelog 
 	mapping templates: 2015-02-19 ma; 2015-02-23 ma; 2015-02-25 ma; 2015-02-26 ma; 2015-02-27 ma; 2015-05-19 ma; 2015-05-20 ma; 2015-05-21 ma; 2015-05-22 ma; 2015-05-29 ma; 2015-06-01 ma; 2015-06-05 ma
 	csv-map: 2015-06-02 ma; 2015-06-05 ma
 	-->
@@ -84,10 +83,8 @@
         <relationSet>
             <display>WORK_RelationDisplay</display>
             <relation type="WORK_RelationType1">WORK_RelatedWork1</relation>
-            <relation type="WORK_RelationType2">WORK_RelatedWork2</relation> 
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageIs" relids="" source="" pref="true"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="WORK_RelationType2">WORK_RelatedWork2</relation><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display>WORK_RightsDisplay</display>
@@ -184,10 +181,8 @@
             <measurements/>
         </measurementsSet>
         <relationSet>
-            <display>IMAGE_RelationDisplay</display>
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageOf" source="" relids="w_72fa8d54-b9bb-4c39-9eba-77a4a896541c"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <display>IMAGE_RelationDisplay</display><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_72fa8d54-b9bb-4c39-9eba-77a4a896541c"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display>IMAGE_RightsDisplay</display>
@@ -321,10 +316,8 @@
         <relationSet>
             <display>largerContextFor first related work; pendantOf another related work</display>
             <relation type="largerContextFor">first related work</relation>
-            <relation type="pendantOf">another related work</relation> 
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageIs" relids="" source="" pref="true"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="pendantOf">another related work</relation><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display>my_w_rightsDisplay</display>
@@ -421,10 +414,8 @@
             <measurements/>
         </measurementsSet>
         <relationSet>
-            <display>my_image_relationDisplay</display>
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageOf" source="" relids="w_a3d6bc55-72dd-422e-9688-e95c5d0a1893"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <display>my_image_relationDisplay</display><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_a3d6bc55-72dd-422e-9688-e95c5d0a1893"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display/>
@@ -558,10 +549,8 @@
         <relationSet>
             <display>counterProofIs first related work; contextIs another related work</display>
             <relation type="counterProofIs">first related work</relation>
-            <relation type="contextIs">another related work</relation> 
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageIs" relids="" source="" pref="true"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="contextIs">another related work</relation><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display>my_w_rightsDisplay</display>
@@ -658,10 +647,8 @@
             <measurements/>
         </measurementsSet>
         <relationSet>
-            <display>my_image_relationDisplay</display>
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageOf" source="" relids="w_26a0c506-61c0-4bce-a7f6-54e5d642566f"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <display>my_image_relationDisplay</display><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_26a0c506-61c0-4bce-a7f6-54e5d642566f"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display/>
@@ -795,10 +782,8 @@
         <relationSet>
             <display>10103</display>
             <relation type="10105">10104</relation>
-            <relation type="10107">10106</relation> 
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageIs" relids="" source="" pref="true"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="10107">10106</relation><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display>10108</display>
@@ -895,10 +880,8 @@
             <measurements/>
         </measurementsSet>
         <relationSet>
-            <display>10194</display>
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageOf" source="" relids="w_84948a91-da9b-42a6-8d7b-2ac6813731ac"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <display>10194</display><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_84948a91-da9b-42a6-8d7b-2ac6813731ac"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display>10195</display>
@@ -1032,10 +1015,8 @@
         <relationSet>
             <display>; </display>
             <relation type=""/>
-            <relation type=""/> 
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageIs" relids="" source="" pref="true"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type=""/><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageIs" relids="" source="" pref="true"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display/>
@@ -1132,10 +1113,8 @@
             <measurements/>
         </measurementsSet>
         <relationSet>
-            <display/>
-		<!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
-            <relation type="imageOf" source="" relids="w_ea7d54ea-cd31-4497-b182-271e46e4b87c"/>
-		<!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <display/><!-- start IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
+            <relation type="imageOf" source="" relids="w_ea7d54ea-cd31-4497-b182-271e46e4b87c"/><!-- end IF WORKS with IMAGE DATA ARE UPLOADED/TRANSFORMED -->
         </relationSet>
         <rightsSet>
             <display/>
