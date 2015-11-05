@@ -447,6 +447,7 @@ function loadTemplates(mapping) {
 }
 
 function generate(button, callback) {
+    var df = $.Deferred();
     var mapping = $("select#mapping-selector option:selected").val();
     var start = $('#process-from').val();
     var end = $('#process-to').val();
@@ -476,7 +477,9 @@ function generate(button, callback) {
                 dropMessage("<b>Start processing " + (end - start + 1) + " lines</b>", "info");
                 var processingStack = [];
                 for (var actualLine = start; actualLine <= end; actualLine++) processingStack.push(actualLine);
-                generateLinesXML(processingStack);        
+                $.when(generateLinesXML(processingStack)).then(function (argument) {
+                    dropMessage("test");
+                });
             })
             .fail(function(msg){
                 dropMessage("...error: " + msg.responseText, "error");
@@ -484,15 +487,19 @@ function generate(button, callback) {
             .complete(function(msg){
             });
         });
+    return df.promise();
 }
 
 function applyXSL() {
+    var df = $.Deferred();
+    // dropMessage("applyingXSLs", "info");
     var selectedXsls = $("#xsl-selector .selected");
     var xsls = [];
     $.each(selectedXsls, function(idx, val) {
         xsls.push($(val).html());
     });
 
+    // if (xsls.length > 0){
     var button = $("#applyXSL");
     var transName = $("select#transformations-selector option:selected").val();
     // first save selected transformation settings
@@ -504,18 +511,15 @@ function applyXSL() {
                     selectedPresetName: transName
                 }
             })
-            .complete(function(msg){
-        });
-    
-    saveTrans.done(function(msg) {
+    .done(function(msg) {
         dropMessage("<b>applying transformations</b>", "info");
         $.ajax({
             url: "process-csv.xq",
             method: "POST",
             data: { 
                 action: "generateTransformation",
-                contentType: "text/plain",
-                // dataType: "json",
+                processData: false,
+                dataType: "json",
                 debug: debug,
                 xsls: xsls 
             }
@@ -524,17 +528,23 @@ function applyXSL() {
             dropMessage("Transformation successful: " +  msg.xmlFilename, "success");
             $('#generatePreview').removeAttr('disabled');
             toggleAfterProcessButtons(true);            
-            postProcessing().done(
-                initPreview()
+            $.when(postProcessing()).done(
+                initPreview(),
+                df.resolve()
+
             );
         })
         .fail(function(msg) {
             dropMessage("XSL Transformations failed. " + msg.responseText, "error");
             df.reject();
-        })
-        .complete(function(msg){
         });
     });
+    saveTrans.fail(function(msg) {
+            dropMessage("save Trans failed. " + msg.responseText, "error");
+            df.reject();
+    });
+
+    return df.promise();
 }
 
 function generateLinesXML(lineStack) {
@@ -561,11 +571,9 @@ function generateLinesXML(lineStack) {
     })
     .done(function( xml ) {
         dropMessage("line " + line + " processed.", "success");
-        df.resolve();
     })
     .fail(function(msg ) {
         dropMessage("XML generation failed (Line No " + line + "): " + msg.responseText, "error");
-        df.reject();
     })
     .complete(function(msg){
         // recursive call with rest of stack
@@ -573,10 +581,12 @@ function generateLinesXML(lineStack) {
             generateLinesXML(lineStack);
         }else{
             dropMessage("Processing CSV Lines done</b>", "success");
-            applyXSL();
-            $('#applyXSL').removeAttr("disabled");
-            buttonSetProgressing(generateButton, false);
-            buttonSetProgressing($('#doAll'), false);
+            $.when(applyXSL()).done( function (){
+                $('#applyXSL').removeAttr("disabled");
+                buttonSetProgressing(generateButton, false);
+                buttonSetProgressing($('#doAll'), false);
+                df.resolve();
+            });
         }
     });
     
@@ -584,8 +594,8 @@ function generateLinesXML(lineStack) {
 }
 
 function postProcessing() {
-     var df = $.Deferred();
-   $.ajax({
+    var df = $.Deferred();
+    $.ajax({
         url: "process-csv.xq",
         method: "POST",
         data: { 
@@ -657,7 +667,8 @@ function validate(callback) {
 function doEverything(button) {
     // buttonSetProgressing(button, true);
     dropMessage("generating...", "info");
-    generate(button, function(result, message){
+    // generate(button, function(result, message){
+    $.when(generate(button)).then(function(result, message){
         // if successfully generated, then validate
         if(result){
             dropMessage("generating successful. Please be patient, validating now...", "success");

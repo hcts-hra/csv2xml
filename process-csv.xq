@@ -264,6 +264,8 @@ return
         case "saveSelectedTransPreset" return
             let $selectedPresetName := request:get-parameter("selectedPresetName", ())
 (:            let $log := util:log("INFO", $selectedPresetName):)
+            let $header := response:set-header("Content-Type", "application/json")
+ 
             return 
                 if ($selectedPresetName) then
                     let $mapping-name := session:get-attribute("mapping-name")
@@ -272,12 +274,13 @@ return
 
                     let $storeSession := session:set-attribute("selectedPresetDefiniton", $presetDefinition)
                     return
-                        serialize(<root json:literal="true">true</root>, $local:json-serialize-parameters)
+                    serialize(<root>{$selectedPresetName}</root>, $local:json-serialize-parameters)
                 else
-                    ()
+                    serialize(<root json:literal="true">{true()}</root>, $local:json-serialize-parameters)
         
         case "cleanupXML" return
             let $cleanup := xml-functions:cleanupXML()
+            let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize(<root json:literal="true">true</root>, $local:json-serialize-parameters)
 
