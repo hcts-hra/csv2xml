@@ -78,43 +78,41 @@ $( document ).ready(function() {
         }
     });
 
-    // Bind event: if mapping selection changed
-    $("#mapping-selector").bind("change", function(event) {
-       updateMapping();
-    });
-    
-    //Bind event: if transformations selection changed
-    $("#transformations-selector").bind("change", function(event) {
-        // console.debug("TRANS CHANGED"); 
-        loadDefinedXSLs();
-        // set validation and download "disabled"
-        $("#validate").attr("disabled", "disabled");
-        $("#download").attr("disabled", "disabled");
-    });
-
-    $("#xsl-selector").bind("change", function (event) {
-        // body...
-        loadDefinedCatalogs();
-    });
-
-    $("#xsl-selector").bind("click", function(e){
-        var clicked = $(e.target);
-        clicked.toggleClass("selected");
-        // console.debug($(e.target));
-    });
-
-    $("#catalogs-selector").bind("click", function(e){
-        var clicked = $(e.target);
-        clicked.toggleClass("selected");
-        //if no validation catalog selected, disable validation function
-        if(parseInt($('#lines-count > .lines-amount').html(), 10) === 0 || $(this).children(".selected").length === 0)
-            $('#validate').attr("disabled", "disabled");
-        else
-            $('#validate').attr("disabled", false);
+    $.when(init()).done(function (argument) {
+        // Bind event: if mapping selection changed
+        $("#mapping-selector").bind("change", function() {
+            updateMapping();
+        });
         
-        // console.debug($('#validate'));
-    });
+        //Bind event: if transformations selection changed
+        $("#transformations-selector").bind("change", function(event) {
+            // console.debug("TRANS CHANGED"); 
+            loadDefinedXSLs();
+        });
     
+        $("#xsl-selector").bind("change", function (event) {
+            loadDefinedCatalogs();
+        });
+    
+        $("#xsl-selector").bind("click", function(e){
+            var clicked = $(e.target);
+            clicked.toggleClass("selected");
+            // console.debug($(e.target));
+        });
+    
+        $("#catalogs-selector").bind("click", function(e){
+            var clicked = $(e.target);
+            clicked.toggleClass("selected");
+            //if no validation catalog selected, disable validation function
+            if(parseInt($('#lines-count > .lines-amount').html(), 10) === 0 || $(this).children(".selected").length === 0)
+                $('#validate').attr("disabled", "disabled");
+            else
+                $('#validate').attr("disabled", false);
+            
+            // console.debug($('#validate'));
+        });
+    });
+
     //Bind advanced mode checkbox
     $("#advancedMode").bind("change", function(event){
         enableAdvancedMode(this.checked);
@@ -136,11 +134,16 @@ $( document ).ready(function() {
         initPreview();
     });
 
-    updateMapping() ;
 
     enableAdvancedMode(advanced);
 
 });
+
+function init() {
+    var dfd = $.Deferred();
+    $.when(updateMapping()).done(dfd.resolve());
+    return dfd.promise();
+}
 
 function initLogDialog(displayOnInit) {
     $("#log-dialog").dialog({
@@ -229,68 +232,45 @@ function reset() {
 }
 
 function updateMapping() {
+    var dfd = $.Deferred();
     console.debug("updating mapping");
 
     toggleAfterProcessButtons(false);
-    loadDefinedTransformations(function(msg){});
+    $('#validate').removeClass("invalid").removeClass("valid");
     
     $("#result-container").empty();
     $("#newSchema").val(null);
 
     var mapping = $("select#mapping-selector option:selected").val();
 
-    return $.ajax({
-            url: "process-csv.xq",
-            method: "POST",
-            data: { 
-                action: "updateMapping",
-                mapping: mapping,
-            }
-        })
-        .done(function( msg ) {
-            var startingLine = (msg === true)?2:1;
-            $("#process-from").val(startingLine);
-            console.debug("updating completed");
-            return msg;
-        })
-        .complete(function(msg){
-            $('#validate').removeClass("invalid").removeClass("valid");
-        });
-}
-
-function loadDefinedCatalogs(callback) {
-    console.debug("updating catalogs");
-    var catalogSelector = $("#catalogs-selector");
-    var mapping = $("select#mapping-selector option:selected").val();
-    var trans = $("select#transformations-selector option:selected").val();
-    // console.debug(catalogSelector);
     $.ajax({
         url: "process-csv.xq",
         method: "POST",
         data: { 
-            action: "getCatalogs",
+            action: "updateMapping",
             mapping: mapping,
-            trans: trans
         }
     })
-    .success(function( msg ) {
-        catalogSelector.empty();
-        if (msg)
-            $.each(msg.catalogs, function(index, catalog){
-                addCatalog(catalog.uri, catalog.active);
-            });
+    .done(function( msg ) {
+        var startingLine = (msg === true)?2:1;
+        $("#process-from").val(startingLine);
+        console.debug("updating mapping completed");
+        loadDefinedTransformations().done(dfd.resolve(msg));
     })
-    .done(function (msg) {
-        $("#catalogs-selector").trigger("change");
-        if(callback) callback(msg);
+    .fail(function(msg) {
+        console.debug(msg);
     });
+
+    return dfd.promise();
 }
 
+
 function loadDefinedTransformations(callback) {
+    var dfd = $.Deferred();
+
     console.debug("updatingTransformations");
     var transSelector = $("#transformations-selector");
     var mapping = $("select#mapping-selector option:selected").val();
-    // console.debug(catalogSelector);
     $.ajax({
         url: "process-csv.xq",
         method: "POST",
@@ -299,7 +279,7 @@ function loadDefinedTransformations(callback) {
             mapping: mapping
         }
     })
-    .success(function( msg ) {
+    .done(function( msg ) {
         transSelector.empty();
         if(msg !== null){
             $.each(msg.transform, function(index, trans){
@@ -312,15 +292,21 @@ function loadDefinedTransformations(callback) {
                 }
             });
         }
-    })
-    .done(function( msg ){
-        $("#transformations-selector").trigger("change");
+        console.debug("load transformations completed");
         if(callback) callback(msg);
+        loadDefinedXSLs().done(dfd.resolve());
     });
+    return dfd.promise();
 }
 
 
 function loadDefinedXSLs(callback) {
+    // set validation and download "disabled"
+    $("#validate").attr("disabled", "disabled");
+    $("#download").attr("disabled", "disabled");
+    
+    var dfd = $.Deferred();
+    
     console.debug("updatingXSLXs");
     var xslSelector = $("#xsl-selector");
     var mapping = $("select#mapping-selector option:selected").val();
@@ -335,7 +321,7 @@ function loadDefinedXSLs(callback) {
             transformation: transformation
         }
     })
-    .success(function( msg ) {
+    .done(function ( msg ) {
         xslSelector.empty();
         if(msg !== null){
             $.each(msg.xsl, function(index, xsl){
@@ -343,11 +329,43 @@ function loadDefinedXSLs(callback) {
                 if(xsl.active=="true") addXSL(xsl.uri, xsl.selected);
             });
         }
-    })
-    .done(function ( msg ) {
-        $("#xsl-selector").trigger("change");
+        // $("#xsl-selector").trigger("change");
+        console.debug("load XSLs completed");
         if (callback) callback(msg);
+        loadDefinedCatalogs().done(dfd.resolve());
     });
+    return dfd.promise();
+}
+
+function loadDefinedCatalogs(callback) {
+    var dfd = $.Deferred();
+    
+    console.debug("updating catalogs");
+    var catalogSelector = $("#catalogs-selector");
+    var mapping = $("select#mapping-selector option:selected").val();
+    var trans = $("select#transformations-selector option:selected").val();
+    // console.debug(catalogSelector);
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "getCatalogs",
+            mapping: mapping,
+            trans: trans
+        }
+    })
+    .done(function (msg) {
+        catalogSelector.empty();
+        if (msg)
+            $.each(msg.catalogs, function(index, catalog){
+                addCatalog(catalog.uri, catalog.active);
+            });
+        // $("#catalogs-selector").trigger("change");
+        if(callback) callback(msg);
+        console.debug("updating catalogs completed");
+        dfd.resolve();
+    });
+    return dfd.promise();
 }
 
 
@@ -506,8 +524,9 @@ function applyXSL() {
             dropMessage("Transformation successful: " +  msg.xmlFilename, "success");
             $('#generatePreview').removeAttr('disabled');
             toggleAfterProcessButtons(true);            
-            initPreview();
-            postProcessing();
+            postProcessing().done(
+                initPreview()
+            );
         })
         .fail(function(msg) {
             dropMessage("XSL Transformations failed. " + msg.responseText, "error");
@@ -519,11 +538,12 @@ function applyXSL() {
 }
 
 function generateLinesXML(lineStack) {
+    var df = $.Deferred();
+
     var generateButton = $('#generate');
     buttonSetProgressing(generateButton, true);
     buttonSetProgressing($('#doAll'), true);
 
-    var df = $.Deferred();
     var mapping = $("select#mapping-selector option:selected").val();
     // Take the first value from stash process it
     var line = lineStack.shift();
@@ -564,7 +584,8 @@ function generateLinesXML(lineStack) {
 }
 
 function postProcessing() {
-    $.ajax({
+     var df = $.Deferred();
+   $.ajax({
         url: "process-csv.xq",
         method: "POST",
         data: { 
@@ -577,7 +598,9 @@ function postProcessing() {
             // dropMessage("generating successful. Please be patient, validating now...", "success");
             validate();
         }
+        df.resolve();
     });
+    return df.promise();
 }
 
 function validate(callback) {

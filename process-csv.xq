@@ -177,6 +177,7 @@ return
 (:                    let $log := util:log("INFO", "parent-xml: " || "mappings/" || $mapping-name || "/templates/" || $parent-template-filename):)
 
                     let $resource-name := xml-functions:store-parent($parent-xml)
+
                     let $session-store-xml-filename := session:set-attribute("file-uri", $xml-functions:temp-dir || "/" || $resource-name)
                     let $header := response:set-header("Content-Type", "application/json")
                     return

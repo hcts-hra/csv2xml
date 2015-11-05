@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<work id="$WORK_ID$">
+<work xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="$WORK_ID$">
     <agentSet>
         <display>$WORK_AgentDisplay$</display>
         <agent>

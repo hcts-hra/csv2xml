@@ -284,9 +284,8 @@ declare function xml-functions:get-pagination-item($page as xs:integer) {
 
 declare function xml-functions:cleanupXML(){
     let $generated-doc := doc(session:get-attribute("file-uri"))
-
     (:  removeCSV2XMLnodes  :)
-    for $node in $generated-doc//csv2xml:*
+    for $node in root($generated-doc)//csv2xml:*
     return
         update delete $node
 };

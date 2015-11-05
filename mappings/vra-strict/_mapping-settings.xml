@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
+    <importNamespaces>
+        <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
+    </importNamespaces>
     <templates uses-headings="true">
         <parent>parent-template.xml</parent>
-        <template>vra-work-template.xml</template>
-        <template>vra-image-template.xml</template>
+        <template>
+            <key>vraWork</key>
+            <filename>vra-work-template.xml</filename>
+            <targetNode>vra//csv2xml:vra-templates</targetNode>
+        </template>
+        <template>
+            <key>vraImage</key>
+            <filename>vra-image-template.xml</filename>
+            <targetNode>vra//csv2xml:vra-templates</targetNode>
+        </template>
     </templates>
     <transformations>
         <transform label="Unmodified VRA Core 4 XML" name="plainVRA" active="true" selected="true" type="xsl">
+            <importNamespaces>
+                <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
+            </importNamespaces><!--  Query for page-items in pagination (tbd)  -->
+            <paginationQuery>$generated-xml/vra/*[self::work or self::image]</paginationQuery>
             <xsl/>
             <validation-catalogs>
-                <uri active="true" critical="true">http://www.loc.gov/standards/vracore/vra-strict.xsd</uri>
-                <uri active="false" critical="true">http://www.loc.gov/standards/vracore/vra.xsd</uri>
+                <uri active="false" critical="true">http://www.loc.gov/standards/vracore/vra-strict.xsd</uri>
+                <uri active="true" critical="true">http://www.loc.gov/standards/vracore/vra.xsd</uri>
                 <uri active="false" critical="true">http://localhost:8080/exist/apps/csv2xml/mappings/default/xsd/vocab.xsd</uri>
             </validation-catalogs>
         </transform>
-        <transform label="Transform into RDF" name="rdf" active="true" selected="false" type="xsl">
+        <transform label="Transform into RDF" name="rdf" active="true" selected="true" type="xsl">
+            <importNamespaces>
+                <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
+                <ns prefix="vra">http://purl.org/vra/</ns>
+                <ns prefix="rdf">http://www.w3.org/1999/02/22-rdf-syntax-ns#</ns>
+            </importNamespaces>
+            <paginationQuery>$generated-xml/*/*:Description</paginationQuery>
             <xsl>
                 <uri active="true" selected="true">xsl/VRA2RDF.xsl</uri>
             </xsl>

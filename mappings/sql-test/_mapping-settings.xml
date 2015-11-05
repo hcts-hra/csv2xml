@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <templates>
+        <parent>parent-template.xml</parent>
+    </templates>
+    <transformations>
+        <transform label="Chinese Comics SQL to TEI" name="cc_to_tei" active="true" selected="true" type="xsl">
+            <xsl/>
+            <validation-catalogs/>
+        </transform>
+    </transformations>
+</settings>

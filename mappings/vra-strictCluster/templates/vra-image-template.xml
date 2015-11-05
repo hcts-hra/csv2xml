@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<image id="$IMAGE_ID$" href="$IMAGE_Filename$">
+<image xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="$IMAGE_ID$" href="$IMAGE_Filename$">
     <agentSet>
         <display>$IMAGE_AgentDisplay$</display>
         <agent>
@@ -16,9 +16,9 @@
         <date/>
     </dateSet>
     <descriptionSet>
-        <display>$IMAGE_DescriptionDisplay$</display>
+        <display>$IMAGE_Description$</display>
         <description>
-            <text>$IMAGE_DescriptionDisplay$</text>
+            <text>$IMAGE_Description$</text>
         </description>
     </descriptionSet>
     <inscriptionSet>
@@ -58,10 +58,10 @@
     </relationSet>
     <rightsSet>
         <display>$IMAGE_RightsDisplay$</display>
-        <notes>$IMAGE_RightsNotes$</notes>
-        <rights type="$IMAGE_RightsType$">
-            <rightsHolder>$IMAGE_RightsHolder$</rightsHolder>
-            <text>$IMAGE_RightsText$</text>
+        <notes>$IMAGE_RigthsNotes$</notes>
+        <rights type="$IMAGE_RigthsType$">
+            <rightsHolder>$IMAGE_RigthsHolder$</rightsHolder>
+            <text>$IMAGE_RigthsText$</text>
         </rights>
     </rightsSet>
     <sourceSet>
