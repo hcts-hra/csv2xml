@@ -397,7 +397,7 @@ function toggleAfterProcessButtons(toggle) {
     }
     actionButtonsContainer.find('button').removeClass("progressing");
     actionButtonsContainer.find('#download').attr("disabled", !toggle);
-    actionButtonsContainer.find('#doAll').attr("disabled", !toggle);
+    if(advanced) actionButtonsContainer.find('#doAll').attr("disabled", !toggle);
 }
 
 function updateInformations(data) {

@@ -203,7 +203,7 @@ return
 
             return
                 if ($line-data) then
-                    try{
+(:                    try{:)
                         (: process each template :)
                         let $store-result := 
                             map:for-each-entry($templates, function($key, $template-map){
@@ -220,13 +220,13 @@ return
                         return
                             serialize($store-result, $local:json-serialize-parameters)
 
-                    } catch * {
-                        let $util := util:log("INFO", "processing line failed")
-                        let $header := response:set-status-code(500)
-                        return 
-                            $err:code || " " || $err:description || " " || $err:value
-
-                    }
+(:                    } catch * {:)
+(:                        let $util := util:log("INFO", "processing line failed"):)
+(:                        let $header := response:set-status-code(500):)
+(:                        return :)
+(:                            $err:code || " " || $err:description || " " || $err:value:)
+(::)
+(:                    }:)
 
                 else
                     ()
