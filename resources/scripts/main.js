@@ -1,5 +1,5 @@
-var debug = true;
-var advanced = true;
+var debug = false;
+var advanced = false;
 var messageFadeOutTime = 3000;
 var preview = true;
 var displayLog = true;
@@ -333,6 +333,17 @@ function loadDefinedXSLs(callback) {
         console.debug("load XSLs completed");
         if (callback) callback(msg);
         loadDefinedCatalogs().done(dfd.resolve());
+        // store selected Transformation into session
+        $.ajax({
+            url: "process-csv.xq",
+            method: "POST",
+            data: {
+                action: "saveSelectedTransPreset",
+                selectedPresetName: transformation
+            }
+        }).done(function () {
+            // console.debug("transStored");
+        });
     });
     return dfd.promise();
 }
@@ -449,8 +460,8 @@ function loadTemplates(mapping) {
 function generate(button, callback) {
     var df = $.Deferred();
     var mapping = $("select#mapping-selector option:selected").val();
-    var start = $('#process-from').val();
-    var end = $('#process-to').val();
+    var start = parseInt($('#process-from').val(), 10);
+    var end = parseInt($('#process-to').val(), 10);
     // load templates
     $.when(loadTemplates(mapping))
         .then(function(){
@@ -462,7 +473,6 @@ function generate(button, callback) {
             var generateParent = $.ajax({
                 url: "process-csv.xq",
                 method: "POST",
-                async: false,
                 data: { 
                     action: "storeParent",
                     processData: false,
@@ -477,7 +487,10 @@ function generate(button, callback) {
                 dropMessage("->" + msg, "success");
                 dropMessage("<b>Start processing " + (end - start + 1) + " lines</b>", "info");
                 var processingStack = [];
-                for (var actualLine = start; actualLine <= end; actualLine++) processingStack.push(actualLine);
+                for (var actualLine = start; actualLine <= end; actualLine++){
+                    processingStack.push(actualLine);
+                }
+                // console.debug(processingStack);
                 $.when(generateLinesXML(processingStack)).then(function (argument) {
                     // cleanup
                     $.when(postProcessing().done()).then(df.resolve());
@@ -501,47 +514,32 @@ function applyXSL() {
 
     // if (xsls.length > 0){
     var button = $("#applyXSL");
-    var transName = $("select#transformations-selector option:selected").val();
     // first save selected transformation settings
-    var saveTrans = $.ajax({
-                url: "process-csv.xq",
-                method: "POST",
-                data: {
-                    action: "saveSelectedTransPreset",
-                    selectedPresetName: transName
-                }
-            })
+    dropMessage("<b>applying transformations</b>", "info");
+    $.ajax({
+        url: "process-csv.xq",
+        method: "POST",
+        data: { 
+            action: "generateTransformation",
+            processData: false,
+            dataType: "json",
+            debug: debug,
+            xsls: xsls 
+        }
+    })
     .done(function(msg) {
-        dropMessage("<b>applying transformations</b>", "info");
-        $.ajax({
-            url: "process-csv.xq",
-            method: "POST",
-            data: { 
-                action: "generateTransformation",
-                processData: false,
-                dataType: "json",
-                debug: debug,
-                xsls: xsls 
-            }
-        })
-        .done(function(msg) {
-            dropMessage("Transformation successful: " +  msg.xmlFilename, "success");
-            $('#generatePreview').removeAttr('disabled');
-            toggleAfterProcessButtons(true);            
-            $.when(postProcessing()).done(
-                initPreview(),
-                df.resolve()
+        dropMessage("Transformation successful: " +  msg.xmlFilename, "success");
+        $('#generatePreview').removeAttr('disabled');
+        toggleAfterProcessButtons(true);            
+        $.when(postProcessing()).done(
+            initPreview(),
+            df.resolve()
 
-            );
-        })
-        .fail(function(msg) {
-            dropMessage("XSL Transformations failed. " + msg.responseText, "error");
-            df.reject();
-        });
-    });
-    saveTrans.fail(function(msg) {
-            dropMessage("save Trans failed. " + msg.responseText, "error");
-            df.reject();
+        );
+    })
+    .fail(function(msg) {
+        dropMessage("XSL Transformations failed. " + msg.responseText, "error");
+        df.reject();
     });
 
     return df.promise();

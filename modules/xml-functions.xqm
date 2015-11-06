@@ -156,12 +156,13 @@ declare function xml-functions:remove-empty-elements($nodes as node()*)  as node
 
 declare function xml-functions:store-parent($parent as node()*) as xs:string{
     let $session-saved-uri := session:get-attribute("file-uri")
-(:    let $log := util:log("INFO", session:get-attribute-names()):)
     let $res-name := 
-        if ($session-saved-uri) then
-            functx:substring-after-last($session-saved-uri, "/")
-        else
+        if (empty($session-saved-uri)) then
             util:uuid() || ".xml"
+        else
+            functx:substring-after-last($session-saved-uri, "/")
+    
+    let $session-set := session:set-attribute("file-uri", $xml-functions:temp-dir || "/" || $res-name)
     return 
         try {
             (: if there is already a xnml file for this session, overwrite it:)
@@ -176,7 +177,10 @@ declare function xml-functions:store-parent($parent as node()*) as xs:string{
 declare function xml-functions:store-node($node-as-string as xs:string, $target-node-query){
     let $mapping-name := session:get-attribute("mapping-name")
     (: open temp file :)
-    let $generated-doc := doc(session:get-attribute("file-uri"))
+    let $document-uri := session:get-attribute("file-uri")
+    let $generated-doc := doc($document-uri)
+    let $col := functx:substring-before-last($document-uri, "/")
+    let $res := functx:substring-after-last($document-uri, "/")
     let $xml := parse-xml($node-as-string)
     let $xml := xml-functions:remove-empty-attributes($xml/*)
     

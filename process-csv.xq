@@ -194,7 +194,7 @@ return
 
                     let $resource-name := xml-functions:store-parent($parent-xml)
 
-                    let $session-store-xml-filename := session:set-attribute("file-uri", $xml-functions:temp-dir || "/" || $resource-name)
+(:                    let $session-store-xml-filename := session:set-attribute("file-uri", $xml-functions:temp-dir || "/" || $resource-name):)
                     let $header := response:set-header("Content-Type", "application/json")
                     return
                         serialize(<root>{$resource-name}</root>, $local:json-serialize-parameters)
@@ -237,7 +237,7 @@ return
                             serialize($store-result, $local:json-serialize-parameters)
 
                     } catch * {
-                        let $util := util:log("INFO", "processing line failed")
+(:                        let $util := util:log("INFO", "processing line failed"):)
                         let $header := response:set-status-code(500)
                         return 
                             $err:code || " " || $err:description || " " || $err:value
@@ -299,7 +299,6 @@ return
             let $header := response:set-header("Content-Type", "application/json")
             return
                 serialize(<root json:literal="true">true</root>, $local:json-serialize-parameters)
-
 
         default return
             ""
