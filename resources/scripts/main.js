@@ -437,7 +437,7 @@ function loadTemplates(mapping) {
             mapping: mapping,
         }
     })
-    .success(function( msg ) {
+    .done(function( msg ) {
         $.each(msg.template, function(i, template){
             dropMessage("template loaded: " + template.key, "success");
         });
@@ -462,6 +462,7 @@ function generate(button, callback) {
             var generateParent = $.ajax({
                 url: "process-csv.xq",
                 method: "POST",
+                async: false,
                 data: { 
                     action: "storeParent",
                     processData: false,
@@ -478,7 +479,8 @@ function generate(button, callback) {
                 var processingStack = [];
                 for (var actualLine = start; actualLine <= end; actualLine++) processingStack.push(actualLine);
                 $.when(generateLinesXML(processingStack)).then(function (argument) {
-                    df.resolve();
+                    // cleanup
+                    $.when(postProcessing().done()).then(df.resolve());
                 });
             })
             .fail(function(msg){
