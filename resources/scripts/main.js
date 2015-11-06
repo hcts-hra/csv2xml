@@ -1,5 +1,5 @@
-var debug = false;
-var advanced = false;
+var debug = true;
+var advanced = true;
 var messageFadeOutTime = 3000;
 var preview = true;
 var displayLog = true;
@@ -478,13 +478,11 @@ function generate(button, callback) {
                 var processingStack = [];
                 for (var actualLine = start; actualLine <= end; actualLine++) processingStack.push(actualLine);
                 $.when(generateLinesXML(processingStack)).then(function (argument) {
-                    dropMessage("test");
+                    df.resolve();
                 });
             })
             .fail(function(msg){
                 dropMessage("...error: " + msg.responseText, "error");
-            })
-            .complete(function(msg){
             });
         });
     return df.promise();

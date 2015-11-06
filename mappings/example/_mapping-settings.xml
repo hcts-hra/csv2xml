@@ -27,7 +27,7 @@
                 <uri active="false" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vra-strictCluster.xsd</uri>
                 <uri active="true" critical="true">http://www.loc.gov/standards/vracore/vra.xsd</uri>
                 <uri active="false" critical="true">http://www.loc.gov/standards/vracore/vra-strict.xsd</uri>
-                <uri active="false" critical="true">http://localhost:8080/exist/apps/csv2xml/mappings/default/xsd/tobi-vocab.xsd</uri>
+                <uri active="false" critical="true">http://localhost:8081/exist/apps/csv2xml/mappings/default/xsd/tobi-vocab.xsd</uri>
             </validation-catalogs>
         </transform>
         <transform label="transform into RDF" name="rdf" active="true" selected="true" type="xsl">

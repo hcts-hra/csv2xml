@@ -240,7 +240,8 @@ declare function xml-functions:importNamespaces() {
                 try {
                     util:declare-namespace($prefix, $namespace-uri)
                 } catch * {
-                    error($xml-functions:ERROR, "Error declaring namespace " || $prefix || ":" || $namespace-uri || " - " || $err:code || " " || $err:description || " " || $err:value)
+(:                    util:log("INFO", $err),:)
+                    error($xml-functions:ERROR, "Error declaring namespace " || $prefix || ":" || $namespace-uri)
                 }
 };
 
@@ -261,7 +262,7 @@ declare function xml-functions:count-pagination-items() as xs:integer {
     let $import-namespaces := xml-functions:importNamespaces()
     let $presetDefinition := session:get-attribute("selectedPresetDefiniton")
     let $pagination-query := $presetDefinition/paginationQuery/string()
-    let $log := util:log("INFO", "paginationQuery" || $pagination-query)
+    let $log := util:log("DEBUG", "paginationQuery" || $pagination-query)
     
     let $generated-xml := doc(session:get-attribute("transformed-filename"))
     return

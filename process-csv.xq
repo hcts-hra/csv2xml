@@ -27,7 +27,7 @@ let $header := response:set-status-code(200)
 return
     switch ($action)
         case "reset" return
-            let $log := util:log("INFO", "SESSION: resetting")
+            let $log := util:log("DEBUG", "SESSION: resetting")
             let $session-attributes-reset :=
                 (
 (:                    session:set-attribute("xml", ""),:)
@@ -88,62 +88,78 @@ return
                 serialize($result, $local:json-serialize-parameters)
 
         case "loadTemplates" return
-            let $templates-strings-map := xml-functions:load-templates-in-session()
-            let $result :=
-                    <root>
-                        {
-                        for $template-filename in map:keys($templates-strings-map)
-                            return
-                                <template json:array="true">
-                                    <key>
-                                        {$template-filename}
-                                    </key>
-                                    <!--
-                                        <loaded json:literal="true">
-                                        </loaded>
-                                    -->
-                                </template>
-                        }
-                    </root>
             let $header := response:set-header("Content-Type", "application/json")
             return
-                serialize($result, $local:json-serialize-parameters)
+                try {
+                    let $templates-strings-map := xml-functions:load-templates-in-session()
+                    let $result :=
+                            <root>
+                                {
+                                for $template-filename in map:keys($templates-strings-map)
+                                    return
+                                        <template json:array="true">
+                                            <key>
+                                                {$template-filename}
+                                            </key>
+                                        </template>
+                                }
+                            </root>
+                    return
+                        serialize($result, $local:json-serialize-parameters)
+                    } catch * {
+                        let $response := $err:code || " " || $err:description || " " || $err:value
+                        let $header := response:set-status-code(500)
+                        return
+                            <error>{$response}</error>
+                    }
 
         case "validate" return
             (: get the catalogs for validations :)
-            let $reports := 
-                for $cat in request:get-parameter("catalogs[]", "")
-                    let $clear := validation:clear-grammar-cache()
-                    let $catalog-uri := xs:anyURI($cat)
-                    let $pre-parse := validation:pre-parse-grammar($catalog-uri)
-                    let $file-uri := session:get-attribute("transformed-filename")
-                    let $xml := doc($file-uri)
-                    let $report :=
-                        <report-result>
-                            <xsd>{$cat}</xsd>
-                            {validation:jaxp-report($xml, true())}
-                        </report-result>
-                    return 
-                        $report
-            let $session-store := session:set-attribute("validation-reports", $reports)
-            let $valid := 
-                if ("invalid" = $reports//status/string()) then
-                    "invalid"
-                else
-                    "valid"
-            let $result :=
-                <root>
-                    <result>
-                        {$valid}
-                    </result>
-                    <reports>
-                        {count($reports)}
-                    </reports>
-                </root>
-            let $header := response:set-header("Content-Type", "application/json")
-            return
-                serialize($result, $local:json-serialize-parameters)
-                
+            try {
+                let $file-uri := session:get-attribute("transformed-filename")
+                let $catalogs := request:get-parameter("catalogs[]", "")
+                let $catalog-uris := 
+                    for $cat in $catalogs
+                    return
+                        xs:anyURI($cat)
+                        
+                let $xml := doc($file-uri)
+                let $reports := 
+                    for $catalog-uri in  $catalog-uris
+                        let $clear := validation:clear-grammar-cache()
+                        let $pre-parse := validation:pre-parse-grammar($catalog-uri)
+                        let $report :=
+                            <report-result>
+                                <xsd>{$catalog-uri}</xsd>
+                                {validation:jaxp-report($xml, true())}
+                            </report-result>
+                        return 
+                            $report
+                let $session-store := session:set-attribute("validation-reports", $reports)
+                let $valid := 
+                    if ("invalid" = $reports//status/string()) then
+                        "invalid"
+                    else
+                        "valid"
+                let $result :=
+                    <root>
+                        <result>
+                            {$valid}
+                        </result>
+                        <reports>
+                            {count($reports)}
+                        </reports>
+                    </root>
+                let $header := response:set-header("Content-Type", "application/json")
+                return
+                    serialize($result, $local:json-serialize-parameters)
+            } catch * {
+                let $header := response:set-header("Content-Type", "application/json")
+                let $header := response:set-status-code(500)
+                return 
+                    $err:code || " " || $err:description || " " || $err:value
+            }
+            
         case "updateMapping" return
             let $mapping-name := request:get-parameter("mapping", "example")
             let $settings-uri :=  "mappings/" || $mapping-name || "/_mapping-settings.xml"
