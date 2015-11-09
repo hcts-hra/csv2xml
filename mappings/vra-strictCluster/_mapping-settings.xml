@@ -10,6 +10,11 @@
             <filename>vra-work-template.xml</filename>
             <targetNode>vra//csv2xml:vra-templates</targetNode>
         </template>
+        <template>
+            <key>vraImage</key>
+            <filename>vra-image-template.xml</filename>
+            <targetNode>vra//csv2xml:vra-templates</targetNode>
+        </template>
     </templates>
     <transformations>
         <transform label="Unmodified VRA Core 4 XML" name="plainVRA" active="true" selected="true" type="xsl">
