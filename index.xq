@@ -98,8 +98,8 @@ return
                     <div class="advanced">
                         Apply XSLs (for transformation):
                         <div id="xsl-selector"></div>
+                        <div style="font-size:8px">(modifying the predefined selection may break pagination)</div>
                     </div>
-                    <div style="font-size:8px">(modifying the predefined selection may break pagination)</div>
                     <div>
                         <button id="applyXSL" class="advanced" type="button" disabled="disabled">transform XML</button>
                     </div>

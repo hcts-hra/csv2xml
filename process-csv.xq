@@ -219,13 +219,17 @@ return
 
             return
                 if ($line-data) then
-                    try{
+(:                    try{:)
                         (: process each template :)
                         let $store-result := 
                             map:for-each-entry($templates, function($key, $template-map){
                                 let $template-string := $template-map("string")
                                 let $target-node-query := $template-map("targetNodeQuery")
+                                let $unique-values := $template-map("uniqueValues")
+
                                 let $node-as-string := xml-functions:replace-template-variables($template-string, $mapping-definition, $line-data)
+                                let $node-as-xml := parse-xml($node-as-string)
+
                                 (: xml node generated now insert it to temp-file :)
                                 let $save := xml-functions:store-node($node-as-string, $target-node-query)
 
@@ -236,13 +240,13 @@ return
                         return
                             serialize($store-result, $local:json-serialize-parameters)
 
-                    } catch * {
-(:                        let $util := util:log("INFO", "processing line failed"):)
-                        let $header := response:set-status-code(500)
-                        return 
-                            $err:code || " " || $err:description || " " || $err:value
-
-                    }
+(:                    } catch * {:)
+(:(:                        let $util := util:log("INFO", "processing line failed"):):)
+(:                        let $header := response:set-status-code(500):)
+(:                        return :)
+(:                            $err:code || " " || $err:description || " " || $err:value:)
+(::)
+(:                    }:)
 
                 else
                     ()
@@ -262,7 +266,7 @@ return
             let $xsls := request:get-parameter("xsls[]", ())
             let $header := response:set-header("Content-Type", "application/json")
             return
-                try{
+(:                try{:)
                     let $transformed-filename := xml-functions:apply-xsls($xsls)
                     let $session-store := session:set-attribute("transformed-filename", $transformed-filename)
                     let $return :=
@@ -271,11 +275,11 @@ return
                         </root>
                     return
                         serialize($return, $local:json-serialize-parameters)
-                } catch * {
-                    let $header := response:set-status-code(500)
-                    return 
-                        $err:code || " " || $err:description || " " || $err:value
-                }
+(:                } catch * {:)
+(:                    let $header := response:set-status-code(500):)
+(:                    return :)
+(:                        $err:code || " " || $err:description || " " || $err:value:)
+(:                }:)
 
         case "saveSelectedTransPreset" return
             let $selectedPresetName := request:get-parameter("selectedPresetName", ())

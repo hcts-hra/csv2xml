@@ -60,6 +60,19 @@ declare function xml-functions:get-xsls($mapping, $transform-name) {
         </root>
 };
 
+declare %private function xml-functions:_transform($transformations-sequence, $xml) {
+    let $xsl := $transformations-sequence[1]
+    let $mapping-name := session:get-attribute("mapping-name")
+    let $xsl-doc := doc("../mappings/" || $mapping-name || "/" || $xsl)
+    let $xml := transform:transform($xml, $xsl-doc, ())
+(:    let $log := util:log("INFO", $xml):)
+    return
+        if(count($transformations-sequence) > 1) then
+            xml-functions:_transform(fn:subsequence($transformations-sequence, 2), $xml)
+        else
+            $xml
+};
+
 declare function xml-functions:apply-xsls($xsls as xs:string*){
 (:    let $log := util:log("INFO", "xsls: " || $xsls):)
     let $file-uri := session:get-attribute("file-uri")
@@ -71,11 +84,7 @@ declare function xml-functions:apply-xsls($xsls as xs:string*){
             let $xml := doc($file-uri)
             let $xml :=
                 if(count($xsls) > 0) then
-                    for $xsl in $xsls
-                        let $xsl-doc := doc("../mappings/" || $mapping-name || "/" || $xsl)
-                        (: let $log := util:log("INFO", "../mappings/" || $mapping-name || "/" || $xsl):) 
-                            return 
-                                transform:transform($xml, $xsl-doc, ())
+                    xml-functions:_transform($xsls, $xml)
                 else
                     $xml
             let $stored-xml-uri := xmldb:store($xml-functions:temp-dir, $transformed-file-uri, $xml)
@@ -183,16 +192,34 @@ declare function xml-functions:store-node($node-as-string as xs:string, $target-
     let $res := functx:substring-after-last($document-uri, "/")
     let $xml := parse-xml($node-as-string)
     let $xml := xml-functions:remove-empty-attributes($xml/*)
-    
-    
+
     let $importNamespaces := xml-functions:importNamespaces()
     let $target-node := util:eval("$generated-doc//" || $target-node-query)
+
+    (: check for already existing unique values (i.e. id's) :)
+    let $unique-values := session:get-attribute("uniqueValues")
+    let $unique-test := 
+        for $value in $unique-values//value
+            let $this-value := util:eval("root($xml)" || $value/string())
+            let $value-exists := 
+                if(count(util:eval("$generated-doc" || $value/string() || "[. = $this-value]")) > 0) then
+                    true()
+                else
+                    false()
+            return
+                $value-exists
+                
     return
-        try {
-            update insert $xml preceding $target-node 
-        } catch * {
-            error($xml-functions:ERROR, "Error inserting the processed template. " || $err:code || " " || $err:description || " " || $err:value)
-        }
+        (: if there is one of the unique values found, do not insert the generated xml  :)
+        if($unique-test = true()) then 
+            true()
+        else
+            try {
+                update insert $xml preceding $target-node 
+            } catch * {
+                error($xml-functions:ERROR, "Error inserting the processed template. " || $err:code || " " || $err:description || " " || $err:value)
+            }
+
 
 (:        util:log("INFO", $generated-doc):)
 };
@@ -204,6 +231,9 @@ declare function xml-functions:load-templates-in-session() {
 
     (: get the template-filenames:)
     let $settings := doc($settings-uri)
+    (: store unique value queries in session  :)
+    let $store-session := session:set-attribute("uniqueValues", $settings//uniqueValues)
+    
     let $templates := $settings/settings/templates/template
 
     (: serialize each template :)

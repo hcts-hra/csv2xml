@@ -3,6 +3,10 @@
     <importNamespaces>
         <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
     </importNamespaces>
+    <uniqueValues>
+        <value>//work/@id/string()</value>
+        <value>//image/@id/string()</value>
+    </uniqueValues>
     <templates uses-headings="true">
         <parent>parent-template.xml</parent>
         <template>
@@ -22,7 +26,9 @@
                 <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
             </importNamespaces><!--  Query for page-items in pagination (tbd)  -->
             <paginationQuery>$generated-xml/vra/*[self::work or self::image]</paginationQuery>
-            <xsl/>
+            <xsl>
+                <uri active="true" selected="true">xsl/cleanup-vra.xsl</uri>
+            </xsl>
             <validation-catalogs>
                 <uri active="false" critical="true">http://www.loc.gov/standards/vracore/vra-strict.xsd</uri>
                 <uri active="true" critical="true">http://www.loc.gov/standards/vracore/vra.xsd</uri>
@@ -37,6 +43,7 @@
             </importNamespaces>
             <paginationQuery>$generated-xml/*/*:Description</paginationQuery>
             <xsl>
+                <uri active="true" selected="true">xsl/cleanup-vra.xsl</uri>
                 <uri active="true" selected="true">xsl/VRA2RDF.xsl</uri>
             </xsl>
             <validation-catalogs/>

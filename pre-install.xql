@@ -1,6 +1,8 @@
 xquery version "1.0";
 
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
+import module namespace xml-functions="http://hra.uni-heidelberg.de/ns/csv2vra/xml-functions" at "modules/xml-functions.xqm";
+import module namespace functx="http://www.functx.com";
 
 (: The following external variables are set by the repo:deploy function :)
 
@@ -29,4 +31,6 @@ declare function local:mkcol($collection, $path) {
 
 (: store the collection configuration :)
 local:mkcol("/db/system/config", $target),
-xdb:store-files-from-pattern(concat("/system/config", $target), $dir, "*.xconf")
+xdb:store-files-from-pattern(concat("/system/config", $target), $dir, "*.xconf"),
+(: create the tmp collection :)
+local:mkcol(functx:substring-before-last($xml-functions:temp-dir, "/"), functx:substring-after-last($xml-functions:temp-dir, "/"))

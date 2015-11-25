@@ -3,6 +3,10 @@
     <importNamespaces>
         <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
     </importNamespaces>
+    <uniqueValues>
+        <value>//work/@id/string()</value>
+        <value>//image/@id/string()</value>
+    </uniqueValues>
     <templates uses-headings="true">
         <parent>parent-template.xml</parent>
         <template>
