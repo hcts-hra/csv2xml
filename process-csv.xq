@@ -220,6 +220,8 @@ return
             return
                 if ($line-data) then
 (:                    try{:)
+                        (: apply the mapping for this line :)
+                        let $apply-mapping := xml-functions:apply-mapping($mapping-definition, $line-data)
                         (: process each template :)
                         let $store-result := 
                             map:for-each-entry($templates, function($key, $template-map){
@@ -227,7 +229,7 @@ return
                                 let $target-node-query := $template-map("targetNodeQuery")
                                 let $unique-values := $template-map("uniqueValues")
 
-                                let $node-as-string := xml-functions:replace-template-variables($template-string, $mapping-definition, $line-data)
+                                let $node-as-string := xml-functions:replace-template-variables($template-string)
                                 let $node-as-xml := parse-xml($node-as-string)
 
                                 (: xml node generated now insert it to temp-file :)

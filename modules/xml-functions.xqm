@@ -95,7 +95,7 @@ declare function xml-functions:apply-xsls($xsls as xs:string*){
 (:        }:)
 };
 
-declare function xml-functions:replace-template-variables($template-string as xs:string, $mapping-definition as node(), $line as node()) as xs:string {
+declare function xml-functions:apply-mapping($mapping-definition as node(), $line as node()) {
     let $clear-default-ns := util:declare-namespace("", xs:anyURI(""))
     let $replace-map := 
         map:new(
@@ -108,6 +108,13 @@ declare function xml-functions:replace-template-variables($template-string as xs
                 return
                     map:entry($changeFrom, $changeTo)
         )
+    return
+        session:set-attribute("mapped-values", $replace-map)
+
+};
+
+declare function xml-functions:replace-template-variables($template-string as xs:string) as xs:string {
+    let $replace-map := session:get-attribute("mapped-values")
 
     let $from-seq := map:keys($replace-map)
     let $to-seq :=

@@ -220,6 +220,6 @@ pip-log.txt
 ####################
 target/*
 /target
-/.gitignore
-.mappings/example/
-/mappings/example/
+.gitignore
+mappings/example/
+mappings/neu-test/
