@@ -1,7 +1,0 @@
-                <person xml:id="$UUID$">
-                    <persName xml:lang="eng">
-                        <forename>$FORENAME$</forename>
-                        <surname>$SURNAME$</surname>
-                    </persName>
-                    <note type="type">personalName</note>
-                </person>
