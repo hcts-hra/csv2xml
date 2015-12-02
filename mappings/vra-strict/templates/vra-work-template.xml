@@ -125,7 +125,10 @@
     </techniqueSet>
     <textrefSet>
         <display>$WORK_TextrefDisplay$</display>
-        <textref/>
+        <textref>
+            <name type="$WORK_TextrefNameType$">$WORK_TextrefName$</name>
+            <refid type="$WORK_TextrefRefidType$">$WORK_TextrefRefid$</refid>
+        </textref>
     </textrefSet>
     <titleSet>
         <display>$WORK_TitleDisplay$</display>
