@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<image xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="$IMAGE_ID$" href="IMAGE_Href">
+<image xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="$IMAGE_ID$" href="$IMAGE_Href$" refid="$IMAGE_Filename$">
     <agentSet>
         <display>$IMAGE_AgentDisplay$</display>
         <agent>
@@ -26,7 +26,6 @@
         <location type="repository">
             <name>$IMAGE_LocalRepoName$</name>
             <refid type="accession">$IMAGE_AccessionID$</refid>
-            <refid type="other">$IMAGE_Filename$</refid>
         </location>
     </locationSet>
     <materialSet>
