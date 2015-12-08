@@ -6,7 +6,9 @@ Also see:
 Description: This stylesheet can be used to convert VRA 4.0 XML formated records into RDF/XML.
 			 The records must conform the the VRA 4.0 Restricted Schema in order to work with the stylesheet
 Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://creativecommons.org/licenses/by-nc-sa/3.0/>
- -->
+           
+modification  changed expected identifier for collection, work, and image from 'refid' to 'id' 2015-12-07ma 
+-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:library="http://purl.org/library/" xmlns:void="http://rdfs.org/ns/void#" xmlns:vra="http://purl.org/vra/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:vc="http://www.vraweb.org/vracore4.htm" xmlns:foaf="http://xmlns.com/foaf/0.1/" version="1.0" exclude-result-prefixes="vc xsl">
     <xsl:output method="xml" media-type="application/xml" indent="yes"/>
     <xsl:template match="/vc:vra">
@@ -15,7 +17,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
         </rdf:RDF>
     </xsl:template>
     <xsl:template match="vc:collection">
-        <rdf:Description rdf:about="#{@refid}">
+        <rdf:Description rdf:about="#{@id}">
             <rdf:type rdf:resource="http://rdfs.org/ns/void#DataSet"/>
             <rdfs:label>
                 <xsl:value-of select="@source"/>
@@ -24,7 +26,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
         </rdf:Description>
     </xsl:template>
     <xsl:template match="vc:work">
-        <rdf:Description rdf:about="#{@refid}">
+        <rdf:Description rdf:about="#{@id}">
             <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             <xsl:apply-templates select="vc:worktypeSet" mode="workType"/>
             <xsl:apply-templates/>
@@ -353,7 +355,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
         </rdf:Description>
     </xsl:template>
     <xsl:template match="vc:image">
-        <rdf:Description rdf:about="#{@refid}">
+        <rdf:Description rdf:about="#{@id}">
             <rdf:type rdf:resource="http://purl.org/vra/ImageObject"/>
             <xsl:apply-templates select="vc:worktypeSet" mode="workType"/>
             <xsl:apply-templates/>
