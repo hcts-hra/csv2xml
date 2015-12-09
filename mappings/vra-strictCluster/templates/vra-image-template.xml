@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<image xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="$IMAGE_ID$" href="$IMAGE_Filename$">
+<image xmlns:ext="http://exist-db.org/vra/extension" xmlns="http://www.vraweb.org/vracore4.htm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="$IMAGE_ID$" href="$IMAGE_Href$" refid="$IMAGE_Filename$">
     <agentSet>
         <display>$IMAGE_AgentDisplay$</display>
         <agent>
@@ -7,10 +7,6 @@
             <role vocab="$WORK_Agent1RoleVocab$" refid="$WORK_Agent1RoleRefid$">$IMAGE_Agent1Role$</role>
         </agent>
     </agentSet>
-    <culturalContextSet>
-        <display>$IMAGE_CulturalContextDisplay$</display>
-        <culturalContext>$IMAGE_CulturalContextDisplay$</culturalContext>
-    </culturalContextSet>
     <dateSet>
         <display>$IMAGE_DateDisplay$</display>
         <date/>
@@ -31,7 +27,7 @@
         <display>$IMAGE_LocationDisplay$</display>
         <notes>$IMAGE_LocationNotes$</notes>
         <location type="repository">
-            <name>$LOCAL-REPO-NAME$</name>
+            <name>$IMAGE_LocalRepoName$</name>
             <refid type="accession">$IMAGE_AccessionID$</refid>
         </location>
         <location type="$IMAGE_LocationType$">
@@ -75,14 +71,6 @@
             <refid type="$IMAGE_SourceType$">$IMAGE_SourceValue$</refid>
         </source>
     </sourceSet>
-    <stateEditionSet>
-        <display>$IMAGE_StateEditionDisplay$</display>
-        <stateEdition/>
-    </stateEditionSet>
-    <stylePeriodSet>
-        <display>$IMAGE_StylePeriodDisplay$</display>
-        <stylePeriod/>
-    </stylePeriodSet>
     <subjectSet>
         <display>$IMAGE_SubjectDisplay$</display>
         <subject>
@@ -99,10 +87,6 @@
         <display>$IMAGE_TechniqueDisplay$</display>
         <technique vocab="AAT" refid="300237903">digital imaging</technique>
     </techniqueSet>
-    <textrefSet>
-        <display>$IMAGE_TextrefDisplay$</display>
-        <textref/>
-    </textrefSet>
     <titleSet>
         <display>$IMAGE_TitleDisplay$</display>
         <title type="$IMAGE_TitleType$">$IMAGE_Title$</title>

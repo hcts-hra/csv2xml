@@ -433,7 +433,7 @@ return
     <mapping key="WORK_Technique4">$line/column[@heading-index="WORK_Technique4"]/string()</mapping>
     <mapping key="WORK_TechniqueVocab4">$line/column[@heading-index="WORK_TechniqueVocab4"]/string()</mapping>
     <mapping key="WORK_TechniqueRefid4">$line/column[@heading-index="WORK_TechniqueRefid4"]/string()</mapping>
-    <mapping key="WORK_TextrefDisplay">$line/column[@heading-index="WORK_TextrefDisplay"]/string()</mapping>
+    <mapping key="WORK_TextrefDisplay">
         let $textrefDisplay := $line/column[@heading-index="WORK_TextrefDisplay"]/string()
 let $textrefName := if($line/column[@heading-index="WORK_TextrefName"] != "") then ($line/column[@heading-index="WORK_TextrefName"]/string()) else ()
 let $textrefRefid := if($line/column[@heading-index="WORK_TextrefRefid"] != "") then ($line/column[@heading-index="WORK_TextrefRefid"]/string()) else ()
@@ -445,6 +445,7 @@ return
   ) else (
     string-join(($textrefName, $textrefRefid), ' ')
   )
+    </mapping>
     <mapping key="WORK_TextrefName">$line/column[@heading-index="WORK_TextrefName"]/string()</mapping>
     <mapping key="WORK_TextrefNameType">$line/column[@heading-index="WORK_TextrefNameType"]/string()</mapping>
     <mapping key="WORK_TextrefRefid">$line/column[@heading-index="WORK_TextrefRefid"]/string()</mapping>
@@ -556,7 +557,7 @@ return
     <mapping key="IMAGE_SubjectVocab3">$line/column[@heading-index="IMAGE_SubjectVocab3"]/string()</mapping>
     <mapping key="IMAGE_SubjectType3">$line/column[@heading-index="IMAGE_SubjectType3"]/string()</mapping>
     <mapping key="IMAGE_TechniqueDisplay">
-        let $techniqueDisplay := if($line/column[@heading-index="IMAGE_TechniqueDisplay"] != "") then ($line/column[@heading-index="IMAGE_TechniqueDisplay"]/string()) else ()
+let $techniqueDisplay := if($line/column[@heading-index="IMAGE_TechniqueDisplay"] != "") then ($line/column[@heading-index="IMAGE_TechniqueDisplay"]/string()) else ()
 
 let $technique := if($line/column[@heading-index="IMAGE_Technique"] != "") then ($line/column[@heading-index="IMAGE_Technique"]/string()) else ()
 
@@ -624,14 +625,14 @@ return
     $image_worktype
     </mapping>
     <mapping key="IMAGE_WorktypeVocab">
-    let $image_worktypeVocab := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_Worktype"]/string()) else (
+    let $image_worktypeVocab := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_WorktypeVocab"]/string()) else (
     "AAT"
     )
 return
     $image_worktypeVocab
     </mapping>
     <mapping key="IMAGE_WorktypeRefid">
-    let $image_worktypeRefid := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_Worktype"]/string()) else (
+    let $image_worktypeRefid := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_WorktypeRefid"]/string()) else (
     "300215302"
     )
 return

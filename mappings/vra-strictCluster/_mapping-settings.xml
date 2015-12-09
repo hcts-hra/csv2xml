@@ -24,17 +24,17 @@
         <transform label="Unmodified VRA Core 4 XML" name="plainVRA" active="true" selected="true" type="xsl">
             <importNamespaces>
                 <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
-            </importNamespaces>
+            </importNamespaces><!--  Query for page-items in pagination (tbd)  -->
             <paginationQuery>$generated-xml/vra/*[self::work or self::image]</paginationQuery>
             <xsl>
                 <uri active="true" selected="true">xsl/cleanup-vra.xsl</uri>
             </xsl>
             <validation-catalogs>
-                <uri active="true" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vra-strictCluster.xsd</uri>
-                <uri active="false" critical="true">http://localhost:8080/exist/apps/csv2xml/mappings/default/xsd/vocab.xsd</uri>
+                <uri active="true" critical="true">http://cluster-schemas.uni-hd.de/vra-strictCluster.xsd</uri>
+                <uri active="false" critical="true">http://kjc-sv016.kjc.uni-heidelberg.de:8080/exist/apps/tamboti/resources/schemas/vra-strictCluster.xsd</uri>
             </validation-catalogs>
         </transform>
-        <transform label="Transform into RDF" name="rdf" active="true" selected="true" type="xsl">
+        <transform label="Transform into RDF" name="rdf" active="true" selected="false" type="xsl">
             <importNamespaces>
                 <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
                 <ns prefix="vra">http://purl.org/vra/</ns>

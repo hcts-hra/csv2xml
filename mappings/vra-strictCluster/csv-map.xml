@@ -30,7 +30,7 @@ return
     <mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping>
     <mapping key="IMAGE_VendorID">$line/column[@heading-index="IMAGE_VendorID"]/string()</mapping>
     <mapping key="IMAGE_VendorName">$line/column[@heading-index="IMAGE_VendorName"]/string()</mapping>
-    <mapping key="LOCAL-REPO-NAME">$line/column[@heading-index="LOCAL-REPO-NAME"]/string()</mapping>
+    <mapping key="IMAGE_LocalRepoName">$line/column[@heading-index="IMAGE_LocalRepoName"]/string()</mapping>
     <mapping key="WORK_IDno">$line/column[@heading-index="WORK_IDno"]/string()</mapping>
     <mapping key="WORK_AgentDisplay">
 xquery version "3.0";
@@ -445,7 +445,23 @@ return
     <mapping key="WORK_Technique4">$line/column[@heading-index="WORK_Technique4"]/string()</mapping>
     <mapping key="WORK_TechniqueVocab4">$line/column[@heading-index="WORK_TechniqueVocab4"]/string()</mapping>
     <mapping key="WORK_TechniqueRefid4">$line/column[@heading-index="WORK_TechniqueRefid4"]/string()</mapping>
-    <mapping key="WORK_TextrefDisplay">$line/column[@heading-index="WORK_TextrefDisplay"]/string()</mapping>
+    <mapping key="WORK_TextrefDisplay">
+        let $textrefDisplay := $line/column[@heading-index="WORK_TextrefDisplay"]/string()
+let $textrefName := if($line/column[@heading-index="WORK_TextrefName"] != "") then ($line/column[@heading-index="WORK_TextrefName"]/string()) else ()
+let $textrefRefid := if($line/column[@heading-index="WORK_TextrefRefid"] != "") then ($line/column[@heading-index="WORK_TextrefRefid"]/string()) else ()
+
+return 
+  if($textrefDisplay)
+  then (
+    $textrefDisplay
+  ) else (
+    string-join(($textrefName, $textrefRefid), ' ')
+  )
+    </mapping>
+    <mapping key="WORK_TextrefName">$line/column[@heading-index="WORK_TextrefName"]/string()</mapping>
+    <mapping key="WORK_TextrefNameType">$line/column[@heading-index="WORK_TextrefNameType"]/string()</mapping>
+    <mapping key="WORK_TextrefRefid">$line/column[@heading-index="WORK_TextrefRefid"]/string()</mapping>
+    <mapping key="WORK_TextrefRefidType">$line/column[@heading-index="WORK_TextrefRefidType"]/string()</mapping>
     <mapping key="WORK_TitleDisplay">
         let $titleDisplay := $line/column[@heading-index="WORK_TitleDisplay"]/string()
 let $prefTitle1 := $line/column[@heading-index="WORK_TitlePref"]/string()
@@ -512,7 +528,6 @@ return
     <mapping key="IMAGE_Agent1RoleVocab">$line/column[@heading-index="IMAGE_Agent1RoleVocab"]/string()</mapping>
     <mapping key="IMAGE_Agent1RoleRefid">$line/column[@heading-index="IMAGE_Agent1RoleRefid"]/string()</mapping>
     <mapping key="IMAGE_Agent1Role">$line/column[@heading-index="IMAGE_Agent1Role"]/string()</mapping>
-    <mapping key="IMAGE_CulturalContextDisplay">$line/column[@heading-index="IMAGE_CulturalContextDisplay"]/string()</mapping>
     <mapping key="IMAGE_DateDisplay">$line/column[@heading-index="IMAGE_DateDisplay"]/string()</mapping>
     <mapping key="IMAGE_DescriptionDisplay">$line/column[@heading-index="IMAGE_DescriptionDisplay"]/string()</mapping>
     <mapping key="IMAGE_InscriptionDisplay">$line/column[@heading-index="IMAGE_InscriptionDisplay"]/string()</mapping>
@@ -542,8 +557,6 @@ return
     <mapping key="IMAGE_SourceDisplay">$line/column[@heading-index="IMAGE_SourceDisplay"]/string()</mapping>
     <mapping key="IMAGE_SourceValue">$line/column[@heading-index="IMAGE_SourceValue"]/string()</mapping>
     <mapping key="IMAGE_SourceType">$line/column[@heading-index="IMAGE_SourceType"]/string()</mapping>
-    <mapping key="IMAGE_StateEditionDisplay">$line/column[@heading-index="IMAGE_StateEditionDisplay"]/string()</mapping>
-    <mapping key="IMAGE_StylePeriodDisplay">$line/column[@heading-index="IMAGE_StylePeriodDisplay"]/string()</mapping>
     <mapping key="IMAGE_SubjectDisplay">
 let $subjectDisplay := if($line/column[@heading-index="IMAGE_SubjectDisplay"] != "") then ($line/column[@heading-index="IMAGE_SubjectDisplay"]/string()) else ()
 
@@ -571,8 +584,40 @@ return
     <mapping key="IMAGE_SubjectRefid3">$line/column[@heading-index="IMAGE_SubjectRefid3"]/string()</mapping>
     <mapping key="IMAGE_SubjectVocab3">$line/column[@heading-index="IMAGE_SubjectVocab3"]/string()</mapping>
     <mapping key="IMAGE_SubjectType3">$line/column[@heading-index="IMAGE_SubjectType3"]/string()</mapping>
-    <mapping key="IMAGE_TechniqueDisplay">$line/column[@heading-index="IMAGE_TechniqueDisplay"]/string()</mapping>
-    <mapping key="IMAGE_TextrefDisplay">$line/column[@heading-index="IMAGE_TextrefDisplay"]/string()</mapping>
+    <mapping key="IMAGE_TechniqueDisplay">
+let $techniqueDisplay := if($line/column[@heading-index="IMAGE_TechniqueDisplay"] != "") then ($line/column[@heading-index="IMAGE_TechniqueDisplay"]/string()) else ()
+
+let $technique := if($line/column[@heading-index="IMAGE_Technique"] != "") then ($line/column[@heading-index="IMAGE_Technique"]/string()) else ()
+
+return 
+  if($techniqueDisplay)
+  then (
+    $techniqueDisplay
+  ) else (
+    $technique
+  )
+    </mapping>
+    <mapping key="IMAGE_Technique">
+    let $image_technique := if($line/column[@heading-index="IMAGE_Technique"] != "") then ($line/column[@heading-index="IMAGE_Technique"]/string()) else (
+    "digital imaging"
+    )
+return
+    $image_technique
+    </mapping>
+    <mapping key="IMAGE_TechniqueVocab">
+    let $image_techniqueVocab := if($line/column[@heading-index="IMAGE_Technique"] != "") then ($line/column[@heading-index="IMAGE_TechniqueVocab"]/string()) else (
+    "AAT"
+    )
+return
+    $image_techniqueVocab
+    </mapping>
+    <mapping key="IMAGE_TechniqueRefid">
+    let $image_techniqueRefid := if($line/column[@heading-index="IMAGE_Technique"] != "") then ($line/column[@heading-index="IMAGE_TechniqueRefid"]/string()) else (
+    "300237903"
+    )
+return
+    $image_techniqueRefid
+    </mapping>
     <mapping key="IMAGE_TitleDisplay">
         let $titleDisplay := $line/column[@heading-index="IMAGE_TitleDisplay"]/string()
 let $prefTitle1 := $line/column[@heading-index="IMAGE_Title"]/string()
@@ -587,5 +632,38 @@ return
     </mapping>
     <mapping key="IMAGE_Title">$line/column[@heading-index="IMAGE_Title"]/string()</mapping>
     <mapping key="IMAGE_TitleType">$line/column[@heading-index="IMAGE_TitleType"]/string()</mapping>
-    <mapping key="IMAGE_WorktypeDisplay">$line/column[@heading-index="IMAGE_WorktypeDisplay"]/string()</mapping>
+    <mapping key="IMAGE_WorktypeDisplay">
+let $worktypeDisplay := if($line/column[@heading-index="IMAGE_WorktypeDisplay"] != "") then ($line/column[@heading-index="IMAGE_WorktypeDisplay"]/string()) else ()
+
+let $worktype := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_Worktype"]/string()) else ()
+
+return 
+  if($worktypeDisplay)
+  then (
+    $worktypeDisplay
+  ) else (
+    $worktype
+  )
+    </mapping>
+    <mapping key="IMAGE_Worktype">
+    let $image_worktype := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_Worktype"]/string()) else (
+    "digital images"
+    )
+return
+    $image_worktype
+    </mapping>
+    <mapping key="IMAGE_WorktypeVocab">
+    let $image_worktypeVocab := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_WorktypeVocab"]/string()) else (
+    "AAT"
+    )
+return
+    $image_worktypeVocab
+    </mapping>
+    <mapping key="IMAGE_WorktypeRefid">
+    let $image_worktypeRefid := if($line/column[@heading-index="IMAGE_Worktype"] != "") then ($line/column[@heading-index="IMAGE_WorktypeRefid"]/string()) else (
+    "300215302"
+    )
+return
+    $image_worktypeRefid
+    </mapping>
 </xml>

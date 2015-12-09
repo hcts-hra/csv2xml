@@ -44,6 +44,7 @@
             <xsl>
                 <uri active="true" selected="true">xsl/cleanup-vra.xsl</uri>
                 <uri active="true" selected="true">xsl/VRA2RDF.xsl</uri>
+                <uri active="false" selected="false">xsl/VRA-RDF_XSLT_Stylesheet.xsl</uri>
             </xsl>
             <validation-catalogs/>
         </transform>

@@ -62,9 +62,9 @@
     <subjectSet>
         <display>$IMAGE_SubjectDisplay$</display>
         <subject>
-            <term type="$WORK_SubjectType1$" vocab="$WORK_SubjectVocab1$" refid="$WORK_SubjectRefid1$">$WORK_Subject1$</term>
-            <term type="$WORK_SubjectType2$" vocab="$WORK_SubjectVocab2$" refid="$WORK_SubjectRefid2$">$WORK_Subject2$</term>
-            <term type="$WORK_SubjectType3$" vocab="$WORK_SubjectVocab3$" refid="$WORK_SubjectRefid3$">$WORK_Subject3$</term>
+            <term type="$IMAGE_SubjectType1$" vocab="$IMAGE_SubjectVocab1$" refid="$IMAGE_SubjectRefid1$">$IMAGE_Subject1$</term>
+            <term type="$IMAGE_SubjectType2$" vocab="$IMAGE_SubjectVocab2$" refid="$IMAGE_SubjectRefid2$">$IMAGE_Subject2$</term>
+            <term type="$IMAGE_SubjectType3$" vocab="$IMAGE_SubjectVocab3$" refid="$IMAGE_SubjectRefid3$">$IMAGE_Subject3$</term>
         </subject>
     </subjectSet>
     <techniqueSet>
