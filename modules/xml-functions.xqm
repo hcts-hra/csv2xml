@@ -130,13 +130,12 @@ declare function xml-functions:replace-template-variables($template-string as xs
     let $return :=
         functx:replace-multi($template-string, $from-seq, $to-seq)
 
-    (: remove unreplaced vars :)
+    (: remove unreplaced vars and dollar sign:)
     let $return :=
-        replace($return, "\$.*?\$", "")
+        functx:replace-multi($return, ("\$.*?\$", "\|\|\|amp\|\|\|"), ("", "\&#36;"))
             
     return 
         $return
-
 };
 
 declare function xml-functions:remove-empty-attributes($element as element()) as element() {

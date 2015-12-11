@@ -1,28 +1,19 @@
 xquery version "3.0";
 
 module namespace csv="http://hra.uni-heidelberg.de/ns/hra-csv2vra/csv";
+
 import module namespace functx="http://www.functx.com";
+
 declare variable $csv:debug :=  session:get-attribute("debug");
+declare variable $csv:delim :=  ",";
 
-
-declare function csv:split-line($str)
-{
-    if (fn:starts-with($str, '"')) then
-        let $rest := fn:substring($str, 2)
-        return 
-        (
-            substring-before($rest, '",'),
-            csv:split-line(fn:substring-after($rest, '",'))
-        )
-    else if (fn:matches($str, ",")) then 
-        (
-            fn:substring-before($str, ','),
-            csv:split-line(fn:substring-after($str, ','))
-        )
-    else 
-        $str
+declare function csv:split-line($str){
+    for $t in analyze-string($str,'(?<=^|' || $csv:delim ||  ')(\"(?:[^\"]|\"\")*\"|[^' || $csv:delim || ']*)')/fn:match/fn:group 
+    return 
+        if($t/text()) then 
+            replace($t/text(),"^&quot;|&quot;$","") 
+        else "" 
 };
-
 
 declare function csv:num-to-char($num as xs:int) {
     let $num := $num - 1
@@ -39,15 +30,19 @@ declare
 (:    %templates:wrap:)
 function csv:read-csv($csv-string as xs:string) {
 
-    let $lines := tokenize($csv-string, "\n")
-(:    let $body := remove($lines, 1):)
+(:    let $lines := tokenize($csv-string, "\n"):)
+    let $lines := tokenize($csv-string,"[&#13;&#10;]")
+    let $lines := filter($lines,function($x){
+            $x ne ""
+        })
+
     let $body := $lines
     let $result := 
         <result>
             {
                 for $line at $lpos in $body
-                let $line := replace($line, '""', '|||||')
-
+                let $log := util:log("INFO", $line)
+            
                 return
                     if (string-length(functx:trim($line)) > 0) then
                         let $columns := csv:split-line($line)
@@ -58,7 +53,9 @@ function csv:read-csv($csv-string as xs:string) {
                                     return
                                         <column num-index="{$pos}">
                                             {
-                                                replace(serialize(functx:trim($column)), '\|\|\|\|\|', '&amp;quot;')
+                                                let $column := functx:replace-multi($column, ('""', "\$"), ('&quot;', "|||amp|||"))
+                                                return
+                                                    serialize(functx:trim($column))
                                             }
                                         </column>
                                 }
