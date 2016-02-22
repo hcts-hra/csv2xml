@@ -189,20 +189,16 @@ return
     <mapping key="WORK_LocationNotes">$line/column[@heading-index="WORK_LocationNotes"]/string()</mapping>
     <mapping key="WORK_Location1Type">$line/column[@heading-index="WORK_Location1Type"]/string()</mapping>
     <mapping key="WORK_Location1Name">$line/column[@heading-index="WORK_Location1Name"]/string()</mapping>
-    <mapping key="WORK_Location1NameType">$line/column[@heading-index="WORK_Location1NameType"]/string()</mapping>
     <mapping key="WORK_Location1NameVocab">$line/column[@heading-index="WORK_Location1NameVocab"]/string()</mapping>
     <mapping key="WORK_Location1NameRefID">$line/column[@heading-index="WORK_Location1NameRefID"]/string()</mapping>
-    <mapping key="WORK_Location1ObjType">$line/column[@heading-index="WORK_Location1ObjType"]/string()</mapping>
     <mapping key="WORK_Location1ObjRefID">$line/column[@heading-index="WORK_Location1ObjRefID"]/string()</mapping>
     <mapping key="WORK_Location1Geo">$line/column[@heading-index="WORK_Location1Geo"]/string()</mapping>
     <mapping key="WORK_Location1GeoVocab">$line/column[@heading-index="WORK_Location1GeoVocab"]/string()</mapping>
     <mapping key="WORK_Location1GeoRefid">$line/column[@heading-index="WORK_Location1GeoRefid"]/string()</mapping>
     <mapping key="WORK_Location2Type">$line/column[@heading-index="WORK_Location2Type"]/string()</mapping>
     <mapping key="WORK_Location2Name">$line/column[@heading-index="WORK_Location2Name"]/string()</mapping>
-    <mapping key="WORK_Location2NameType">$line/column[@heading-index="WORK_Location2NameType"]/string()</mapping>
     <mapping key="WORK_Location2NameVocab">$line/column[@heading-index="WORK_Location2NameVocab"]/string()</mapping>
     <mapping key="WORK_Location2NameRefID">$line/column[@heading-index="WORK_Location2NameRefID"]/string()</mapping>
-    <mapping key="WORK_Location2ObjType">$line/column[@heading-index="WORK_Location2ObjType"]/string()</mapping>
     <mapping key="WORK_Location2ObjRefID">$line/column[@heading-index="WORK_Location2ObjRefID"]/string()</mapping>
     <mapping key="WORK_Location2Geo">$line/column[@heading-index="WORK_Location2Geo"]/string()</mapping>
     <mapping key="WORK_Location2GeoVocab">$line/column[@heading-index="WORK_Location2GeoVocab"]/string()</mapping>
@@ -509,7 +505,6 @@ return
     return $agent1
   )
     </mapping>
-    <mapping key="IMAGE_Agent1NameType">$line/column[@heading-index="IMAGE_Agent1NameType"]/string()</mapping>
     <mapping key="IMAGE_Agent1Name">$line/column[@heading-index="IMAGE_Agent1Name"]/string()</mapping>
     <mapping key="IMAGE_Agent1NameVocab">$line/column[@heading-index="IMAGE_Agent1NameVocab"]/string()</mapping>
     <mapping key="IMAGE_Agent1NameRefid">$line/column[@heading-index="IMAGE_Agent1NameRefid"]/string()</mapping>

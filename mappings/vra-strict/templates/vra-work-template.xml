@@ -48,13 +48,13 @@
         <display>$WORK_LocationDisplay$</display>
         <notes>$WORK_LocationNotes$</notes>
         <location type="$WORK_Location1Type$">
-            <name type="$WORK_Location1NameType$" vocab="$WORK_Location1NameVocab$" refid="$WORK_Location1NameRefID$">$WORK_Location1Name$</name>
-            <refid type="$WORK_Location1ObjType$">$WORK_Location1ObjRefID$</refid>
+            <name vocab="$WORK_Location1NameVocab$" refid="$WORK_Location1NameRefID$">$WORK_Location1Name$</name>
+            <refid>$WORK_Location1ObjRefID$</refid>
             <name type="geographic" vocab="$WORK_Location1GeoVocab$" refid="$WORK_Location1GeoRefid$">$WORK_Location1Geo$</name>
         </location>
         <location type="$WORK_Location2Type$">
-            <name type="$WORK_Location2NameType$" vocab="$WORK_Location2NameVocab$" refid="$WORK_Location2NameRefID$">$WORK_Location2Name$</name>
-            <refid type="$WORK_Location1ObjType$">$WORK_Location2ObjRefID$</refid>
+            <name vocab="$WORK_Location2NameVocab$" refid="$WORK_Location2NameRefID$">$WORK_Location2Name$</name>
+            <refid>$WORK_Location2ObjRefID$</refid>
             <name type="geographic" vocab="$WORK_Location2GeoVocab$" refid="$WORK_Location2GeoRefid$">$WORK_Location2Geo$</name>
         </location>
     </locationSet>
