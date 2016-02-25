@@ -41,8 +41,6 @@ function csv:read-csv($csv-string as xs:string) {
         <result>
             {
                 for $line at $lpos in $body
-                let $log := util:log("INFO", $line)
-            
                 return
                     if (string-length(functx:trim($line)) > 0) then
                         let $columns := csv:split-line($line)
