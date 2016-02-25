@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- csv-map vra-strictCluster -->
 <xml>
-    <mapping key="WORK_ID">
-    xquery version "3.0";
-let $workID := $line/column[@heading-index="WORK_ID"]/string()
-return 
-  if($workID)
-  then (
-      let $workID_A :=  if(starts-with($workID, "w_")) then ($workID) else ("w_" || $workID) 
-      return $workID_A
- ) else (
-    concat("w_", util:uuid())
-)
-    </mapping>
     <mapping key="IMAGE_ID">
         xquery version "3.0";
-let $imageID := $line/column[@heading-index="IMAGE_ID"]/string()
-return 
-  if($imageID)
-  then (
-      let $imageID_A :=  if(starts-with($imageID, "w_")) then ($imageID) else ("w_" || $imageID) 
-      return $imageID_A
- ) else (
-    concat("i_", util:uuid())
-)
-</mapping>
+        let $imageID := $line/column[@heading-index="IMAGE_ID"]/string()
+        let $returnID :=  
+            if($imageID) then
+                (
+                    let $imageID_A :=  if(starts-with($imageID, "i_")) then ($imageID) else ("i_" || $imageID) 
+                    return $imageID_A
+                ) else (
+                    concat("i_", util:uuid())
+                )
+        return $returnID
+    </mapping>
     <mapping key="IMAGE_Filename">$line/column[@heading-index="IMAGE_Filename"]/string()</mapping>
     <mapping key="IMAGE_Href">$line/column[@heading-index="IMAGE_Href"]/string()</mapping>
     <mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping>
@@ -665,5 +654,41 @@ return
     )
 return
     $image_worktypeRefid
+    </mapping>
+    <mapping key="WORK_ID">
+        xquery version "3.0";
+        declare namespace vra="http://www.vraweb.org/vracore4.htm";
+
+        let $workID := $line/column[@heading-index="WORK_ID"]/string()
+        let $returnID :=
+            if($workID) then 
+                (
+                    let $workID_A :=  if(starts-with($workID, "w_")) then ($workID) else ("w_" || $workID) 
+                    return $workID_A
+                ) else (
+                    concat("w_", util:uuid())
+                )
+        (: insert the relation node to the vra:image record into existing work-record (if exists, then no work record will be generated) :)
+        let $mappedValues := session:get-attribute("mapped-values") 
+        let $work-uuid := $mappedValues("\$WORK_ID\$")
+
+        let $existing-work-record := doc(session:get-attribute("file-uri"))//vra:work[@id=$work-uuid]
+        let $image-uuid := $mappedValues("\$IMAGE_ID\$")
+
+        let $insert-node :=
+            if ($existing-work-record and not($existing-work-record/vra:relationSet/vra:relation[@relids=$image-uuid])) then
+                let $source :=  $mappedValues("\$IMAGE_SourceDisplay\$")
+                let $relationName := $mappedValues("\$IMAGE_Title\$")
+                let $relation := &lt;relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}" source="{$source}" pref="false"&gt;{$relationName}&lt;/relation&gt;
+                return
+                    update insert 
+                        $relation
+                    into 
+                        $existing-work-record/vra:relationSet
+                    
+            else
+                ()
+    
+        return $returnID
     </mapping>
 </xml>
