@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!-- csv-map vra-strict -->
 <xml>
     <mapping key="IMAGE_ID">
         xquery version "3.0";
-let $imageID := $line/column[@heading-index="IMAGE_ID"]/string()
-return 
-  if($imageID)
-  then (
-      let $imageID_A :=  if(starts-with($imageID, "i_")) then ($imageID) else ("i_" || $imageID) 
-      return $imageID_A
- ) else (
-    concat("i_", util:uuid())
-)
+        let $imageID := $line/column[@heading-index="IMAGE_ID"]/string()
+        let $returnID :=  
+            if($imageID) then
+                let $imageID_A :=  if(starts-with($imageID, "i_")) then ($imageID) else ("i_" || $imageID) 
+                return $imageID_A
+            else 
+                concat("i_", util:uuid())
+        let $session := session:set-attribute("tempImageUUID", $returnID)
+        return $returnID
 </mapping>
     <mapping key="IMAGE_Filename">$line/column[@heading-index="IMAGE_Filename"]/string()</mapping>
     <mapping key="IMAGE_Href">$line/column[@heading-index="IMAGE_Href"]/string()</mapping>
@@ -509,7 +508,11 @@ return
     <mapping key="IMAGE_RightsType">$line/column[@heading-index="IMAGE_RightsType"]/string()</mapping>
     <mapping key="IMAGE_RightsHolder">$line/column[@heading-index="IMAGE_RightsHolder"]/string()</mapping>
     <mapping key="IMAGE_RightsText">$line/column[@heading-index="IMAGE_RightsText"]/string()</mapping>
-    <mapping key="IMAGE_SourceDisplay">$line/column[@heading-index="IMAGE_SourceDisplay"]/string()</mapping>
+    <mapping key="IMAGE_SourceDisplay">
+        let $sourceDisplay := $line/column[@heading-index="IMAGE_SourceDisplay"]/string()
+        let $session :=  session:set-attribute("tempIMAGE_SourceDisplay", $sourceDisplay)
+        return $sourceDisplay
+    </mapping>
     <mapping key="IMAGE_SourceValue">$line/column[@heading-index="IMAGE_SourceValue"]/string()</mapping>
     <mapping key="IMAGE_SourceType">$line/column[@heading-index="IMAGE_SourceType"]/string()</mapping>
     <mapping key="IMAGE_SubjectDisplay">
@@ -574,16 +577,16 @@ return
     $image_techniqueRefid
     </mapping>
     <mapping key="IMAGE_TitleDisplay">
-let $titleDisplay := $line/column[@heading-index="IMAGE_TitleDisplay"]/string()
-let $prefTitle1 := $line/column[@heading-index="IMAGE_Title"]/string()
-
-return 
-  if($titleDisplay)
-  then (
-    $titleDisplay
-  ) else (
-    $prefTitle1
-  )
+        let $titleDisplay := $line/column[@heading-index="IMAGE_TitleDisplay"]/string()
+        let $prefTitle1 := $line/column[@heading-index="IMAGE_Title"]/string()
+        let $titleDisplay :=
+            if($titleDisplay) then 
+                $titleDisplay
+            else 
+                $prefTitle1
+        let $session := session:set-attribute("tempIMAGE_TitleDisplay", $titleDisplay)
+        return
+            $titleDisplay
     </mapping>
     <mapping key="IMAGE_Title">$line/column[@heading-index="IMAGE_Title"]/string()</mapping>
     <mapping key="IMAGE_TitleType">$line/column[@heading-index="IMAGE_TitleType"]/string()</mapping>
@@ -628,23 +631,20 @@ return
         let $workID := $line/column[@heading-index="WORK_ID"]/string()
         let $returnID :=
             if($workID) then 
-                (
-                    let $workID_A :=  if(starts-with($workID, "w_")) then ($workID) else ("w_" || $workID) 
+                let $workID_A :=  if(starts-with($workID, "w_")) then ($workID) else ("w_" || $workID) 
                     return $workID_A
-                ) else (
+                else
                     concat("w_", util:uuid())
-                )
         (: insert the relation node to the vra:image record into existing work-record (if exists, then no work record will be generated) :)
         let $mappedValues := session:get-attribute("mapped-values") 
-        let $work-uuid := $mappedValues("\$WORK_ID\$")
 
-        let $existing-work-record := doc(session:get-attribute("file-uri"))//vra:work[@id=$work-uuid]
-        let $image-uuid := $mappedValues("\$IMAGE_ID\$")
-
+        let $existing-work-record := doc(session:get-attribute("file-uri"))//vra:work[@id=$returnID]
+        let $image-uuid := session:get-attribute("tempImageUUID")
+        
         let $insert-node :=
             if ($existing-work-record and not($existing-work-record/vra:relationSet/vra:relation[@relids=$image-uuid])) then
-                let $source :=  $mappedValues("\$IMAGE_SourceDisplay\$")
-                let $relationName := $mappedValues("\$IMAGE_Title\$")
+                let $source :=  session:get-attribute("tempIMAGE_SourceDisplay")
+                let $relationName := session:get-attribute("tempIMAGE_TitleDisplay")
                 let $relation := &lt;relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}" source="{$source}" pref="false"&gt;{$relationName}&lt;/relation&gt;
                 return
                     update insert 
@@ -657,5 +657,4 @@ return
     
         return $returnID
     </mapping>
-    
 </xml>
