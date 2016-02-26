@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- csv-map vra-strict -->
 <xml>
     <mapping key="IMAGE_ID">
@@ -17,6 +18,9 @@
     <mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping>
     <mapping key="IMAGE_VendorID">$line/column[@heading-index="IMAGE_VendorID"]/string()</mapping>
     <mapping key="IMAGE_VendorName">$line/column[@heading-index="IMAGE_VendorName"]/string()</mapping>
+        let $VendorName := $line/column[@heading-index="IMAGE_VendorName"]/string()
+        let $session :=  session:set-attribute("tempIMAGE_VendorName", $VendorName)
+        return $VendorName
     <mapping key="IMAGE_LocalRepoName">$line/column[@heading-index="IMAGE_LocalRepoName"]/string()</mapping>
     <mapping key="WORK_IDno">$line/column[@heading-index="WORK_IDno"]/string()</mapping>
     <mapping key="WORK_AgentDisplay">
@@ -508,11 +512,7 @@ return
     <mapping key="IMAGE_RightsType">$line/column[@heading-index="IMAGE_RightsType"]/string()</mapping>
     <mapping key="IMAGE_RightsHolder">$line/column[@heading-index="IMAGE_RightsHolder"]/string()</mapping>
     <mapping key="IMAGE_RightsText">$line/column[@heading-index="IMAGE_RightsText"]/string()</mapping>
-    <mapping key="IMAGE_SourceDisplay">
-        let $sourceDisplay := $line/column[@heading-index="IMAGE_SourceDisplay"]/string()
-        let $session :=  session:set-attribute("tempIMAGE_SourceDisplay", $sourceDisplay)
-        return $sourceDisplay
-    </mapping>
+    <mapping key="IMAGE_SourceDisplay">$line/column[@heading-index="IMAGE_SourceDisplay"]/string()</mapping>
     <mapping key="IMAGE_SourceValue">$line/column[@heading-index="IMAGE_SourceValue"]/string()</mapping>
     <mapping key="IMAGE_SourceType">$line/column[@heading-index="IMAGE_SourceType"]/string()</mapping>
     <mapping key="IMAGE_SubjectDisplay">
@@ -643,9 +643,10 @@ return
         
         let $insert-node :=
             if ($existing-work-record and not($existing-work-record/vra:relationSet/vra:relation[@relids=$image-uuid])) then
-                let $source :=  session:get-attribute("tempIMAGE_SourceDisplay")
+                let $source :=  session:get-attribute("tempIMAGE_VendorName")
                 let $relationName := session:get-attribute("tempIMAGE_TitleDisplay")
-                let $relation := &lt;relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}" source="{$source}" pref="false"&gt;{$relationName}&lt;/relation&gt;
+                <!-- let $relation := <relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}" source="{$source}" pref="false">{$relationName}</relation> -->
+                let $relation := &lt;relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}"&gt;{$relationName}&lt;/relation&gt;
                 return
                     update insert 
                         $relation

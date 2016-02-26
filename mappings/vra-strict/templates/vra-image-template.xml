@@ -38,7 +38,7 @@
     </measurementsSet>
     <relationSet>
         <display>$IMAGE_RelationDisplay$</display>
-        <relation type="imageOf" source="$SourceOfImageRecord$" relids="$WORK_ID$"/>
+        <relation type="imageOf" relids="$WORK_ID$">$WORK_TitlePref$</relation>
     </relationSet>
     <rightsSet>
         <display>$IMAGE_RightsDisplay$</display>

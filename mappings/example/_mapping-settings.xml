@@ -42,7 +42,7 @@
             </importNamespaces>
             <paginationQuery>$generated-xml/*/*:Description</paginationQuery>
             <xsl>
-                <uri active="true" selected="true">xsl/VRA2RDF.xsl</uri>
+                <uri active="true" selected="true">xsl/vra2rdf.xsl</uri>
             </xsl>
             <validation-catalogs/>
         </transform>

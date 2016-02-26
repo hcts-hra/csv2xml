@@ -1018,7 +1018,7 @@ Attribution-NonCommercial-ShareAlike 3.0 United States (cc) 2008-2010 <http://cr
     </xsl:template><!-- Description template -->
     <xsl:template match="vc:description">
         <vra:description>
-            <xsl:value-of select="."/>
+            <xsl:value-of select="normalize-space(.)"/>
         </vra:description>
     </xsl:template><!-- Location templates -->
     <xsl:template match="vc:location[@type='repository']">

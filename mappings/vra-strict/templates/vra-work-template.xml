@@ -80,7 +80,7 @@
         <display>$WORK_RelationDisplay$</display>
         <relation type="$WORK_RelationType1$">$WORK_RelatedWork1$</relation>
         <relation type="$WORK_RelationType2$">$WORK_RelatedWork2$</relation>
-        <relation type="imageIs" relids="$IMAGE_ID$" source="$SourceOfImageRecord$" pref="true">$RelationName$</relation>
+        <relation type="imageIs" relids="$IMAGE_ID$">$IMAGE_Title$</relation>
     </relationSet>
     <rightsSet>
         <display>$WORK_RightsDisplay$</display>

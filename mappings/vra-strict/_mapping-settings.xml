@@ -43,7 +43,7 @@
             <paginationQuery>$generated-xml/*/*:Description</paginationQuery>
             <xsl>
                 <uri active="true" selected="true">xsl/cleanup-vra.xsl</uri>
-                <uri active="true" selected="true">xsl/VRA2RDF.xsl</uri>
+                <uri active="true" selected="true">xsl/vra2rdf.xsl</uri>
                 <uri active="true" selected="true">xsl/clean-up_rdf-comments.xsl</uri>
             </xsl>
             <validation-catalogs/>
