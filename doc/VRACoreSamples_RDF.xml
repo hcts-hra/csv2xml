@@ -143,7 +143,7 @@
         <vra:name>Chartres Cathedral</vra:name>
         <vra:name>Notre-Dame de Chartres</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i9a25d66c-f252-426f-baed-c9dfe466934d">
+            <rdf:Description rdf:about="#id5a7081a-14b1-40d0-9d31-e9ef4de2e36a">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -327,12 +327,12 @@
         <vra:name>Last Judgment</vra:name>
         <vra:name>Tympanum, South Transept, Chartres</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i14e57cde-efa1-4214-b342-e3dfd99dbbdf">
+            <rdf:Description rdf:about="#if6f83606-19b7-428b-b963-2c1d107f7ba2">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#i14e57cde-efa1-4214-b342-e3dfd99dbbdf">
+            <rdf:Description rdf:about="#if6f83606-19b7-428b-b963-2c1d107f7ba2">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -561,7 +561,7 @@
         <vra:name>Stonehenge</vra:name>
         <vra:name>Stone Henge</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i36ab2e12-344d-4793-bcfa-c2ddc18f3a05">
+            <rdf:Description rdf:about="#i160f23fe-420e-450a-b2df-746ba35e08c0">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -771,7 +771,7 @@
         <vra:name>Declaration of Independence</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ie112252a-cbd5-4457-8df7-0f80dce4cfc8">
+            <rdf:Description rdf:about="#i168a3def-bd0e-41e6-8ec3-8bece5063b7a">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -976,7 +976,7 @@
         <vra:name>Lincoln Memorial</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i2e473d1a-ef1e-40f2-bacd-b4e5458f404b">
+            <rdf:Description rdf:about="#ifd23034a-8644-4fa0-8b24-728a08654c09">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -1180,12 +1180,12 @@
         <vra:name>Wooden Model for the Façade of San Lorenzo, Florence</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i15982459-5b69-4f4b-af06-0bdfc4a697aa">
+            <rdf:Description rdf:about="#i659ef36c-1914-46fd-ab2c-049f014732dc">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:isRelatedTo>
-            <rdf:Description rdf:about="#i15982459-5b69-4f4b-af06-0bdfc4a697aa">
+            <rdf:Description rdf:about="#i659ef36c-1914-46fd-ab2c-049f014732dc">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:isRelatedTo>
@@ -1340,7 +1340,7 @@
         <vra:name>San Lorenzo, Florence</vra:name>
         <vra:name>Basilica di San Lorenzo</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ied120d52-0005-425c-a427-b1ad9744c9c7">
+            <rdf:Description rdf:about="#ie72ca3a7-076d-4792-80ef-71b4e0c12b79">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -1529,12 +1529,12 @@
         <vra:name>Abraham Lincoln</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ib6aa33dd-66af-4de5-ab67-3b7567df0ab7">
+            <rdf:Description rdf:about="#i119bbfb1-916a-4cc0-b674-649f19ed68a6">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#ib6aa33dd-66af-4de5-ab67-3b7567df0ab7">
+            <rdf:Description rdf:about="#i119bbfb1-916a-4cc0-b674-649f19ed68a6">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -1721,7 +1721,7 @@
         <vra:name>Gazette du Bon Ton [periodical]</vra:name>
         <vra:name>Gazette du Bon Ton magazine</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i97475607-ce50-4623-a109-85d6aabc69f4">
+            <rdf:Description rdf:about="#i76d20ff3-59ca-4f45-abd0-2d04db0af601">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -1959,12 +1959,12 @@
         <vra:name>Shower: Afternoon dresses by Doeuillet</vra:name>
         <vra:name>Giboulée: Robes d’après-midi de Dœuillet</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#id5fb6bc8-f3c7-421a-beb8-09146ae3998a">
+            <rdf:Description rdf:about="#if79c428f-c374-4343-8613-defaa4f63565">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#id5fb6bc8-f3c7-421a-beb8-09146ae3998a">
+            <rdf:Description rdf:about="#if79c428f-c374-4343-8613-defaa4f63565">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -2151,12 +2151,12 @@
         <vra:name>Le fabbriche e i disegni di Andrea Palladio</vra:name>
         <vra:name>Le fabbriche e i disegni di Andrea Palladio / raccolti ed illustrati da Ottavio Bertotti Scamozzi, opera divisa in quattro tomi con tavole in rame, rappresentanti le piante, i prospetti, e gli spaccata.</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i58aa6248-ac45-44d0-aa42-44af5a0127c7">
+            <rdf:Description rdf:about="#i28a6af19-b4ed-43d7-9219-a28d3d50216e">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:depicts>
-            <rdf:Description rdf:about="#i58aa6248-ac45-44d0-aa42-44af5a0127c7">
+            <rdf:Description rdf:about="#i28a6af19-b4ed-43d7-9219-a28d3d50216e">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:depicts>
@@ -2587,12 +2587,12 @@
         <vra:name>Do you know your lesson?: Tailored ensembles imagined by Jeanne Lanvin</vra:name>
         <vra:name>Sais-tu ta leçon?: Costumes tailleur de fantaisie de Jeanne Lanvin</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ie0a70315-549f-4e22-805a-66ffacefe448">
+            <rdf:Description rdf:about="#i4915b6e7-f209-4feb-99d1-319fce3b13c7">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#ie0a70315-549f-4e22-805a-66ffacefe448">
+            <rdf:Description rdf:about="#i4915b6e7-f209-4feb-99d1-319fce3b13c7">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -2819,12 +2819,12 @@
         <vra:name>On the Terrace: Afternoon dresses by the House of Worth</vra:name>
         <vra:name>Sur la Terrasse: Robes d’après-midi de Worth</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i018d8305-78cc-4094-b4c6-8fe77b93ec94">
+            <rdf:Description rdf:about="#ieb1978f6-6d23-44a9-aa46-57562aea3af1">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#i018d8305-78cc-4094-b4c6-8fe77b93ec94">
+            <rdf:Description rdf:about="#ieb1978f6-6d23-44a9-aa46-57562aea3af1">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -3051,12 +3051,12 @@
         <vra:name>My invites did not come: Evening gown by Redfern</vra:name>
         <vra:name>Mes invités n'arrivent pas: Robe de soirée de Redfern</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ia4cc74b8-1312-4f31-a865-aa58d57452c6">
+            <rdf:Description rdf:about="#if60859ce-52de-43a6-9c08-0e3f0b69a782">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#ia4cc74b8-1312-4f31-a865-aa58d57452c6">
+            <rdf:Description rdf:about="#if60859ce-52de-43a6-9c08-0e3f0b69a782">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -3192,7 +3192,7 @@
         <vra:name>Palazzo della Ragione</vra:name>
         <vra:name>Loggia of the Palazzo della Ragione</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ifd1337e9-243b-46df-8cc9-7329d7af8fbe">
+            <rdf:Description rdf:about="#idc73223a-1848-4559-a371-4a0a320b2e68">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -3403,7 +3403,7 @@
         <vra:name>Pompeii</vra:name>
         <vra:name>Pompeii [archaeological site]</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i17b43e6d-01c3-462a-b494-96d17157cbb5">
+            <rdf:Description rdf:about="#i5b4753c8-b594-4bcc-9198-a2dc707db69a">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -3573,12 +3573,12 @@
         <vra:name>House of the Faun</vra:name>
         <vra:name>Casa del Fauno</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#idddd693f-449c-4e23-9da4-4af8953ed5ea">
+            <rdf:Description rdf:about="#i04562160-275f-499f-a7f6-6a7ad198c8af">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#idddd693f-449c-4e23-9da4-4af8953ed5ea">
+            <rdf:Description rdf:about="#i04562160-275f-499f-a7f6-6a7ad198c8af">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -3781,12 +3781,12 @@
         <vra:name>Battle between Alexander the Great and Darius III</vra:name>
         <vra:name>Battle of Issus</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i42efe9fd-9fe5-44d8-9ea6-3a52282f74b1">
+            <rdf:Description rdf:about="#i4e81f1c8-abf0-4b02-9f9f-d8b97324d331">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:formerlyPartOf>
-            <rdf:Description rdf:about="#i42efe9fd-9fe5-44d8-9ea6-3a52282f74b1">
+            <rdf:Description rdf:about="#i4e81f1c8-abf0-4b02-9f9f-d8b97324d331">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:formerlyPartOf>
@@ -4033,12 +4033,12 @@
         <vra:name>Small diadem with pendants</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ie78e80f2-14ca-4741-96ce-30357c46843d">
+            <rdf:Description rdf:about="#i4e33e35c-f370-4865-a076-59d554e0b3b3">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:formerlyPartOf>
-            <rdf:Description rdf:about="#ie78e80f2-14ca-4741-96ce-30357c46843d">
+            <rdf:Description rdf:about="#i4e33e35c-f370-4865-a076-59d554e0b3b3">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:formerlyPartOf>
@@ -4090,16 +4090,21 @@
                 <vra:name>Bohemian</vra:name>
             </rdf:Description>
         </vra:culturalContext>
-        <vra:dateCreated>early 1600's (creation)</vra:dateCreated>
+        <vra:culturalContext>
+            <rdf:Description rdf:about="http://vocab.getty.edu/aat/Czech">
+                <vra:name>Czech</vra:name>
+            </rdf:Description>
+        </vra:culturalContext>
+        <vra:dateCreated>about 1600 (creation)</vra:dateCreated>
         <vra:wasCreated>
             <rdf:Description>
                 <rdf:type rdf:resource="http://purl.org/vra/Event"/>
                 <vra:name>Creation</vra:name>
-                <vra:startDate>1600</vra:startDate>
-                <vra:endDate>1630</vra:endDate>
+                <vra:startDate>1575</vra:startDate>
+                <vra:endDate>1625</vra:endDate>
             </rdf:Description>
         </vra:wasCreated>
-        <vra:description>Since antiquity, rulers have minted coins and medals to celebrate their power and dominion. On this gold medal from the early 1600s, the Habsburg Emperor Rudolf II wears a laurel wreath, a sign of victory and peace, and the chain and pendant of the Order</vra:description>
+        <vra:description>Since antiquity, rulers have minted coins and medals to celebrate their power and dominion. On this gold medal from the early 1600s, the Habsburg Emperor Rudolf II wears a laurel wreath, a sign of victory and peace, and the chain and pendant of the Order of the Golden Fleece. The Latin inscription on the front, RUDOLPHUS II ROM IMP AUG REX HUNG BOE, declares Rudolf the Supreme Emperor of the Romans, King of Hungary and Bohemia. On the reverse, a ram, zodiac sign of the constellation Capricorn, refers to Augustus Caesar, who was conceived under this sign, suggesting an analogy between Rudolf and Caesar. The Latin inscription, ASTRUM FULGET CAES (The Emperor's Star Shines Brightly), along with the symbols of the twinkling star, the earth, and the Habsburg eagle, suggest Rudolf's supremacy and the prosperous future of the Habsburg dynasty. The emperor's elegant three-quarter pose and the subtle differentiation of textures on the medal demonstrate the high quality of the casting. The hair is suggested by blunt troughs and lines, the emperor's ruffle has the illusion of depth, and the skin is polished smooth, while the drapery's thick folds effectively suggest heavy fabric.</vra:description>
         <vra:hasInscription>
             <rdf:Description>
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
@@ -4145,6 +4150,20 @@
                 <rdf:type rdf:resource="http://purl.org/vra/QuantitativeValue"/>
                 <vra:value>1  5/16</vra:value>
                 <vra:unitCode>INH</vra:unitCode>
+            </rdf:Description>
+        </vra:width>
+        <vra:height>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://purl.org/vra/QuantitativeValue"/>
+                <vra:value>4,6</vra:value>
+                <vra:unitCode>CMT</vra:unitCode>
+            </rdf:Description>
+        </vra:height>
+        <vra:width>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://purl.org/vra/QuantitativeValue"/>
+                <vra:value>3,3</vra:value>
+                <vra:unitCode>CMT</vra:unitCode>
             </rdf:Description>
         </vra:width>
         <vra:hasStylePeriod>
@@ -4226,7 +4245,7 @@
         <vra:name>Medal of Emperor Rudolf II</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i653dcea5-01fd-4360-a76b-dfaddea71ccc">
+            <rdf:Description rdf:about="#ibcd374d9-e09c-4df9-8b1c-ef47dc8c99c7">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -4249,11 +4268,6 @@
                 <vra:description/>
             </rdf:Description>
         </vra:placeOfRepository>
-        <dcterms:rights>
-            <rdf:Description>
-                <rdfs:label>undetermined</rdfs:label>
-            </rdf:Description>
-        </dcterms:rights>
         <vra:hasTechnique>
             <rdf:Description rdf:about="http://vocab.getty.edu/aat/300237903">
                 <rdf:type rdf:resource="http://purl.org/vra/Intangible"/>
@@ -4286,11 +4300,6 @@
                 <vra:description/>
             </rdf:Description>
         </vra:placeOfRepository>
-        <dcterms:rights>
-            <rdf:Description>
-                <rdfs:label>undetermined</rdfs:label>
-            </rdf:Description>
-        </dcterms:rights>
         <vra:hasTechnique>
             <rdf:Description rdf:about="http://vocab.getty.edu/aat/300237903">
                 <rdf:type rdf:resource="http://purl.org/vra/Intangible"/>
@@ -4445,12 +4454,12 @@
         <vra:name>Aerial topographic view of Nice, France [lantern slide]</vra:name>
         <vra:name>Nice, France - Panorama</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ic28ea50b-6577-42e0-8e5e-78731f78f43c">
+            <rdf:Description rdf:about="#i3b749e8b-6b1f-4dd6-9503-44a4cd0564e7">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#ic28ea50b-6577-42e0-8e5e-78731f78f43c">
+            <rdf:Description rdf:about="#i3b749e8b-6b1f-4dd6-9503-44a4cd0564e7">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -4644,7 +4653,7 @@
         <vra:name>The Hunt of the Unicorn</vra:name>
         <vra:name>Unicorn Tapestries [series]</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i77563267-0bd4-4e35-99c5-e89df01b3d55">
+            <rdf:Description rdf:about="#i5fc4462c-9336-4450-8cac-b1844a1ad372">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -4857,12 +4866,12 @@
         <vra:name>Unicorn in Captivity</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ia62547f6-321e-4732-a054-f5817d970504">
+            <rdf:Description rdf:about="#i01b70841-3e1d-4d49-b286-aaa8dec57332">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:partOf>
-            <rdf:Description rdf:about="#ia62547f6-321e-4732-a054-f5817d970504">
+            <rdf:Description rdf:about="#i01b70841-3e1d-4d49-b286-aaa8dec57332">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:partOf>
@@ -5054,7 +5063,7 @@
         <vra:name>Autumn - On the Hudson River</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ia19cd080-4e91-4cd7-8592-ab754cee1aee">
+            <rdf:Description rdf:about="#i77d085dc-4464-48cc-88df-b8618832f54d">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -5246,7 +5255,7 @@
         <vra:name>Chat Noir</vra:name>
         <vra:name>Poster of a Black Cat, for the Reopening of the Chat Noir Cabaret</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ic4fdb99c-9cdc-4c3a-928d-b20376e309da">
+            <rdf:Description rdf:about="#ic7f240d4-be54-4fba-b6db-9c36b5de7702">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -5417,7 +5426,7 @@
         <vra:name>Arena Chapel frescoes</vra:name>
         <vra:name>Frescoes in the Capella degli Scrovegni</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i17be09af-95f4-4542-a125-9acaf9ce7b91">
+            <rdf:Description rdf:about="#i8e6ebf64-92d1-4adb-9dd3-9677b4ca4220">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -5684,7 +5693,7 @@
         <vra:name>Walter Cronkite</vra:name>
         <vra:name>Portrait of Walter Cronkite</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#idd9c2138-0f18-42ff-984c-766a25ef8cf8">
+            <rdf:Description rdf:about="#idc9dc951-ba6d-4494-8c65-47eee1aad04e">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -5848,7 +5857,7 @@
         <vra:name>Collection showing Greek vessel forms</vra:name>
         <vra:name>Four glass vessels</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ia91efeba-e981-4ec9-8016-4ee902c20313">
+            <rdf:Description rdf:about="#i4d507ad0-e93d-4aa9-ad0a-3ca9ca51afe3">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -6028,7 +6037,7 @@
         <vra:name>Σουραύλι [Sourafli]</vra:name>
         <vra:name>Wooden fife</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i65184589-5a73-4b3f-a093-a9d45a819340">
+            <rdf:Description rdf:about="#i01a48f0b-1bb7-42cd-9c99-e01861753a3c">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -6191,7 +6200,7 @@
         <vra:name>Illustrated Legend of Dōjōji Temple</vra:name>
         <vra:name>Dōjōji Engi</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#ib622b5eb-5d66-4674-bdf5-52987912f42b">
+            <rdf:Description rdf:about="#i747b5c2e-9f9f-45ac-a642-ecb236f5bc83">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -6329,12 +6338,12 @@
         <vra:name>Dydia Nelidova as the Grande Nymph in the Afternoon of a Faun</vra:name>
         <vra:name>Dydia Nelidova (grande nymphe) dans Prélude à l'après-midi d'un faune</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i20f016e1-d0ca-463a-ad95-c9653a2ed7b7">
+            <rdf:Description rdf:about="#i0ed53f10-3431-4c6a-a0e0-bb0e17b3a9b4">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:isRelatedTo>
-            <rdf:Description rdf:about="#i20f016e1-d0ca-463a-ad95-c9653a2ed7b7">
+            <rdf:Description rdf:about="#i0ed53f10-3431-4c6a-a0e0-bb0e17b3a9b4">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:isRelatedTo>
@@ -6541,12 +6550,12 @@
         <vra:name>School of Athens [copy]</vra:name>
         <vra:name>Copy of Raphael's 'School of Athens' in the Vatican</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i6aec4196-57e6-498a-9864-e88cb35b8669">
+            <rdf:Description rdf:about="#ic178880a-d585-406e-a286-c02c87d8a3fe">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
         <vra:copyOf>
-            <rdf:Description rdf:about="#i6aec4196-57e6-498a-9864-e88cb35b8669">
+            <rdf:Description rdf:about="#ic178880a-d585-406e-a286-c02c87d8a3fe">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:copyOf>
@@ -6712,7 +6721,7 @@
         <vra:name>School of Athens</vra:name>
         <vra:name>Philosophy</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i02823958-1c8e-4382-8b5d-444ab3ed9bf0">
+            <rdf:Description rdf:about="#i5a5485be-e8bc-47db-bccc-5e43d0d7e393">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -6873,7 +6882,7 @@
         <vra:name>Consecration of the Emperor Napoleon and the Coronation of Empress Joséphine on December 2, 1804</vra:name>
         <vra:name>Le Sacre</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#id61155c2-ce27-4d76-9b09-8eb3733c77fb">
+            <rdf:Description rdf:about="#i4980d7a7-9031-40c2-aeba-310c93306311">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -7047,7 +7056,7 @@
         <vra:name>The explorer and the explorers facing the history of exploration - the world theatre</vra:name>
         <vra:name>L'explorateur et les explorateurs devant l'histoire de l'exploration - le théâtre du monde</vra:name>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i1e0a2359-9598-488a-b71b-e5ae53904d28">
+            <rdf:Description rdf:about="#i738cfca9-6bf5-4031-87b9-14ca8dbd6823">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -7219,7 +7228,7 @@
         <vra:name>Audio Jackets</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i6f106d00-913d-4b23-9617-b5d488a93105">
+            <rdf:Description rdf:about="#i79ddea79-3c0f-4e96-99ab-83870b11ab29">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
@@ -7372,7 +7381,7 @@
         <vra:name>Repetitive Vision</vra:name>
         <vra:name/>
         <vra:hasImage>
-            <rdf:Description rdf:about="#i899d30fb-d478-468e-919d-9e71490ddb25">
+            <rdf:Description rdf:about="#id812afc4-7cb2-4c01-9527-a3208e339619">
                 <rdf:type rdf:resource="http://purl.org/vra/CreativeWork"/>
             </rdf:Description>
         </vra:hasImage>
