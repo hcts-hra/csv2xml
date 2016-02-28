@@ -55,8 +55,7 @@
             <refid type="vendor">$IMAGE_VendorID$</refid>
         </source>
         <source>
-            <name/>
-            <refid type="$IMAGE_SourceType$">$IMAGE_SourceValue$</refid>
+            <name type="$IMAGE_SourceType$">$IMAGE_SourceValue$</name>
         </source>
     </sourceSet>
     <subjectSet>
