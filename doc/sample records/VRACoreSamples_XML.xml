@@ -45,7 +45,7 @@
             <measurements type="length" unit="m">130</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_8a99d97c-e1f6-4211-8114-7a0c361cadf9">Total view of West facade</relation>
+            <relation type="imageIs" relids="i_afb161b5-cdcb-46ed-9039-8faacbff976a">Total view of West facade</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Gothic (Medieval); Romanesque</display>
@@ -88,7 +88,7 @@
             <worktype vocab="AAT" refid="300007466">churches (buildings)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_8a99d97c-e1f6-4211-8114-7a0c361cadf9" href="http://core.vraweb.org/examples/html/example001_full.html" refid="kfa0165.jpg">
+    <image id="i_afb161b5-cdcb-46ed-9039-8faacbff976a" href="http://core.vraweb.org/examples/html/example001_full.html" refid="kfa0165.jpg">
         <agentSet>
             <display>Wiedenhoeft, Ronald (creator)</display>
             <agent>
@@ -179,7 +179,7 @@
         <relationSet>
             <display>partOf Chartres Cathedral; </display>
             <relation type="partOf">Chartres Cathedral</relation>
-            <relation type="imageIs" relids="i_a6f9b52a-612f-4d12-a915-9a139e515c01">Overall view of tympanum and archivolts, south transept</relation>
+            <relation type="imageIs" relids="i_6055a686-ceef-4c29-9373-736fcaacb4a9">Overall view of tympanum and archivolts, south transept</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Gothic (Medieval)</display>
@@ -214,7 +214,7 @@
             <worktype vocab="AAT" refid="300000885">architectural elements</worktype>
         </worktypeSet>
     </work>
-    <image id="i_a6f9b52a-612f-4d12-a915-9a139e515c01" href="http://core.vraweb.org/examples/html/example002_full.html" refid="SFr0075.jpg">
+    <image id="i_6055a686-ceef-4c29-9373-736fcaacb4a9" href="http://core.vraweb.org/examples/html/example002_full.html" refid="SFr0075.jpg">
         <agentSet>
             <display>Hartill, Alec (creator)</display>
             <agent>
@@ -312,7 +312,7 @@
             <measurements type="weight" unit="t" extent="largest stone">45,2</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_55f0491f-3a32-4ba1-9978-a4432bd9d618">Detail of center axis</relation>
+            <relation type="imageIs" relids="i_1604a58d-191d-4b15-a35c-f5bca13ef80d">Detail of center axis</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Late Bronze Age; Neolithic</display>
@@ -348,7 +348,7 @@
             <worktype vocab="AAT" refid="300006958">monuments</worktype>
         </worktypeSet>
     </work>
-    <image id="i_55f0491f-3a32-4ba1-9978-a4432bd9d618" href="http://core.vraweb.org/examples/html/example003_full.html" refid="stonehenge_det2.jpg">
+    <image id="i_1604a58d-191d-4b15-a35c-f5bca13ef80d" href="http://core.vraweb.org/examples/html/example003_full.html" refid="stonehenge_det2.jpg">
         <agentSet>
             <display>Sullivan, Mary Ann (creator)</display>
             <agent>
@@ -441,7 +441,7 @@
             <measurements type="width" unit="cm">62,23</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_ed4bd0e3-d439-4254-89de-298c3edb3a35">Overall view of front of parchment</relation>
+            <relation type="imageIs" relids="i_52a41489-b23f-4361-9c5c-c1775c8088cc">Overall view of front of parchment</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Eighteenth century</display>
@@ -475,7 +475,7 @@
             <worktype vocab="AAT" refid="300028569">manuscripts (document genre)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_ed4bd0e3-d439-4254-89de-298c3edb3a35" href="http://core.vraweb.org/examples/html/example017_full.html" refid="Declaration_Pg1of1_AC.jpg">
+    <image id="i_52a41489-b23f-4361-9c5c-c1775c8088cc" href="http://core.vraweb.org/examples/html/example017_full.html" refid="Declaration_Pg1of1_AC.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -559,7 +559,7 @@
             <measurements type="height" unit="m" extent="building">30,18</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_87cc24d7-d34f-4876-a378-c02d93daff43">Facade; Doric order</relation>
+            <relation type="imageIs" relids="i_46dc4b58-b043-4738-ba0f-a37afcbb62e1">Facade; Doric order</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Twentieth century</display>
@@ -594,7 +594,7 @@
             <worktype vocab="AAT" refid="300006958">monuments</worktype>
         </worktypeSet>
     </work>
-    <image id="i_87cc24d7-d34f-4876-a378-c02d93daff43" href="http://core.vraweb.org/examples/html/example006_full.html" refid="aam0457b.jpg">
+    <image id="i_46dc4b58-b043-4738-ba0f-a37afcbb62e1" href="http://core.vraweb.org/examples/html/example006_full.html" refid="aam0457b.jpg">
         <agentSet>
             <display>Hartill, Alec (creator)</display>
             <agent>
@@ -692,7 +692,7 @@
         <relationSet>
             <display>relatedTo San Lorenzo, Florence; </display>
             <relation type="relatedTo">San Lorenzo, Florence</relation>
-            <relation type="imageIs" relids="i_1efc782e-5408-47c9-8c6e-6e85d7e92d4d">Overall facade view of model</relation>
+            <relation type="imageIs" relids="i_f9053eee-1be1-49c8-8d73-9fa72c5be21c">Overall facade view of model</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Renaissance</display>
@@ -730,7 +730,7 @@
             <worktype vocab="AAT" refid="300047753">models (representations)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_1efc782e-5408-47c9-8c6e-6e85d7e92d4d" href="http://core.vraweb.org/examples/html/example004_full.html" refid="slorenzo.jpg">
+    <image id="i_f9053eee-1be1-49c8-8d73-9fa72c5be21c" href="http://core.vraweb.org/examples/html/example004_full.html" refid="slorenzo.jpg">
         <dateSet>
             <display>03/02/09 (other)</display>
             <date/>
@@ -807,7 +807,7 @@
             <material>pietra serena</material>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_dba76260-3d02-40cf-8451-16c11ca609d8">Detail, unfinished facade</relation>
+            <relation type="imageIs" relids="i_8d8cceec-7b2e-4f95-84b4-ca56f7a8263a">Detail, unfinished facade</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Renaissance</display>
@@ -845,7 +845,7 @@
             <worktype vocab="AAT" refid="300007391">religious buildings</worktype>
         </worktypeSet>
     </work>
-    <image id="i_dba76260-3d02-40cf-8451-16c11ca609d8" href="http://core.vraweb.org/examples/html/example005_full.html" refid="dva2759.jpg">
+    <image id="i_8d8cceec-7b2e-4f95-84b4-ca56f7a8263a" href="http://core.vraweb.org/examples/html/example005_full.html" refid="dva2759.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -929,7 +929,7 @@
         <relationSet>
             <display>partOf Lincoln Memorial; </display>
             <relation type="partOf">Lincoln Memorial</relation>
-            <relation type="imageIs" relids="i_4f413136-66e0-443f-b7aa-a4797bb98ec4">General view of statue and inscription behind it</relation>
+            <relation type="imageIs" relids="i_ead4b26f-3218-4f09-9d5f-96ba42d9825d">General view of statue and inscription behind it</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Beaux-Arts; Twentieth century</display>
@@ -963,7 +963,7 @@
             <worktype vocab="AAT" refid="300047090">sculpture (visual work)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_4f413136-66e0-443f-b7aa-a4797bb98ec4" href="http://core.vraweb.org/examples/html/example016_full.html" refid="2919953933_fbaa449a18.jpg">
+    <image id="i_ead4b26f-3218-4f09-9d5f-96ba42d9825d" href="http://core.vraweb.org/examples/html/example016_full.html" refid="2919953933_fbaa449a18.jpg">
         <agentSet>
             <display>chadh [Flickr account name] (creator)</display>
             <agent>
@@ -1047,7 +1047,7 @@
             <measurements type="width" unit="cm" extent="each issue">19,1</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_6ef4545b-fee4-4bff-88e7-a9a66e7f8eff">Representative cover of the periodical "Gazette du Bon Ton"</relation>
+            <relation type="imageIs" relids="i_8fe716ae-2ef4-457a-b739-4ec1e0c05f83">Representative cover of the periodical "Gazette du Bon Ton"</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Art Deco; Twentieth century</display>
@@ -1082,7 +1082,7 @@
             <worktype vocab="AAT" refid="300026657">periodicals</worktype>
         </worktypeSet>
     </work>
-    <image id="i_6ef4545b-fee4-4bff-88e7-a9a66e7f8eff" href="http://core.vraweb.org/examples/html/example018_full.html; http://core.vraweb.org/examples/html/example018related_full.html" refid="BT1914n1cov.jpg">
+    <image id="i_8fe716ae-2ef4-457a-b739-4ec1e0c05f83" href="http://core.vraweb.org/examples/html/example018_full.html; http://core.vraweb.org/examples/html/example018related_full.html" refid="BT1914n1cov.jpg">
         <agentSet>
             <display>Kohl, Allan (creator)</display>
             <agent>
@@ -1189,7 +1189,7 @@
         <relationSet>
             <display>partOf Gazette du Bon Ton [periodical]; </display>
             <relation type="partOf">Gazette du Bon Ton [periodical]</relation>
-            <relation type="imageIs" relids="i_e72eedb4-c585-4d79-804e-351cbd93fe7c">Plate VII from Gazette du Bon Ton, Volume 1, No. 6, April 1913</relation>
+            <relation type="imageIs" relids="i_2842000c-f756-47bd-892f-9cd93898c11f">Plate VII from Gazette du Bon Ton, Volume 1, No. 6, April 1913</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Twentieth century</display>
@@ -1226,7 +1226,7 @@
             <worktype vocab="AAT" refid="300154386">photolithographs</worktype>
         </worktypeSet>
     </work>
-    <image id="i_e72eedb4-c585-4d79-804e-351cbd93fe7c" href="http://core.vraweb.org/examples/html/example019_full.html" refid="08062207.jpg">
+    <image id="i_2842000c-f756-47bd-892f-9cd93898c11f" href="http://core.vraweb.org/examples/html/example019_full.html" refid="08062207.jpg">
         <agentSet>
             <display>Kohl, Allan (creator)</display>
             <agent>
@@ -1323,10 +1323,10 @@
         <relationSet>
             <display>depicts Palazzo della Ragione; </display>
             <relation type="depicts">Palazzo della Ragione</relation>
-            <relation type="imageIs" relids="i_0e874c2c-7ab6-47f3-8c05-08c22a77db04">Details, Palazzo della Ragione (plate T XXXI)</relation>
-            <relation type="imageIs" relids="i_02f1aa91-efd8-4cac-ac1a-33cb88161395">Section, Palazzo della Ragione (plate T XXX)</relation>
-            <relation type="imageIs" relids="i_6bbe0960-ebae-4fc7-91eb-e8b9b8c41d0d">Palazzo Vicentino; plan (plate T XXVII)</relation>
-            <relation type="imageIs" relids="i_06be5e1c-1eb0-4aa6-bda6-8aa6c8bbf689">Elevation, Palazzo della Ragione (plate T XXIX)</relation>
+            <relation type="imageIs" relids="i_50f67b56-ab20-48d0-8d5f-836c778e9732">Details, Palazzo della Ragione (plate T XXXI)</relation>
+            <relation type="imageIs" relids="i_9cc31daf-0732-4fd6-b59b-d3cbe6e8c331">Section, Palazzo della Ragione (plate T XXX)</relation>
+            <relation type="imageIs" relids="i_d4e0c383-231b-46f5-afd3-fd7d32c8c853">Palazzo Vicentino; plan (plate T XXVII)</relation>
+            <relation type="imageIs" relids="i_45c3ed36-5356-4b1d-b87d-f9db1fd5f8e3">Elevation, Palazzo della Ragione (plate T XXIX)</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Eighteenth century; Palladian</display>
@@ -1358,7 +1358,7 @@
             <worktype vocab="AAT" refid="300028051">books</worktype>
         </worktypeSet>
     </work>
-    <image id="i_0e874c2c-7ab6-47f3-8c05-08c22a77db04" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PR-D-A4.jpg">
+    <image id="i_50f67b56-ab20-48d0-8d5f-836c778e9732" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PR-D-A4.jpg">
         <agentSet>
             <display>Gilchrist, Scott (creator)</display>
             <agent>
@@ -1411,7 +1411,7 @@
             <worktype vocab="AAT" refid="300215302">digital images</worktype>
         </worktypeSet>
     </image>
-    <image id="i_02f1aa91-efd8-4cac-ac1a-33cb88161395" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PR-D-A3.jpg">
+    <image id="i_9cc31daf-0732-4fd6-b59b-d3cbe6e8c331" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PR-D-A3.jpg">
         <agentSet>
             <display>Gilchrist, Scott (creator)</display>
             <agent>
@@ -1464,7 +1464,7 @@
             <worktype vocab="AAT" refid="300215302">digital images</worktype>
         </worktypeSet>
     </image>
-    <image id="i_6bbe0960-ebae-4fc7-91eb-e8b9b8c41d0d" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PVI-D-A1.jpg">
+    <image id="i_d4e0c383-231b-46f5-afd3-fd7d32c8c853" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PVI-D-A1.jpg">
         <agentSet>
             <display>Gilchrist, Scott (creator)</display>
             <agent>
@@ -1517,7 +1517,7 @@
             <worktype vocab="AAT" refid="300215302">digital images</worktype>
         </worktypeSet>
     </image>
-    <image id="i_06be5e1c-1eb0-4aa6-bda6-8aa6c8bbf689" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PR-D-A2.jpg">
+    <image id="i_45c3ed36-5356-4b1d-b87d-f9db1fd5f8e3" href="http://core.vraweb.org/examples/html/example023_full.html" refid="1A1-PA-PR-D-A2.jpg">
         <agentSet>
             <display>Gilchrist, Scott (creator)</display>
             <agent>
@@ -1624,7 +1624,7 @@
         <relationSet>
             <display>partOf Gazette du Bon Ton [periodical]; </display>
             <relation type="partOf">Gazette du Bon Ton [periodical]</relation>
-            <relation type="imageIs" relids="i_dc395c7a-25ce-4cbc-bcad-97fbdfdf2a6b">Plate 46 from Gazette du Bon Ton, Volume 2, No. 5, May 1914</relation>
+            <relation type="imageIs" relids="i_4d64eb11-5bae-4651-8835-2e22e25e46c0">Plate 46 from Gazette du Bon Ton, Volume 2, No. 5, May 1914</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Art Deco; Twentieth century</display>
@@ -1662,7 +1662,7 @@
             <worktype vocab="AAT" refid="300154386">photolithographs</worktype>
         </worktypeSet>
     </work>
-    <image id="i_dc395c7a-25ce-4cbc-bcad-97fbdfdf2a6b" href="http://core.vraweb.org/examples/html/example020_full.html" refid="08070507.jpg">
+    <image id="i_4d64eb11-5bae-4651-8835-2e22e25e46c0" href="http://core.vraweb.org/examples/html/example020_full.html" refid="08070507.jpg">
         <agentSet>
             <display>Kohl, Allan (creator)</display>
             <agent>
@@ -1761,7 +1761,7 @@
         <relationSet>
             <display>partOf Gazette du Bon Ton [periodical]; </display>
             <relation type="partOf">Gazette du Bon Ton [periodical]</relation>
-            <relation type="imageIs" relids="i_bcf662dd-bf67-40e4-8ee4-8521f27a35f0">Plate IV from Gazette du Bon Ton, Volume 1, No. 7, May 1913</relation>
+            <relation type="imageIs" relids="i_65842dc6-78ef-45ba-af1c-58a9529ae477">Plate IV from Gazette du Bon Ton, Volume 1, No. 7, May 1913</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Art Deco; Twentieth century</display>
@@ -1799,7 +1799,7 @@
             <worktype vocab="AAT" refid="300154386">photolithographs</worktype>
         </worktypeSet>
     </work>
-    <image id="i_bcf662dd-bf67-40e4-8ee4-8521f27a35f0" href="http://core.vraweb.org/examples/html/example021_full.html" refid="08062205.jpg">
+    <image id="i_65842dc6-78ef-45ba-af1c-58a9529ae477" href="http://core.vraweb.org/examples/html/example021_full.html" refid="08062205.jpg">
         <agentSet>
             <display>Kohl, Allan (creator)</display>
             <agent>
@@ -1898,7 +1898,7 @@
         <relationSet>
             <display>partOf Gazette du Bon Ton [periodical]; </display>
             <relation type="partOf">Gazette du Bon Ton [periodical]</relation>
-            <relation type="imageIs" relids="i_503d3e98-0edf-4c5b-b426-070f84e954af">Plate IV from Gazette du Bon Ton, Volume 1, No. 11, September 1913</relation>
+            <relation type="imageIs" relids="i_4a253bde-795f-4cd2-99fd-6dcfcf014a11">Plate IV from Gazette du Bon Ton, Volume 1, No. 11, September 1913</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Art Deco; Twentieth century</display>
@@ -1936,7 +1936,7 @@
             <worktype vocab="AAT" refid="300154386">photolithographs</worktype>
         </worktypeSet>
     </work>
-    <image id="i_503d3e98-0edf-4c5b-b426-070f84e954af" href="http://core.vraweb.org/examples/html/example022_full.html" refid="08062218.jpg">
+    <image id="i_4a253bde-795f-4cd2-99fd-6dcfcf014a11" href="http://core.vraweb.org/examples/html/example022_full.html" refid="08062218.jpg">
         <agentSet>
             <display>Kohl, Allan (creator)</display>
             <agent>
@@ -2017,7 +2017,7 @@
             <material vocab="AAT" refid="300011176">stone (worked rock)</material>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_fb292e95-676b-41c3-8fba-3aa8c35982a4">Frontal view of the north elevation</relation>
+            <relation type="imageIs" relids="i_b65a5a10-086c-43fb-a742-64f5601f76d5">Frontal view of the north elevation</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Renaissance</display>
@@ -2046,7 +2046,7 @@
             <worktype vocab="AAT" refid="300122210">city hall</worktype>
         </worktypeSet>
     </work>
-    <image id="i_fb292e95-676b-41c3-8fba-3aa8c35982a4" href="http://core.vraweb.org/examples/html/example024_full.html" refid="1A1-PA-PR-A2.jpg">
+    <image id="i_b65a5a10-086c-43fb-a742-64f5601f76d5" href="http://core.vraweb.org/examples/html/example024_full.html" refid="1A1-PA-PR-A2.jpg">
         <agentSet>
             <display>Gilchrist, Scott (creator)</display>
             <agent>
@@ -2145,7 +2145,7 @@
             <measurements type="width" unit="m" extent="forum">35</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_0213af7f-6573-4356-a29a-309fd7aa32be">General view of excavations</relation>
+            <relation type="imageIs" relids="i_445f50b9-f51e-4820-be73-d42647530da2">General view of excavations</relation>
         </relationSet>
         <stylePeriodSet>
             <display>First Style; Imperial (Roman)</display>
@@ -2179,7 +2179,7 @@
             <worktype vocab="AAT" refid="300000833">historic site</worktype>
         </worktypeSet>
     </work>
-    <image id="i_0213af7f-6573-4356-a29a-309fd7aa32be" href="http://core.vraweb.org/examples/html/example014_full.html" refid="dva9684.jpg">
+    <image id="i_445f50b9-f51e-4820-be73-d42647530da2" href="http://core.vraweb.org/examples/html/example014_full.html" refid="dva9684.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -2256,7 +2256,7 @@
         <relationSet>
             <display>partOf Pompeii; </display>
             <relation type="partOf">Pompeii</relation>
-            <relation type="imageIs" relids="i_536578f5-9629-4279-87a7-342abdfb56a1">Tuscan atrium, opposite triclinium</relation>
+            <relation type="imageIs" relids="i_0fc17896-f65b-494e-b424-2933694e89fc">Tuscan atrium, opposite triclinium</relation>
         </relationSet>
         <stylePeriodSet>
             <display>First Style; Imperial (Roman)</display>
@@ -2289,7 +2289,7 @@
             <worktype vocab="AAT" refid="300266151">excavation (site)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_536578f5-9629-4279-87a7-342abdfb56a1" href="http://core.vraweb.org/examples/html/example015_full.html" refid="ait0898.jpg">
+    <image id="i_0fc17896-f65b-494e-b424-2933694e89fc" href="http://core.vraweb.org/examples/html/example015_full.html" refid="ait0898.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -2380,8 +2380,8 @@
         <relationSet>
             <display>formerlyPartOf House of the Faun; </display>
             <relation type="formerlyPartOf">House of the Faun</relation>
-            <relation type="imageIs" relids="i_28443d3d-a2a0-49d5-a597-5c45d72d4e17">View of right half, with Darius in his chariot</relation>
-            <relation type="imageIs" relids="i_ac9d19e7-fff5-4a0a-a822-86342b449613">Close-up of Alexander on horse</relation>
+            <relation type="imageIs" relids="i_6079301d-f0d4-4418-b59e-310efac81bd4">View of right half, with Darius in his chariot</relation>
+            <relation type="imageIs" relids="i_c321ff75-3ea2-444c-a5fe-ade091f67f96">Close-up of Alexander on horse</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Greco-Roman; Hellenistic</display>
@@ -2414,7 +2414,7 @@
             <worktype vocab="AAT" refid="300015342">mosaics (visual work)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_28443d3d-a2a0-49d5-a597-5c45d72d4e17" href="http://core.vraweb.org/examples/html/example007_full.html" refid="jie0006.jpg">
+    <image id="i_6079301d-f0d4-4418-b59e-310efac81bd4" href="http://core.vraweb.org/examples/html/example007_full.html" refid="jie0006.jpg">
         <agentSet>
             <display>Wiedenhoeft, Ronald (creator)</display>
             <agent>
@@ -2463,7 +2463,7 @@
             <worktype vocab="AAT" refid="300215302">digital images</worktype>
         </worktypeSet>
     </image>
-    <image id="i_ac9d19e7-fff5-4a0a-a822-86342b449613" href="http://core.vraweb.org/examples/html/example007_full.html" refid="jie0011.jpg">
+    <image id="i_c321ff75-3ea2-444c-a5fe-ade091f67f96" href="http://core.vraweb.org/examples/html/example007_full.html" refid="jie0011.jpg">
         <agentSet>
             <display>Wiedenhoeft, Ronald (creator)</display>
             <agent>
@@ -2558,7 +2558,7 @@
         <relationSet>
             <display>formerlyPartOf Priam’s Treasure; </display>
             <relation type="formerlyPartOf">Priam’s Treasure</relation>
-            <relation type="imageIs" relids="i_0d0bea98-c0b5-48ea-8e17-84fb472d6e70">Detail showing pendant ends of long side chains</relation>
+            <relation type="imageIs" relids="i_810b23db-cbe2-4f6a-8fb1-b2bdb35ee098">Detail showing pendant ends of long side chains</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Early Bronze Age</display>
@@ -2590,7 +2590,7 @@
             <worktype vocab="AAT" refid="300209286">jewelry</worktype>
         </worktypeSet>
     </work>
-    <image id="i_0d0bea98-c0b5-48ea-8e17-84fb472d6e70" href="http://core.vraweb.org/examples/html/example009_full.html" refid="534929.jpg">
+    <image id="i_810b23db-cbe2-4f6a-8fb1-b2bdb35ee098" href="http://core.vraweb.org/examples/html/example009_full.html" refid="534929.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -2668,8 +2668,8 @@
             <measurements type="width" unit="cm">3,3</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_378271b3-8d81-40be-8fb3-dff3d387c655">Overall view, front (obverse)</relation>
-            <relation type="imageIs" relids="i_81aab04a-f4a6-482c-a57e-1bd0bba9a443">Overall view, back (reverse)</relation>
+            <relation type="imageIs" relids="i_cb2be600-a207-4ab3-914b-b6120df6d85a">Overall view, front (obverse)</relation>
+            <relation type="imageIs" relids="i_0773b479-187e-45b7-b410-5b2cfd7ba235">Overall view, back (reverse)</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Early Baroque; Seventeenth century</display>
@@ -2704,7 +2704,7 @@
             <worktype vocab="AAT" refid="300046025">medals</worktype>
         </worktypeSet>
     </work>
-    <image id="i_378271b3-8d81-40be-8fb3-dff3d387c655" href="http://core.vraweb.org/examples/html/example010_full.html" refid="00144901.jpg">
+    <image id="i_cb2be600-a207-4ab3-914b-b6120df6d85a" href="http://core.vraweb.org/examples/html/example010_full.html" refid="00144901.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -2733,7 +2733,7 @@
             <worktype vocab="AAT" refid="300215302">digital images</worktype>
         </worktypeSet>
     </image>
-    <image id="i_81aab04a-f4a6-482c-a57e-1bd0bba9a443" href="http://core.vraweb.org/examples/html/example010_full.html" refid="001449F1V1.jpg">
+    <image id="i_0773b479-187e-45b7-b410-5b2cfd7ba235" href="http://core.vraweb.org/examples/html/example010_full.html" refid="001449F1V1.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -2811,7 +2811,7 @@
         <relationSet>
             <display>partOf Historic architectural views [lantern slide collection]; </display>
             <relation type="partOf">Historic architectural views [lantern slide collection]</relation>
-            <relation type="imageIs" relids="i_958b9ada-16c0-4e65-abde-f97774426f70">Overall view, imaged from lantern slide</relation>
+            <relation type="imageIs" relids="i_c3ae7be9-bfad-4de9-b4b8-5af09b65f87c">Overall view, imaged from lantern slide</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Nineteenth century; Twentieth century</display>
@@ -2845,7 +2845,7 @@
             <worktype vocab="AAT" refid="300015566">topographical views</worktype>
         </worktypeSet>
     </work>
-    <image id="i_958b9ada-16c0-4e65-abde-f97774426f70" href="http://core.vraweb.org/examples/html/example029_full.html" refid="430614695.jpg">
+    <image id="i_c3ae7be9-bfad-4de9-b4b8-5af09b65f87c" href="http://core.vraweb.org/examples/html/example029_full.html" refid="430614695.jpg">
         <dateSet>
             <display>2007 (creation)</display>
             <date/>
@@ -2927,7 +2927,7 @@
             <material vocab="AAT" refid="300191700">silk (general, animal material)</material>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_eac3da8d-483e-4db5-8c74-7a8bd82fcd30">Installation view of the Unicorn Tapestries at The Cloisters</relation>
+            <relation type="imageIs" relids="i_18ef4fbd-3217-44d2-a573-87934f3409e0">Installation view of the Unicorn Tapestries at The Cloisters</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Medieval</display>
@@ -2960,7 +2960,7 @@
             <worktype vocab="AAT" refid="300205002">tapestries</worktype>
         </worktypeSet>
     </work>
-    <image id="i_eac3da8d-483e-4db5-8c74-7a8bd82fcd30" href="http://core.vraweb.org/examples/html/example011_full.html" refid="unicorn_cloisters_14.jpg">
+    <image id="i_18ef4fbd-3217-44d2-a573-87934f3409e0" href="http://core.vraweb.org/examples/html/example011_full.html" refid="unicorn_cloisters_14.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -3047,7 +3047,7 @@
         <relationSet>
             <display>partOf The Hunt of the Unicorn; </display>
             <relation type="partOf">The Hunt of the Unicorn</relation>
-            <relation type="imageIs" relids="i_ea438cef-2cd8-405f-8474-5dd30ba1dabe">Overall view of single tapestry</relation>
+            <relation type="imageIs" relids="i_4c4f708f-e747-4854-9e53-338888fa7db3">Overall view of single tapestry</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Medieval</display>
@@ -3080,7 +3080,7 @@
             <worktype vocab="AAT" refid="300205002">tapestries</worktype>
         </worktypeSet>
     </work>
-    <image id="i_ea438cef-2cd8-405f-8474-5dd30ba1dabe" href="http://core.vraweb.org/examples/html/example012_full.html" refid="DP118991.jpg">
+    <image id="i_4c4f708f-e747-4854-9e53-338888fa7db3" href="http://core.vraweb.org/examples/html/example012_full.html" refid="DP118991.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -3160,7 +3160,7 @@
             <measurements type="width" unit="cm" extent="without frame">274,9</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_85536181-b7eb-45a3-925c-e4e9a95a2b69">Overall view without frame</relation>
+            <relation type="imageIs" relids="i_d406c763-2a47-4fe8-99bc-44d58bb47eee">Overall view without frame</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Hudson River school; Nineteenth century</display>
@@ -3194,7 +3194,7 @@
             <worktype vocab="AAT" refid="300033799">oil paintings (visual works)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_85536181-b7eb-45a3-925c-e4e9a95a2b69" href="http://core.vraweb.org/examples/html/example026_full.html" refid="a000006f.jpg">
+    <image id="i_d406c763-2a47-4fe8-99bc-44d58bb47eee" href="http://core.vraweb.org/examples/html/example026_full.html" refid="a000006f.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -3274,7 +3274,7 @@
             <measurements type="width" unit="cm">39,62</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_f680bb89-b3f4-48fc-8ef4-d09130cf1781">Overall view</relation>
+            <relation type="imageIs" relids="i_da06fa81-2ab4-445c-af5e-b33a64d3c3b6">Overall view</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Art Nouveau; Nineteenth century</display>
@@ -3308,7 +3308,7 @@
             <worktype vocab="AAT" refid="300027221">posters</worktype>
         </worktypeSet>
     </work>
-    <image id="i_f680bb89-b3f4-48fc-8ef4-d09130cf1781" href="http://core.vraweb.org/examples/html/example025_full.html" refid="leChatNoir.jpg">
+    <image id="i_da06fa81-2ab4-445c-af5e-b33a64d3c3b6" href="http://core.vraweb.org/examples/html/example025_full.html" refid="leChatNoir.jpg">
         <dateSet>
             <display>1998 (creation)</display>
             <date/>
@@ -3384,8 +3384,8 @@
             <material vocab="AAT" refid="300014922">plaster</material>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_36156c37-94cd-4ed5-9d4d-5c94e55b9450">Kiss of Judas, one of the panels of the Life of Christ cycle</relation>
-            <relation type="imageIs" relids="i_ebf93666-14fc-4879-8cbb-2d69b0e33efc">Nativity of Mary, one of the panels of the Life of the Virgin cycle</relation>
+            <relation type="imageIs" relids="i_8f8e7019-a228-400e-9c90-6840fd3bb6b4">Kiss of Judas, one of the panels of the Life of Christ cycle</relation>
+            <relation type="imageIs" relids="i_f5135fe9-60a1-47e7-b1c1-73f6d337b43d">Nativity of Mary, one of the panels of the Life of the Virgin cycle</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Medieval</display>
@@ -3418,7 +3418,7 @@
             <worktype vocab="AAT" refid="300177433">frescoes (paintings)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_36156c37-94cd-4ed5-9d4d-5c94e55b9450" href="http://core.vraweb.org/examples/html/example027_full.html" refid="250px-Giotto_Scrovegni_31_Kiss_of_Judas.jpg">
+    <image id="i_8f8e7019-a228-400e-9c90-6840fd3bb6b4" href="http://core.vraweb.org/examples/html/example027_full.html" refid="250px-Giotto_Scrovegni_31_Kiss_of_Judas.jpg">
         <dateSet>
             <display>2005 (creation)</display>
             <date/>
@@ -3461,7 +3461,7 @@
             <worktype vocab="AAT" refid="300215302">digital images</worktype>
         </worktypeSet>
     </image>
-    <image id="i_ebf93666-14fc-4879-8cbb-2d69b0e33efc" href="http://core.vraweb.org/examples/html/example027_full.html" refid="180px-Giotto_Scrovegni_07_Birth_of_the_Virgin.jpg">
+    <image id="i_f5135fe9-60a1-47e7-b1c1-73f6d337b43d" href="http://core.vraweb.org/examples/html/example027_full.html" refid="180px-Giotto_Scrovegni_07_Birth_of_the_Virgin.jpg">
         <dateSet>
             <display>2005 (creation)</display>
             <date/>
@@ -3548,7 +3548,7 @@
             <measurements type="width" unit="in" extent="without frame">14,5</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_834f6b0e-d28f-4a44-a79f-81a9b7731e65">Overall view of portrait and its use as a Time magazine cover illustration (October 14, 1966 issue)</relation>
+            <relation type="imageIs" relids="i_94f0c684-f012-4b03-9da9-fc540f998a77">Overall view of portrait and its use as a Time magazine cover illustration (October 14, 1966 issue)</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Twentieth century</display>
@@ -3583,7 +3583,7 @@
             <worktype vocab="AAT" refid="300015578">illustrations (layout features)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_834f6b0e-d28f-4a44-a79f-81a9b7731e65" href="http://core.vraweb.org/examples/html/example031_full.html" refid="11220.jpg">
+    <image id="i_94f0c684-f012-4b03-9da9-fc540f998a77" href="http://core.vraweb.org/examples/html/example031_full.html" refid="11220.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -3659,7 +3659,7 @@
             <material vocab="AAT"/>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_9af06706-e87a-43a0-8973-012ce6b13c04">Left to right; aryballos, alabastron, amphoriskos, oinochoe</relation>
+            <relation type="imageIs" relids="i_216d4068-def7-48e8-ac98-4f7c674cacb0">Left to right; aryballos, alabastron, amphoriskos, oinochoe</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Classical</display>
@@ -3690,7 +3690,7 @@
             <worktype vocab="AAT" refid="300193015">vessels (containers)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_9af06706-e87a-43a0-8973-012ce6b13c04" href="http://core.vraweb.org/examples/html/example030_full.html" refid="MMA_IAP_10311575308.jpg">
+    <image id="i_216d4068-def7-48e8-ac98-4f7c674cacb0" href="http://core.vraweb.org/examples/html/example030_full.html" refid="MMA_IAP_10311575308.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -3774,7 +3774,7 @@
             <measurements type="diameter" unit="cm">1</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_40d72ff9-1830-4f7d-b0c1-071019397249">Overall view of front of flute with finger holes</relation>
+            <relation type="imageIs" relids="i_6d8207bf-78cb-4d10-b92a-7082b925a885">Overall view of front of flute with finger holes</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Twentieth century</display>
@@ -3805,7 +3805,7 @@
             <worktype vocab="AAT" refid="300042508">fifes</worktype>
         </worktypeSet>
     </work>
-    <image id="i_40d72ff9-1830-4f7d-b0c1-071019397249" href="http://core.vraweb.org/examples/html/example032_full.html" refid="22s_92_3_190-V021-028.jpg">
+    <image id="i_6d8207bf-78cb-4d10-b92a-7082b925a885" href="http://core.vraweb.org/examples/html/example032_full.html" refid="22s_92_3_190-V021-028.jpg">
         <agentSet>
             <display>Safaris, Akis (creator)</display>
             <agent>
@@ -3894,7 +3894,7 @@
             <measurements type="length" unit="cm" extent="Scroll 2">1083,7</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_9f13ec8c-a258-4da9-8599-fccca602e393">Scroll one, detail</relation>
+            <relation type="imageIs" relids="i_df6ed702-dc93-4b94-aed9-eb11b0f2d6dc">Scroll one, detail</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Muromachi</display>
@@ -3920,7 +3920,7 @@
             <worktype vocab="AAT" refid="300178463">handscrolls</worktype>
         </worktypeSet>
     </work>
-    <image id="i_9f13ec8c-a258-4da9-8599-fccca602e393" href="http://core.vraweb.org/examples/html/example043_full.html" refid="138.jpg">
+    <image id="i_df6ed702-dc93-4b94-aed9-eb11b0f2d6dc" href="http://core.vraweb.org/examples/html/example043_full.html" refid="138.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -3999,7 +3999,7 @@
         <relationSet>
             <display>relatedTo Afternoon of a Faun [Nijinsky ballet]; </display>
             <relation type="relatedTo">Afternoon of a Faun [Nijinsky ballet]</relation>
-            <relation type="imageIs" relids="i_6db2b411-0f9e-4069-b0a0-4fa0858d083a">Overall view of drawing on page with repository stamp</relation>
+            <relation type="imageIs" relids="i_a5d09c33-926b-4d4a-8c80-ff68489e808f">Overall view of drawing on page with repository stamp</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Twentieth century</display>
@@ -4025,7 +4025,7 @@
             <worktype vocab="AAT" refid="300033973">drawings (visual works)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_6db2b411-0f9e-4069-b0a0-4fa0858d083a" href="http://core.vraweb.org/examples/html/example045_full.html" refid="f1.highres.jpg">
+    <image id="i_a5d09c33-926b-4d4a-8c80-ff68489e808f" href="http://core.vraweb.org/examples/html/example045_full.html" refid="f1.highres.jpg">
         <dateSet>
             <display>06/09/2010 (creation)</display>
             <date/>
@@ -4124,7 +4124,7 @@
         <relationSet>
             <display>copyAfter School of Athens; </display>
             <relation type="copyAfter">School of Athens</relation>
-            <relation type="imageIs" relids="i_c143053b-6951-40e0-8587-d5908ec3a159">Overall view (frame not original)</relation>
+            <relation type="imageIs" relids="i_07a8a948-7123-4e1b-8448-2883de62e096">Overall view (frame not original)</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Eighteenth century; Renaissance</display>
@@ -4158,7 +4158,7 @@
             <worktype vocab="AAT" refid="300033799">oil paintings (visual works)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_c143053b-6951-40e0-8587-d5908ec3a159" href="http://core.vraweb.org/examples/html/example038_full.html" refid="2006BE8817_jpg_ds.jpg">
+    <image id="i_07a8a948-7123-4e1b-8448-2883de62e096" href="http://core.vraweb.org/examples/html/example038_full.html" refid="2006BE8817_jpg_ds.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -4234,7 +4234,7 @@
             <measurements type="width" unit="in">275,6</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_faa5d9ee-233e-4aa2-8989-673c244ced9f">Overall view in Stanze including doorway</relation>
+            <relation type="imageIs" relids="i_4909521b-792b-4f9c-816b-0c40fcb7d3e7">Overall view in Stanze including doorway</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Renaissance</display>
@@ -4265,7 +4265,7 @@
             <worktype vocab="AAT" refid="300177433">frescoes (paintings)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_faa5d9ee-233e-4aa2-8989-673c244ced9f" href="http://core.vraweb.org/examples/html/example046_full.html" refid="Sanzio_01.jpg">
+    <image id="i_4909521b-792b-4f9c-816b-0c40fcb7d3e7" href="http://core.vraweb.org/examples/html/example046_full.html" refid="Sanzio_01.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -4341,7 +4341,7 @@
             <measurements type="width" unit="m">9,79</measurements>
         </measurementsSet>
         <relationSet>
-            <relation type="imageIs" relids="i_dc5a837e-8c8b-4af6-a080-6dcc25646c9c">Overall view without frame</relation>
+            <relation type="imageIs" relids="i_f8150efc-d9a6-4598-9d23-9efcc3311ac7">Overall view without frame</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Empire; Nineteenth century</display>
@@ -4371,7 +4371,7 @@
             <worktype vocab="AAT" refid="300033799">oil paintings (visual works)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_dc5a837e-8c8b-4af6-a080-6dcc25646c9c" href="http://core.vraweb.org/examples/html/example047_full.html" refid="Example_47.jpg">
+    <image id="i_f8150efc-d9a6-4598-9d23-9efcc3311ac7" href="http://core.vraweb.org/examples/html/example047_full.html" refid="Example_47.jpg">
         <locationSet>
             <location type="repository">
                 <name>VRA Data Standards Committee, Core 4 Sample Records</name>
@@ -4448,7 +4448,7 @@
             <material vocab="AAT" refid="300047210">found objects</material>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_1d5734e5-9bbb-4d9b-8b69-ce70a7b1cdd5">Center of gallery installation with dug-out canoe and four totem poles surrounded by texts, paintings and found objects</relation>
+            <relation type="imageIs" relids="i_34fee126-e9cb-4d9f-abcf-3ce2764b38fe">Center of gallery installation with dug-out canoe and four totem poles surrounded by texts, paintings and found objects</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Twenty-first century</display>
@@ -4479,7 +4479,7 @@
             <worktype vocab="AAT" refid="300047896">installations (visual works)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_1d5734e5-9bbb-4d9b-8b69-ce70a7b1cdd5" href="http://core.vraweb.org/examples/html/example048_full.html" refid="Example_48.jpg">
+    <image id="i_34fee126-e9cb-4d9f-abcf-3ce2764b38fe" href="http://core.vraweb.org/examples/html/example048_full.html" refid="Example_48.jpg">
         <dateSet>
             <display>2002 (exhibition)</display>
             <date/>
@@ -4560,7 +4560,7 @@
             <material vocab="AAT" refid="300046094">caps (headgear)</material>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_2c6e0edb-96bb-4242-b95d-5470d54e5519">View of the seven participants in front of an empty store window with passerby</relation>
+            <relation type="imageIs" relids="i_526beeb0-69df-4a30-9daa-db56c1247728">View of the seven participants in front of an empty store window with passerby</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Conceptual; Twentieth century</display>
@@ -4591,7 +4591,7 @@
             <worktype vocab="AAT" refid="300121445">performance art</worktype>
         </worktypeSet>
     </work>
-    <image id="i_2c6e0edb-96bb-4242-b95d-5470d54e5519" href="http://core.vraweb.org/examples/html/example051_full.html" refid="KuhnMaubreyAudioJackets_1.jpg">
+    <image id="i_526beeb0-69df-4a30-9daa-db56c1247728" href="http://core.vraweb.org/examples/html/example051_full.html" refid="KuhnMaubreyAudioJackets_1.jpg">
         <dateSet>
             <display>8/15/1986 (creation)</display>
             <date/>
@@ -4668,7 +4668,7 @@
             <material vocab="AAT" refid="300207875">decals</material>
         </materialSet>
         <relationSet>
-            <relation type="imageIs" relids="i_f2af5b85-48a5-45fa-8a55-4ac96bf7222d">Installation view inside the mirrored room</relation>
+            <relation type="imageIs" relids="i_22344a31-3f0d-4acd-b6a8-3fe0b10daf13">Installation view inside the mirrored room</relation>
         </relationSet>
         <stylePeriodSet>
             <display>Conceptual; Twentieth century</display>
@@ -4697,7 +4697,7 @@
             <worktype vocab="AAT" refid="300047896">installations (visual works)</worktype>
         </worktypeSet>
     </work>
-    <image id="i_f2af5b85-48a5-45fa-8a55-4ac96bf7222d" href="http://core.vraweb.org/examples/html/example052_full.html" refid="YayoiKusamaRepetitiveVision_1.jpg">
+    <image id="i_22344a31-3f0d-4acd-b6a8-3fe0b10daf13" href="http://core.vraweb.org/examples/html/example052_full.html" refid="YayoiKusamaRepetitiveVision_1.jpg">
         <dateSet>
             <display>1996 (creation)</display>
             <date/>
