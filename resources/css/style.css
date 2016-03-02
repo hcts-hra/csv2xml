@@ -6,15 +6,32 @@ body{
     left:5px;
     right:5px;
     height:95%;
+    font-family: Verdana,Geneva,sans-serif;
 }
 
 #git-version{
     float: right;
+    font-size: 10pt;
+    margin: 5px;
 }
 
 #menu{
     background-color: #DEDEDE;
     border:1px solid black;
+    font-size: 10pt;
+}
+
+#header-line {
+    font-size: 12pt;
+    margin: 5px;
+}
+
+.form-group {
+    margin-left: 5px;
+}
+
+#upload-result {
+    margin-left: 5px;
 }
 
 #result-container{
@@ -26,6 +43,10 @@ body{
 .result-pagination{
     width: 100%;
     text-align:center;
+}
+
+.indent {
+    margin-left: 5px;
 }
 
 #catalogs-selector, #xsl-selector{
@@ -112,3 +133,24 @@ button{
     color:red;
 }
 
+#header {
+    font-size: 20pt;
+    margin-left: 10px;
+    font-family: "Lucida Sans Unicode","Lucida Grande",sans-serif;
+}
+
+#footer {
+    font-size: 9pt;
+    margin-top: 20px;
+    font-family: Verdana,Geneva,sans-serif;
+}
+
+p img {
+    margin-left: 10px;
+    margin-right: 30px;
+    vertical-align: top;
+}
+
+p b {
+    font-size: 8.5pt;
+}

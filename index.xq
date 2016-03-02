@@ -18,7 +18,7 @@ let $set-session := session:set-attribute("debug", ())
 return
     <html>
         <head>
-            <title>CSV2XML</title>
+            <title>VRA Core 4 XML Transform Tool</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <meta data-template="config:app-meta"/>
             <link rel="shortcut icon" href="$shared/resources/images/exist_icon_16x16.ico"/>
@@ -33,11 +33,12 @@ return
             <script type="text/javascript" src="resources/scripts/main.js"/>
         </head>
         <body>
+            <div id="header">VRA Core 4 XML Transform Tool</div>
             <div id="log-dialog" class="log"></div>
             <div id="git-version">App-Version: <span>{$local:app-version}</span></div>
             <div>
                 <button id="reset" type="button">Reset</button>
-                <button id="toggle-log" type="button">toggle log</button>
+                <button id="toggle-log" type="button">Toggle log</button>
             </div>
             {
                 if(not(empty($debug))) then
@@ -49,13 +50,13 @@ return
             }
             <div id="messages"></div>
             <div id="menu">
-                <div style="float:right">
-                    <input type="checkbox" id="advancedMode" />advanced Mode
+                <div style="float:right" id="header-line">
+                    <input type="checkbox" id="advancedMode" />Advanced Mode
                 </div>
                 <div>
                     <div id="upload-mask">
                         <form id="csv-upload" enctype="multipart/form-data" method="post" action="upload.xq">
-                            <div>Upload CSV</div>
+                            <div id="header-line">Upload CSV</div>
                             <div class="form-group">
                                 <input type="file" id="inputFiles" name="file"/>
                                 <button type="submit" class="btn btn-default">Upload</button>
@@ -69,12 +70,13 @@ return
                         </div>
                     </div>
                     <div>
-                        <span>
-                            process lines <input type="text" id="process-from" value="1" size="3em"/> to <input class="lines-amount" type="text" id="process-to" value="{count($data/line)}" size="3em"/>
+                        <div id="header-line">Transform CSV</div>
+                        <span class="indent">
+                            Process lines <input type="text" id="process-from" value="1" size="3em"/> to <input class="lines-amount" type="text" id="process-to" value="{count($data/line)}" size="3em"/>
                         </span>
                     </div>
                     <div>
-                        <span>mapping:</span>
+                        <span class="indent">Apply mapping </span>
                         <select id="mapping-selector">
                         {
                             for $mapping in $xml-functions:mapping-definitions//mapping[@active="true"]
@@ -88,28 +90,28 @@ return
                         </select>
                     </div>
                     <div>
-                        <button id="generate" class="advanced" type="button" onclick="generate($(this));" disabled="disabled">generate XML</button>
+                        <button id="generate" class="advanced" type="button" onclick="generate($(this));" disabled="disabled">Generate XML</button>
                     </div>
                     <div>
-                        <span>transform preset:</span>
+                        <span class="indent">Transform using preset </span>
                         <select id="transformations-selector">
                         </select>
                     </div>
                     <div class="advanced">
-                        Apply XSLs (for transformation):
+                        <span class="indent">Apply XSLs (for transformation): </span>
                         <div id="xsl-selector"></div>
                         <div style="font-size:8px">(modifying the predefined selection may break pagination)</div>
                     </div>
                     <div>
-                        <button id="applyXSL" class="advanced" type="button" disabled="disabled">transform XML</button>
+                        <button id="applyXSL" class="advanced" type="button" disabled="disabled">Transform XML</button>
                     </div>
                     <div class="advanced">
                         <div>
-                            Validate against:
+                            <span class="indent">Validate against: </span>
                             <div id="catalogs-selector"></div>
                         </div>
                         <div id="addSchema">
-                            add Schema (.xsd .dtd): <input type="text" id="newSchema"></input>
+                            <span class="indent">Add Schema (.xsd .dtd): </span><input type="text" id="newSchema"></input>
                         </div>
                     </div>
                 </div>
@@ -122,9 +124,9 @@ return
                     <div id="actionButtons">
 <!--                        <select id="previewSelector" class="advanced debug"></select> -->
 <!--                        <button type="button" id="generatePreview" disabled="disabled">display preview</button> -->
-                        <button id="doAll" type="button" disabled="disabled" class="simple">generate XML</button>
-                        <button id="validate" type="button" disabled="disabled" class="advanced">validate</button>
-                        <button id="download" type="button" disabled="disabled">download</button>
+                        <button id="doAll" type="button" disabled="disabled" class="simple">Generate XML</button>
+                        <button id="validate" type="button" disabled="disabled" class="advanced">Validate</button>
+                        <button id="download" type="button" disabled="disabled">Download</button>
                     </div>
                 </div>
             </div>
@@ -133,13 +135,18 @@ return
             </div>
             <div>
                 <div>
-                    <button type="button" onclick="window.open('full-preview.xq')">open full preview</button>
+                    <button type="button" onclick="window.open('full-preview.xq')">Open full preview</button>
                 </div>
                 <div class="result-pagination"></div>
                 <div id="result-container">
                     <div id="content" style="font-size:10px;">
                 </div>
             </div>
+            </div>
+            <div id="footer">
+            <p>The VRA Core 4 XML Transform Tool is open-source software and can be used freely. For <b>user documentation, .csv templates, and a set of sample records</b> please refer to the <a href="https://github.com/exc-asia-and-europe/csv2xml/tree/master/doc">documentation folder on GitHub</a>. You may also <a href="https://github.com/exc-asia-and-europe/csv2xml">download the source code</a> there. If you are happy using the tool or wish to provide feedback, please <a href="mailto:hra@asia-europe.uni-heidelberg.de?subject=Feedback VRA Core 4 XML Transform Tool">drop us a line</a>.</p>
+            <p>Development of the tool was generously supported by the <a href="http://vrafoundation.org/index.php/home/">Visual Resources Association Foundation (VRAF)</a> and the <a href="http://hra.uni-hd.de/">Heidelberg Research Architecture</a> at <a href="http://www.asia-europe.uni-heidelberg.de/en/hcts.html">Heidelberg Centre for Transcultural Studies</a>, University of Heidelberg.</p>
+            <p><a href="http://vrafoundation.org/index.php/home/"><img src="../csv2xml/resources/images/VRAF_small.png" alt="VRAF logo" width="100px"/></a> <a href="http://www.asia-europe.uni-heidelberg.de/en/hcts.html"><img src="../csv2xml/resources/images/HCTS_small.png" alt="HCTS logo" width="160px"/></a> </p>
             </div>
         </body>
     </html>
