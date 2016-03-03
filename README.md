@@ -1,12 +1,15 @@
-# VRA Core 4 XML Transform Tool
-The VRA Core 4 XML Transform Tool (**csv2xml**) converts descriptive work and image metadata from flat tables (.csv) to structured VRA Core 4 XML. It makes use of a template with predefined headers. Users may work with the tool in a simple or advanced mode. The transform tool performs XML validation and provides feedback in case of errors. it can also transform VRA Core 4 XMLinto RDF/XML using the VRA Ontology. 
+# CSV2XML
+**csv2xml** is capable to generate XML files of any XML schema by using mappings/templates. It provides user interfaces for simple (automatic) and advanced modes and performs XML validation based on the respective schema.
+
+## VRA Core 4 XML Transform Tool
+The VRA Core 4 XML Transform Tool is a first use case for **csv2xml**. It converts descriptive work and image metadata from flat tables (.csv) to structured [VRA Core 4 XML](https://www.loc.gov/standards/vracore/schemas.html). It makes use of a template with predefined headers. Users may work with the tool in simple (automatic) or advanced  mode. The transform tool performs XML validation and provides feedback in case of errors. It can also transform VRA Core 4 XML into RDF/XML using [vra2rdf.xsl](https://github.com/mixterj/VRA-RDF-Project/blob/master/data/xsl/vra2rdf.xsl) of the [VRA-RDF-Project](https://github.com/mixterj/VRA-RDF-Project). 
 
 The tool is an App for eXist-db database version 3. While the transformation of VRA Core 4 XML is the current use case, it can be used for any type of transformation from csv to xml. 
 
-User manual, templates, and sample data can be found in the doc section.
+[User manual, templates, and sample data](https://github.com/exc-asia-and-europe/csv2xml/tree/master/doc) can be found in the doc section.
 
-## Technical information
-**csv2xml** is designed as an app for the "open source native XML database" [eXist-db](http://www.exist-db.org). To build the app on your own, clone the Github-Repository and run
+# Technical information
+**csv2xml** is designed as an app for the "open source native XML database" [eXist-db](http://www.exist-db.org) ( Version > 3.0RC1). To build the app on your own, clone the Github-Repository and run
 
 ```
  ant
