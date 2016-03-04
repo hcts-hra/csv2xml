@@ -53,6 +53,9 @@
                         <xsl:if test="$child-name eq 'inscription'">
                             <xsl:element name="text" namespace="http://www.vraweb.org/vracore4.htm"/>
                         </xsl:if>
+                        <xsl:if test="$child-name eq 'subject'">
+                            <xsl:element name="term" namespace="http://www.vraweb.org/vracore4.htm"/>
+                        </xsl:if>
                     </xsl:element>
                 </xsl:element>
             </xsl:when>
