@@ -125,8 +125,9 @@ $( document ).ready(function() {
     
     //Bind "applyXSL" button
     $("#applyXSL").bind("click", function(event) {
-        applyXSL();
-        initPreview();
+        applyXSL().then(
+            initPreview()
+        );            
     });
 
     //Bind "display Preview" button
