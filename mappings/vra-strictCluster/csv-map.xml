@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- csv-map vra-strictCluster -->
 <xml>
     <mapping key="IMAGE_ID">
@@ -146,7 +147,7 @@ return
   )
     </mapping>
     <mapping key="WORK_DescriptionDisplay">$line/column[@heading-index="WORK_DescriptionDisplay"]/string()</mapping>
-    <mapping key="WORK_DescriptionSource">$line/column[@heading-index="WORK_DescriptionSource"]/string()</mapping>
+    <mapping key="WORK_DescriptionSource">replace($line/column[@heading-index="WORK_DescriptionSource"]/string(), '"', '|||quot|||')</mapping>
     <mapping key="WORK_InscriptionDisplay">$line/column[@heading-index="WORK_InscriptionDisplay"]/string()</mapping>
     <mapping key="WORK_LocationDisplay">
         xquery version "3.0";
