@@ -51,7 +51,7 @@ function csv:read-csv($csv-string as xs:string) {
                                     return
                                         <column num-index="{$pos}">
                                             {
-                                                let $column := functx:replace-multi($column, ('""', "\$"), ('&quot;', "|||amp|||"))
+                                                let $column := functx:replace-multi($column, ('""', "\$"), ('&quot;', "|||dollar|||"))
                                                 return
                                                     serialize(functx:trim($column))
                                             }

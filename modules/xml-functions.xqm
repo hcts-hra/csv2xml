@@ -63,9 +63,9 @@ declare function xml-functions:get-xsls($mapping, $transform-name) {
 declare %private function xml-functions:_transform($transformations-sequence, $xml) {
     let $xsl := $transformations-sequence[1]
     let $mapping-name := session:get-attribute("mapping-name")
+(:    let $log := util:log("INFO", "../mappings/" || $mapping-name || "/" || $xsl):)
     let $xsl-doc := doc("../mappings/" || $mapping-name || "/" || $xsl)
     let $xml := transform:transform($xml, $xsl-doc, ())
-(:    let $log := util:log("INFO", $xml):)
     return
         if(count($transformations-sequence) > 1) then
             xml-functions:_transform(fn:subsequence($transformations-sequence, 2), $xml)
@@ -132,7 +132,7 @@ declare function xml-functions:replace-template-variables($template-string as xs
 
     (: remove unreplaced vars and dollar sign:)
     let $return :=
-        functx:replace-multi($return, ("\$.*?\$", "\|\|\|amp\|\|\|"), ("", "\&#36;"))
+        functx:replace-multi($return, ("\$.*?\$", "\|\|\|dollar\|\|\|", "\|\|\|quot\|\|\|"), ("", "\&#36;", "&amp;quot;"))
             
     return 
         $return
