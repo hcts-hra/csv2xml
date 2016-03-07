@@ -90,7 +90,7 @@ return
                         </select>
                     </div>
                     <div>
-                        <button id="generate" class="advanced" type="button" onclick="generate($(this));" disabled="disabled">Generate XML</button>
+                        <button id="generate" class="advanced" type="button" disabled="disabled">Generate XML</button>
                     </div>
                     <div>
                         <span class="indent">Transform using preset </span>
