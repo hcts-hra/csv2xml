@@ -126,6 +126,7 @@ $( document ).ready(function() {
     //Bind "applyXSL" button
     $("#applyXSL").bind("click", function(event) {
         applyXSL();
+        initPreview();
     });
 
     //Bind "display Preview" button
@@ -133,7 +134,16 @@ $( document ).ready(function() {
     $('#generatePreview').bind("click", function(event) {
         initPreview();
     });
-
+    
+    // Bind "generate" button
+    $('#generate').on("click", function(event) {
+        generate($(this)).then(function(){
+            applyXSL().then(function(argument) {
+                initPreview();
+            });
+        });
+        
+    });
 
     enableAdvancedMode(advanced);
 
@@ -458,6 +468,7 @@ function loadTemplates(mapping) {
 }
 
 function generate(button, callback) {
+    // console.debug("generate!");
     var df = $.Deferred();
     var mapping = $("select#mapping-selector option:selected").val();
     var start = parseInt($('#process-from').val(), 10);
@@ -490,11 +501,20 @@ function generate(button, callback) {
                 for (var actualLine = start; actualLine <= end; actualLine++){
                     processingStack.push(actualLine);
                 }
+                // console.debug("generatingLines starting!");
                 // console.debug(processingStack);
-                $.when(generateLinesXML(processingStack)).then(function (argument) {
-                    // cleanup
-                    $.when(postProcessing().done()).then(df.resolve());
+                $(document).on("generatingLinesDone", function(argument) {
+                    $.when(postProcessing().done()).then(df.resolve("success"));
+                    $(document).off("generatingLinesDone");
+                        console.debug("generatingLines successfully finished");
                 });
+                
+
+                generateLinesXML(processingStack).then(function(result) {},
+                    function(result) {
+                        console.debug("generatingLines failed");
+                        $(document).off("generatingLinesDone");
+                    });
             })
             .fail(function(msg){
                 dropMessage("...error: " + msg.responseText, "error");
@@ -504,6 +524,7 @@ function generate(button, callback) {
 }
 
 function applyXSL() {
+    // console.debug("applyXSL");
     var df = $.Deferred();
     // dropMessage("applyingXSLs", "info");
     var selectedXsls = $("#xsl-selector .selected");
@@ -531,11 +552,8 @@ function applyXSL() {
         dropMessage("Transformation successful: " +  msg.xmlFilename, "success");
         $('#generatePreview').removeAttr('disabled');
         toggleAfterProcessButtons(true);            
-        $.when(postProcessing()).done(
-            initPreview(),
-            df.resolve()
-
-        );
+        // initPreview();
+        df.resolve();
     })
     .fail(function(msg) {
         dropMessage("XSL Transformations failed. " + msg.responseText, "error");
@@ -558,7 +576,7 @@ function generateLinesXML(lineStack) {
     $.ajax({
         url: "process-csv.xq",
         method: "POST",
-        data: { 
+        data: {
             action: "processCSVLine",
             contentType: "text/plain",
             dataType: "xml",
@@ -569,29 +587,31 @@ function generateLinesXML(lineStack) {
     })
     .done(function( xml ) {
         dropMessage("line " + line + " processed.", "success");
-    })
-    .fail(function(msg ) {
-        dropMessage("XML generation failed (Line No " + line + "): " + msg.responseText, "error");
-    })
-    .complete(function(msg){
+        df.notify("line " + line + " processed.");
+
         // recursive call with rest of stack
         if (lineStack.length > 0){
             generateLinesXML(lineStack);
         }else{
             dropMessage("Processing CSV Lines done</b>", "success");
-            $.when(applyXSL()).done( function (){
-                $('#applyXSL').removeAttr("disabled");
-                buttonSetProgressing(generateButton, false);
-                buttonSetProgressing($('#doAll'), false);
-                df.resolve();
+            $('#applyXSL').removeAttr("disabled");
+            buttonSetProgressing(generateButton, false);
+            buttonSetProgressing($('#doAll'), false);
+            $.event.trigger({
+                type: "generatingLinesDone"
             });
+            df.resolve();
         }
+    })
+    .fail(function(msg ) {
+        dropMessage("XML generation failed (Line No " + line + "): " + msg.responseText, "error");
+        df.reject("XML generation failed!");
     });
-    
     return df.promise();
 }
 
 function postProcessing() {
+    console.debug("post-processing");
     var df = $.Deferred();
     $.ajax({
         url: "process-csv.xq",
@@ -601,23 +621,21 @@ function postProcessing() {
         }
     })
     .done(function(result){
-        // simple mode, so do all the post-processing
-        if(!$("#advancedMode").attr("checked")){
-            // dropMessage("generating successful. Please be patient, validating now...", "success");
-            validate();
-        }
         df.resolve();
     });
     return df.promise();
 }
 
 function validate(callback) {
+    // console.debug("validating");
+
     var button = $('#validate');
     var df = $.Deferred();
     var catalogs = [];
     $.each($("#catalogs-selector > div.selected"), function(index, value){
         catalogs.push($(value).html());
     });
+
     if (catalogs.length > 0) {
         dropMessage("<b>validating... please be patient.</b>", "info");
         buttonSetProgressing(button, true);
@@ -667,25 +685,34 @@ function doEverything(button) {
     dropMessage("generating...", "info");
     // generate(button, function(result, message){
     $.when(generate(button)).then(function(result, message){
-        // if successfully generated, then validate
-        if(result){
-            dropMessage("generating successful. Please be patient, validating now...", "success");
-            validate(function(result, msg){
-                var downloadButton = '<a href="download.xq" target="_blank">Download</a>';
-                if (result) {
-                    dropMessage('<span class="message ok">Validation passed successfully.</span> <b>' + downloadButton + "</b>", "success");
-                    window.open("download.xq");
+        console.debug("generating done: " + result);
+        // applyXSL
+        $.when(applyXSL()).done( function (){
+            // Display preview
+            initPreview();
+            // 
+            // if successfully generated, post process
+            // $.when(postProcessing()).then(function(postprocessResult) {
+                if(result){
+                    dropMessage("generating successful. Please be patient, validating now...", "success");
+                    validate(function(result, msg){
+                        var downloadButton = '<a href="download.xq" target="_blank">Download</a>';
+                        if (result) {
+                            dropMessage('<span class="message ok">Validation passed successfully.</span> <b>' + downloadButton + "</b>", "success");
+                            window.open("download.xq");
+                        } else {
+                            dropMessage("<span class='message warning'>WARNING: Validation failed. Download anyway?</span> <b>" + downloadButton + "</b>", "error");
+                        }
+                    });
                 } else {
-                    dropMessage("<span class='message warning'>WARNING: Validation failed. Download anyway?</span> <b>" + downloadButton + "</b>", "error");
+                    dropMessage("generating failed: " + message, "error");
                 }
-            });
-        } else {
-            dropMessage("generating failed: " + message, "error");
-        }
+        });
     });
 }
 
 function initPreview() {
+    // console.debug("initPreview");
     dropMessage("displaying Preview", "info");
     $.ajax({
         url: "process-csv.xq",
