@@ -468,6 +468,7 @@ function loadTemplates(mapping) {
 }
 
 function generate(button, callback) {
+    $(document).off("generatingLinesDone");
     // console.debug("generate!");
     var df = $.Deferred();
     var mapping = $("select#mapping-selector option:selected").val();
@@ -509,7 +510,6 @@ function generate(button, callback) {
                         console.debug("generatingLines successfully finished");
                 });
                 
-
                 generateLinesXML(processingStack).then(function(result) {},
                     function(result) {
                         console.debug("generatingLines failed");
