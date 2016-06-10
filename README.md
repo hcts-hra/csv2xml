@@ -8,6 +8,8 @@ The tool is an App for eXist-db database version 3. While the transformation of 
 
 [User manual, templates, and sample data](https://github.com/exc-asia-and-europe/csv2xml/tree/master/doc) can be found in the doc section.
 
+[A live demo is available online](http://kjc-ws2.kjc.uni-heidelberg.de:8081/exist/apps/csv2xml/index.xq) at our Heidelberg testserver.
+
 # Technical information
 **csv2xml** is designed as an app for the "open source native XML database" [eXist-db](http://www.exist-db.org) ( Version > 3.0RC1). To build the app on your own, clone the Github-Repository and run
 
@@ -127,3 +129,13 @@ Here the XSLTransformations are defined. Each &lt;transform/&gt; node defines a 
 Validation is done by the Xerces2 library using the [eXist db internal validation functions](http://exist-db.org/exist/apps/doc/validation.xml#D2.2.4.4).
 
 For the preview in the frontend there is the &lt;paginationQuery/&gt;. Use a xpath here which gets util:eval()'ed after the whole processing (including xsl-transformations). Each item in the result is treated as a page.
+
+## License
+Copyright 2016 Heidelberg Research Architecture (HRA), University of Heidelberg. 
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
