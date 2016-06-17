@@ -6,12 +6,10 @@
         let $imageID := $line/column[@heading-index="IMAGE_ID"]/string()
         let $returnID :=  
             if($imageID) then
-                (
-                    let $imageID_A :=  if(starts-with($imageID, "i_")) then ($imageID) else ("i_" || $imageID) 
-                    return $imageID_A
-                ) else (
-                    concat("i_", util:uuid())
-                )
+                let $imageID_A :=  if(starts-with($imageID, "i_")) then ($imageID) else ("i_" || $imageID) 
+                return $imageID_A
+            else 
+                concat("i_", util:uuid())
         let $session := session:set-attribute("tempImageUUID", $returnID)
         return $returnID
     </mapping>
@@ -20,6 +18,9 @@
     <mapping key="IMAGE_AccessionID">$line/column[@heading-index="IMAGE_AccessionID"]/string()</mapping>
     <mapping key="IMAGE_VendorID">$line/column[@heading-index="IMAGE_VendorID"]/string()</mapping>
     <mapping key="IMAGE_VendorName">$line/column[@heading-index="IMAGE_VendorName"]/string()</mapping>
+        let $VendorName := $line/column[@heading-index="IMAGE_VendorName"]/string()
+        let $session :=  session:set-attribute("tempIMAGE_VendorName", $VendorName)
+        return $VendorName
     <mapping key="IMAGE_LocalRepoName">$line/column[@heading-index="IMAGE_LocalRepoName"]/string()</mapping>
     <mapping key="WORK_IDno">$line/column[@heading-index="WORK_IDno"]/string()</mapping>
     <mapping key="WORK_AgentDisplay">
@@ -32,7 +33,7 @@ return
   ) else (
     let $agent1 :=
       (: Test for Agent1Name :)
-      if($line/column[@heading-index="WORK_Agent1Name"])
+      if($line/column[@heading-index="WORK_Agent1Name"] != "")
       then (
 	        let $attribution := if($line/column[@heading-index="WORK_Agent1Attribution"]  != "") then ($line/column[@heading-index="WORK_Agent1Attribution"]/string() || " ") else ()
 	        let $role := if($line/column[@heading-index="WORK_Agent1Role"] != "") then ( " (" || $line/column[@heading-index="WORK_Agent1Role"]/string() || ")") else ()
@@ -40,7 +41,7 @@ return
       ) else ()
       
     let $agent2 := (: Test for Agent2Name :)
-      if($line/column[@heading-index="WORK_Agent2Name"])
+      if($line/column[@heading-index="WORK_Agent2Name"] != "")
       then (
 	        let $attribution := if($line/column[@heading-index="WORK_Agent2Attribution"] != "") then ($line/column[@heading-index="WORK_Agent2Attribution"]/string() || " ") else ()
 	        let $role := if($line/column[@heading-index="WORK_Agent2Role"] != "") then ( " (" || $line/column[@heading-index="WORK_Agent2Role"]/string() || ")") else ()
@@ -48,7 +49,7 @@ return
       ) else ()
       
     let $agent3 := (: Test for Agent3Name :)
-      if($line/column[@heading-index="WORK_Agent3Name"])
+      if($line/column[@heading-index="WORK_Agent3Name"] != "")
       then (
 	        let $attribution := if($line/column[@heading-index="WORK_Agent3Attribution"] != "") then ($line/column[@heading-index="WORK_Agent3Attribution"]/string() || " ") else ()
 	        let $role := if($line/column[@heading-index="WORK_Agent3Role"] != "") then ( " (" || $line/column[@heading-index="WORK_Agent3Role"]/string() || ")") else ()
@@ -103,7 +104,7 @@ return
   ) else (
     let $date1 :=
       (: Test for EarliestDate1 :)
-      if($line/column[@heading-index="WORK_EarliestDate1"])
+      if($line/column[@heading-index="WORK_EarliestDate1"] != "")
       then (
 	        let $date1Type := if($line/column[@heading-index="WORK_Date1Type"]  != "") then ($line/column[@heading-index="WORK_Date1Type"]/string() || " ") else ()
 	        let $latestDate1 := if($line/column[@heading-index="WORK_LatestDate1"] != "") then ( " - " || $line/column[@heading-index="WORK_LatestDate1"]/string() || "") else ()
@@ -112,7 +113,7 @@ return
       
     let $date2 := 
       (: Test for WORK_EarliestDate2 :)
-      if($line/column[@heading-index="WORK_EarliestDate2"])
+      if($line/column[@heading-index="WORK_EarliestDate2"] != "")
       then (
 	        let $date2Type := if($line/column[@heading-index="WORK_Date2Type"] != "") then ($line/column[@heading-index="WORK_Date2Type"]/string() || " ") else ()
 	        let $latestDate2 := if($line/column[@heading-index="WORK_LatestDate2"] != "") then ( " - " || $line/column[@heading-index="WORK_LatestDate2"]/string() || "") else ()
@@ -159,7 +160,7 @@ return
   ) else (
     let $location1 :=
       (: Test for WORK_Location1Name :)
-      if($line/column[@heading-index="WORK_Location1Name"])
+      if($line/column[@heading-index="WORK_Location1Name"] != "")
       then (
 	        let $loc1NameType := if($line/column[@heading-index="WORK_Location1NameType"]  != "") then ($line/column[@heading-index="WORK_Location1NameType"]/string() || ": ") else ()
 	        let $loc1objectType := if($line/column[@heading-index="WORK_Location1ObjType"] != "") then ( " (" || $line/column[@heading-index="WORK_Location1ObjType"]/string() || ")") else ()
@@ -170,7 +171,7 @@ return
       
     let $location2 := 
       (: Test for WORK_Location2Name :)
-      if($line/column[@heading-index="WORK_Location2Name"])
+      if($line/column[@heading-index="WORK_Location2Name"] != "")
       then (
 	        let $loc2NameType := if($line/column[@heading-index="WORK_Location2NameType"]  != "") then ($line/column[@heading-index="WORK_Location2NameType"]/string() || ": ") else ()
 	        let $loc2objectType := if($line/column[@heading-index="WORK_Location2ObjType"] != "") then ( " (" || $line/column[@heading-index="WORK_Location2ObjType"]/string() || ")") else ()
@@ -309,7 +310,7 @@ return
       ) else ()
 
     let $relation2 :=
-      if($line/column[@heading-index="WORK_RelatedWork2"])
+      if($line/column[@heading-index="WORK_RelatedWork2"] != "")
       then (
 	        let $relWork2 := if($line/column[@heading-index="WORK_RelatedWork2"]  != "") then ($line/column[@heading-index="WORK_RelatedWork2"]/string()) else ()
 	        let $rel2Type := if($line/column[@heading-index="WORK_RelationType2"]  != "") then ($line/column[@heading-index="WORK_RelationType2"]/string()) else ()
@@ -502,7 +503,7 @@ return
     $agentDisplay
   ) else (
     let $agent1 :=
-      if($line/column[@heading-index="IMAGE_Agent1Name"])
+      if($line/column[@heading-index="IMAGE_Agent1Name"] != "")
       then (
 	        let $role := if($line/column[@heading-index="IMAGE_Agent1Role"] != "") then ( " (" || $line/column[@heading-index="IMAGE_Agent1Role"]/string() || ")") else ()
 	    return $line/column[@heading-index="IMAGE_Agent1Name"]/string() || $role
@@ -679,9 +680,12 @@ return
         
         let $insert-node :=
             if ($existing-work-record and not($existing-work-record/vra:relationSet/vra:relation[@relids=$image-uuid])) then
-                let $source :=  session:get-attribute("tempIMAGE_SourceDisplay")
+                let $source :=  session:get-attribute("tempIMAGE_VendorName")
                 let $relationName := session:get-attribute("tempIMAGE_TitleDisplay")
-                let $relation := &lt;relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}" source="{$source}" pref="false"&gt;{$relationName}&lt;/relation&gt;
+                <!-- let $relation := <relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}" source="{$source}" pref="false">{$relationName}</relation> -->
+                let $relation := &lt;relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}"&gt;{$relationName}&lt;/relation&gt;
+            
+<!--                let $source :=  session:get-attribute("tempIMAGE_SourceDisplay")--><!--                let $relationName := session:get-attribute("tempIMAGE_TitleDisplay")--><!--                let $relation := <relation xmlns="http://www.vraweb.org/vracore4.htm" type="imageIs" relids="{$image-uuid}" source="{$source}" pref="false">{$relationName}</relation>-->
                 return
                     update insert 
                         $relation

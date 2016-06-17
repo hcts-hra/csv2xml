@@ -33,7 +33,7 @@ return
   ) else (
     let $agent1 :=
       (: Test for Agent1Name :)
-      if($line/column[@heading-index="WORK_Agent1Name"])
+      if($line/column[@heading-index="WORK_Agent1Name"] != "")
       then (
 	        let $attribution := if($line/column[@heading-index="WORK_Agent1Attribution"]  != "") then ($line/column[@heading-index="WORK_Agent1Attribution"]/string() || " ") else ()
 	        let $role := if($line/column[@heading-index="WORK_Agent1Role"] != "") then ( " (" || $line/column[@heading-index="WORK_Agent1Role"]/string() || ")") else ()
@@ -41,7 +41,7 @@ return
       ) else ()
       
     let $agent2 := (: Test for Agent2Name :)
-      if($line/column[@heading-index="WORK_Agent2Name"])
+      if($line/column[@heading-index="WORK_Agent2Name"] != "")
       then (
 	        let $attribution := if($line/column[@heading-index="WORK_Agent2Attribution"] != "") then ($line/column[@heading-index="WORK_Agent2Attribution"]/string() || " ") else ()
 	        let $role := if($line/column[@heading-index="WORK_Agent2Role"] != "") then ( " (" || $line/column[@heading-index="WORK_Agent2Role"]/string() || ")") else ()
@@ -49,7 +49,7 @@ return
       ) else ()
       
     let $agent3 := (: Test for Agent3Name :)
-      if($line/column[@heading-index="WORK_Agent3Name"])
+      if($line/column[@heading-index="WORK_Agent3Name"] != "")
       then (
 	        let $attribution := if($line/column[@heading-index="WORK_Agent3Attribution"] != "") then ($line/column[@heading-index="WORK_Agent3Attribution"]/string() || " ") else ()
 	        let $role := if($line/column[@heading-index="WORK_Agent3Role"] != "") then ( " (" || $line/column[@heading-index="WORK_Agent3Role"]/string() || ")") else ()
@@ -98,7 +98,7 @@ return
   ) else (
     let $date1 :=
       (: Test for EarliestDate1 :)
-      if($line/column[@heading-index="WORK_EarliestDate1"])
+      if($line/column[@heading-index="WORK_EarliestDate1"] != "")
       then (
 	        let $date1Type := if($line/column[@heading-index="WORK_Date1Type"]  != "") then ($line/column[@heading-index="WORK_Date1Type"]/string() || " ") else ()
 	        let $latestDate1 := if($line/column[@heading-index="WORK_LatestDate1"] != "") then ( " - " || $line/column[@heading-index="WORK_LatestDate1"]/string() || "") else ()
@@ -107,7 +107,7 @@ return
       
     let $date2 := 
       (: Test for WORK_EarliestDate2 :)
-      if($line/column[@heading-index="WORK_EarliestDate2"])
+      if($line/column[@heading-index="WORK_EarliestDate2"] != "")
       then (
 	        let $date2Type := if($line/column[@heading-index="WORK_Date2Type"] != "") then ($line/column[@heading-index="WORK_Date2Type"]/string() || " ") else ()
 	        let $latestDate2 := if($line/column[@heading-index="WORK_LatestDate2"] != "") then ( " - " || $line/column[@heading-index="WORK_LatestDate2"]/string() || "") else ()
@@ -154,7 +154,7 @@ return
   ) else (
     let $location1 :=
       (: Test for WORK_Location1Name :)
-      if($line/column[@heading-index="WORK_Location1Name"])
+      if($line/column[@heading-index="WORK_Location1Name"] != "")
       then (
 	        let $loc1NameType := if($line/column[@heading-index="WORK_Location1NameType"]  != "") then ($line/column[@heading-index="WORK_Location1NameType"]/string() || ": ") else ()
 	        let $loc1objectType := if($line/column[@heading-index="WORK_Location1ObjType"] != "") then ( " (" || $line/column[@heading-index="WORK_Location1ObjType"]/string() || ")") else ()
@@ -165,7 +165,7 @@ return
       
     let $location2 := 
       (: Test for WORK_Location2Name :)
-      if($line/column[@heading-index="WORK_Location2Name"])
+      if($line/column[@heading-index="WORK_Location2Name"] != "")
       then (
 	        let $loc2NameType := if($line/column[@heading-index="WORK_Location2NameType"]  != "") then ($line/column[@heading-index="WORK_Location2NameType"]/string() || ": ") else ()
 	        let $loc2objectType := if($line/column[@heading-index="WORK_Location2ObjType"] != "") then ( " (" || $line/column[@heading-index="WORK_Location2ObjType"]/string() || ")") else ()
@@ -512,7 +512,11 @@ return
     <mapping key="IMAGE_RightsType">$line/column[@heading-index="IMAGE_RightsType"]/string()</mapping>
     <mapping key="IMAGE_RightsHolder">$line/column[@heading-index="IMAGE_RightsHolder"]/string()</mapping>
     <mapping key="IMAGE_RightsText">$line/column[@heading-index="IMAGE_RightsText"]/string()</mapping>
-    <mapping key="IMAGE_SourceDisplay">$line/column[@heading-index="IMAGE_SourceDisplay"]/string()</mapping>
+    <mapping key="IMAGE_SourceDisplay">
+        let $sourceDisplay := $line/column[@heading-index="IMAGE_SourceDisplay"]/string()
+        let $session :=  session:set-attribute("tempIMAGE_SourceDisplay", $sourceDisplay)
+        return $sourceDisplay
+    </mapping>
     <mapping key="IMAGE_SourceValue">$line/column[@heading-index="IMAGE_SourceValue"]/string()</mapping>
     <mapping key="IMAGE_SourceType">$line/column[@heading-index="IMAGE_SourceType"]/string()</mapping>
     <mapping key="IMAGE_SubjectDisplay">

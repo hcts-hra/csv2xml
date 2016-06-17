@@ -21,7 +21,7 @@
         </template>
     </templates>
     <transformations>
-        <transform label="Unmodified VRA Core 4 XML" name="plainVRA" active="true" selected="true" type="xsl">
+        <transform label="Modified VRA Core 4 XML" name="extendedVRA" active="true" selected="true" type="xsl">
             <importNamespaces>
                 <ns prefix="">http://www.vraweb.org/vracore4.htm</ns>
             </importNamespaces><!--  Query for page-items in pagination (tbd)  -->
