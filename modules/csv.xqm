@@ -8,11 +8,11 @@ declare variable $csv:debug :=  session:get-attribute("debug");
 declare variable $csv:delim :=  ",";
 
 declare function csv:split-line($str){
-    for $t in analyze-string($str,'(?<=^|' || $csv:delim ||  ')(\"(?:[^\"]|\"\")*\"|[^' || $csv:delim || ']*)')/fn:match/fn:group 
-    return 
-        if($t/text()) then 
-            replace($t/text(),"^&quot;|&quot;$","") 
-        else "" 
+    for $record in analyze-string($str, '("(?:[^"]|"")*"|[^' || $csv:delim ||  '"\n\r]*)(' || $csv:delim ||  '|\r?\n|\r)')/fn:match/fn:group[@nr = '1']
+    let $record-1 := replace($record, "^&quot;|&quot;$", "")
+    let $record-2 := replace($record-1, "&quot;&quot;", "&quot;")
+    
+    return $record-2 
 };
 
 declare function csv:num-to-char($num as xs:int) {
