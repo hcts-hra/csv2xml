@@ -4,10 +4,10 @@ module namespace csv="http://hra.uni-heidelberg.de/ns/hra-csv2vra/csv";
 
 import module namespace functx="http://www.functx.com";
 
-declare variable $csv:debug :=  session:get-attribute("debug");
-declare variable $csv:delim :=  ",";
+declare variable $csv:debug := session:get-attribute("debug");
+declare variable $csv:delim := ",";
 
-declare function csv:split-line($str){
+declare function csv:split-line($str) {
     for $record in analyze-string($str, '("(?:[^"]|"")*"|[^' || $csv:delim ||  '"\n\r]*)(' || $csv:delim ||  '|\r?\n|\r)')/fn:match/fn:group[@nr = '1']
     let $record-1 := replace($record, "^&quot;|&quot;$", "")
     let $record-2 := replace($record-1, "&quot;&quot;", "&quot;")
