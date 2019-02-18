@@ -1,29 +1,25 @@
-<package xmlns="http://expath.org/ns/pkg" name="${package-name}" abbrev="${project.artifactId}" version="${project.version}"
+<package xmlns="http://expath.org/ns/pkg" name="${package.name}" abbrev="${project.artifactId}" version="${project.version}"
 	spec="1.0">
-	<title>${package-title}</title>
+	<title>${package.title}</title>
 	<author>Matthias Guth</author>
 	<website>${project.url}</website>
 	<license>GNU-LGPL</license>
 	<copyright>true</copyright>
-	<type>${package-type}</type>
+	<type>${package.type}</type>
 	<target>${project.artifactId}</target>
 	<status>stable</status>
 	<finish>post-install.xq</finish>
 	<tag>${project.artifactId}</tag>
-	<tag>${package-type}</tag>
+	<tag>${package.type}</tag>
 	<tag>exist</tag>
 	<category id="application">${project.artifactId}</category>
 	<fileSets>
 		<fileSet>
-			<directory>${basedir}</directory>
-			<outputDirectory>/</outputDirectory>
+			<directory>${project.basedir}</directory>
 			<excludes>
-				<exclude>assembly.xml</exclude>
-				<exclude>pom.xml</exclude>
+				<exclude>build/</exclude>
 				<exclude>target/</exclude>
-				<exclude>.buildpath</exclude>
-				<exclude>.project</exclude>
-				<exclude>.settings/</exclude>
+				<exclude>pom.xml</exclude>
 			</excludes>
 		</fileSet>
 	</fileSets>
