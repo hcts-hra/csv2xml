@@ -6,12 +6,13 @@
 
 	<groupId>de.uni-hd.hra</groupId>
 	<artifactId>csv2xml</artifactId>
-	<version>1.2.0</version>
+	<version>1.2.1</version>
 	<packaging>pom</packaging>
+	<url>https://github.com/exc-asia-and-europe/csv2xml</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<package.name>http://hra.uni-heidelberg.de/ns/csv2vra</package.name>
+		<package.name>http://hra.uni-heidelberg.de/ns/csv2xml</package.name>
 		<package.title>VRA Core 4 XML Transform Tool</package.title>
 		<package.type>application</package.type>
 		<maven.version>3.6.0</maven.version>
