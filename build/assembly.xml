@@ -1,6 +1,8 @@
 <package xmlns="http://expath.org/ns/pkg" name="${package.name}" abbrev="${project.artifactId}" version="${project.version}"
 	spec="1.0">
 	<title>${package.title}</title>
+    <dependency package="http://exist-db.org/apps/shared" semver-min="0.2.5"/>
+    <dependency package="http://www.functx.com"/>	
 	<dependency processor="http://exist-db.org" semver-min="4.4.0" />
 	<author>Matthias Guth</author>
 	<website>${project.url}</website>
