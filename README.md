@@ -8,7 +8,8 @@ The tool is an App for eXist-db database version 3. While the transformation of 
 
 [User manual, templates, and sample data](https://github.com/exc-asia-and-europe/csv2xml/tree/master/doc) can be found in the doc section.
 
-[A live demo is available online](http://kjc-ws2.kjc.uni-heidelberg.de:8081/exist/apps/csv2xml/index.xq) at our Heidelberg testserver.
+-[A live demo is available online](http://kjc-ws2.kjc.uni-heidelberg.de:8081/exist/apps/csv2xml/index.xq)- at our Heidelberg testserver.
+Update 2022(ma): Unfortunately, the server with the demo is no longer available.
 
 # Technical information
 **csv2xml** is designed as an app for the "open source native XML database" [eXist-db](http://www.exist-db.org) ( Version > 3.0RC1). To build the app on your own, clone the Github-Repository and run
